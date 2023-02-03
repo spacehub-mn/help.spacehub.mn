@@ -1,0 +1,37 @@
+ul.AppStoreBadges {
+  --storeImgHeight: 4rem;
+  --storeImgPadV: calc(var(--storeImgHeight) * 0.125);
+  --storeImgPadH: calc(var(--storeImgHeight) * 0.1875);
+}
+ul.AppStoreBadges .storeLink {
+  display: inline-block;
+  width: auto !important;
+  vertical-align: middle;
+}
+
+ul.AppStoreBadges .storeLink.gplay {
+  height: var(--storeImgHeight) !important;
+}
+ul.AppStoreBadges .storeLink.apple {
+  height: var(--storeImgHeight) !important;
+  padding: var(--storeImgPadV) var(--storeImgPadH) !important;
+}
+ul.AppStoreBadges .storeLink > * {
+  height: 100% !important;
+  width: auto !important;
+}
+
+ul.AppStoreBadges,
+ul.AppStoreBadges > li {
+  list-style: none;
+}
+
+ul.AppStoreBadges {
+  margin-left: -1rem;
+}
+
+@media only screen and (min-width: 640px) {
+  ul.AppStoreBadges {
+    width: 100%;
+  }
+}
