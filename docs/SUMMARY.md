@@ -2,5 +2,4 @@
 
 * [intro](README.md)
 * [tenant](tenant/README.md)
-  * [Төлбөр төлөх заавар](tenant/payment/README.md)
-    * [karma](tenant/payment/karma.md)
+  * [Төлбөр төлөх заавар](tenant/payment.md)
