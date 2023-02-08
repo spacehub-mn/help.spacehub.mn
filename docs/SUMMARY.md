@@ -11,6 +11,7 @@
     * [Гэрээний үндсэн мэдээлэл харах](lessor/geree/gereenii-ndsen-medeelel-kharakh.md)
     * [Хэрэглээ харах](lessor/geree/khereglee-kharakh.md)
     * [Төлбөрийн хуваарь харах](lessor/geree/t-lb-riin-khuvaar-kharakh.md)
+    * [Нэхэмжлэл үүсгэж илгээх](lessor/geree/nekhemzhlel-sgezh-ilgeekh.md)
     * [Нэхэмжлэл харах](lessor/geree/nekhemzhlel-kharakh.md)
 * [tenant](tenant/README.md)
   * [Төлбөр төлөх заавар](tenant/payment.md)
