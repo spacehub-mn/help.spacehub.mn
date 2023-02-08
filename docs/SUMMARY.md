@@ -13,5 +13,8 @@
     * [Төлбөрийн хуваарь харах](lessor/geree/t-lb-riin-khuvaar-kharakh.md)
     * [Нэхэмжлэл үүсгэж илгээх](lessor/geree/nekhemzhlel-sgezh-ilgeekh.md)
     * [Нэхэмжлэл харах](lessor/geree/nekhemzhlel-kharakh.md)
+  * [Объект](lessor/obekt/README.md)
+    * [Объектын зураг солих](lessor/obekt/obektyn-zurag-solikh.md)
+    * [Талбайн мэдээлэл харах](lessor/obekt/talbain-medeelel-kharakh.md)
 * [tenant](tenant/README.md)
   * [Төлбөр төлөх заавар](tenant/payment.md)
