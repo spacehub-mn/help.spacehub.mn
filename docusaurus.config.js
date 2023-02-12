@@ -22,7 +22,9 @@ const config = {
   projectName: 'app-support', // Usually your repo name.
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenMarkdownLinks: 'throw',
+
+  trailingSlash: false,
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -39,6 +41,7 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
+          routeBasePath: '/'
         },
         // blog: {
         //   showReadingTime: true,
@@ -132,6 +135,16 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      algolia: {
+        appId: "NMO3Y7XP5E",
+        indexName: "spacehub",
+        apiKey: "7730d84c5650e835d374b57e7cc1ea6d",
+        replaceSearchResultPathname: {
+          from: '/docs/', // or as RegExp: /\/docs\//
+          to: '/',
+        },
+      }
+
     }),
 };
 

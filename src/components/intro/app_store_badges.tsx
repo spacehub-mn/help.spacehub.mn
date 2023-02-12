@@ -3,9 +3,9 @@ import "./app_store_badges.css";
 
 const AppStoreBadges = () => (
   <ul className="AppStoreBadges">
-    <li>
+    <li className="AppStoreBadges">
       <a
-        className="storeLink gplay"
+        className="storeLink gplay AppStoreBadges"
         href="https://play.google.com/store/apps/details?id=mn.spacehub.main.spacehub"
         target="_blank"
         rel="noreferrer">
@@ -16,9 +16,9 @@ const AppStoreBadges = () => (
         />
       </a>
     </li>
-    <li>
+    <li className="AppStoreBadges">
       <a
-        className="storeLink apple"
+        className="storeLink apple AppStoreBadges"
         href="https://apple.co/3MCEoqw"
         target="_blank"
         rel="noreferrer">
