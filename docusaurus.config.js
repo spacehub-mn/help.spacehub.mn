@@ -69,9 +69,9 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       algolia: {
-        appId: "NMO3Y7XP5E",
+        appId: "8DVP8D0IC2",
         indexName: "spacehub",
-        apiKey: "ac22a736786d754152a6a08f260c60ac",
+        apiKey: "154dfc27f26a114116e6c31d66b4218c",
         replaceSearchResultPathname: {
           from: '/docs/', // or as RegExp: /\/docs\//
           to: '/',
