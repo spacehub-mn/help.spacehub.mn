@@ -76,6 +76,7 @@ const config = {
           from: '/docs/', // or as RegExp: /\/docs\//
           to: '/',
         },
+        contextualSearch: false,
       },
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
