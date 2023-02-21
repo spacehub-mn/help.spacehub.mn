@@ -70,13 +70,12 @@ const config = {
     ({
       algolia: {
         appId: "8DVP8D0IC2",
-        indexName: "spacehub",
+        indexName: "netlify_f748018c-10b7-485c-a27c-3fe997fb2032_main_all",
         apiKey: "154dfc27f26a114116e6c31d66b4218c",
         replaceSearchResultPathname: {
           from: '/docs/', // or as RegExp: /\/docs\//
           to: '/',
-        },
-        contextualSearch: false,
+        }
       },
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
