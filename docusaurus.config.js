@@ -75,8 +75,7 @@ const config = {
         replaceSearchResultPathname: {
           from: '/docs/',
           to: '/',
-        }, contextualSearch: false,
-        facetFilters: ['language:mn'],
+        },
       },
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
