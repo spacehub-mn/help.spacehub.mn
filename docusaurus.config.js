@@ -57,6 +57,15 @@ const config = {
         sitemap: {
           changefreq: "weekly",
           filename: "sitemap.xml"
+        },
+        algolia: {
+          appId: "NMO3Y7XP5E",
+          indexName: "spacehub",
+          apiKey: "ac22a736786d754152a6a08f260c60ac",
+          replaceSearchResultPathname: {
+            from: '/docs/', // or as RegExp: /\/docs\//
+            to: '/',
+          },
         }
       }),
     ],
@@ -139,16 +148,6 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
-      algolia: {
-        appId: "NMO3Y7XP5E",
-        indexName: "spacehub",
-        apiKey: "7730d84c5650e835d374b57e7cc1ea6d",
-        replaceSearchResultPathname: {
-          from: '/docs/', // or as RegExp: /\/docs\//
-          to: '/',
-        },
-      }
-
     }),
 };
 
