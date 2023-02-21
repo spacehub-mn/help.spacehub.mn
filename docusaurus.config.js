@@ -58,15 +58,7 @@ const config = {
           changefreq: "weekly",
           filename: "sitemap.xml"
         },
-        algolia: {
-          appId: "NMO3Y7XP5E",
-          indexName: "spacehub",
-          apiKey: "ac22a736786d754152a6a08f260c60ac",
-          replaceSearchResultPathname: {
-            from: '/docs/', // or as RegExp: /\/docs\//
-            to: '/',
-          },
-        }
+
       }),
     ],
   ],
@@ -76,6 +68,15 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      algolia: {
+        appId: "NMO3Y7XP5E",
+        indexName: "spacehub",
+        apiKey: "ac22a736786d754152a6a08f260c60ac",
+        replaceSearchResultPathname: {
+          from: '/docs/', // or as RegExp: /\/docs\//
+          to: '/',
+        },
+      },
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
