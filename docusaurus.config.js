@@ -76,6 +76,7 @@ const config = {
           from: '/docs/',
           to: '/',
         },
+        externalUrlRegex: "help\\.spacehub\\.mn",
         contextualSearch: false,
       },
       // Replace with your project's social card
