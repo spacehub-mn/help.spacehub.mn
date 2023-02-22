@@ -76,6 +76,7 @@ const config = {
           from: '/docs/',
           to: '/',
         },
+        contextualSearch: true,
       },
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
@@ -143,7 +144,7 @@ const config = {
             ],
           },
         ],
-        copyright: `© ${new Date().getFullYear()} Spacehub туслах, Docusaurus ашиглав.`,
+        copyright: `© ${new Date().getFullYear()} Спэйсхаб ХХК.`,
       },
       prism: {
         theme: lightCodeTheme,
