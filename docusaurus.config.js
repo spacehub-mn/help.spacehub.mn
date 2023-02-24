@@ -77,7 +77,7 @@ const config = {
         //   to: '/',
         // },
         contextualSearch: false,
-        externalUrlRegex: "help\\.spacehub\\.mn"
+        externalUrlRegex: "help\\.spacehub\\.mn",
       },
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
