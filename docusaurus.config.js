@@ -77,9 +77,6 @@ const config = {
         //   to: '/',
         // },
         contextualSearch: false,
-        searchParameters: {
-          lang: "mn",
-        },
         externalUrlRegex: "help\\.spacehub\\.mn"
       },
       // Replace with your project's social card
