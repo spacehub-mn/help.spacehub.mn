@@ -54,6 +54,11 @@ const config = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
+        sitemap: {
+          changefreq: "weekly",
+          filename: "sitemap.xml"
+        },
+
       }),
     ],
   ],
@@ -63,6 +68,11 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      algolia: {
+        appId: "8DVP8D0IC2",
+        indexName: "netlify_f748018c-10b7-485c-a27c-3fe997fb2032_main_all",
+        apiKey: "154dfc27f26a114116e6c31d66b4218c",
+      },
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
@@ -129,22 +139,12 @@ const config = {
             ],
           },
         ],
-        copyright: `© ${new Date().getFullYear()} Spacehub туслах, Docusaurus ашиглав.`,
+        copyright: `© ${new Date().getFullYear()} Спэйсхаб ХХК.`,
       },
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
-      algolia: {
-        appId: "NMO3Y7XP5E",
-        indexName: "spacehub",
-        apiKey: "7730d84c5650e835d374b57e7cc1ea6d",
-        replaceSearchResultPathname: {
-          from: '/docs/', // or as RegExp: /\/docs\//
-          to: '/',
-        },
-      }
-
     }),
 };
 
