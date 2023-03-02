@@ -16,6 +16,7 @@ const config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
+
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'spacehub', // Usually your GitHub org/user name.
@@ -41,7 +42,8 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          routeBasePath: '/'
+          routeBasePath: '/',
+
         },
         // blog: {
         //   showReadingTime: true,
@@ -73,6 +75,7 @@ const config = {
         indexName: "netlify_f748018c-10b7-485c-a27c-3fe997fb2032_main_all",
         apiKey: "154dfc27f26a114116e6c31d66b4218c",
         contextualSearch: false,
+        externalUrlRegex: "help\\.spacehub\\.mn",
       },
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
