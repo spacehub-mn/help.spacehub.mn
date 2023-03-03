@@ -1,10 +1,12 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@docsearch/react': ^3.3.3
   '@docusaurus/core': 2.3.1
   '@docusaurus/module-type-aliases': 2.3.1
   '@docusaurus/preset-classic': 2.3.1
   '@docusaurus/theme-common': ^2.3.1
+  '@docusaurus/theme-search-algolia': ^2.3.1
   '@docusaurus/types': ^2.3.1
   '@mdx-js/react': ^1.6.22
   '@tsconfig/docusaurus': ^1.0.6
@@ -15,9 +17,11 @@ specifiers:
   typescript: ^4.9.5
 
 dependencies:
+  '@docsearch/react': 3.3.3_hnvib2fqsmgvwlrqueiklxww4e
   '@docusaurus/core': 2.3.1_qy6u2m3twle75rldwm5f2xep3a
   '@docusaurus/preset-classic': 2.3.1_vphgvkepqxhslqfs2temy3edu4
   '@docusaurus/theme-common': 2.3.1_qy6u2m3twle75rldwm5f2xep3a
+  '@docusaurus/theme-search-algolia': 2.3.1_je4a6ngc5sfxwec57j3pto2jpe
   '@mdx-js/react': 1.6.22_react@17.0.2
   clsx: 1.2.1
   prism-react-renderer: 1.3.5_react@17.0.2
