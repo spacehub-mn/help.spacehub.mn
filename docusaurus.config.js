@@ -19,7 +19,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "spacehub-mn", // Usually your GitHub org/user name.
-  projectName: "app-support", // Usually your repo name.
+  projectName: "help.spacehub.mn", // Usually your repo name.
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
