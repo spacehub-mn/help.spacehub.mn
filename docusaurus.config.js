@@ -1,29 +1,28 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require("prism-react-renderer/themes/github");
+const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Spacehub туслах',
-  tagline: 'Spacehub аппын заавар',
-  favicon: 'img/favicon.ico',
+  title: "Spacehub туслах",
+  tagline: "Spacehub аппын заавар",
+  favicon: "img/favicon.ico",
 
   // Set the production url of your site here
-  url: 'https://help.spacehub.mn',
+  url: "https://help.spacehub.mn",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
-
+  baseUrl: "/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'spacehub-mn', // Usually your GitHub org/user name.
-  projectName: 'app-support', // Usually your repo name.
+  organizationName: "spacehub-mn", // Usually your GitHub org/user name.
+  projectName: "app-support", // Usually your repo name.
 
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'throw',
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "throw",
 
   trailingSlash: false,
 
@@ -31,19 +30,18 @@ const config = {
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'mn',
-    locales: ['mn'],
+    defaultLocale: "mn",
+    locales: ["mn"],
   },
 
   presets: [
     [
-      'classic',
+      "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
-          routeBasePath: '/',
-
+          sidebarPath: require.resolve("./sidebars.js"),
+          routeBasePath: "/",
         },
         // blog: {
         //   showReadingTime: true,
@@ -54,18 +52,15 @@ const config = {
         //     'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         // },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve("./src/css/custom.css"),
         },
         sitemap: {
           changefreq: "weekly",
-          filename: "sitemap.xml"
+          filename: "sitemap.xml",
         },
-
       }),
     ],
   ],
-
-
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -77,67 +72,67 @@ const config = {
         contextualSearch: false,
       },
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: "img/docusaurus-social-card.jpg",
       navbar: {
         // title: 'My Site',
         logo: {
-          alt: 'Spacehub logo',
-          src: 'img/logo.svg',
+          alt: "Spacehub logo",
+          src: "img/logo.svg",
         },
         items: [
           {
-            type: 'doc',
-            docId: 'tenant/payment',
-            position: 'left',
-            label: 'Түрээслэгч',
+            type: "doc",
+            docId: "payment",
+            position: "left",
+            label: "Оршин суугчдын гарын авлага",
           },
-          {
-            type: 'doc',
-            docId: 'lessor/contract/view-contract-details',
-            position: 'left',
-            label: 'Түрээслүүлэгч',
-          },
+          // {
+          //   type: 'doc',
+          //   docId: 'lessor/contract/view-contract-details',
+          //   position: 'left',
+          //   label: 'Түрээслүүлэгч',
+          // },
         ],
       },
       footer: {
-        style: 'dark',
+        style: "dark",
         links: [
           {
-            title: 'Цахим хаягууд',
+            title: "Цахим хаягууд",
             items: [
               {
-                label: 'Slack',
-                href: 'https://spacehub-cs.slack.com/',
+                label: "Slack",
+                href: "https://spacehub-cs.slack.com/",
               },
               {
-                label: 'Facebook',
-                href: 'https://www.facebook.com/spacehub.mn',
+                label: "Facebook",
+                href: "https://www.facebook.com/spacehub.mn",
               },
               {
-                label: 'Цахим хуудас',
-                href: 'https://spacehub.mn',
+                label: "Цахим хуудас",
+                href: "https://spacehub.mn",
               },
             ],
           },
           {
-            title: 'Холбоо барих',
+            title: "Холбоо барих",
             items: [
               {
-                label: 'Цахим шуудан',
-                href: 'mailto:info@spacehub.mn',
+                label: "Цахим шуудан",
+                href: "mailto:info@spacehub.mn",
               },
               {
-                label: 'Утас',
-                href: 'tel:+97677774242',
+                label: "Утас",
+                href: "tel:+97677774242",
               },
             ],
           },
           {
-            title: 'Бусад',
+            title: "Бусад",
             items: [
               {
-                label: 'Лого татах',
-                href: 'https://spacehub.mn/spacehub-assets.zip',
+                label: "Лого татах",
+                href: "https://spacehub.mn/spacehub-assets.zip",
               },
             ],
           },
