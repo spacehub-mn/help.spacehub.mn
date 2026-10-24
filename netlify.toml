@@ -5,3 +5,9 @@ package = "@algolia/netlify-plugin-crawler"
   customDomain = "help.spacehub.mn"
   renderJavaScript = true
   template = "hierarchical"
+
+# Netlify сайтын анхдагч Node 16 — corepack-ийн сүүлийн pnpm нь Node ≥18.12 шаарддаг тул build «Initializing» шатанд унаж байсан.
+# pnpm-lock.yaml lockfileVersion 6.0 → pnpm 8.
+[build.environment]
+  NODE_VERSION = "20"
+  PNPM_VERSION = "8.15.9"

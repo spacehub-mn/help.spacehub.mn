@@ -42,6 +42,8 @@ const config = {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           routeBasePath: "/",
+          // owner хэсэгт ү/ө ↔ у/о хайлтын түлхүүр үг (plugins/search-variants.js)
+          remarkPlugins: [require("./plugins/search-variants")],
         },
         // blog: {
         //   showReadingTime: true,

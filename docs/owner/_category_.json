@@ -1,0 +1,9 @@
+{
+  "label": "Удирдлагын систем — веб (owner/ажилтан)",
+  "position": 10,
+  "link": {
+    "type": "generated-index",
+    "description": "Барилгын удирдлага, нягтлан, ажилтанд зориулсан Spacehub удирдлагын системийн (app.spacehub.mn) заавар.",
+    "slug": "/owner"
+  }
+}
