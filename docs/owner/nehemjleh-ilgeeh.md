@@ -12,6 +12,8 @@ keywords:
 
 # Нэхэмжлэх үүсгэж илгээх
 
+> 🔄 **Гэрээ** → [Сарын тооцоо](/owner/sar-tootsoo) → **Нэхэмжлэх** → [Төлбөр ба хуулга](/owner/huulga-tolbor) → [Е-баримт](/owner/e-barimt)
+
 > 🏢 Owner, менежер, нягтланд · Вэб (app.spacehub.mn)
 
 ## Энэ юунд хэрэгтэй
@@ -72,3 +74,8 @@ keywords:
 
 **Нэхэмжлэх жагсаалт хоосон байна.**
 Шүүлт эсвэл хугацаагаа шалга: [Жагсаалт хоосон үед](./jagsaalt-hooson-shuult).
+
+## 🔗 Холбоотой
+- Жагсаалт: [Нэхэмжлэх](/owner/list/InvoiceBill_ListView) · [Төлбөр](/owner/list/Bill_ListView) · [Нэхэмжлэх дахиж явуулах](/owner/list/NotificationToDueInvoiceBillsConfig_ListView)
+- Ойлголт: [Төлбөр → Нэхэмжлэх → Төлөлт](/owner/concepts/tootsoo-nehemjleh-toloh) · [Алданги](/owner/concepts/aldangi)
+- [Нэр томьёо](/owner/glossary) · [Програм ашиглах](/owner/navigation)

@@ -12,6 +12,8 @@ keywords:
 
 # Сарын тооцоо гаргах
 
+> 🔄 **Гэрээ** → **Сарын тооцоо** → [Нэхэмжлэх](/owner/nehemjleh-ilgeeh) → [Төлбөр ба хуулга](/owner/huulga-tolbor) → [Е-баримт](/owner/e-barimt)
+
 > 🏢 Owner, менежер, нягтланд · Вэб (app.spacehub.mn)
 
 ## Энэ юунд хэрэгтэй
@@ -55,3 +57,8 @@ keywords:
 
 **«Төлбөр» жагсаалтад гэрээ харагдахгүй байна.**
 Шүүлт эсвэл хугацаагаа шалга: [Жагсаалт хоосон үед](./jagsaalt-hooson-shuult).
+
+## 🔗 Холбоотой
+- Жагсаалт: [Гэрээ](/owner/list/Contract_ListView) · [Төлбөрийн хуваарь](/owner/list/ContractPaymentChart_ListView) · [Тоолуур ашиглалт](/owner/list/ContractUtility_ListView) · [Төлбөр](/owner/list/Bill_ListView) · [Авто ажил](/owner/list/AutoJob_ListView) · [Дашборд → Сарын тооцоо](/owner/list/Dashboards#sar-tootsoo)
+- Ойлголт: [Төлбөр → Нэхэмжлэх → Төлөлт](/owner/concepts/tootsoo-nehemjleh-toloh) · [Авто тооцоо — 3 түвшин](/owner/concepts/avto-3-tuvshin) · [Алданги](/owner/concepts/aldangi)
+- [Нэр томьёо](/owner/glossary) · [Програм ашиглах](/owner/navigation)

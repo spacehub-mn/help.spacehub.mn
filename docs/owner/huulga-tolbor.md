@@ -13,6 +13,8 @@ keywords:
 
 # Төлбөрийг дансны хуулгаас бүртгэх
 
+> 🔄 **Гэрээ** → [Сарын тооцоо](/owner/sar-tootsoo) → [Нэхэмжлэх](/owner/nehemjleh-ilgeeh) → **Төлбөр ба хуулга** → [Е-баримт](/owner/e-barimt)
+
 > 🏢 Owner, менежер, нягтланд · Вэб (app.spacehub.mn)
 
 ## Энэ юунд хэрэгтэй
@@ -78,3 +80,8 @@ keywords:
 
 **ХУРДАН ХУВААХ товч харагдахгүй байна.**
 Гүйлгээ аль хэдийн бүрэн хуваарилагдсан эсвэл зарлагын гүйлгээ байна. Энэ товч зөвхөн орлогын, дутуу хуваарилагдсан гүйлгээн дээр гарна.
+
+## 🔗 Холбоотой
+- Жагсаалт: [Дансны хуулга](/owner/list/Statement_ListView) · [Төлөлт](/owner/list/Sale_ListView) · [Хуулга таталт](/owner/list/StatementLog_ListView) · [Дашборд → Хуулга монитор](/owner/list/Dashboards#huulga-monitor)
+- Ойлголт: [Төлбөр → Нэхэмжлэх → Төлөлт](/owner/concepts/tootsoo-nehemjleh-toloh)
+- [Нэр томьёо](/owner/glossary) · [Програм ашиглах](/owner/navigation)
