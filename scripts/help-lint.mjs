@@ -98,7 +98,8 @@ for (const file of walk(DOCS)) {
     if (TYPES_NEED_REL.includes(fm.type) && !/^## 🔗 Холбоотой/m.test(prose)) add("W", "W-rel", "«## 🔗 Холбоотой» хэсэг алга");
   }
 
-  for (const { bad, good, note } of TERMS) {
+  for (const { bad, good, note, scope } of TERMS) {
+    if (scope && !rel.includes(scope)) continue; // жишээ нь вэбийн нэр томьёо апп хуудсанд хамаарахгүй
     if (prose.includes(bad)) add("W", "W-term", `«${bad}» → «${good}»${note ? ` (${note})` : ""}`);
   }
 
@@ -107,9 +108,10 @@ for (const file of walk(DOCS)) {
 
   if (gitOk && fm.verified_commit && /^[0-9a-f]{7,40}$/.test(fm.verified_commit)) {
     const changed = changedSince(fm.verified_commit);
-    if (changed === null) add("W", "W-stale", `verified_commit ${fm.verified_commit} Spacehub23-д олдсонгүй`);
+    // Олдохгүй commit = нотолгоо шалгагдах боломжгүй (Dev_Research) → алдаа
+    if (changed === null) add("E", "E-fm", `verified_commit ${fm.verified_commit} Spacehub23-д олдсонгүй`);
     else {
-      const cited = [...new Set([...comments.matchAll(/\b([A-Z][A-Za-z0-9.]+\.(?:cs|xafml|razor))\b/g)].map((m) => m[1]))];
+      const cited = [...new Set([...comments.matchAll(/\b([A-Z][A-Za-z0-9.]+\.(?:cs|razor))\b/g)].map((m) => m[1]))]; // xafml хэт олон хуудсанд иш татагддаг — ViewId түвшинд help_impact шалгана
       const hit = cited.filter((c) => changed.has(c));
       if (hit.length) add("W", "W-stale", `${fm.verified_commit}..${REF}-д өөрчлөгдсөн: ${hit.join(", ")} — хуудсыг дахин тулга`);
     }

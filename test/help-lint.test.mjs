@@ -58,3 +58,10 @@ test("frontmatter-гүй 2023 хуудас — зөвхөн I-legacy", () => {
   const r = rules(run(fixture({ "e.md": "# Хуучин\n\n1. алхам\n" })).out, "e.md");
   assert.deepEqual(r, ["I-legacy"]);
 });
+
+test("terms scope — owner-ийн дүрэм апп хуудсанд үйлчлэхгүй", () => {
+  const body = good.replace("Бичвэр.", "нэхэмжлэл үүсгэх");
+  const out = run(fixture({ "owner/f.md": body, "lessor/g.md": body })).out;
+  assert.ok(rules(out, "owner/f.md").includes("W-term"));
+  assert.ok(!rules(out, "lessor/g.md").includes("W-term"));
+});
