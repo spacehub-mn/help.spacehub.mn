@@ -21,3 +21,4 @@ yarn-error.log*
 
 # Зургийн скриптийн тайлан (ажиллуулах бүрд өөрчлөгдөнө)
 /scripts/shots/shots-report.json
+__pycache__/
