@@ -6,6 +6,7 @@ sidebar_position: 90
 type: asuudal
 roles: [tureeslegch, owner]
 updated: 2026-10-26
+verified_commit: c68c602
 keywords:
   - "апп ажиллахгүй"
   - "200 Алдаа гарлаа"

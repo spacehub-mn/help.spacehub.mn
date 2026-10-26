@@ -8,6 +8,7 @@
     "start": "docusaurus start",
     "build": "docusaurus build && mkdir ./build/docs && cp -r ./docs/* ./build/docs && node scripts/help-index.mjs",
     "test:search": "node scripts/search-test.mjs",
+    "lint": "node scripts/help-lint.mjs",
     "test": "node --test \"test/*.test.*\"",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",

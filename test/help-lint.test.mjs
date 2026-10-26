@@ -1,0 +1,60 @@
+import { test } from "node:test";
+import assert from "node:assert/strict";
+import { execFileSync } from "node:child_process";
+import { mkdtempSync, mkdirSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+
+const run = (docs, ...extra) => {
+  try {
+    return { code: 0, out: JSON.parse(execFileSync("node", ["scripts/help-lint.mjs", "--no-git", "--json", "--docs", docs, ...extra], { encoding: "utf8" })) };
+  } catch (e) {
+    return { code: e.status, out: JSON.parse(e.stdout) };
+  }
+};
+const fixture = (files) => {
+  const d = join(mkdtempSync(join(tmpdir(), "help-lint-")), "docs");
+  for (const [name, body] of Object.entries(files)) {
+    mkdirSync(join(d, name, ".."), { recursive: true });
+    writeFileSync(join(d, name), body);
+  }
+  return d;
+};
+const fm = (extra = "") => `---\ntype: zaavar\nroles: [owner]\nupdated: 2026-10-26\nverified_commit: c68c602\n${extra}---\n`;
+const good = `${fm()}# Гарчиг\n\n> 🏢 Owner · Вэб\n\nБичвэр.\n\n## 🔗 Холбоотой\n- [x](/x)\n`;
+const rules = (out, file) => out.results.find((r) => r.file.endsWith(file)).issues.map((i) => i.rule);
+
+test("загварт нийцсэн хуудас — алдаагүй, exit 0", () => {
+  const { code, out } = run(fixture({ "a.md": good }));
+  assert.equal(code, 0);
+  assert.deepEqual(rules(out, "a.md"), []);
+});
+
+test("frontmatter дутуу, H1 2 → E, exit 1", () => {
+  const bad = `---\ntype: busad\nroles: []\nupdated: 26-10\n---\n# Нэг\n\n> 🏢 x\n\n# Хоёр\n`;
+  const { code, out } = run(fixture({ "b.md": bad }));
+  assert.equal(code, 1);
+  const r = rules(out, "b.md");
+  assert.equal(r.filter((x) => x === "E-fm").length, 4); // type, roles, updated, verified_commit
+  assert.ok(r.includes("E-h1"));
+});
+
+test("code block доторх «# » H1 гэж тоологдохгүй; «хэнд» мөр, Холбоотой дутуу → W", () => {
+  const body = `${fm()}# Гарчиг\n\nШууд бичвэр.\n\n\`\`\`\n# энэ тайлбар\n\`\`\`\n`;
+  const { code, out } = run(fixture({ "c.md": body }));
+  assert.equal(code, 0);
+  assert.deepEqual(rules(out, "c.md").sort(), ["W-aud", "W-rel"]);
+  assert.equal(run(fixture({ "c.md": body }), "--strict").code, 1);
+});
+
+test("хуучирсан нэр томьёо, ❔ олон → W", () => {
+  const body = good.replace("Бичвэр.", "Хоногоор тооцох ❔ ❔ ❔ ❔ ❔ ❔");
+  const r = rules(run(fixture({ "d.md": body })).out, "d.md");
+  assert.ok(r.includes("W-term"));
+  assert.ok(r.includes("W-q"));
+});
+
+test("frontmatter-гүй 2023 хуудас — зөвхөн I-legacy", () => {
+  const r = rules(run(fixture({ "e.md": "# Хуучин\n\n1. алхам\n" })).out, "e.md");
+  assert.deepEqual(r, ["I-legacy"]);
+});
