@@ -86,8 +86,9 @@ const config = {
             type: "doc",
             docId: "payment",
             position: "left",
-            label: "Оршин суугчдын гарын авлага",
+            label: "🏠 Түрээслэгч",
           },
+          { to: "/owner", label: "🏢 Owner, менежер", position: "left" },
           // {
           //   type: 'doc',
           //   docId: 'lessor/contract/view-contract-details',

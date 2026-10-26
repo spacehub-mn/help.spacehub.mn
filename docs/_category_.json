@@ -1,6 +1,7 @@
 {
-  "label": "Оршин суугч",
+  "label": "🏠 Түрээслэгч, оршин суугч",
   "link": {
-    "type": "generated-index"
+    "type": "generated-index",
+    "description": "Spacehub гар утасны апп ашигладаг түрээслэгч, оршин суугчдад."
   }
 }
