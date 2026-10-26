@@ -1,4 +1,4 @@
-# timing.json + raw .webm → <name>.mp4 (1280×720, ачааллын хүлээлтийг тайрсан) + <name>.srt (YouTube-д хадмал)
+# timing.json + raw .webm → <name>.mp4 (бичлэгийн хэмжээгээр, ачааллын хүлээлтийг тайрсан) + <name>.srt (YouTube-д хадмал)
 #   python scripts/video/build.py <хавтас (timing.json-тай)> <name>
 import json, os, subprocess, sys
 import imageio_ffmpeg
@@ -23,7 +23,7 @@ def mapped(x):  # эх бичлэгийн цаг → тайрсны дараах
     return out
 
 parts = "".join(f"[0:v]trim={s:.3f}:{e:.3f},setpts=PTS-STARTPTS[p{i}];" for i, (s, e) in enumerate(keep))
-fc = parts + "".join(f"[p{i}]" for i in range(len(keep))) + f"concat=n={len(keep)}:v=1[c];[c]scale=1280:720,fps=30[v]"
+fc = parts + "".join(f"[p{i}]" for i in range(len(keep))) + f"concat=n={len(keep)}:v=1[c];[c]fps=30[v]"
 mp4 = os.path.join(src, name + ".mp4")
 subprocess.run([FF, "-y", "-loglevel", "error", "-i", t["video"], "-filter_complex", fc, "-map", "[v]", "-an",
                 "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "23", "-movflags", "+faststart", mp4], check=True)

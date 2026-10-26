@@ -13,7 +13,8 @@ const { chromium } = require(path.join(E2E, "node_modules/playwright"));
 
 const APP = "https://app.spacehub.mn/";
 const OUT = path.resolve(process.argv[2] || ".");
-const SIZE = { width: 1280, height: 720 };
+// 1280 өргөнд toolbar зөвхөн дүрстэй болдог тул товчны нэр харагдахаар 1600×900 (Dev_Research 10-26)
+const SIZE = { width: 1600, height: 900 };
 const PII_TH = ["Харилцагч", "Бизнес нэр", "Регистр", "Регистер", "Утас", "Имэйл", "Данс"];
 
 // Хадмал, хулганы цэг, PII blur, улаан хүрээ — бүгд хуудсан дээрх давхарга
@@ -26,6 +27,7 @@ const OVERLAY = `(() => {
     + '#hv-cur{position:fixed;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;z-index:2147483646;'
     + 'background:rgba(255,120,0,.45);border:2px solid #ff7800;pointer-events:none}'
     + '.hv-box{position:fixed;border:3px solid #e11d48;border-radius:6px;z-index:2147483645;pointer-events:none;box-sizing:border-box}'
+    + '.hv-num{position:fixed;width:22px;height:22px;border-radius:50%;background:#e11d48;color:#fff;font:700 13px/22px Segoe UI,Arial;text-align:center;z-index:2147483646;pointer-events:none}'
     + '.hv-pii,.dash-page{filter:blur(8px)!important}';
   const add = () => {
     if (!document.body || document.getElementById('hv-cap')) return;
@@ -41,9 +43,12 @@ const OVERLAY = `(() => {
     });
   });
   window.hvCaption = s => { add(); const c = document.getElementById('hv-cap'); c.textContent = s; c.style.display = s ? 'block' : 'none'; };
-  window.hvBoxes = rs => { document.querySelectorAll('.hv-box').forEach(e => e.remove());
-    rs.forEach(r => { const d = document.createElement('div'); d.className = 'hv-box';
-      Object.assign(d.style, { left: r.x - 3 + 'px', top: r.y - 3 + 'px', width: r.width + 6 + 'px', height: r.height + 6 + 'px' }); document.body.appendChild(d); }); };
+  // Хүрээ бүрт ① ② дугаар — хадмалын дараалалтай таарна
+  window.hvBoxes = rs => { document.querySelectorAll('.hv-box,.hv-num').forEach(e => e.remove());
+    rs.forEach((r, i) => { const d = document.createElement('div'); d.className = 'hv-box';
+      Object.assign(d.style, { left: r.x - 3 + 'px', top: r.y - 3 + 'px', width: r.width + 6 + 'px', height: r.height + 6 + 'px' }); document.body.appendChild(d);
+      const n = document.createElement('div'); n.className = 'hv-num'; n.textContent = i + 1;
+      Object.assign(n.style, { left: Math.max(0, r.x - 13) + 'px', top: Math.max(0, r.y - 15) + 'px' }); document.body.appendChild(n); }); };
   setInterval(() => { add(); mask(); }, 150);
 })();`;
 
@@ -107,14 +112,18 @@ const idle = (page) => page.locator("#xaf-loading.show").waitFor({ state: "hidde
   cuts.push([c1, now()]);
   await page.waitForTimeout(1500);
 
-  await cap("2. Тухайн сарын ажил байгаа, статус нь «Ажиллаж байна» эсэхийг шалга");
+  await cap("2. Тухайн сарын ажил (1) байгаа, статус (2) нь «Ажиллаж байна» эсэхийг шалга");
   await th("Авто ажил статус").evaluate((e) => e.scrollIntoView({ block: "nearest", inline: "end" }));
   await page.waitForTimeout(500);
   await boxes([th("Сар"), th("Авто ажил статус")]);
   await moveTo(th("Авто ажил статус"));
   await page.waitForTimeout(3500);
 
-  await cap("3. Ажил алга бол өмнөх сарын ажлыг сонгоод «Next Auto Job +», дараа нь «Job Create»");
+  await cap("3. Ажил алга бол өмнөх сарын ажлыг сонгоод (1) «Next Auto Job +», дараа нь (2) «Job Create»");
+  // Сонгох нүд, Код харагдахаар буцааж зүүн тийш гүйлгэнэ
+  await boxes([]);
+  await th("Код").evaluate((e) => e.scrollIntoView({ block: "nearest", inline: "start" }));
+  await page.waitForTimeout(500);
   await boxes([btn("Next Auto Job"), btn("Job Create")]);
   await moveTo(btn("Next Auto Job"));
   await page.waitForTimeout(2200);

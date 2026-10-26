@@ -107,6 +107,7 @@
         "label": "Job start"
       }
     ],
-    "scrollTh": "Авто ажил статус"
+    "width": 1920,
+    "clipHeight": 360
   }
 ]

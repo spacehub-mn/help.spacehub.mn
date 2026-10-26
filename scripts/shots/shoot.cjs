@@ -110,6 +110,9 @@ async function toWebp(page, png) {
 
   const report = [];
   for (const s of todo) {
+    // Өргөн хүснэгтэд хуудас тус бүрийн өргөн (гүйлгэвэл сонгох нүд, Код харагдахгүй болдог — Dev_Research 10-26)
+    const vw = { width: s.width || VIEWPORT.width, height: VIEWPORT.height };
+    await page.setViewportSize(vw);
     const [group, item] = s.nav;
     const leaf = page.getByRole("treeitem", { name: item, exact: true }).first();
     if (!(await leaf.isVisible())) { await page.getByText(group, { exact: true }).first().click({ force: true }); await page.waitForTimeout(700); }
@@ -117,7 +120,7 @@ async function toWebp(page, png) {
     await idle(page);
     if (s.waitTh) await page.locator("thead th:visible", { hasText: s.waitTh }).first().waitFor({ timeout: 60000 });
     await page.waitForTimeout(1500);
-    await page.mouse.move(VIEWPORT.width - 5, VIEWPORT.height - 5); // tooltip гаргахгүй
+    await page.mouse.move(vw.width - 5, vw.height - 5); // tooltip гаргахгүй
     // Хүснэгтийг хэвтээ гүйлгэж заасан баганыг харагдуулна (зөвхөн харагдах байдал, өгөгдөл өөрчлөхгүй)
     if (s.scrollTh) await page.locator("thead th:visible", { hasText: s.scrollTh }).first().evaluate((th) => th.scrollIntoView({ block: "nearest", inline: "end" }));
     await page.waitForTimeout(400);
@@ -127,14 +130,15 @@ async function toWebp(page, png) {
     for (const m of s.marks) {
       const b = await box(page, m);
       // Дэлгэцээс гадуур (баруун тийш гүйлгэх шаардлагатай) багана = олдоогүй гэж тооцно
-      if (b && b.x + b.width <= VIEWPORT.width && b.y + b.height <= VIEWPORT.height) boxes.push({ ...b, label: m.label });
+      if (b && b.x + b.width <= vw.width && b.y + b.height <= vw.height) boxes.push({ ...b, label: m.label });
       else missing.push(m.label || m.btn || m.th);
     }
     // Дугаарыг уншигдах дарааллаар (мөр, дараа нь зүүнээс баруун) — хуудасны тайлбар энэ дарааллаар
     boxes.sort((a, b) => Math.round(a.y / 40) - Math.round(b.y / 40) || a.x - b.x);
     await mark(page, boxes);
     await page.waitForTimeout(300);
-    const webp = await toWebp(page, await page.screenshot());
+    // clipHeight: доод хоосон хэсгийг тайрна (богино жагсаалт)
+    const webp = await toWebp(page, await page.screenshot(s.clipHeight ? { clip: { x: 0, y: 0, width: vw.width, height: s.clipHeight } } : {}));
     const out = path.join(ROOT, "static", "img", s.id + ".webp");
     fs.mkdirSync(path.dirname(out), { recursive: true });
     // Өмнөхтэй байт ижил бол файлыг солихгүй — git түүх хоосон өөрчлөлтөөр өсөхгүй
