@@ -18,10 +18,12 @@ const fixture = (files) => {
     mkdirSync(join(d, name, ".."), { recursive: true });
     writeFileSync(join(d, name), body);
   }
+  mkdirSync(join(d, "..", "static", "img"), { recursive: true });
+  writeFileSync(join(d, "..", "static", "img", "x.webp"), "");
   return d;
 };
 const fm = (extra = "") => `---\ntype: zaavar\nroles: [owner]\nupdated: 2026-10-26\nverified_commit: c68c602\n${extra}---\n`;
-const good = `${fm()}# Гарчиг\n\n> 🏢 Owner · Вэб\n\nБичвэр.\n\n## 🔗 Холбоотой\n- [x](/x)\n`;
+const good = `${fm()}# Гарчиг\n\n> 🏢 Owner · Вэб\n\nБичвэр.\n\n![Жагсаалт](/img/x.webp)\n\n## 🔗 Холбоотой\n- [x](/x)\n`;
 const rules = (out, file) => out.results.find((r) => r.file.endsWith(file)).issues.map((i) => i.rule);
 
 test("загварт нийцсэн хуудас — алдаагүй, exit 0", () => {
@@ -43,7 +45,7 @@ test("code block доторх «# » H1 гэж тоологдохгүй; «хэ�
   const body = `${fm()}# Гарчиг\n\nШууд бичвэр.\n\n\`\`\`\n# энэ тайлбар\n\`\`\`\n`;
   const { code, out } = run(fixture({ "c.md": body }));
   assert.equal(code, 0);
-  assert.deepEqual(rules(out, "c.md").sort(), ["W-aud", "W-rel"]);
+  assert.deepEqual(rules(out, "c.md").sort(), ["W-aud", "W-img", "W-rel"]);
   assert.equal(run(fixture({ "c.md": body }), "--strict").code, 1);
 });
 
@@ -64,4 +66,13 @@ test("terms scope — owner-ийн дүрэм апп хуудсанд үйлчл
   const out = run(fixture({ "owner/f.md": body, "lessor/g.md": body })).out;
   assert.ok(rules(out, "owner/f.md").includes("W-term"));
   assert.ok(!rules(out, "lessor/g.md").includes("W-term"));
+});
+
+test("зургийн файл алга → E-img (exit 1); alt хоосон, зураггүй заавар → W-img", () => {
+  const body = good.replace("![Жагсаалт](/img/x.webp)", "![](/img/x.webp)\n\n![Алга](/img/baihgui.webp)");
+  const { code, out } = run(fixture({ "f.md": body }));
+  assert.equal(code, 1);
+  assert.deepEqual(rules(out, "f.md").sort(), ["E-img", "W-img"]);
+  const noImg = good.replace("![Жагсаалт](/img/x.webp)", "");
+  assert.deepEqual(rules(run(fixture({ "g.md": noImg })).out, "g.md"), ["W-img"]);
 });
