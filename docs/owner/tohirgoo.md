@@ -21,11 +21,11 @@ keywords:
 - Тайлбар бүр ToolTip-ээс: BillDay :75 («0 үед 3-н хоногоор»), SecondEmail :83, IsAllowEdit :91, IsLock :99, ShowDuePaymentBanner :107 («Зөвхөн админ»), AutoBillContractCode :116, PaymentReminderDay :124, PaymentReminderQuietBefore :133, IsNotVatForInvoice :141, SmsKey :149, MinNotificationBalance :188 («Хоосон/0 бол 500₮»), EbarimtItemId :354
 - IsAllowEdit=false → гэрээний 12 талбар түгжигдэнэ (Contract.cs:34-38 IsLockOnContract); ContractRoom үнэ/талбай (ContractRoom.cs:22)
 - IsNotVatForInvoice → InvoiceBill.cs:1774; SenderEmail/SecondEmail → EmailDTO.cs:15-21
-- IsLock (Данс хуулга түгжих): PropertyOwnerMore.IsLock-ийг ашигладаг код олдсонгүй ❔
+- IsLock (Данс хуулга түгжих): ашигладаг код алга (Dev_Research ✅)
 - TotalSumCalcMethod: TotalSumCalcMethodType.cs «Тухайн он сард орсноор» / «Төлбөрийн гүйцэтгэлээр»; хэрэглэгч SpacehubApiV2 BillController.cs:148,233 (апп-ын нэгтгэл)
 - AmountRounding: AmountRoundingMode.cs «Хэвээр»/«Төгрөгөөр бүхэлчлэх»; commit 5b0e0fe (#1113) master-т бий, CEO: «deploy-ийн дараа» гэж тэмдэглэ
 - Алданги: PenaltyCalculationMode / LateFeeCalculateType / LateFeeDeliveryMode / LateFeeAccrualMethod / LateFeeDebtScope enum-ууд; дэлгэрэнгүй concepts/aldangi
-- Төлөлт хөнгөлөлт: InvoiceBill.cs:2131-2148 (PayDiscountItemId, IsPayDiscount, PayDiscount>0, DiscountDay 1–31; тухайн сарын DiscountDay-ээс өмнө → түрээсийн мөрүүдийн дүн × PayDiscount хасна). Хувийг 10 эсвэл 0.1 гэж бичих ❔; аль төлбөрийн замд үйлчлэх (shortLived) ❔
+- Төлөлт хөнгөлөлт: InvoiceBill.cs:2131-2148 (PayDiscountItemId, IsPayDiscount, PayDiscount>0, DiscountDay 1–31; тухайн сарын DiscountDay-ээс өмнө → түрээсийн мөрүүдийн дүн × PayDiscount хасна). PayDiscount бутархайгаар хадгалагдана (0.1), EditMask p2 → 10 гэж бичих ❔, DisplayFormat «{0:n2} %» → «0.10 %» ❔ (UI дараалал); зам = SpacehubApiV2 QPay/SocialPay :267, :1125-1126 (Dev_Research)
 - ElecPowerType: ElecPowerType.cs 5 сонголт
 - SMS: SmsView :256-275 (жишээ утгаар орлуулсан урьдчилсан харагдац), SmsParameters :278-293, UnpaidInvoiceBillSmsTemplateDefault :296-306
 -->
@@ -48,7 +48,7 @@ keywords:
 - **Илгээгч имэйл**, **Нэхэмжлэл хүлээн авах** — нэхэмжлэх илгээх хаяг ба **давхар хүлээн авах** имэйл (илгээсэн нэхэмжлэх бүрийн хуулбар энд ирнэ).
 - **Ebarimt үйлчилгээ** — е-баримтад бичигдэх бараа, үйлчилгээ. Хоосон бол баримт гарахгүй байж болно. → [Е-баримт гарах нөхцөл](/owner/concepts/e-barimt-nohtsol)
 - **Засвар горим идэвхтэй болгох** — **унтраалттай** үед хадгалсан гэрээний гол талбарууд (объект, харилцагч, огноо, төрөл…) болон талбайн үнэ **түгжигдэнэ**. Засах шаардлагатай үед түр асаагаад, дараа нь буцааж унтраа.
-- **Данс хуулга түгжих** — хуулгын хэсгийг түгжинэ ❔ (яг юуг түгжихийг шалгаж байна).
+- **Данс хуулга түгжих** — одоогоор **нөлөөгүй** (энэ тохиргоог ашигладаг хэсэг програмд алга).
 
 ## Төлбөр, төлөлт нэгтгэл бодох
 - **Төлбөр төлөх өдөр** — нэхэмжлэх дээр харагдах **төлөх огноо**. 0 бол нэхэмжлэх гарснаас хойш **3 хоног**.
@@ -78,9 +78,9 @@ keywords:
 - Байгууллагын тохиргоог бүх объект руу хуулах товч → [Байгууллага](/owner/list/PropertyOwner_ListView)
 
 ## Төлөлт хөнгөлөлт
-Сарын **тодорхой өдрөөс өмнө** төлсөн айлд **түрээсийн** дүнгээс хөнгөлөлт хасна.
+Сарын **хөнгөлөлтийн өдрөөс өмнө** апп эсвэл төлбөрийн холбоосоор (**QPay, SocialPay**) төлсөн айлд **түрээсийн** мөрүүдийн дүнгээс хөнгөлөлт хасна. Дансаар шилжүүлсэн болон вэбээр бүртгэсэн төлөлтөд **хамаарахгүй**.
 - **Төлөлт хөнгөлөлт** (асаах), **Хөнгөлөлт үйлчилгээ**, **Төлөлт хэлбэр**, **Хөнгөлөлт хувь**, **Хөнгөлөлт өдөр** (1–31). Аль нэг нь хоосон бол хөнгөлөлт ажиллахгүй.
-- Хувийг «10» эсвэл «0.1» гэж бичих ❔ — тохируулахаас өмнө Spacehub багаас асуу.
+- **Хөнгөлөлт хувь**-ийг засахдаа 10% бол «10» гэж бичнэ ❔. Харах үед «0.10 %» гэж харагдаж болно ❔. Эргэлзвэл Spacehub багаас асуу.
 - Гэрээ тус бүрийн хөнгөлөлт өөр тохиргоо → [Хөнгөлөлт тохиргоо](/owner/list/DiscountConfig_ListView)
 
 ## SMS загвар · Төлөөгүй нэхэмжлэх SMS загвар · Email загвар
