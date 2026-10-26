@@ -94,3 +94,4 @@ keywords:
 ## 🔗 Холбоотой
 - [Гэрээ](/owner/list/Contract_ListView) · [Төлөлт](/owner/list/Sale_ListView) · [И-Баримт](/owner/list/SaleEbarimt_ListView)
 - Заавар: [Е-баримт](/owner/e-barimt) · [Эрхгүй, нэвтэрч чадахгүй](/owner/erhgui-nevtreh)
+- Асуудал, заавар: [Шинэ гэрээ, харилцагч бүртгэхэд алдаа](/owner/shine-geree-aldaa) · [Апп ажиллахгүй үед](/app-ajillahgui)

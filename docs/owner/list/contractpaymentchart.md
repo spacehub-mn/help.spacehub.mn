@@ -126,3 +126,4 @@ keywords:
 - Урсгалын өмнөх алхам: [Гэрээ](/owner/list/Contract_ListView)
 - Урсгалын дараах алхам: [Тоолуур ашиглалт](/owner/list/ContractUtility_ListView) · [Төлбөр](/owner/list/Bill_ListView) · [Нэхэмжлэх](/owner/list/InvoiceBill_ListView)
 - Заавар: [Сарын тооцоо гаргах](/owner/sar-tootsoo) · [Жагсаалт хоосон](/owner/jagsaalt-hooson-shuult)
+- Асуудал, заавар: [Тоолуур нэмэх, солих, цуцлах](/owner/tooluur) · [Авто тооцоо гараагүй](/owner/avto-tootsoo-garaagui)

@@ -150,3 +150,4 @@ keywords:
 - Урсгалын өмнөх алхам: [Гэрээ](/owner/list/Contract_ListView) · [Төлбөрийн хуваарь](/owner/list/ContractPaymentChart_ListView) · [Тоолуур ашиглалт](/owner/list/ContractUtility_ListView)
 - Урсгалын дараах алхам: [Нэхэмжлэх](/owner/list/InvoiceBill_ListView) · [Төлөлт](/owner/list/Sale_ListView)
 - Заавар: [Сарын тооцоо гаргах](/owner/sar-tootsoo) · [Нэхэмжлэх илгээх](/owner/nehemjleh-ilgeeh) · [Хугацаа зөв сонгох](/owner/hugatsaa-songoh) · [Хуулгаас төлбөр бүртгэх](/owner/huulga-tolbor)
+- Асуудал, заавар: [Нэхэмжлэхийн дүн зөрж байна](/owner/nehemjleh-dun-zoroh) · [Авто тооцоо гараагүй](/owner/avto-tootsoo-garaagui) · [Үнэ өөрчлөх](/owner/une-oorchloh)

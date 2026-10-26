@@ -89,3 +89,4 @@ keywords:
 ## 🔗 Холбоотой
 - [Төлбөрийн хуваарь](/owner/list/ContractPaymentChart_ListView) · [Төлбөр](/owner/list/Bill_ListView) · [Нэхэмжлэх](/owner/list/InvoiceBill_ListView)
 - Заавар: [Сарын тооцоо гаргах](/owner/sar-tootsoo) · [Нэхэмжлэх илгээх](/owner/nehemjleh-ilgeeh)
+- Асуудал, заавар: [Авто тооцоо гараагүй](/owner/avto-tootsoo-garaagui) · [Авто тооцоо — 3 түвшин](/owner/concepts/avto-3-tuvshin)

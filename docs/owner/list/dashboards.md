@@ -104,3 +104,4 @@ keywords:
 ## 🔗 Холбоотой
 - [Төлбөр](/owner/list/Bill_ListView) · [Тоолуур ашиглалт](/owner/list/ContractUtility_ListView) · [Дансны хуулга](/owner/list/Statement_ListView) · [Хөнгөлөлт](/owner/list/Discount_ListView)
 - Заавар: [Сарын тооцоо гаргах](/owner/sar-tootsoo) · [Хуулгаас төлбөр бүртгэх](/owner/huulga-tolbor)
+- Асуудал, заавар: [Тоолуур нэмэх, солих, цуцлах](/owner/tooluur)

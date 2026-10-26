@@ -73,3 +73,4 @@ keywords:
 ## 🔗 Холбоотой
 - [Тоолуур ашиглалт](/owner/list/ContractUtility_ListView) · [Төлбөрийн хуваарь](/owner/list/ContractPaymentChart_ListView) · [Дашборд → Тоолуур/Сар](/owner/list/Dashboards#tooluur-sar)
 - Заавар: [Сарын тооцоо гаргах](/owner/sar-tootsoo)
+- Асуудал, заавар: [Тоолуур нэмэх, солих, цуцлах](/owner/tooluur)

@@ -77,3 +77,4 @@ keywords:
 ## 🔗 Холбоотой
 - [Хөнгөлөлт](/owner/list/Discount_ListView) · [Дашборд → Хөнгөлөлт/Сар](/owner/list/Dashboards#hungulult-sar) · [Төлбөр](/owner/list/Bill_ListView)
 - Заавар: [Сарын тооцоо гаргах](/owner/sar-tootsoo)
+- Асуудал, заавар: [Түгээмэл асуулт](/owner/tugeemel-asuult)

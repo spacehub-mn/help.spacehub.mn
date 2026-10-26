@@ -89,3 +89,4 @@ keywords:
 - Урсгалын дараах алхам: [Төлбөр](/owner/list/Bill_ListView)
 - Бусад: [Тоолуур татах](/owner/list/UtilitySheet_ListView) · [Тоолуур/Сар](/owner/list/Dashboards#tooluur-sar) самбар
 - Заавар: [Сарын тооцоо гаргах](/owner/sar-tootsoo) · [Жагсаалт хоосон](/owner/jagsaalt-hooson-shuult)
+- Асуудал, заавар: [Тоолуур нэмэх, солих, цуцлах](/owner/tooluur)

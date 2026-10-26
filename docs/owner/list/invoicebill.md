@@ -175,3 +175,4 @@ keywords:
 - Урсгалын өмнөх алхам: [Төлбөр](/owner/list/Bill_ListView) · [Төлбөрийн хуваарь](/owner/list/ContractPaymentChart_ListView)
 - Урсгалын дараах алхам: [Дансны хуулга](/owner/list/Statement_ListView) · [Төлөлт](/owner/list/Sale_ListView)
 - Заавар: [Нэхэмжлэх илгээх](/owner/nehemjleh-ilgeeh) · [Сарын тооцоо гаргах](/owner/sar-tootsoo) · [Хуулгаас төлбөр бүртгэх](/owner/huulga-tolbor) · [Жагсаалт хоосон](/owner/jagsaalt-hooson-shuult)
+- Асуудал, заавар: [Нэхэмжлэхийн дүн зөрж байна](/owner/nehemjleh-dun-zoroh)

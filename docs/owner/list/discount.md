@@ -89,3 +89,4 @@ keywords:
 ## 🔗 Холбоотой
 - [Төлбөр](/owner/list/Bill_ListView) · [Хөнгөлөлт тохиргоо](/owner/list/DiscountConfig_ListView)
 - Заавар: [Сарын тооцоо гаргах](/owner/sar-tootsoo)
+- Асуудал, заавар: [Түгээмэл асуулт](/owner/tugeemel-asuult)

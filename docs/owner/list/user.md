@@ -83,3 +83,4 @@ keywords:
 ## 🔗 Холбоотой
 - [Харилцагч](/owner/list/Customer_ListView)
 - Заавар: [Эрхгүй, нэвтэрч чадахгүй](/owner/erhgui-nevtreh)
+- Асуудал, заавар: [Шинэ гэрээ, харилцагч бүртгэхэд алдаа](/owner/shine-geree-aldaa) · [Апп ажиллахгүй үед](/app-ajillahgui)
