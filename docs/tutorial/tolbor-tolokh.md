@@ -15,6 +15,7 @@ keywords:
 - Нэхэмжлэл: pages.contract.invoice «Нэхэмжлэл» :256 (payment-breakdown.md), Pdf товч дүрс ❔
 - Төлөх: payment.md (InvoicePaymentSheet.dart:128-147; QPay/Social Pay/Дансаар; гүйлгээний утга = гэрээний дугаар)
 - ebarimt тохиргоо: general.ebarimt.settings «Хялбар бүртгэл» :167 (CustomerProfileScreen.dart:238), сонголт «Хувь хүн» :165 / «Байгууллага» :157 / «Хувь хүн татвар төлөгч (Сугалаагүй)» :166, регистр :164; doubleCheck «ebarimt шалгах» :160-163 «[Бүртгэл] > [Байгууллагын мэдээлэл] > [ebarimt]»
+- «Гэрээ харах» → ContractPage (ActiveContractCard.dart:31-37); «Төлөлт» таб нөхцөлгүй (ContractPage.dart:154-161) — Dev_Research ✅
 - Баримт харах: ContractPage.dart:190 таб «Төлөлт» (:290) → SalePage.dart:69-73 «ebarimt харах» (:295) зөвхөн saleEbarimtId != null үед
 - Баримтыг байгууллага гаргадаг; өмнөх сарын баримт дараа сарын 7-ны дотор (EbarimtAutoPolicy.cs:14 — owner талд)
 -->
