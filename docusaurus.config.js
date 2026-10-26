@@ -45,14 +45,17 @@ const config = {
           // owner хэсэгт ү/ө ↔ у/о хайлтын түлхүүр үг (plugins/search-variants.js)
           remarkPlugins: [require("./plugins/search-variants")],
         },
-        // blog: {
-        //   showReadingTime: true,
-        //   // Please change this to your repo.
-        //   // Remove this to remove the "edit this page" links.
-
-        //   editUrl:
-        //     'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        // },
+        // 🆕 Шинэ боломж — deploy бүрд нэг оруулга (HELP_PLAN §4, эзэн 10-26)
+        blog: {
+          path: "changelog",
+          routeBasePath: "changelog",
+          blogTitle: "Шинэ боломж",
+          blogDescription: "Spacehub-ийн deploy бүрийн шинэ боломж, өөрчлөлт, засвар",
+          blogSidebarTitle: "Сүүлийн өөрчлөлт",
+          blogSidebarCount: 10,
+          showReadingTime: false,
+          feedOptions: { type: "rss", title: "Spacehub — шинэ боломж" },
+        },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
@@ -89,6 +92,7 @@ const config = {
             label: "🏠 Түрээслэгч",
           },
           { to: "/owner", label: "🏢 Owner, менежер", position: "left" },
+          { to: "/changelog", label: "🆕 Шинэ боломж", position: "left" },
           // {
           //   type: 'doc',
           //   docId: 'lessor/contract/view-contract-details',
