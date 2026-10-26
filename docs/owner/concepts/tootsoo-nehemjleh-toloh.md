@@ -39,5 +39,5 @@ Spacehub-ийн мөнгөний урсгал 4 алхамтай. «Яагаад
 3. **Нэхэмжлэх** — «Төлөв шалгах»-аар үлдэгдлээр дахин бодуул.
 
 ## 🔗 Холбоотой
-- **Төлбөр** · **Нэхэмжлэх** · **Төлөлт** · **Дансны хуулга** (жагсаалтын хуудас бичигдэж байна)
+- [Төлбөр](/owner/list/Bill_ListView) · [Нэхэмжлэх](/owner/list/InvoiceBill_ListView) · [Төлөлт](/owner/list/Sale_ListView) · [Дансны хуулга](/owner/list/Statement_ListView)
 - [Сарын тооцоо](/owner/sar-tootsoo) · [Нэхэмжлэх илгээх](/owner/nehemjleh-ilgeeh) · [Хуулгаас төлбөр бүртгэх](/owner/huulga-tolbor)

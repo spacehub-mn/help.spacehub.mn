@@ -66,5 +66,5 @@ keywords:
 - Төлөлт хуваарилахад **алданги эхэлж** төлөгдөнө.
 
 ## 🔗 Холбоотой
-- **Төлбөр** · **Нэхэмжлэх** · **Төлбөрийн хуваарь** · **Байгууллага** (жагсаалтын хуудас бичигдэж байна)
+- [Төлбөр](/owner/list/Bill_ListView) · [Нэхэмжлэх](/owner/list/InvoiceBill_ListView) · [Төлбөрийн хуваарь](/owner/list/ContractPaymentChart_ListView) · [Байгууллага](/owner/list/PropertyOwner_ListView)
 - [Сарын тооцоо](/owner/sar-tootsoo)

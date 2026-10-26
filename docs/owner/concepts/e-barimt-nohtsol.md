@@ -45,5 +45,5 @@ keywords:
 - Буцаасан төлөлтийг олноор гаргахаар дахин гаргахгүй, **нэг бүрчлэн** гарга.
 
 ## 🔗 Холбоотой
-- **Төлөлт** · **И-Баримт** · **Авто eBarimt** · **Харилцагч** (жагсаалтын хуудас бичигдэж байна)
+- [Төлөлт](/owner/list/Sale_ListView) · [И-Баримт](/owner/list/SaleEbarimt_ListView) · [Авто eBarimt](/owner/list/EbarimtRecord_ListView) · [Харилцагч](/owner/list/Customer_ListView)
 - [Е-баримт](/owner/e-barimt)

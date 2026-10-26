@@ -87,5 +87,5 @@ keywords:
 - **Буруу сард ажилласан.** «Job stop», дараа нь үүссэн төлбөр/нэхэмжлэхийг тус тусын жагсаалтаас шалгаж цуцал.
 
 ## 🔗 Холбоотой
-- **Төлбөрийн хуваарь** · **Төлбөр** · **Нэхэмжлэх** (жагсаалтын хуудас бичигдэж байна)
+- [Төлбөрийн хуваарь](/owner/list/ContractPaymentChart_ListView) · [Төлбөр](/owner/list/Bill_ListView) · [Нэхэмжлэх](/owner/list/InvoiceBill_ListView)
 - Заавар: [Сарын тооцоо гаргах](/owner/sar-tootsoo) · [Нэхэмжлэх илгээх](/owner/nehemjleh-ilgeeh)

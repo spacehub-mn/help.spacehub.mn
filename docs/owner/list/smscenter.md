@@ -64,4 +64,4 @@ keywords:
 - **Нэхэмжлэхийн SMS** энэ биш. **Тооцоо → Нэхэмжлэх**-ийн «SMS илгээх» товчийг ашигла. → [Нэхэмжлэх илгээх](/owner/nehemjleh-ilgeeh)
 
 ## 🔗 Холбоотой
-- **Нэхэмжлэх** · **Харилцагч** · **Авто ажил** (жагсаалтын хуудас бичигдэж байна)
+- [Нэхэмжлэх](/owner/list/InvoiceBill_ListView) · [Харилцагч](/owner/list/Customer_ListView) · [Авто ажил](/owner/list/AutoJob_ListView)

@@ -234,6 +234,6 @@ FAQ мөрийг: «…«Гэрээг сунгах» сонгосон бол «�
 - **Жагсаалтад гэрээ харагдахгүй байна.** → [Жагсаалт хоосон](/owner/jagsaalt-hooson-shuult)
 
 ## 🔗 Холбоотой
-- Урсгалын дараах алхам: **Төлбөрийн хуваарь** · **Төлбөр** (жагсаалтын хуудас бичигдэж байна) · [Сарын тооцоо гаргах](/owner/sar-tootsoo)
-- Холбоотой жагсаалт: **Харилцагч** · **Гэрээ хаах** · **Гэрээ сунгалт** · **Тодорхойлолт** · **Эхний үлдэгдэл**
+- Урсгалын дараах алхам: [Төлбөрийн хуваарь](/owner/list/ContractPaymentChart_ListView) · [Төлбөр](/owner/list/Bill_ListView) · [Сарын тооцоо гаргах](/owner/sar-tootsoo)
+- Холбоотой жагсаалт: [Харилцагч](/owner/list/Customer_ListView) · [Гэрээ хаах](/owner/list/ContractSubLists#geree-haah) · [Гэрээ сунгалт](/owner/list/ContractSubLists#sungalt) · [Тодорхойлолт](/owner/list/ContractSubLists#todorhoiolt) · [Эхний үлдэгдэл](/owner/list/BeginBalance_ListView)
 - Заавар: [Түрээсийг нэгжээр харуулах](/owner/tureesiin-negj-m2) · [Е-баримтын тохиргоо](/owner/e-barimt) · [Хуулгаас төлбөр бүртгэх](/owner/huulga-tolbor)

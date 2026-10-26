@@ -133,4 +133,4 @@ Spacehub-д шилжихээс өмнөх өр эсвэл илүү төлөлт.
 - → [Хугацаа зөв сонгох](/owner/hugatsaa-songoh) · [Жагсаалт хоосон](/owner/jagsaalt-hooson-shuult)
 
 ## 🔗 Холбоотой
-- Ажлын урсгал: **Гэрээ** → [Сарын тооцоо](/owner/sar-tootsoo) → [Нэхэмжлэх](/owner/nehemjleh-ilgeeh) → [Төлбөр ба хуулга](/owner/huulga-tolbor) → [Е-баримт](/owner/e-barimt)
+- Ажлын урсгал: [Гэрээ](/owner/list/Contract_ListView) → [Сарын тооцоо](/owner/sar-tootsoo) → [Нэхэмжлэх](/owner/nehemjleh-ilgeeh) → [Төлбөр ба хуулга](/owner/huulga-tolbor) → [Е-баримт](/owner/e-barimt)

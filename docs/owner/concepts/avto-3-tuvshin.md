@@ -40,5 +40,5 @@ keywords:
 4. **Авто ажил** — тухайн сарын ажил «Ажиллаж байна» статустай эсэх.
 
 ## 🔗 Холбоотой
-- **Авто ажил** · **Гэрээ** · **Байгууллага** (жагсаалтын хуудас бичигдэж байна)
+- [Авто ажил](/owner/list/AutoJob_ListView) · [Гэрээ](/owner/list/Contract_ListView) · [Байгууллага](/owner/list/PropertyOwner_ListView)
 - [Сарын тооцоо гаргах](/owner/sar-tootsoo)

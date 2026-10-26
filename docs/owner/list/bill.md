@@ -147,6 +147,6 @@ keywords:
 - **Жагсаалт хоосон.** Огнооны шүүлтийг шалга (📅 / ✕).
 
 ## 🔗 Холбоотой
-- Урсгалын өмнөх алхам: **Гэрээ** · **Төлбөрийн хуваарь** · **Тоолуур ашиглалт** (жагсаалтын хуудас бичигдэж байна)
-- Урсгалын дараах алхам: **Нэхэмжлэх** · **Төлөлт** (жагсаалтын хуудас бичигдэж байна)
+- Урсгалын өмнөх алхам: [Гэрээ](/owner/list/Contract_ListView) · [Төлбөрийн хуваарь](/owner/list/ContractPaymentChart_ListView) · [Тоолуур ашиглалт](/owner/list/ContractUtility_ListView)
+- Урсгалын дараах алхам: [Нэхэмжлэх](/owner/list/InvoiceBill_ListView) · [Төлөлт](/owner/list/Sale_ListView)
 - Заавар: [Сарын тооцоо гаргах](/owner/sar-tootsoo) · [Нэхэмжлэх илгээх](/owner/nehemjleh-ilgeeh) · [Хугацаа зөв сонгох](/owner/hugatsaa-songoh) · [Хуулгаас төлбөр бүртгэх](/owner/huulga-tolbor)

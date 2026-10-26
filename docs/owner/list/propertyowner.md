@@ -67,5 +67,5 @@ keywords:
 - **Е-баримтын тохиргоо.** → [Е-баримт](/owner/e-barimt)
 
 ## 🔗 Холбоотой
-- **Харилцагч** · **Хэрэглэгч** · **Хөнгөлөлт тохиргоо** · **Авто ажил** (жагсаалтын хуудас бичигдэж байна)
+- [Харилцагч](/owner/list/Customer_ListView) · [Хэрэглэгч](/owner/list/User_ListView) · [Хөнгөлөлт тохиргоо](/owner/list/DiscountConfig_ListView) · [Авто ажил](/owner/list/AutoJob_ListView)
 - Заавар: [Е-баримт](/owner/e-barimt) · [Түрээсийн нэгж / м²](/owner/tureesiin-negj-m2)
