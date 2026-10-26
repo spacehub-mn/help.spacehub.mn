@@ -15,18 +15,18 @@ keywords:
 Барилгын удирдлага, нягтлан, ажилтанд зориулсан Spacehub удирдлагын системийн заавар. Шинээр эхэлж байгаа бол → [Эхлэх: эхний сар](/owner/start)
 
 ## Хамгийн их асуудаг 10
-> Бүх түгээмэл асуулт (Viber-ийн бодит асуултаар) → [Түгээмэл асуулт](/owner/tugeemel-asuult)
+> Viber-ийн бодит асуултын давтамжаар (2026-04 → 10, 13 байгууллага). Бүх асуулт → [Түгээмэл асуулт](/owner/tugeemel-asuult)
 
-1. [Жагсаалт хоосон байна](/owner/jagsaalt-hooson-shuult)
-2. [Нэвтэрч чадахгүй байна](/owner/erhgui-nevtreh)
-3. [Сар, огноо зөв сонгох](/owner/hugatsaa-songoh)
-4. [Сарын тооцоо гаргах](/owner/sar-tootsoo)
-5. [Нэхэмжлэх илгээх](/owner/nehemjleh-ilgeeh)
-6. [Хуулгаас төлбөр бүртгэх](/owner/huulga-tolbor)
-7. [Е-баримт гарахгүй байна](/owner/concepts/e-barimt-nohtsol)
-8. [Тоолуурын заалт оруулах](/owner/list/ContractPaymentChart_ListView#tooluur)
-9. [Ажилтанд эрх өгөх](/owner/list/User_ListView)
-10. [Тайлан, Excel татах](/owner/list/Reports)
+1. [Хуулга татагдахгүй, төлбөр бүртгэгдэхгүй](/owner/huulga-tolbor)
+2. [Е-баримт гараагүй / хувь хүнээр гарсан](/owner/concepts/e-barimt-nohtsol)
+3. [Програм удаан, гацсан](/owner/gatsah-udaan)
+4. [Шинэ гэрээ, харилцагч бүртгэхэд алдаа](/owner/shine-geree-aldaa)
+5. [Үнэ, тариф өөрчлөх](/owner/une-oorchloh)
+6. [Нэхэмжлэх, SMS илгээх](/owner/nehemjleh-ilgeeh)
+7. [Авто тооцоо, нэхэмжлэх гараагүй](/owner/avto-tootsoo-garaagui)
+8. [Нэхэмжлэхийн дүн зөрж байна](/owner/nehemjleh-dun-zoroh)
+9. [Тоолуур нэмэх, заалт оруулах](/owner/tooluur)
+10. [Түрээслэгчийн апп ажиллахгүй](/app-ajillahgui)
 
 ## Ажлын урсгал
 ```
