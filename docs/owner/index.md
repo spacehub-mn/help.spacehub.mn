@@ -36,6 +36,7 @@ keywords:
 
 ## Гарын авлагын хэсгүүд
 - 🎓 [Эхлэх: эхний сар](/owner/start) — анх ашиглаж байгаа бол.
+- 👥 **Дүрээр** — [👔 Захирал, owner](/owner/role/zahiral) · [🧮 Нягтлан](/owner/role/nyagtlan) · [🏢 Менежер](/owner/role/menejer).
 - 📘 **Сургалт** — [Эхний сар — шинэ owner](/owner/tutorial/ehnii-sar) · [Сар бүрийн ажил](/owner/tutorial/sar-buriin-ajil).
 - ⚙️ [Owner-ийн тохиргоо](/owner/tohirgoo) — «Нэмэлт тохиргоо»-ны талбар бүр.
 - 🧭 [Програм ашиглах](/owner/navigation) — цэс, жагсаалт, карт, шүүлт, «?» товч.
