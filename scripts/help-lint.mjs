@@ -16,6 +16,7 @@
 //   W-rel     «## 🔗 Холбоотой» хэсэг (TYPES_NEED_REL төрөлд)
 //   W-term    хуучирсан/буруу нэр томьёо (scripts/help-lint.terms.json)
 //   W-q       ❔ (батлагдаагүй) MAX_Q-ээс олон
+//   E-img     ![…](/img/…) файл static/-д алга (build-д мөн унана); W-img: alt хоосон, эсвэл заавар/асуудал/сургалт хуудсанд зураг огт алга (HELP_PLAN §11)
 //   W-stale   verified_commit-оос хойш хуудасны иш татсан Spacehub23 файл өөрчлөгдсөн
 //   I-legacy  2023 оны загваргүй хуудас (frontmatter-гүй) — тоолно, алдаа биш
 import { execFileSync } from "node:child_process";
@@ -35,6 +36,8 @@ const DOCS = opt("--docs", join(ROOT, "docs")); // тестэд өөр хавт�
 
 const TYPES = ["nuur", "ehleh", "surgalt", "zaavar", "asuudal", "oilgolt", "lavlah", "hab"];
 const TYPES_NEED_REL = ["surgalt", "zaavar", "asuudal", "oilgolt", "lavlah"];
+const TYPES_NEED_IMG = ["surgalt", "zaavar", "asuudal"];
+const STATIC = join(DOCS, "..", "static");
 const AUDIENCE = /[🏢🏠👔🧮]/u;
 const MAX_Q = 5;
 const termsFile = join(ROOT, "scripts", "help-lint.terms.json");
@@ -109,6 +112,13 @@ for (const file of walk(DOCS)) {
     if (scope && !rel.includes(scope)) continue; // жишээ нь вэбийн нэр томьёо апп хуудсанд хамаарахгүй
     if (prose.includes(bad)) add("W", "W-term", `«${bad}» → «${good}»${note ? ` (${note})` : ""}`);
   }
+
+  const imgs = [...prose.matchAll(/!\[([^\]]*)\]\((\/img\/[^)\s]+)\)/g)];
+  for (const [, alt, url] of imgs) {
+    if (!existsSync(join(STATIC, url))) add("E", "E-img", `${url} static/-д алга`);
+    if (!alt.trim()) add("W", "W-img", `${url} alt текст хоосон`);
+  }
+  if (!legacy && TYPES_NEED_IMG.includes(fm.type) && !imgs.length) add("W", "W-img", "дэлгэцийн зураг алга (scripts/shots/shots.json-д нэм)");
 
   const q = (prose.match(/❔/g) ?? []).length;
   if (q > MAX_Q) add("W", "W-q", `❔ ${q} (>${MAX_Q}) — батлах эсвэл хасах`);
