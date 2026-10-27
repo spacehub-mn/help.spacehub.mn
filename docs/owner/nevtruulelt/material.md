@@ -17,7 +17,7 @@ keywords:
 <!--
 Нотолгоо:
 - Хэсэг, заавал/сонголттой, хэн мэдэх: owner-onboarding-selfserve.md §2 (хүснэгт, 12 мөр).
-- «Х1» → алдааны мессеж (GoogleSheetsHelper.cs:35-36), хоосон/«n/a» нүд → 0 болж орно, кодгүй мөр алгасна (:197-199, ViewPropertyRoom.cs:40-52; 4452433, Dev_Research 10-27), барьцааны багана, Sheet share (service account) — memory project_owner_onboarding (10-14 сургамж).
+- «Х1» → алдааны мессеж (ViewPropertyRoom.cs:35-36), хоосон/«n/a» нүд → 0 болж орно, кодгүй мөр алгасна (:197-199, ViewPropertyRoom.cs:40-52; 4452433, Dev_Research 10-27), барьцааны багана, Sheet share (service account) — memory project_owner_onboarding (10-14 сургамж).
 - Объектын зураг заавал (Property.Image Req), төлбөрийн тохиргоо Code+Code2 заавал — project_owner_onboarding «Судалгааны гол баримт».
 - Эхний үлдэгдэл «Өр / Илүү» 2 багана, «ямар огнооны байдлаар» — owner-onboarding-selfserve.md §3 (#1124, нэг гэрээний сургамж).
 - Түрээсийн нийт дүнг бүхэл тоогоор (м² × үнэ бутархай гарсан) — project_owner60_first_billing_defects «10-15 бүхэлжүүлэлт».
