@@ -3,7 +3,7 @@
 slug: /owner/tugeemel-asuult
 sidebar_label: Түгээмэл асуулт
 sidebar_position: 1
-type: asuudal
+type: hab
 roles: [owner, nyagtlan, menejer]
 updated: 2026-10-26
 verified_commit: c68c602
