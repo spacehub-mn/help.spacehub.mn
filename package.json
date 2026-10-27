@@ -6,7 +6,7 @@
     "docusaurus": "docusaurus",
     "dev": "docusaurus start",
     "start": "docusaurus start",
-    "build": "node scripts/help-lint.mjs --no-git && docusaurus build && mkdir -p ./build/docs && cp -r ./docs/* ./build/docs && node scripts/help-index.mjs",
+    "build": "node scripts/help-lint.mjs --no-git && docusaurus build && node -e \"require('fs').cpSync('docs','build/docs',{recursive:true})\" && node scripts/help-index.mjs",
     "test:search": "node scripts/search-test.mjs",
     "lint": "node scripts/help-lint.mjs",
     "test": "node --test \"test/*.test.*\"",
