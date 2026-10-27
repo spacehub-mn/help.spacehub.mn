@@ -904,5 +904,107 @@
         "label": "Төрөл"
       }
     ]
+  },
+  {
+    "id": "owner/huulga-dialog-toloh",
+    "page": "docs/owner/huulga-tolbor.md",
+    "nav": [
+      "Автоматжуулалт",
+      "Дансны хуулга"
+    ],
+    "waitTh": "Гүйлгээний утга",
+    "width": 1920,
+    "blurTh": [
+      "Гүйлгээний утга",
+      "Код",
+      "Харилцагч",
+      "Түрээслэгч"
+    ],
+    "blurAccount": true,
+    "selectRow": true,
+    "open": {
+      "btn": "ХУРДАН ТӨЛӨХ",
+      "exact": true
+    },
+    "mustSee": "Гэрээ сонгох",
+    "alt": "ХУРДАН ТӨЛӨХ: гэрээ хайх, сонгоод «За»",
+    "marks": [
+      {
+        "n": "2.3",
+        "text": "Хайх ( Код / Нэр / РД / Утас )",
+        "label": "Хайх"
+      },
+      {
+        "n": "2.4",
+        "exact": true,
+        "label": "За",
+        "btn": "За"
+      }
+    ],
+    "blurDialog": true,
+    "clip": "dialog"
+  },
+  {
+    "id": "owner/huulga-dialog-huvaah",
+    "page": "docs/owner/huulga-tolbor.md",
+    "nav": [
+      "Автоматжуулалт",
+      "Дансны хуулга"
+    ],
+    "waitTh": "Гүйлгээний утга",
+    "width": 1920,
+    "blurTh": [
+      "Гүйлгээний утга",
+      "Код",
+      "Харилцагч",
+      "Түрээслэгч"
+    ],
+    "blurAccount": true,
+    "selectRow": true,
+    "open": {
+      "btn": "ХУРДАН ХУВААХ",
+      "exact": true
+    },
+    "mustSee": "Гэрээ сонгох",
+    "alt": "ХУРДАН ХУВААХ: гэрээ хайх, сонгоод «За»",
+    "marks": [
+      {
+        "n": "3.3",
+        "text": "Хайх ( Код / Нэр / РД / Утас )",
+        "label": "Хайх"
+      },
+      {
+        "n": "3.4",
+        "exact": true,
+        "label": "За",
+        "btn": "За"
+      }
+    ],
+    "blurDialog": true,
+    "clip": "dialog"
+  },
+  {
+    "id": "owner/nehemjleh-dialog-sms",
+    "page": "docs/owner/nehemjleh-ilgeeh.md",
+    "nav": [
+      "Тооцоо",
+      "Нэхэмжлэх"
+    ],
+    "waitTh": "Илгээлт",
+    "width": 1920,
+    "selectRow": true,
+    "open": {
+      "btn": "мессежээр илгээх бол"
+    },
+    "mustSee": "Зурвасаар явуулах уу",
+    "alt": "SMS илгээхийн өмнөх асуулт: сонгосон нэхэмжлэхийн тоо",
+    "marks": [
+      {
+        "n": "2.4",
+        "text": "Зурвасаар явуулах уу",
+        "label": "Асуулт ба тоо"
+      }
+    ],
+    "clip": "dialog"
   }
 ]

@@ -59,6 +59,11 @@ async function box(page, m) {
     const t = (await txt.isVisible().catch(() => false)) ? await txt.boundingBox() : null;
     return t ? { x: t.x - 30, y: t.y - 4, width: t.width + 36, height: t.height + 8 } : null;
   }
+  if (m.text) {
+    // Цонх доторх бичиг / талбарын шошго
+    const loc = page.getByText(m.text, { exact: !!m.exact }).last();
+    return (await loc.isVisible().catch(() => false)) ? loc.boundingBox() : null;
+  }
   if (m.rowCheck) {
     // Эхний мөрийн сонгох нүд (алхам: «гүйлгээг сонго») — зөвхөн тэмдэглэнэ, дарахгүй
     return page.evaluate(() => {
@@ -155,6 +160,29 @@ async function toWebp(page, png) {
     // Хүснэгтийг хэвтээ гүйлгэж заасан баганыг харагдуулна (зөвхөн харагдах байдал, өгөгдөл өөрчлөхгүй)
     if (s.scrollTh) await page.locator("thead th:visible", { hasText: s.scrollTh }).first().evaluate((th) => th.scrollIntoView({ block: "nearest", inline: "end" }));
     await page.waitForTimeout(400);
+    // Цонхны алхмын зураг (эзэн 10-27 А, CEO 11:2x): мөр СОНГООД товчоор цонх НЭЭНЭ, зураг аваад Esc / «Үгүй, Хаах»-аар хаана.
+    // Хадгалах / илгээх / төлөх / «Тийм»-ийг ХЭЗЭЭ Ч дарахгүй, талбарт бичихгүй. mustSee текст гарахгүй бол бүх ажлыг зогсооно.
+    if (s.open) {
+      if (s.selectRow) await page.locator("tbody tr td:first-child input[type=checkbox], tbody tr td:first-child .dxbl-checkbox").first().click();
+      await page.waitForTimeout(800);
+      const ob = await box(page, s.open);
+      if (!ob) throw new Error(`${s.id}: нээх товч олдсонгүй — зогсов`);
+      await page.mouse.click(ob.x + ob.width / 2, ob.y + ob.height / 2);
+      try { await page.getByText(s.mustSee).first().waitFor({ timeout: 10000 }); }
+      catch { throw new Error(`${s.id}: «${s.mustSee}» цонх гарсангүй — АЮУЛГҮЙН ҮҮДНЭЭС ЗОГСОВ`); }
+      await idle(page);
+      await page.waitForTimeout(800);
+      await page.mouse.move(vw.width - 5, vw.height - 5);
+    }
+    // Цонх доторх хувийн мэдээлэл: «Хайлт түргэвчлэгч»-ийн үгс (гүйлгээний утгаас — компани/хүний нэр), гарчгийн 2-р мөр, хайлтын утга
+    if (s.blurDialog) await page.evaluate(() => {
+      const pii = (el) => el && el.classList.add("hs-pii");
+      const chipsLabel = [...document.querySelectorAll("*")].find((e) => e.children.length === 0 && /^Хайлт түргэвчлэгч/.test((e.textContent || "").trim()));
+      if (chipsLabel) [...chipsLabel.parentElement.querySelectorAll("button, span, a")].filter((e) => e !== chipsLabel && e.offsetParent).forEach(pii);
+      const title = [...document.querySelectorAll("*")].find((e) => e.children.length === 0 && /^Гэрээ сонгох \(хурдан/.test((e.textContent || "").trim()));
+      if (title) [...title.parentElement.children].filter((e) => e !== title).forEach(pii);
+      document.querySelectorAll(".dxbl-modal input[type=text], .dxbl-popup input[type=text], [role=dialog] input[type=text]").forEach(pii);
+    });
     const blurred = await blur(page, s.blurTh || [], !!s.blurAccount);
     const boxes = [];
     const missing = [];
@@ -178,12 +206,36 @@ async function toWebp(page, png) {
       const x1 = Math.min(vw.width, Math.max(...all.map((b) => b.x + b.width)) + 24 + (s.padRight || 0)), y1 = Math.min(vw.height, Math.max(...all.map((b) => b.y + b.height)) + 12 + (s.padBottom || 0));
       clip = { x: x0, y: y0, width: x1 - x0, height: y1 - y0 };
     } else if (clip === "auto") clip = undefined;
+    if (clip === "dialog") {
+      // Нээгдсэн цонхны бүтэн хэмжээ (+ тэмдэг гарах зай)
+      const d = await page.evaluate(() => {
+        const c = [...document.querySelectorAll("[role=dialog], .dxbl-modal-content, .dxbl-popup-content, .dxbl-window")].filter((e) => e.offsetParent || e.getClientRects().length)
+          .map((e) => e.getBoundingClientRect()).filter((r) => r.width > 200 && r.height > 100).sort((a, b) => b.width * b.height - a.width * a.height)[0];
+        return c ? { x: c.x, y: c.y, width: c.width, height: c.height } : null;
+      });
+      clip = d ? { x: Math.max(0, d.x - 24), y: Math.max(0, d.y - 44), width: Math.min(vw.width - Math.max(0, d.x - 24), d.width + 48), height: Math.min(vw.height - Math.max(0, d.y - 44), d.height + 60) } : undefined;
+    }
     const webp = await toWebp(page, await page.screenshot(clip ? { clip } : s.clipHeight ? { clip: { x: 0, y: 0, width: vw.width, height: s.clipHeight } } : {}));
     const out = path.join(ROOT, "static", "img", s.id + ".webp");
     fs.mkdirSync(path.dirname(out), { recursive: true });
     // Өмнөхтэй байт ижил бол файлыг солихгүй — git түүх хоосон өөрчлөлтөөр өсөхгүй
     const same = fs.existsSync(out) && fs.readFileSync(out).equals(webp);
     if (!same) fs.writeFileSync(out, webp);
+    if (s.open) {
+      // Хаах: Esc → үлдвэл зөвхөн «Үгүй / Болих / Хаах / Cancel / No» товч. Дараа нь хуудсыг дахин ачаална.
+      await page.evaluate(() => document.querySelectorAll(".hs-mark").forEach((e) => e.remove()));
+      await page.keyboard.press("Escape");
+      await page.waitForTimeout(800);
+      if (await page.getByText(s.mustSee).first().isVisible().catch(() => false)) {
+        const cancel = page.getByRole("button", { name: /^(Үгүй|Болих|Хаах|Cancel|No|Close)$/ }).last();
+        if (await cancel.isVisible().catch(() => false)) await cancel.click();
+        await page.waitForTimeout(800);
+      }
+      const still = await page.getByText(s.mustSee).first().isVisible().catch(() => false);
+      console.log(`   ↳ цонх хаагдсан: ${still ? "❌ ҮГҮЙ — гараар шалга" : "✅"}`);
+      if (still) throw new Error(`${s.id}: цонх хаагдсангүй — зогсов`);
+      await page.reload(); await idle(page); await page.getByRole("treeitem").first().waitFor({ timeout: 60000 });
+    }
     const view = page.url().replace(APP, "");
     report.push({ id: s.id, page: s.page, view, kb: Math.round(webp.length / 1024), legend: boxes.map((b) => b.label), missing, blurred, changed: !same });
     console.log(`${missing.length ? "⚠️" : "✅"} ${s.id} ${view} ${Math.round(webp.length / 1024)}KB тэмдэг ${boxes.length}/${s.marks.length} blur ${blurred}${missing.length ? " олдоогүй: " + missing.join(", ") : ""}`);

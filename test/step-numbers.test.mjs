@@ -56,3 +56,9 @@ test("owner-ийн type-гүй заавар дугаарлагдана, owner/in
   assert.equal(text(a.children[0]), "1. Хуулгаа харах");
   assert.equal(text(b.children[0]), "Хуулгаа харах");
 });
+
+test("«3.»-аар эхэлсэн жагсаалт (зургийн дараа үргэлжилсэн) → data-n 2.3, 2.4", () => {
+  const l = { ...ol(2), start: 3 };
+  run({ children: [h(2, "Нэг"), h(2, "Хоёр"), l] });
+  assert.deepEqual(l.children.map((li) => li.data.hProperties["data-n"]), ["2.3", "2.4"]);
+});

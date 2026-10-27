@@ -77,10 +77,12 @@ function plugin() {
       } else if (node.type === "list" && node.ordered && step) {
         node.data = node.data || {};
         node.data.hProperties = { ...(node.data.hProperties || {}), className: ["substeps"] };
-        for (const li of node.children) {
+        // «3. …»-аар эхэлсэн жагсаалт (зургийн дараа үргэлжилсэн алхам) → 2.3, 2.4 … (CSS attr(data-n))
+        const start = node.start ?? 1;
+        node.children.forEach((li, k) => {
           li.data = li.data || {};
-          li.data.hProperties = { ...(li.data.hProperties || {}), "data-step": String(step) };
-        }
+          li.data.hProperties = { ...(li.data.hProperties || {}), "data-step": String(step), "data-n": `${step}.${start + k}` };
+        });
       }
     });
   };

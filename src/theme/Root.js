@@ -67,17 +67,37 @@ export default function Root({ children }) {
 
   // Дугаартай зургийг (2× нягтрал) жинхэнэ хэмжээгээр нь (naturalWidth / 2) харуулна — утсан дээр жижигрэхгүй,
   // тэмдэг 32px хэвээр; өргөн бол хажуу тийш гүйлгэнэ (Qa_Spacehub 10-27: 390px өргөнд тэмдэг 6–11px болж байсан).
+  // Сайт доторх шилжилтэд агуулга дараа нь render хийгддэг тул MutationObserver-ээр шинэ зураг бүрийг барина.
   useEffect(() => {
+    // build-д зураг /assets/images/*.webp эсвэл жижиг нь data:image/webp болж орно — shoot.cjs-ийн зураг бүгд webp, 2×
+    const isShot = (i) => i.closest(".markdown") && /\.webp($|\?)|^data:image\/webp/.test(i.getAttribute("src") || "");
     const fit = (img) => {
       if (!img.naturalWidth) return;
       img.style.width = `${img.naturalWidth / 2}px`;
       img.style.maxWidth = "none";
       img.parentElement?.classList.add("img-scroll");
     };
-    // build-д зураг /assets/images/*.webp эсвэл жижиг нь data:image/webp болж орно — shoot.cjs-ийн зураг бүгд webp, 2×
-    const imgs = [...document.querySelectorAll(".markdown img")].filter((i) => /\.webp($|\?)|^data:image\/webp/.test(i.getAttribute("src") || ""));
-    imgs.forEach((img) => (img.complete ? fit(img) : img.addEventListener("load", () => fit(img), { once: true })));
-  }, [pathname]);
+    const watch = (img) => {
+      if (!isShot(img) || img.dataset.fit) return;
+      img.dataset.fit = "1";
+      if (img.complete) fit(img);
+      else img.addEventListener("load", () => fit(img), { once: true });
+    };
+    document.querySelectorAll(".markdown img").forEach(watch);
+    const mo = new MutationObserver((list) => {
+      for (const m of list) {
+        // React нэг <img>-ийг өөр src-тэйгээр дахин ашиглаж болно
+        if (m.type === "attributes" && m.target.tagName === "IMG") { delete m.target.dataset.fit; m.target.style.width = ""; watch(m.target); continue; }
+        for (const n of m.addedNodes) {
+          if (n.nodeType !== 1) continue;
+          if (n.tagName === "IMG") watch(n);
+          else n.querySelectorAll?.("img").forEach(watch);
+        }
+      }
+    });
+    mo.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ["src"] });
+    return () => mo.disconnect();
+  }, []);
 
   useEffect(() => {
     const open = (e) => {

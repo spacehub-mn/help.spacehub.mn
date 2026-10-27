@@ -42,7 +42,7 @@
 }
 .markdown ol.substeps > li::before {
   /* зураг дээрх тэмдэгтэй ижил улаан тэмдэг (зураг ↔ текст 1:1) */
-  content: attr(data-step) "." counter(sub);
+  content: attr(data-n);
   position: absolute;
   left: -2.9em;
   top: 0.1em;

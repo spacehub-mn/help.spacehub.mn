@@ -92,7 +92,8 @@ function imageSections(body, type) {
       if (h[1] === "####" && inButtons && btn) { step = `${btn}.${++sub}`; return items.push({ line: i, label: step, kind: "h" }); }
       return;
     }
-    if (/^\d+\. \S/.test(l) && step && !inButtons) items.push({ line: i, label: `${step}.${++li}`, kind: "li" });
+    const num = /^(\d+)\. \S/.exec(l);
+    if (num && step && !inButtons) { li = li && +num[1] === 1 ? li + 1 : +num[1] > li ? +num[1] : li + 1; items.push({ line: i, label: `${step}.${li}`, kind: "li" }); }
   });
   return items.filter((x) => x.kind === "img").map((img) => {
     const k = items.indexOf(img);
