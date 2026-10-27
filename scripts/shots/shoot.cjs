@@ -80,23 +80,37 @@ async function box(page, m) {
   return (await loc.count()) ? loc.boundingBox() : null;
 }
 
-// DOM дээр давхарга зурна: улаан хүрээ + 1 2 3 дугаар (зургийн дараа зурахгүй — хэмжээ өөрчлөгдсөн ч зөв байрлана)
+// DOM дээр давхарга зурна: улаан хүрээ + ТОМ дугаар (эзэн 10-27: тэмдэг ≥32px, утсан дээр уншигдана).
+// Дугаар товчны ДЭЭР голлож байрлана; хөрш тэмдэгтэй давхцвал товчны ДООР — хоёулаа уншигдана.
+const BADGE = 32;
 async function mark(page, boxes) {
-  await page.evaluate((boxes) => {
+  return page.evaluate(({ boxes, BADGE }) => {
     document.querySelectorAll(".hs-mark").forEach((e) => e.remove());
+    const placed = [];
+    const out = [];
     boxes.forEach((b, i) => {
       const r = document.createElement("div");
       r.className = "hs-mark";
       Object.assign(r.style, { position: "fixed", left: b.x - 3 + "px", top: b.y - 3 + "px", width: b.width + 6 + "px", height: b.height + 6 + "px",
-        border: "3px solid #e11d48", borderRadius: "6px", zIndex: 2147483646, pointerEvents: "none", boxSizing: "border-box" });
+        border: "4px solid #e11d48", borderRadius: "8px", zIndex: 2147483646, pointerEvents: "none", boxSizing: "border-box" });
       const n = document.createElement("div");
       n.className = "hs-mark";
       n.textContent = b.n || String(i + 1);
-      Object.assign(n.style, { position: "fixed", left: Math.max(0, b.x - 12) + "px", top: Math.max(0, b.y - 14) + "px", minWidth: "20px", height: "20px", padding: "0 4px", boxSizing: "border-box",
-        borderRadius: "10px", background: "#e11d48", color: "#fff", font: "700 12px/20px Segoe UI,Arial", textAlign: "center", zIndex: 2147483647, pointerEvents: "none" });
+      Object.assign(n.style, { position: "fixed", minWidth: BADGE + "px", height: BADGE + "px", padding: "0 8px", boxSizing: "border-box",
+        borderRadius: BADGE / 2 + "px", background: "#e11d48", color: "#fff", font: `800 20px/${BADGE - 6}px Segoe UI,Arial`, textAlign: "center",
+        border: "3px solid #fff", boxShadow: "0 2px 6px rgba(0,0,0,.45)", zIndex: 2147483647, pointerEvents: "none" });
       document.body.append(r, n);
+      const w = n.getBoundingClientRect().width;
+      const left = Math.max(0, b.x + b.width / 2 - w / 2);
+      let top = Math.max(0, b.y - BADGE - 6);
+      const hit = (t) => placed.some((p) => left < p.left + p.w + 2 && p.left < left + w + 2 && Math.abs(p.top - t) < BADGE);
+      if (hit(top)) top = b.y + b.height + 6;
+      Object.assign(n.style, { left: left + "px", top: top + "px" });
+      placed.push({ left, top, w });
+      out.push({ x: left, y: top, width: w, height: BADGE });
     });
-  }, boxes);
+    return out; // clip "auto"-д тэмдгийн байрлалыг оруулна
+  }, { boxes, BADGE });
 }
 
 // PNG → webp (Chromium-ийн canvas-аар, нэмэлт сангүй)
@@ -153,14 +167,15 @@ async function toWebp(page, png) {
     // Дугаарыг уншигдах дарааллаар (мөр, дараа нь зүүнээс баруун) — хуудасны тайлбар энэ дарааллаар
     // m.n өгсөн бол (жагсаалтын «Товчнууд»-ын 1., 1.1 дугаар) дарааллыг хөндөхгүй — зураг ба бичвэрийн дугаар таарна
     if (!s.marks.some((m) => m.n)) boxes.sort((a, b) => Math.round(a.y / 40) - Math.round(b.y / 40) || a.x - b.x);
-    await mark(page, boxes);
+    const badges = await mark(page, boxes);
     await page.waitForTimeout(300);
     // clipHeight: доод хоосон хэсгийг тайрна (богино жагсаалт); clip {x,y,width,height}: зөвхөн toolbar — хуудсанд жижгэрэхгүй
     // clip "auto": бүх тэмдгийг багтаасан хамгийн бага хэсэг (+ зай) — цэс, toolbar, багана нэг зурагт
     let clip = s.clip;
     if (clip === "auto" && boxes.length) {
-      const x0 = Math.max(0, Math.min(...boxes.map((b) => b.x)) - 24), y0 = Math.max(0, Math.min(...boxes.map((b) => b.y)) - 28);
-      const x1 = Math.min(vw.width, Math.max(...boxes.map((b) => b.x + b.width)) + 24), y1 = Math.min(vw.height, Math.max(...boxes.map((b) => b.y + b.height)) + 16);
+      const all = [...boxes, ...badges];
+      const x0 = Math.max(0, Math.min(...all.map((b) => b.x)) - 24 - (s.padLeft || 0)), y0 = Math.max(0, Math.min(...all.map((b) => b.y)) - 12);
+      const x1 = Math.min(vw.width, Math.max(...all.map((b) => b.x + b.width)) + 24 + (s.padRight || 0)), y1 = Math.min(vw.height, Math.max(...all.map((b) => b.y + b.height)) + 12 + (s.padBottom || 0));
       clip = { x: x0, y: y0, width: x1 - x0, height: y1 - y0 };
     } else if (clip === "auto") clip = undefined;
     const webp = await toWebp(page, await page.screenshot(clip ? { clip } : s.clipHeight ? { clip: { x: 0, y: 0, width: vw.width, height: s.clipHeight } } : {}));

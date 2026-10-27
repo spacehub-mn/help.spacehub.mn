@@ -34,20 +34,30 @@
 .markdown ol.substeps {
   list-style: none;
   counter-reset: sub;
-  padding-left: 2.6em;
+  padding-left: 2.9em;
 }
 .markdown ol.substeps > li {
   counter-increment: sub;
   position: relative;
 }
 .markdown ol.substeps > li::before {
+  /* зураг дээрх тэмдэгтэй ижил улаан тэмдэг (зураг ↔ текст 1:1) */
   content: attr(data-step) "." counter(sub);
   position: absolute;
-  left: -2.6em;
-  width: 2.2em;
-  text-align: right;
-  font-weight: 700;
-  color: var(--ifm-color-primary);
+  left: -2.9em;
+  top: 0.1em;
+  min-width: 2.4em;
+  height: 1.6em;
+  padding: 0 0.35em;
+  box-sizing: border-box;
+  border-radius: 0.8em;
+  background: #e11d48;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.85em;
+  line-height: 1.6em;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
 }
 
 /* ── Хэсэг бүр өөр өнгө (src/theme/Root.js → html[data-role]) ──
@@ -216,4 +226,26 @@ html[data-role] .theme-doc-sidebar-container {
   background: #fff;
   color: #111;
   cursor: pointer;
+}
+
+/* Гарчгийн алхам/товчны дугаар (plugins/step-numbers.js span.step-badge) — зураг дээрх тэмдэгтэй ижил */
+.markdown .step-badge,
+.table-of-contents .step-badge {
+  display: inline-block;
+  min-width: 1.5em;
+  padding: 0 0.4em;
+  border-radius: 0.75em;
+  background: #e11d48;
+  color: #fff;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 0.8em;
+  line-height: 1.5em;
+  text-align: center;
+  vertical-align: 0.1em;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+.table-of-contents .step-badge {
+  font-size: 0.75em;
+  box-shadow: none;
 }

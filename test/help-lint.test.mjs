@@ -84,3 +84,19 @@ test("H1-ийн өмнө <!-- --> → E-h1first (гарчиг файлын нэ�
   assert.ok(rules(out, "c.md").includes("E-h1first"));
   assert.ok(!rules(out, "a.md").includes("E-h1first"));
 });
+
+test("зураг ↔ текст 1:1: илүү тэмдэг E-imgmap, дутуу W-imgmap, > 8 E-img8, «Зураг N.» алга W-imgcap", () => {
+  const docs = fixture({
+    "z.md": `${fm()}# Гарчиг\n\n> 🏢 Owner · Вэб\n\n## Хуулга харах\n\n![x](/img/x.webp)\n\n*Зураг 1. Хуулга.*\n\n1. Цэс.\n2. Данс.\n3. Огноо.\n\n## 🔗 Холбоотой\n- [x](/x)\n`,
+    "y.md": `${fm()}# Гарчиг\n\n> 🏢 Owner · Вэб\n\n## Алхам\n\n![x](/img/x.webp)\n\nТайлбаргүй.\n\n1. Нэг.\n\n## 🔗 Холбоотой\n- [x](/x)\n`,
+  });
+  const shots = join(docs, "..", "shots.json");
+  const m = (n) => ({ n, btn: "x" });
+  writeFileSync(shots, JSON.stringify([{ id: "x", marks: [m("1.1"), m("1.2"), m("1.9"), ...Array(6).fill(m("1.1"))] }]));
+  const { code, out } = run(docs, "--shots", shots);
+  assert.equal(code, 1);
+  const z = rules(out, "z.md"), y = rules(out, "y.md");
+  assert.ok(z.includes("E-imgmap") && z.includes("W-imgmap") && z.includes("E-img8")); // 1.9 илүү, 1.3 дутуу, 9 тэмдэг
+  assert.ok(!z.includes("W-imgcap"));
+  assert.ok(y.includes("W-imgcap"));
+});

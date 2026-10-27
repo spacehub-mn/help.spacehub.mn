@@ -27,8 +27,12 @@ const textOf = (n) => (n.type === "text" || n.type === "inlineCode" ? n.value : 
 function renumber(heading, label) {
   const first = heading.children.find((c) => c.type === "text");
   if (first) first.value = first.value.replace(PREFIX, "");
-  // «1. Нэр», дэд нь «1.1 Нэр» (цэс, 1.1 жагсаалттай ижил)
-  heading.children.unshift({ type: "text", value: label.includes(".") ? `${label} ` : `${label}. ` });
+  // Дугаарыг зураг дээрх улаан тэмдэгтэй ижил хэлбэрээр (span.step-badge) — зураг ↔ текст 1:1 (эзэн 10-27).
+  // Текст нь TOC, хайлтад «1.1» хэвээр орно.
+  heading.children.unshift(
+    { type: "emphasis", data: { hName: "span", hProperties: { className: ["step-badge"] } }, children: [{ type: "text", value: label }] },
+    { type: "text", value: " " },
+  );
 }
 
 function plugin() {

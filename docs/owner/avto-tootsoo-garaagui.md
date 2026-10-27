@@ -32,7 +32,7 @@ keywords:
 
 ![Авто ажил: цэс, статус, Next Auto Job +, Job Create, Job start, төрөл](/img/owner/avto-ajil.webp)
 
-*Зураг дээрх улаан дугаар = доорх алхмын дугаар.* Зураг дээр дарвал томорно. Англи товчны утга → [Апп дээрх англи үгс](/owner/glossary#angli-ug)
+*Зураг 1. Авто ажил: цэс, статус, Next Auto Job +, Job Create, Job start, төрөл.* Улаан дугаар = доорх алхмын дугаар. Дарвал томорно. Англи товчны утга → [Апп дээрх англи үгс](/owner/glossary#angli-ug)
 
 <!-- Зургийг scripts/shots/shoot.cjs автоматаар авсан (прод, туршилтын owner Рентхаб, PII blur). Дугаар = shots.json «n» = алхмын дугаар. Гараар засахгүй. -->
 

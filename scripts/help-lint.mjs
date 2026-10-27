@@ -16,6 +16,7 @@
 //   W-rel     «## 🔗 Холбоотой» хэсэг (TYPES_NEED_REL төрөлд)
 //   W-term    хуучирсан/буруу нэр томьёо (scripts/help-lint.terms.json)
 //   W-q       ❔ (батлагдаагүй) MAX_Q-ээс олон
+//   E-imgmap  зураг дээрх тэмдэг доорх текстэд алга (W-imgmap: текстийн дугаар зураг дээр алга); E-img8 > 8 тэмдэг; W-imgcap «Зураг N.» алга
 //   E-img     ![…](/img/…) файл static/-д алга (build-д мөн унана); W-img: alt хоосон, эсвэл заавар/асуудал/сургалт хуудсанд зураг огт алга (HELP_PLAN §11)
 //   W-stale   verified_commit-оос хойш хуудасны иш татсан Spacehub23 файл өөрчлөгдсөн
 //   I-legacy  2023 оны загваргүй хуудас (frontmatter-гүй) — тоолно, алдаа биш
@@ -23,6 +24,7 @@ import { execFileSync } from "node:child_process";
 import { readFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { join, relative, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { createRequire } from "node:module";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const args = process.argv.slice(2);
@@ -61,6 +63,49 @@ const changedSince = (sha) => {
   }
   return changedCache.get(sha);
 };
+
+// shots.json: зургийн id → тэмдгүүд (n = доорх текстийн дугаар)
+const shotsFile = opt("--shots", join(ROOT, "scripts", "shots", "shots.json"));
+const SHOTS = new Map(existsSync(shotsFile) ? JSON.parse(readFileSync(shotsFile, "utf8")).map((s) => [s.id, s]) : []);
+const { META } = createRequire(import.meta.url)("../plugins/step-numbers.js");
+
+/**
+ * plugins/step-numbers.js-тэй ижил дугаарлалтаар зураг бүрийн доорх дугаарыг цуглуулна:
+ * «Товчнууд» хэсэгт — дараагийн зураг/H2 хүртэлх товч, дэд товчны гарчиг (1, 1.1 …);
+ * алхмын хэсэгт — дараагийн гарчиг хүртэлх дугаартай жагсаалт (1.1, 1.2 …).
+ */
+function imageSections(body, type) {
+  if (!type || ["oilgolt", "nuur", "hab"].includes(type)) return [];
+  const lines = body.replace(/```[\s\S]*?```/g, "").replace(/<!--[\s\S]*?-->/g, "").split("\n");
+  const items = []; // { line, label, kind: "h" | "li" | "img", id }
+  let step = "", h2 = 0, inButtons = false, btn = 0, sub = 0, li = 0;
+  const isGroup = (i) => { const j = lines.findIndex((l, k) => k > i && /^#{1,4} /.test(l)); return j > 0 && /^#### /.test(lines[j]); };
+  lines.forEach((l, i) => {
+    const img = /^!\[[^\]]*\]\(\/img\/([^)\s]+)\.webp\)/.exec(l);
+    if (img) return items.push({ line: i, kind: "img", id: img[1] });
+    const h = /^(#{2,4}) (.+)$/.exec(l);
+    if (h) {
+      const t = h[2].trim(); li = 0;
+      if (h[1] === "##") { inButtons = /^Товчнууд/u.test(t); btn = 0; step = META.test(t) ? "" : String(++h2); if (step) items.push({ line: i, label: step, kind: "h2" }); return; }
+      if (h[1] === "###" && inButtons) { if (/^Бусад/u.test(t) || !(t.startsWith("«") || isGroup(i))) { step = ""; return; } step = String(++btn); sub = 0; return items.push({ line: i, label: step, kind: "h" }); }
+      if (h[1] === "####" && inButtons && btn) { step = `${btn}.${++sub}`; return items.push({ line: i, label: step, kind: "h" }); }
+      return;
+    }
+    if (/^\d+\. \S/.test(l) && step && !inButtons) items.push({ line: i, label: `${step}.${++li}`, kind: "li" });
+  });
+  return items.filter((x) => x.kind === "img").map((img) => {
+    const k = items.indexOf(img);
+    const next = items.slice(k + 1);
+    const end = next.findIndex((x) => x.kind === "img" || x.kind === "h2");
+    const span = end < 0 ? next : next.slice(0, end);
+    const want = span.some((x) => x.kind === "h") ? "h" : "li";
+    // Бүлгийн гарчгийн (### 2.) доорх зураг = зөвхөн тэр бүлгийн товч (2.1, 2.2 …)
+    const prev = items[k - 1];
+    const group = prev && prev.kind === "h" && !prev.label.includes(".") && span.some((x) => x.label.startsWith(prev.label + ".")) ? prev.label + "." : "";
+    const caption = lines.slice(img.line + 1).find((l) => l.trim()) ?? "";
+    return { id: img.id, caption, labels: span.filter((x) => x.kind === want && x.label.startsWith(group)).map((x) => x.label) };
+  });
+}
 
 const results = [];
 for (const file of walk(DOCS)) {
@@ -119,6 +164,20 @@ for (const file of walk(DOCS)) {
     if (!alt.trim()) add("W", "W-img", `${url} alt текст хоосон`);
   }
   if (!legacy && TYPES_NEED_IMG.includes(fm.type) && !imgs.length) add("W", "W-img", "дэлгэцийн зураг алга (scripts/shots/shots.json-д нэм)");
+
+  // Зураг ↔ текст 1:1 (эзэн 10-27, чартер «Агуулгын ойлгомж»): тэмдэг бүр доорх дугаартай мөртэй, ≤ 8 тэмдэг, «Зураг N.» тайлбар
+  const type = fm.type || (/(^|\/)owner\/[^/]+\.mdx?$/.test(rel) && !/index\.mdx?$/.test(rel) ? "zaavar" : undefined);
+  for (const sec of imageSections(body, type)) {
+    const shot = SHOTS.get(sec.id);
+    if (!shot) continue;
+    const marks = [...new Set(shot.marks.map((m) => m.n).filter(Boolean))];
+    if (shot.marks.length > 8) add("E", "E-img8", `${sec.id}: ${shot.marks.length} тэмдэг (≤ 8) — зургийг хуваа`);
+    if (!/^\*Зураг \d+\. /.test(sec.caption)) add("W", "W-imgcap", `${sec.id}: доор нь «*Зураг N. …*» тайлбар алга`);
+    const extra = marks.filter((n) => !sec.labels.includes(n));
+    const missing = sec.labels.filter((n) => !marks.includes(n));
+    if (extra.length) add("E", "E-imgmap", `${sec.id}: зураг дээр ${extra.join(", ")} байгаа ч доорх текстэд алга`);
+    if (missing.length) add("W", "W-imgmap", `${sec.id}: текстийн ${missing.join(", ")} зураг дээр тэмдэггүй (цонх доторх алхам бол тусдаа зураг)`);
+  }
 
   const q = (prose.match(/❔/g) ?? []).length;
   if (q > MAX_Q) add("W", "W-q", `❔ ${q} (>${MAX_Q}) — батлах эсвэл хасах`);

@@ -13,7 +13,7 @@ const file = (type) => {
 };
 const h = (depth, value) => ({ type: "heading", depth, children: [{ type: "text", value }] });
 const ol = (n) => ({ type: "list", ordered: true, children: Array.from({ length: n }, () => ({ type: "listItem", children: [] })) });
-const text = (n) => n.children.map((c) => c.value).join("");
+const text = (n) => n.children.map((c) => c.value ?? (c.children || []).map((x) => x.value).join("") + ".").join("").replace(/^(\d+(?:\.\d+)+)\. /, "$1 ");
 const run = (tree, type = "zaavar") => (plugin()(tree, file(type)), tree);
 
 test("алхмын H2 → 1., 2.; гар угтвар («Алхам 3 —», «5.») солигдоно; мета хэсэг дугааргүй", () => {
