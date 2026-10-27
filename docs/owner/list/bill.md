@@ -5,6 +5,10 @@
 #   тухайн хуудас нийтлэгдэх үед линк болгоно. (Dev_Research хяналт 10-26 §5)
 slug: /owner/list/Bill_ListView
 sidebar_label: Төлбөр
+type: lavlah
+roles: [owner, nyagtlan]
+updated: 2026-10-26
+verified_commit: 12cf242
 keywords:
   - "Төлбөр жагсаалт"
   - "тооцоо цуцлах"

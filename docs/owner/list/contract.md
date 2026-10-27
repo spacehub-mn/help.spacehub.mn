@@ -4,6 +4,10 @@
 #   тухайн хуудас нийтлэгдэх үед линк болгоно. (Dev_Research хяналт 10-26 §5)
 slug: /owner/list/Contract_ListView
 sidebar_label: Гэрээ
+type: lavlah
+roles: [owner, menejer]
+updated: 2026-10-26
+verified_commit: 12cf242
 keywords:
   - "гэрээ сунгах"
   - "гэрээ хаах"
