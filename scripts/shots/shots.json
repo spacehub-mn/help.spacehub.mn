@@ -876,7 +876,7 @@
     ],
     "width": 1920,
     "clip": "auto",
-    "alt": "Авто ажил: статус, Next Auto Job +, Job Create, Job start, төрөл",
+    "alt": "Авто ажил: статус, Next Auto Job +, Job Create, Job start",
     "marks": [
       {
         "n": "1.1",
@@ -897,11 +897,6 @@
         "n": "1.4",
         "btn": "Job start",
         "label": "Job start"
-      },
-      {
-        "n": "1.5",
-        "th": "Авто төлбөр төрөл",
-        "label": "Төрөл"
       }
     ]
   },

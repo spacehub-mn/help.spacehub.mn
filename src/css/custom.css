@@ -336,6 +336,7 @@ html[data-role] .navbar__logo img {
   border-radius: 3px;
   margin: 0 4px 0 12px;
   vertical-align: -1px;
-  border: 2px solid;
+  border-width: 2px;
+  border-style: solid;
 }
 .phase-legend i:first-child { margin-left: 0; }

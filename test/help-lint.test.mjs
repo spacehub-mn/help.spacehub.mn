@@ -100,3 +100,11 @@ test("зураг ↔ текст 1:1: илүү тэмдэг E-imgmap, дутуу 
   assert.ok(!z.includes("W-imgcap"));
   assert.ok(y.includes("W-imgcap"));
 });
+
+test("W-gray: жагсаалтын «Товчнууд»-д «… дээр л харагдана» → анхааруулга; «Товчны нэр … харагдана» биш", () => {
+  const body = (line) => `${fm()}# Гарчиг\n\n> 🏢 Owner · Вэб\n\n## Товчнууд\nТовчны нэр апп дээр яг ингэж харагдана.\n\n### «Цуцлах»\n- **Сонголт:** ${line}\n\n## 🔗 Холбоотой\n- [x](/x)\n`;
+  const docs = fixture({ "list/a.md": body("цуцлаагүй төлбөр дээр л харагдана."), "list/b.md": body("цуцлаагүй үед идэвхтэй, бусад үед **саарал**.") });
+  const { out } = run(docs);
+  assert.ok(rules(out, "list/a.md").includes("W-gray"));
+  assert.ok(!rules(out, "list/b.md").includes("W-gray"));
+});
