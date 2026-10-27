@@ -1240,5 +1240,135 @@
         "exact": true
       }
     ]
+  },
+  {
+    "id": "owner/list/autojob-1",
+    "page": "docs/owner/list/autojob.md",
+    "nav": [
+      "Автоматжуулалт",
+      "Авто ажил"
+    ],
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "chunk": "товчнууд",
+    "alt": "Авто ажил жагсаалтын товч",
+    "marks": [
+      {
+        "n": "1",
+        "btn": "Job Create",
+        "label": "Job Create",
+        "exact": true
+      },
+      {
+        "n": "2",
+        "btn": "Job start",
+        "label": "Job start",
+        "exact": true
+      },
+      {
+        "n": "2",
+        "btn": "Job stop",
+        "label": "Job stop",
+        "exact": true
+      },
+      {
+        "n": "3",
+        "btn": "Job Delete",
+        "label": "Job Delete",
+        "exact": true
+      },
+      {
+        "n": "4",
+        "btn": "Next Auto Job",
+        "label": "Next Auto Job +"
+      }
+    ]
+  },
+  {
+    "id": "owner/list/ebarimtrecord-1",
+    "page": "docs/owner/list/ebarimtrecord.md",
+    "nav": [
+      "Автоматжуулалт",
+      "Авто eBarimt"
+    ],
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "chunk": "товчнууд",
+    "alt": "Авто eBarimt жагсаалтын товч",
+    "marks": [
+      {
+        "n": "1",
+        "btn": "Job Create",
+        "label": "Job Create",
+        "exact": true
+      },
+      {
+        "n": "2",
+        "btn": "Job Start",
+        "label": "Job Start",
+        "exact": true
+      },
+      {
+        "n": "2",
+        "btn": "Job Stop",
+        "label": "Job Stop",
+        "exact": true
+      },
+      {
+        "n": "3",
+        "btn": "Job Delete",
+        "label": "Job Delete",
+        "exact": true
+      }
+    ]
+  },
+  {
+    "id": "owner/list/smscenter-1",
+    "page": "docs/owner/list/smscenter.md",
+    "nav": [
+      "Автоматжуулалт",
+      "Авто мессеж"
+    ],
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "chunk": "товчнууд",
+    "alt": "Авто мессеж жагсаалтын товч",
+    "marks": [
+      {
+        "n": "1",
+        "btn": "Тест мессеж",
+        "label": "Тест мессеж"
+      },
+      {
+        "n": "2",
+        "btn": "Job Create",
+        "label": "Job Create",
+        "exact": true
+      },
+      {
+        "n": "2",
+        "btn": "Job start",
+        "label": "Job start",
+        "exact": true
+      },
+      {
+        "n": "2",
+        "btn": "Job stop",
+        "label": "Job stop",
+        "exact": true
+      },
+      {
+        "n": "2",
+        "btn": "Job Delete",
+        "label": "Job Delete",
+        "exact": true
+      }
+    ]
   }
 ]
