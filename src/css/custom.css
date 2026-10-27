@@ -290,3 +290,52 @@ html[data-role] .navbar__logo img {
   -webkit-overflow-scrolling: touch;
   padding-bottom: 4px;
 }
+
+/* ── Систем нэвтрүүлэлтийн 6 үе (docs/owner/nevtruulelt/index.md) ── */
+.phase-flow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin: 12px 0 6px;
+  counter-reset: none;
+}
+.phase {
+  position: relative;
+  border-radius: 12px;
+  padding: 14px 12px 12px;
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.phase b {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e11d48;
+  color: #fff;
+  font-weight: 800;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+.phase span { font-weight: 700; line-height: 1.3; }
+.phase small { opacity: 0.8; }
+.phase--you { background: #e8f5f4; border-color: #07847f; }
+.phase--sh { background: #eef2ff; border-color: #4f46e5; }
+.phase--both { background: #fff7e6; border-color: #d97706; }
+[data-theme="dark"] .phase--you { background: #0f2624; }
+[data-theme="dark"] .phase--sh { background: #1b1f3a; }
+[data-theme="dark"] .phase--both { background: #2a1f0e; }
+.phase-legend { font-size: 0.85rem; margin-bottom: 16px; }
+.phase-legend i {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  margin: 0 4px 0 12px;
+  vertical-align: -1px;
+  border: 2px solid;
+}
+.phase-legend i:first-child { margin-left: 0; }
