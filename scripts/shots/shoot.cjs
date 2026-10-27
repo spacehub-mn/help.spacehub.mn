@@ -64,7 +64,7 @@ async function box(page, m) {
   }
   if (m.text) {
     // Цонх доторх бичиг / талбарын шошго
-    const loc = page.getByText(m.text, { exact: !!m.exact }).last();
+    const all = page.getByText(m.text, { exact: !!m.exact }); const loc = m.first ? all.first() : all.last(); // first: дэд таб (баганын толгойтой ижил нэртэй)
     return (await loc.isVisible().catch(() => false)) ? loc.boundingBox() : null;
   }
   if (m.input) {
@@ -82,12 +82,13 @@ async function box(page, m) {
   }
   if (m.btn) {
     // Дүрстэй товчны нэр ихэвчлэн title (tooltip)-д байдаг — текст ба title хоёуланг хайна
-    return page.evaluate(({ t, exact }) => {
+    return page.evaluate(({ t, exact, last }) => {
       // XAF хаалттай табын toolbar дэлгэцээс гадна (x < 0) үлддэг — зөвхөн харагдаж буйг ав
-      const el = [...document.querySelectorAll("button")].find((b) => { const r = b.getBoundingClientRect(); return b.offsetParent && r.x >= 0 && r.y >= 0 && (exact ? [(b.innerText || "").trim(), (b.title || "").split(/\r?\n/)[0].trim()].includes(t) : ((b.innerText || "") + " " + (b.title || "")).includes(t)); });
+      // last: дэд табын toolbar (үндсэн toolbar-тай ижил нэртэй товч) — DOM-д сүүлд байдаг
+      const el = [...document.querySelectorAll("button")][last ? "findLast" : "find"]((b) => { const r = b.getBoundingClientRect(); return b.offsetParent && r.x >= 0 && r.y >= 0 && (exact ? [(b.innerText || "").trim(), (b.title || "").split(/\r?\n/)[0].trim()].includes(t) : ((b.innerText || "") + " " + (b.title || "")).includes(t)); });
       const r = el && el.getBoundingClientRect();
       return r ? { x: r.x, y: r.y, width: r.width, height: r.height } : null;
-    }, { t: m.btn, exact: !!m.exact });
+    }, { t: m.btn, exact: !!m.exact, last: !!m.last });
   }
   const loc = page.locator("thead th:visible").filter({ hasText: new RegExp(`^\\s*${m.th}\\s*$`) }).first();
   return (await loc.count()) ? loc.boundingBox() : null;
@@ -177,6 +178,8 @@ async function toWebp(page, png) {
     if (s.clearDate) { const x = page.locator("button[title^=\"Огнооны шүүлтийг арилгах\"]:visible").first(); if (await x.isEnabled().catch(() => false)) { await x.click(); await idle(page); await page.waitForTimeout(2500); } }
     if (s.rowOpen != null) { await page.locator("tbody tr:visible").first().locator("td").nth(s.rowOpen).click(); await idle(page); await page.waitForTimeout(2500); }
     if (s.tab) { await page.getByText(s.tab, { exact: true }).first().click(); await idle(page); await page.waitForTimeout(2000); }
+    // Дэд таб (Үндсэн мэдээлэл доторх «Тоолуур» г.м.) — role=tab-аар, гүйлгэж харагдуулна; зөвхөн харах
+    if (s.subTab) { const t = page.getByText(s.subTab, { exact: true }).last(); await t.scrollIntoViewIfNeeded(); await t.click(); await idle(page); await page.waitForTimeout(2500); }
     if (s.open) {
       if (s.selectRow) await page.locator("tbody tr td:first-child input[type=checkbox]:visible, tbody tr td:first-child .dxbl-checkbox:visible").first().click();
       await page.waitForTimeout(800);

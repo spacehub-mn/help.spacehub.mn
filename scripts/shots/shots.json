@@ -1617,5 +1617,77 @@
     ],
     "url": "User_ListView",
     "waitTh": "Утас"
+  },
+  {
+    "page": "docs/owner/tooluur.md",
+    "nav": [
+      "Менежмент",
+      "Гэрээ"
+    ],
+    "width": 1920,
+    "rowOpen": 4,
+    "tab": "Үндсэн мэдээлэл",
+    "subTab": "Тоолуур",
+    "clip": {
+      "x": 835,
+      "y": 290,
+      "width": 1060,
+      "height": 340
+    },
+    "id": "owner/tooluur-gereend",
+    "alt": "Гэрээний карт: Үндсэн мэдээлэл → Тоолуур дэд таб, Шинэ",
+    "marks": [
+      {
+        "n": "2.1",
+        "text": "Тоолуур",
+        "exact": true,
+        "label": "Тоолуур дэд таб",
+        "first": true,
+        "right": true
+      },
+      {
+        "n": "2.2",
+        "btn": "Шинэ",
+        "exact": true,
+        "label": "Шинэ",
+        "below": true
+      }
+    ]
+  },
+  {
+    "page": "docs/owner/tooluur.md",
+    "nav": [
+      "Менежмент",
+      "Гэрээ"
+    ],
+    "width": 1920,
+    "rowOpen": 4,
+    "tab": "Үндсэн мэдээлэл",
+    "subTab": "Тоолуур",
+    "clip": {
+      "x": 835,
+      "y": 290,
+      "width": 1060,
+      "height": 340
+    },
+    "id": "owner/tooluur-tsutslah",
+    "alt": "Гэрээний тоолуур: Цуцлах, Сэргээх",
+    "marks": [
+      {
+        "n": "4.1",
+        "btn": "Цуцлах",
+        "last": true,
+        "label": "Цуцлах...",
+        "below": true
+      },
+      {
+        "n": "4.2",
+        "btn": "Сэргээх",
+        "exact": true,
+        "last": true,
+        "label": "Сэргээх",
+        "below": true
+      }
+    ]
   }
 ]
