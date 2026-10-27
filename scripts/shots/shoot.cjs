@@ -67,6 +67,11 @@ async function box(page, m) {
     const loc = page.getByText(m.text, { exact: !!m.exact }).last();
     return (await loc.isVisible().catch(() => false)) ? loc.boundingBox() : null;
   }
+  if (m.input) {
+    // Хайлтын нүд г.м. — placeholder-оор (утга нь бүдгэрсэн хэвээр)
+    const loc = page.locator(`input[placeholder*="${m.input}"]:visible`).first();
+    return (await loc.isVisible().catch(() => false)) ? loc.boundingBox() : null;
+  }
   if (m.rowCheck) {
     // Эхний мөрийн сонгох нүд (алхам: «гүйлгээг сонго») — зөвхөн тэмдэглэнэ, дарахгүй
     return page.evaluate(() => {
