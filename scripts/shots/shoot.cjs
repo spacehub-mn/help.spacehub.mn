@@ -74,6 +74,15 @@ async function box(page, m) {
     const all = page.getByText(m.text, { exact: !!m.exact }); const loc = m.first ? all.first() : all.last(); // first: дэд таб (баганын толгойтой ижил нэртэй)
     return (await loc.isVisible().catch(() => false)) ? loc.boundingBox() : null;
   }
+  if ("value" in m) {
+    // Сонголтын талбар (шүүлт г.м.) — одоогийн утгаар; хүрээ = бүтэн combobox
+    return page.evaluate((v) => {
+      // placeholder-гүй input = сонголтын талбар (цэсний «Filter…», «Энд бичиж хай…» нүд placeholder-тэй)
+      const el = [...document.querySelectorAll("input")].find((e) => e.offsetParent && !e.placeholder && e.value === v && e.getBoundingClientRect().x >= 0);
+      const r = el && (el.closest("[class*=combo]") || el.parentElement).getBoundingClientRect();
+      return r ? { x: r.x, y: r.y, width: r.width, height: r.height } : null;
+    }, m.value);
+  }
   if (m.input) {
     // Хайлтын нүд г.м. — placeholder-оор (утга нь бүдгэрсэн хэвээр)
     const loc = page.locator(`input[placeholder*="${m.input}"]:visible`).first();

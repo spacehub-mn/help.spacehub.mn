@@ -1878,5 +1878,32 @@
       }
     ],
     "padBottom": 260
+  },
+  {
+    "id": "owner/list/contractutility-1",
+    "page": "docs/owner/list/contractutility.md",
+    "nav": [
+      "Тооцоо",
+      "Тоолуур ашиглалт"
+    ],
+    "url": "ContractUtility_ListView",
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 700,
+    "padBottom": 200,
+    "waitTh": "Сар",
+    "blurTh": [
+      "Гэрээ"
+    ],
+    "alt": "Тоолуур ашиглалт жагсаалт: шүүлтийн сонголт",
+    "marks": [
+      {
+        "n": "1.1",
+        "value": "",
+        "label": "Шүүлтийн сонголт",
+        "below": true
+      }
+    ]
   }
 ]
