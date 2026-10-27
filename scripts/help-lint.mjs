@@ -54,7 +54,8 @@ const SPELL_RE = /(?<!\p{L})(оорчл\p{L}*|толбор\p{L}*|тулбур\p{
 const OWNER_RE = /(?<![\p{L}\w/.«-])owner(?![\w/»])/iu;
 const techOf = (seen) => [
   ...TECH.filter((w) => new RegExp(`(?<![\\p{L}\\w])${w}(?![\\p{L}\\w])`, "iu").test(seen)),
-  ...(OWNER_RE.test(seen) ? ["owner → байгууллага"] : []),
+  // «…» доторх дэлгэцийн бичвэр (мессеж, товчны нэр) — яг дэлгэц дээрхээрээ үлдэнэ
+  ...(OWNER_RE.test(seen.replace(/«[^»\n]*»/g, " ")) ? ["owner → байгууллага"] : []),
 ];
 const TECH = ["toolbar", "popup", "TargetObjectsCriteria", "ObjectSpace", "ListView", "DetailView", "nested", "PreBill", "FIFO", "refno", "hash", "migration", "deploy", "controller", "XAF", "XPO", "Hangfire", "cron", "commit", "null", "Oid", "enum", "SQL", "backend", "API"];
 const termsFile = join(ROOT, "scripts", "help-lint.terms.json");
