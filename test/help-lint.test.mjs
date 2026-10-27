@@ -138,6 +138,14 @@ test("W-tech: changelog бичвэр (тайлбар, холбоосын хая�
   assert.ok(!out.results.some((r) => r.file.endsWith("2026-10-25-x.md")));
 });
 
+test("E-appmd: аппын «?» хуулбар эх хуудастайгаа зөрвөл ❌, ижил бол цэвэр", () => {
+  const page = `${fm()}# Төлбөр\n\n<!-- нотолгоо -->\n> 🏠 Түрээслэгч · Апп\n\n1. Алхам.\n\n![x](/img/x.webp)\n\n## 🔗 Холбоотой\n- [x](/x)\n`;
+  const d = fixture({ "payment.md": page, "../static/docs/tenant/payment.md": "# Хуучин\n" });
+  assert.deepEqual(rules(run(d).out, "static/docs/tenant/payment.md"), ["E-appmd"]);
+  writeFileSync(join(d, "..", "static", "docs", "tenant", "payment.md"), "# Төлбөр\n\n> 🏠 Түрээслэгч · Апп\n\n1. Алхам.\n\n## 🔗 Холбоотой\n- [x](https://help.spacehub.mn/x)\n");
+  assert.ok(!run(d).out.results.some((r) => r.file.endsWith("static/docs/tenant/payment.md")));
+});
+
 test("W-tech: өгүүлбэрийн owner; «Owner» эрхийн нэр, /owner/ зам зөвшөөрөгдөнө", () => {
   const ok = good.replace("Бичвэр.", "Эрхийн нэр нь «Owner». [Холбоос](/owner/tohirgoo) <img src='/img/owner/a.webp' />");
   assert.ok(!rules(run(fixture({ "a.md": ok })).out, "a.md").includes("W-tech"));

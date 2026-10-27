@@ -30,6 +30,7 @@ import { readFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { join, relative, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
+import { APP_MD, toAppMd } from "./app-md.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const args = process.argv.slice(2);
@@ -272,6 +273,15 @@ for (const file of existsSync(CHANGELOG) ? walk(CHANGELOG) : []) {
   const body = src.replace(/^---[\s\S]*?\n---/, "").replace(/<!--[\s\S]*?-->/g, " ").replace(/`[^`]*`/g, " ").replace(/\]\([^)]*\)/g, "]");
   const tech = techOf(`${title} ${body}`);
   if (tech.length) results.push({ file: relative(join(DOCS, ".."), file).replace(/\\/g, "/"), type: "changelog", questions: 0, issues: [{ level: "W", rule: "W-tech", msg: `дотоод/кодын нэр томьёо: ${tech.join(", ")} — дэлгэц дээрх нэрээр эсвэл энгийн үгээр бич` }] });
+}
+
+// Хуучин аппын «?» хуулбар (static/docs/<id>.md) эх хуудастайгаа ижил эсэх (QA 10-28) — засах: node scripts/app-md.mjs
+for (const [id, page] of Object.entries(APP_MD)) {
+  const copy = join(STATIC, "docs", `${id}.md`), srcPage = join(DOCS, page);
+  if (!existsSync(srcPage)) continue;
+  const rel = `static/docs/${id}.md`;
+  if (!existsSync(copy) || readFileSync(copy, "utf8").replace(/\r\n/g, "\n") !== toAppMd(readFileSync(srcPage, "utf8")))
+    results.push({ file: rel, type: "app-md", questions: 0, issues: [{ level: "E", rule: "E-appmd", msg: `аппын «?» хуулбар docs/${page}-тэй зөрж байна — node scripts/app-md.mjs` }] });
 }
 
 const count = (lvl) => results.reduce((n, r) => n + r.issues.filter((i) => i.level === lvl).length, 0);
