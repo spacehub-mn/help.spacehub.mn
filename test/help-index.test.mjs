@@ -22,3 +22,14 @@ test('pageOf: slug frontmatter (нүүр хуудас) ба зайтай фай�
   assert.equal(pageOf('workspace/reguest-obect copy.md', '# Санал').url, '/workspace/reguest-obect%20copy');
   assert.deepEqual(frontMatter('# x').data, {});
 });
+
+test('pageOf: «Гарчиг {#id}» — тусгай anchor ашиглана, текстээс хасна', () => {
+  const src = '# Толь\n\n## Гэрээ {#geree}\nТайлбар.\n\n### «Хуваарилах...» {#huvaarilah}\n\n## Энгийн гарчиг\n';
+  const p = pageOf('owner/glossary.md', src);
+  assert.deepEqual(p.headings, [
+    { text: 'Гэрээ', anchor: 'geree' },
+    { text: '«Хуваарилах...»', anchor: 'huvaarilah' },
+    { text: 'Энгийн гарчиг', anchor: 'энгийн-гарчиг' },
+  ]);
+  assert.ok(!p.text.includes('{#'));
+});

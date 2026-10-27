@@ -44,15 +44,20 @@ const config = {
           routeBasePath: "/",
           // owner хэсэгт ү/ө ↔ у/о хайлтын түлхүүр үг (plugins/search-variants.js)
           remarkPlugins: [require("./plugins/search-variants")],
+          // Алхмын дугаар 1., 1.1 — TOC-д ч дугаартай харагдахын тулд default plugin-оос өмнө
+          beforeDefaultRemarkPlugins: [require("./plugins/step-numbers")],
         },
-        // blog: {
-        //   showReadingTime: true,
-        //   // Please change this to your repo.
-        //   // Remove this to remove the "edit this page" links.
-
-        //   editUrl:
-        //     'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        // },
+        // 🆕 Шинэ боломж — deploy бүрд нэг оруулга (HELP_PLAN §4, эзэн 10-26)
+        blog: {
+          path: "changelog",
+          routeBasePath: "changelog",
+          blogTitle: "Шинэ боломж",
+          blogDescription: "Spacehub-ийн deploy бүрийн шинэ боломж, өөрчлөлт, засвар",
+          blogSidebarTitle: "Сүүлийн өөрчлөлт",
+          blogSidebarCount: 10,
+          showReadingTime: false,
+          feedOptions: { type: "rss", title: "Spacehub — шинэ боломж" },
+        },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
@@ -82,12 +87,14 @@ const config = {
           src: "img/logo.svg",
         },
         items: [
-          {
-            type: "doc",
-            docId: "payment",
-            position: "left",
-            label: "Оршин суугчдын гарын авлага",
-          },
+          // Хоёр тусдаа тусламж (эзэн 10-27 «түрээслэгч, owner 2-ыг бүр тусдаа салгая»): src/theme/Root.js html[data-role]-оор
+          // зөвхөн өөрийн гарчиг харагдана; нөгөөх рүү баруун талын жижиг холбоосоор шилжинэ (src/css/custom.css).
+          { type: "docSidebar", sidebarId: "owner", position: "left", label: "🏢 Эзэмшигч, менежерийн тусламж", className: "role-only role-only--owner" },
+          { type: "docSidebar", sidebarId: "resident", position: "left", label: "🏠 Түрээслэгч, оршин суугчийн тусламж", className: "role-only role-only--resident" },
+          { to: "/?role=resident", position: "right", label: "Түрээслэгч үү? →", className: "role-switch role-switch--owner" },
+          { to: "/owner?role=owner", position: "right", label: "Эзэмшигч, менежер үү? →", className: "role-switch role-switch--resident" },
+          // 🆕 Шинэ боломж (changelog) — Spacehub-ийн deploy бүрийн өөрчлөлт, байгууллагын хэсэгт
+          { to: "/changelog", position: "left", label: "🆕 Шинэ боломж", className: "role-only role-only--owner" },
           // {
           //   type: 'doc',
           //   docId: 'lessor/contract/view-contract-details',

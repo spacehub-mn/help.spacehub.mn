@@ -27,5 +27,5 @@ test('plugin: зөвхөн docs/owner/ — түрээслэгчийн хуудс
   plugin()(owner, { path: '/site/docs/owner/none.md' });
   const jsx = owner.children.at(-1);
   assert.equal(jsx.type, 'jsx');
-  assert.match(jsx.value, /^<details className="search-keywords"><summary>Хайлтын түлхүүр үг<\/summary><p>толбор · шуулт<\/p><\/details>$/);
+  assert.match(jsx.value, /^<div className="search-keywords" aria-hidden="true"><p>толбор · шуулт<\/p><\/div>$/);
 });

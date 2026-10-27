@@ -27,10 +27,16 @@ export function pageOf(rel, src) {
   const { data, body } = frontMatter(src);
   const route = data.slug ?? '/' + rel.replace(/\\/g, '/').replace(/\.mdx?$/, '').replace(/\/index$/, '');
   const h1 = /^#\s+(.+)$/m.exec(body);
-  const headings = [...body.matchAll(/^#{2,3}\s+(.+)$/gm)].map((m) => ({ text: m[1].trim(), anchor: slugify(m[1]) }));
+  // «Гарчиг {#id}» — Docusaurus тусгай anchor-ыг ашиглана, текстээс хасна.
+  const headings = [...body.matchAll(/^#{2,3}\s+(.+)$/gm)].map((m) => {
+    const custom = /\s*\{#([\w-]+)\}\s*$/.exec(m[1]);
+    const text = (custom ? m[1].slice(0, custom.index) : m[1]).trim();
+    return { text, anchor: custom ? custom[1] : slugify(text) };
+  });
   const text = body
     .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')          // зураг
     .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')         // холбоос → текст
+    .replace(/\s*\{#[\w-]+\}/g, '')                  // {#id} anchor
     .replace(/^#{1,6}\s+/gm, '').replace(/[*_`>|]/g, ' ')
     .replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
   return { title: data.title ?? h1?.[1].trim() ?? rel, url: encodeURI(route), headings, text, keywords: data.keywords ?? [] };

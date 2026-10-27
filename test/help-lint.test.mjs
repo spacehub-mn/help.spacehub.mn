@@ -1,0 +1,181 @@
+import { test } from "node:test";
+import assert from "node:assert/strict";
+import { execFileSync } from "node:child_process";
+import { mkdtempSync, mkdirSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+
+const run = (docs, ...extra) => {
+  try {
+    return { code: 0, out: JSON.parse(execFileSync("node", ["scripts/help-lint.mjs", "--no-git", "--json", "--docs", docs, ...extra], { encoding: "utf8" })) };
+  } catch (e) {
+    return { code: e.status, out: JSON.parse(e.stdout) };
+  }
+};
+const fixture = (files) => {
+  const d = join(mkdtempSync(join(tmpdir(), "help-lint-")), "docs");
+  for (const [name, body] of Object.entries(files)) {
+    mkdirSync(join(d, name, ".."), { recursive: true });
+    writeFileSync(join(d, name), body);
+  }
+  mkdirSync(join(d, "..", "static", "img"), { recursive: true });
+  writeFileSync(join(d, "..", "static", "img", "x.webp"), "");
+  return d;
+};
+const fm = (extra = "") => `---\ntype: zaavar\nroles: [owner]\nupdated: 2026-10-26\nverified_commit: c68c602\n${extra}---\n`;
+const good = `${fm()}# Гарчиг\n\n> 🏢 Байгууллага · Вэб\n\nБичвэр.\n\n1. Алхам.\n\n![Жагсаалт](/img/x.webp)\n\n## 🔗 Холбоотой\n- [x](/x)\n`;
+const rules = (out, file) => out.results.find((r) => r.file.endsWith(file)).issues.map((i) => i.rule);
+
+test("загварт нийцсэн хуудас — алдаагүй, exit 0", () => {
+  const { code, out } = run(fixture({ "a.md": good }));
+  assert.equal(code, 0);
+  assert.deepEqual(rules(out, "a.md"), []);
+});
+
+test("frontmatter дутуу, H1 2 → E, exit 1", () => {
+  const bad = `---\ntype: busad\nroles: []\nupdated: 26-10\n---\n# Нэг\n\n> 🏢 x\n\n# Хоёр\n`;
+  const { code, out } = run(fixture({ "b.md": bad }));
+  assert.equal(code, 1);
+  const r = rules(out, "b.md");
+  assert.equal(r.filter((x) => x === "E-fm").length, 4); // type, roles, updated, verified_commit
+  assert.ok(r.includes("E-h1"));
+});
+
+test("code block доторх «# » H1 гэж тоологдохгүй; «хэнд» мөр, Холбоотой дутуу → W", () => {
+  const body = `${fm()}# Гарчиг\n\nШууд бичвэр.\n\n\`\`\`\n# энэ тайлбар\n\`\`\`\n`;
+  const { code, out } = run(fixture({ "c.md": body }));
+  assert.equal(code, 0);
+  assert.deepEqual(rules(out, "c.md").sort(), ["W-aud", "W-img", "W-rel", "W-steps"]);
+  assert.equal(run(fixture({ "c.md": body }), "--strict").code, 1);
+});
+
+test("хуучирсан нэр томьёо, ❔ олон → W", () => {
+  const body = good.replace("Бичвэр.", "Хоногоор тооцох ❔ ❔ ❔ ❔ ❔ ❔");
+  const r = rules(run(fixture({ "d.md": body })).out, "d.md");
+  assert.ok(r.includes("W-term"));
+  assert.ok(r.includes("W-q"));
+});
+
+test("frontmatter-гүй 2023 хуудас — зөвхөн I-legacy", () => {
+  const r = rules(run(fixture({ "e.md": "# Хуучин\n\n1. алхам\n" })).out, "e.md");
+  assert.deepEqual(r, ["I-legacy"]);
+});
+
+test("terms scope — owner-ийн дүрэм апп хуудсанд үйлчлэхгүй", () => {
+  const body = good.replace("Бичвэр.", "нэхэмжлэл үүсгэх");
+  const out = run(fixture({ "owner/f.md": body, "lessor/g.md": body })).out;
+  assert.ok(rules(out, "owner/f.md").includes("W-term"));
+  assert.ok(!rules(out, "lessor/g.md").includes("W-term"));
+});
+
+test("зургийн файл алга → E-img (exit 1); alt хоосон, зураггүй заавар → W-img", () => {
+  const body = good.replace("![Жагсаалт](/img/x.webp)", "![](/img/x.webp)\n\n![Алга](/img/baihgui.webp)");
+  const { code, out } = run(fixture({ "f.md": body }));
+  assert.equal(code, 1);
+  assert.deepEqual(rules(out, "f.md").sort(), ["E-img", "W-img"]);
+  const noImg = good.replace("![Жагсаалт](/img/x.webp)", "");
+  assert.deepEqual(rules(run(fixture({ "g.md": noImg })).out, "g.md"), ["W-img"]);
+});
+
+test("H1-ийн өмнө <!-- --> → E-h1first (гарчиг файлын нэрээр гарна)", () => {
+  const bad = `${fm()}<!-- нотолгоо -->\n\n# Гарчиг\n\n> 🏢 Байгууллага · Вэб\n\n## 🔗 Холбоотой\n- [x](/x)\n`;
+  const { code, out } = run(fixture({ "c.md": bad, "a.md": good }));
+  assert.equal(code, 1);
+  assert.ok(rules(out, "c.md").includes("E-h1first"));
+  assert.ok(!rules(out, "a.md").includes("E-h1first"));
+});
+
+test("зураг ↔ текст 1:1: илүү тэмдэг E-imgmap, дутуу W-imgmap, > 8 E-img8, «Зураг N.» алга W-imgcap", () => {
+  const docs = fixture({
+    "z.md": `${fm()}# Гарчиг\n\n> 🏢 Байгууллага · Вэб\n\n## Хуулга харах\n\n![x](/img/x.webp)\n\n*Зураг 1. Хуулга.*\n\n1. Цэс.\n2. Данс.\n3. Огноо.\n\n## 🔗 Холбоотой\n- [x](/x)\n`,
+    "y.md": `${fm()}# Гарчиг\n\n> 🏢 Байгууллага · Вэб\n\n## Алхам\n\n![x](/img/x.webp)\n\nТайлбаргүй.\n\n1. Нэг.\n\n## 🔗 Холбоотой\n- [x](/x)\n`,
+  });
+  const shots = join(docs, "..", "shots.json");
+  const m = (n) => ({ n, btn: "x" });
+  writeFileSync(shots, JSON.stringify([{ id: "x", marks: [m("1.1"), m("1.2"), m("1.9"), ...Array(6).fill(m("1.1"))] }]));
+  const { code, out } = run(docs, "--shots", shots);
+  assert.equal(code, 1);
+  const z = rules(out, "z.md"), y = rules(out, "y.md");
+  assert.ok(z.includes("E-imgmap") && z.includes("W-imgmap") && z.includes("E-img8")); // 1.9 илүү, 1.3 дутуу, 9 тэмдэг
+  assert.ok(!z.includes("W-imgcap"));
+  assert.ok(y.includes("W-imgcap"));
+});
+
+test("W-gray: жагсаалтын «Товчнууд»-д «… дээр л харагдана» → анхааруулга; «Товчны нэр … харагдана» биш", () => {
+  const body = (line) => `${fm()}# Гарчиг\n\n> 🏢 Байгууллага · Вэб\n\n## Товчнууд\nТовчны нэр апп дээр яг ингэж харагдана.\n\n### «Цуцлах»\n- **Сонголт:** ${line}\n\n## 🔗 Холбоотой\n- [x](/x)\n`;
+  const docs = fixture({ "list/a.md": body("цуцлаагүй төлбөр дээр л харагдана."), "list/b.md": body("цуцлаагүй үед идэвхтэй, бусад үед **саарал**.") });
+  const { out } = run(docs);
+  assert.ok(rules(out, "list/a.md").includes("W-gray"));
+  assert.ok(!rules(out, "list/b.md").includes("W-gray"));
+});
+
+test("E-pii: локал жагсаалтын харилцагчийн нэр <!-- --> тайлбарт ч барина; W-pii 6 оронтой гэрээний дугаар", () => {
+  const docs = fixture({ "a.md": `${fm()}# Гарчиг\n\n<!-- Тестийн Нэр ХХК-ийн 601050 гэрээ -->\n\n> 🏢 Байгууллага · Вэб\n\n1. Алхам.\n\n## 🔗 Холбоотой\n- [x](/x)\n`, "b.md": good });
+  const pii = join(docs, "..", "pii.txt");
+  writeFileSync(pii, "# тайлбар\nТестийн Нэр\n");
+  const { code, out } = run(docs, "--pii", pii);
+  assert.equal(code, 1);
+  assert.ok(rules(out, "a.md").includes("E-pii") && rules(out, "a.md").includes("W-pii"));
+  assert.ok(!rules(out, "b.md").includes("E-pii"));
+});
+
+test("E-spell: ө/ү-гүй үг (тайлбар, inline кодод тооцохгүй); W-tech; W-long", () => {
+  const body = good.replace("Бичвэр.", "Үнэ оорчлох, толбор шалга. `толбор` <!-- турээс --> ListView-ээс нээ.\n\nНэг хоёр гурав дөрөв тав зургаа долоо найм ес арав нэг хоёр гурав дөрөв тав зургаа долоо найм ес арав нэг.");
+  const { code, out } = run(fixture({ "s.md": body }));
+  assert.equal(code, 1);
+  const r = rules(out, "s.md");
+  assert.ok(r.includes("E-spell") && r.includes("W-tech") && r.includes("W-long"));
+  const msg = out.results[0].issues.find((i) => i.rule === "E-spell").msg;
+  assert.match(msg, /оорчлох, толбор/);
+  assert.doesNotMatch(msg, /турээс/);
+  assert.deepEqual(rules(run(fixture({ "a.md": good })).out, "a.md"), []);
+});
+
+test("W-tech: changelog бичвэр (тайлбар, холбоосын хаягийг тооцохгүй)", () => {
+  const d = fixture({ "a.md": good, "../changelog/2026-10-24-x.md": "---\ntitle: 10-24\n---\n<!-- toolbar -->\nЖагсаалтын toolbar дээр гарав. [x](/owner/toolbar)\n", "../changelog/2026-10-25-x.md": "---\ntitle: 10-25\n---\nТовчны мөрөнд гарав.\n" });
+  const out = run(d).out;
+  assert.deepEqual(rules(out, "2026-10-24-x.md"), ["W-tech"]);
+  assert.ok(!out.results.some((r) => r.file.endsWith("2026-10-25-x.md")));
+});
+
+test("E-appmd: аппын «?» хуулбар эх хуудастайгаа зөрвөл ❌, ижил бол цэвэр", () => {
+  const page = `${fm()}# Төлбөр\n\n<!-- нотолгоо -->\n> 🏠 Түрээслэгч · Апп\n\n1. Алхам.\n\n![x](/img/x.webp)\n\n## 🔗 Холбоотой\n- [x](/x)\n`;
+  const d = fixture({ "payment.md": page, "../static/docs/tenant/payment.md": "# Хуучин\n" });
+  assert.deepEqual(rules(run(d).out, "static/docs/tenant/payment.md"), ["E-appmd"]);
+  writeFileSync(join(d, "..", "static", "docs", "tenant", "payment.md"), "# Төлбөр\n\n> 🏠 Түрээслэгч · Апп\n\n1. Алхам.\n\n## 🔗 Холбоотой\n- [x](https://help.spacehub.mn/x)\n");
+  assert.ok(!run(d).out.results.some((r) => r.file.endsWith("static/docs/tenant/payment.md")));
+});
+
+test("W-tech: өгүүлбэрийн owner; «Owner» эрхийн нэр, /owner/ зам зөвшөөрөгдөнө", () => {
+  const ok = good.replace("Бичвэр.", "Эрхийн нэр нь «Owner». [Холбоос](/owner/tohirgoo) <img src='/img/owner/a.webp' />");
+  assert.ok(!rules(run(fixture({ "a.md": ok })).out, "a.md").includes("W-tech"));
+  const out = run(fixture({ "o.md": good.replace("Бичвэр.", "Owner-ийн тохиргоог нээ.") })).out;
+  assert.match(out.results[0].issues.find((i) => i.rule === "W-tech").msg, /owner → байгууллага/);
+});
+
+test("тойм зураг: эхний бүлгийн өмнөх зураг — тэмдэг = бүлгийн дугаар (1, 2)", () => {
+  const docs = fixture({
+    "t.md": `${fm()}# Гарчиг\n\n> 🏢 Байгууллага · Вэб\n\n![x](/img/x.webp)\n\n*Зураг 1. Тойм.*\n\n## 1. Цэс\nБичвэр.\n\n## 2. Жагсаалт\nБичвэр.\n\n## 🔗 Холбоотой\n- [x](/x)\n`,
+  });
+  const shots = join(docs, "..", "shots.json");
+  writeFileSync(shots, JSON.stringify([{ id: "x", marks: [{ n: "1", btn: "x" }, { n: "2", btn: "x" }] }]));
+  const ok = rules(run(docs, "--shots", shots).out, "t.md");
+  assert.ok(!ok.includes("E-imgmap") && !ok.includes("W-imgmap"));
+  writeFileSync(shots, JSON.stringify([{ id: "x", marks: [{ n: "1", btn: "x" }, { n: "3", btn: "x" }] }]));
+  const bad = rules(run(docs, "--shots", shots).out, "t.md");
+  assert.ok(bad.includes("E-imgmap") && bad.includes("W-imgmap")); // 3 илүү, 2 дутуу
+});
+
+test("verified_repo: spacehub — commit аппын repo-д шалгагдана, Spacehub23-аар биш", () => {
+  const repo = mkdtempSync(join(tmpdir(), "help-lint-app-"));
+  const g = (...a) => execFileSync("git", ["-C", repo, ...a], { encoding: "utf8" }).trim();
+  g("init", "-q"); writeFileSync(join(repo, "a.txt"), "a"); g("add", "a.txt");
+  g("-c", "user.name=t", "-c", "user.email=t@t", "commit", "-q", "-m", "a");
+  const sha = g("rev-parse", "--short=8", "HEAD");
+  const page = (c) => good.replace("verified_commit: c68c602\n", `verified_commit: ${c}\nverified_repo: spacehub\n`);
+  const docs = fixture({ "ok.md": page(sha), "bad.md": page("deadbeef") });
+  const lint = () => { try { return JSON.parse(execFileSync("node", ["scripts/help-lint.mjs", "--json", "--docs", docs, "--repo", repo, "--ref", "HEAD", "--app-repo", repo], { encoding: "utf8" })); } catch (e) { return JSON.parse(e.stdout); } };
+  const out = lint();
+  assert.ok(!rules(out, "ok.md").includes("E-fm"));
+  assert.ok(out.results.find((r) => r.file.endsWith("bad.md")).issues.some((i) => i.rule === "E-fm" && /аппын repo/.test(i.msg)));
+});

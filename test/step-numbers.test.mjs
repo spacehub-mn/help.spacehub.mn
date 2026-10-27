@@ -1,0 +1,64 @@
+import { test } from "node:test";
+import assert from "node:assert/strict";
+import { createRequire } from "node:module";
+import { mkdtempSync, mkdirSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+
+const plugin = createRequire(import.meta.url)("../plugins/step-numbers.js");
+const file = (type) => {
+  const p = join(mkdtempSync(join(tmpdir(), "steps-")), "a.md");
+  writeFileSync(p, type ? `---\ntype: ${type}\n---\n` : "# x\n");
+  return { path: p };
+};
+const h = (depth, value) => ({ type: "heading", depth, children: [{ type: "text", value }] });
+const ol = (n) => ({ type: "list", ordered: true, children: Array.from({ length: n }, () => ({ type: "listItem", children: [] })) });
+const text = (n) => n.children.map((c) => c.value ?? (c.children || []).map((x) => x.value).join("") + ".").join("").replace(/^(\d+(?:\.\d+)+)\. /, "$1 ");
+const run = (tree, type = "zaavar") => (plugin()(tree, file(type)), tree);
+
+test("алхмын H2 → 1., 2.; гар угтвар («Алхам 3 —», «5.») солигдоно; мета хэсэг дугааргүй", () => {
+  const t = run({ children: [h(2, "Энэ юунд хэрэгтэй"), h(2, "Алхам 3 — Бүртгэл"), h(2, "5. Гэрээ"), h(2, "Түгээмэл асуулт"), h(2, "🔗 Холбоотой")] });
+  assert.deepEqual(t.children.map(text), ["Энэ юунд хэрэгтэй", "1. Бүртгэл", "2. Гэрээ", "Түгээмэл асуулт", "🔗 Холбоотой"]);
+});
+
+test("алхмын доорх дугаартай жагсаалт → substeps + data-step; мета доорх жагсаалт хөндөгдөхгүй", () => {
+  const a = ol(2), b = ol(2);
+  run({ children: [h(2, "Нэвтрэх"), a, h(2, "Түгээмэл асуулт"), b] });
+  assert.deepEqual(a.data.hProperties.className, ["substeps"]);
+  assert.equal(a.children[1].data.hProperties["data-step"], "1");
+  assert.equal(b.data, undefined);
+});
+
+test("«Товчнууд» доторх ### → 1., 2.; «Бусад товч» дугааргүй; доорх жагсаалт 2.x", () => {
+  const l = ol(1);
+  const t = run({ children: [h(2, "Товчнууд"), h(3, "«Шинэ»"), h(3, "«Цуцлах»"), l, h(3, "Бусад товч")] }, "lavlah");
+  assert.deepEqual([0, 1, 2, 4].map((i) => text(t.children[i])), ["Товчнууд", "1. «Шинэ»", "2. «Цуцлах»", "Бусад товч"]);
+  assert.equal(l.children[0].data.hProperties["data-step"], "2");
+});
+
+test("ойлголт, legacy хуудас хөндөгдөхгүй", () => {
+  for (const type of ["oilgolt", null]) {
+    const t = run({ children: [h(2, "Гэрээ")] }, type);
+    assert.equal(text(t.children[0]), "Гэрээ");
+  }
+});
+
+test("Товчнууд: бүлэг ### (доороо ####) → 1., #### → 1.1; зөвлөгөөний ### дугааргүй", () => {
+  const t = run({ children: [h(2, "Товчнууд"), h(3, "Аль товчийг сонгох"), h(3, "Гэрээ хаах"), h(4, "«Сунгах»"), h(4, "«Хаах»"), h(3, "«Төлбөр+»")] }, "lavlah");
+  assert.deepEqual(t.children.slice(1).map(text), ["Аль товчийг сонгох", "1. Гэрээ хаах", "1.1 «Сунгах»", "1.2 «Хаах»", "2. «Төлбөр+»"]);
+});
+
+test("owner-ийн type-гүй заавар дугаарлагдана, owner/index үгүй", () => {
+  const dir = mkdtempSync(join(tmpdir(), "steps-"));
+  const mk = (rel) => { const p = join(dir, rel); mkdirSync(join(p, ".."), { recursive: true }); writeFileSync(p, "# x\n"); return { path: p }; };
+  const a = { children: [h(2, "Хуулгаа харах")] }; plugin()(a, mk("docs/owner/huulga.md"));
+  const b = { children: [h(2, "Хуулгаа харах")] }; plugin()(b, mk("docs/owner/index.md"));
+  assert.equal(text(a.children[0]), "1. Хуулгаа харах");
+  assert.equal(text(b.children[0]), "Хуулгаа харах");
+});
+
+test("«3.»-аар эхэлсэн жагсаалт (зургийн дараа үргэлжилсэн) → data-n 2.3, 2.4", () => {
+  const l = { ...ol(2), start: 3 };
+  run({ children: [h(2, "Нэг"), h(2, "Хоёр"), l] });
+  assert.deepEqual(l.children.map((li) => li.data.hProperties["data-n"]), ["2.3", "2.4"]);
+});

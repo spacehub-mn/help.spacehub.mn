@@ -1,0 +1,2221 @@
+[
+  {
+    "id": "owner/list/bill-1",
+    "page": "docs/owner/list/bill.md",
+    "nav": [
+      "Тооцоо",
+      "Төлбөр"
+    ],
+    "waitTh": "Код",
+    "width": 1920,
+    "alt": "Төлбөр жагсаалтын toolbar: нэхэмжлэх ба төлбөр",
+    "marks": [
+      {
+        "n": "1",
+        "btn": "Нэхэмжлэх +",
+        "label": "Нэхэмжлэх +"
+      },
+      {
+        "n": "2",
+        "btn": "бодит үлдэгдлээр бодно",
+        "label": "Нэхэмжлэх шинэчилж илгээх"
+      },
+      {
+        "n": "3",
+        "btn": "Төлбөр шинэчлэх бол",
+        "label": "Төлбөр шинэчлэх"
+      },
+      {
+        "n": "4",
+        "btn": "Сонгосон төлбөрүүдийг цуцлах",
+        "label": "Цуцлах"
+      }
+    ],
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "chunk": "нэхэмжлэх ба төлбөр"
+  },
+  {
+    "id": "owner/list/bill-2",
+    "page": "docs/owner/list/bill.md",
+    "nav": [
+      "Тооцоо",
+      "Төлбөр"
+    ],
+    "waitTh": "Код",
+    "width": 1920,
+    "alt": "Төлбөр жагсаалтын toolbar: алданги",
+    "marks": [
+      {
+        "n": "5",
+        "btn": "Алданги+",
+        "label": "Алданги+",
+        "exact": true
+      },
+      {
+        "n": "6",
+        "btn": "Энэ тооцооны алдангийг 0",
+        "label": "Алданги цуцлах"
+      },
+      {
+        "n": "7",
+        "btn": "Цуцалсан алдангийг сэргээж",
+        "label": "Алданги сэргээх"
+      },
+      {
+        "n": "8",
+        "btn": "Алданги ...",
+        "label": "Алданги ...",
+        "exact": true
+      }
+    ],
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "chunk": "алданги"
+  },
+  {
+    "id": "owner/list/bill-3",
+    "page": "docs/owner/list/bill.md",
+    "nav": [
+      "Тооцоо",
+      "Төлбөр"
+    ],
+    "waitTh": "Код",
+    "width": 1920,
+    "alt": "Төлбөр жагсаалтын toolbar: хөнгөлөлт, данс",
+    "marks": [
+      {
+        "n": "9",
+        "btn": "Хөнгөлөлт +",
+        "label": "Хөнгөлөлт +",
+        "exact": true
+      },
+      {
+        "n": "10",
+        "btn": "Данс тохируулах",
+        "label": "Данс тохируулах",
+        "exact": true
+      }
+    ],
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "chunk": "хөнгөлөлт, данс"
+  },
+  {
+    "id": "owner/list/contract-1",
+    "page": "docs/owner/list/contract.md",
+    "nav": [
+      "Менежмент",
+      "Гэрээ"
+    ],
+    "width": 1920,
+    "alt": "Гэрээ жагсаалтын toolbar (зүүн хэсэг): гэрээ байгуулах, сунгах, хаах",
+    "marks": [
+      {
+        "n": "1.1",
+        "btn": "Сунгах",
+        "label": "Сунгах",
+        "exact": true
+      },
+      {
+        "n": "1.2",
+        "btn": "шинээр байгуулах эсвэл сунгах",
+        "label": "Шинэчлэх"
+      },
+      {
+        "n": "1.3",
+        "btn": "Огноо зас",
+        "label": "Огноо зас",
+        "exact": true
+      },
+      {
+        "n": "1.4",
+        "btn": "Сонгосон гэрээнүүдийг хаах",
+        "label": "Хаах"
+      },
+      {
+        "n": "1.5",
+        "btn": "Авто өөрчлөх",
+        "label": "Авто өөрчлөх",
+        "exact": true
+      }
+    ],
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "chunk": "гэрээ байгуулах, сунгах, хаах"
+  },
+  {
+    "id": "owner/list/contract-2",
+    "page": "docs/owner/list/contract.md",
+    "nav": [
+      "Менежмент",
+      "Гэрээ"
+    ],
+    "width": 1920,
+    "alt": "Гэрээ жагсаалтын toolbar (зүүн хэсэг): төлбөр, тооцоо",
+    "marks": [
+      {
+        "n": "2.1",
+        "btn": "Төлбөр+",
+        "label": "Төлбөр+",
+        "exact": true
+      },
+      {
+        "n": "2.2",
+        "btn": "Төлбөрийн төлөв шинэчлэх",
+        "label": "Төлбөрийн төлөв шинэчлэх",
+        "exact": true
+      },
+      {
+        "n": "2.3",
+        "btn": "Хуваарилах",
+        "label": "Хуваарилах",
+        "exact": true
+      },
+      {
+        "n": "2.4",
+        "btn": "Үйлчилгээ татах",
+        "label": "Үйлчилгээ татах",
+        "exact": true
+      },
+      {
+        "n": "2.5",
+        "btn": "Талбайн м2 үнэ солигдсон",
+        "label": "Дүн шинэчлэх"
+      },
+      {
+        "n": "2.6",
+        "btn": "нэг сараар ӨМНӨ",
+        "label": "Сар (-1)"
+      },
+      {
+        "n": "2.7",
+        "btn": "Тооцоо",
+        "label": "Тооцоо",
+        "exact": true
+      }
+    ],
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "chunk": "төлбөр, тооцоо"
+  },
+  {
+    "id": "owner/list/contract-3",
+    "page": "docs/owner/list/contract.md",
+    "nav": [
+      "Менежмент",
+      "Гэрээ"
+    ],
+    "width": 1920,
+    "alt": "Гэрээ жагсаалтын toolbar (зүүн хэсэг): үлдэгдэл, барьцаа",
+    "marks": [
+      {
+        "n": "3.1",
+        "btn": "Эхний үлдэгдэл +",
+        "label": "Эхний үлдэгдэл +",
+        "exact": true
+      },
+      {
+        "n": "3.2",
+        "btn": "Эхний үлдэгдэл салгах",
+        "label": "Эхний үлдэгдэл салгах",
+        "exact": true
+      },
+      {
+        "n": "3.3",
+        "btn": "Барьцаа тохиргоо",
+        "label": "Барьцаа тохиргоо",
+        "exact": true
+      },
+      {
+        "n": "3.4",
+        "btn": "Зөвхөн админ:",
+        "label": "Үлдэгдэл хаах"
+      }
+    ],
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "chunk": "үлдэгдэл, барьцаа"
+  },
+  {
+    "id": "owner/list/contract-4",
+    "page": "docs/owner/list/contract.md",
+    "nav": [
+      "Менежмент",
+      "Гэрээ"
+    ],
+    "width": 1920,
+    "alt": "Гэрээ жагсаалтын toolbar (зүүн хэсэг): е-баримт, НӨАТ",
+    "marks": [
+      {
+        "n": "4.1",
+        "btn": "eBarimt зөвшөөрөх",
+        "label": "eBarimt зөвшөөрөх",
+        "exact": true
+      },
+      {
+        "n": "4.2",
+        "btn": "НӨАТ тохиргоо",
+        "label": "НӨАТ тохиргоо",
+        "exact": true
+      }
+    ],
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "chunk": "е-баримт, НӨАТ"
+  },
+  {
+    "id": "owner/list/contract-5",
+    "page": "docs/owner/list/contract.md",
+    "nav": [
+      "Менежмент",
+      "Гэрээ"
+    ],
+    "width": 1920,
+    "alt": "Гэрээ жагсаалтын toolbar (зүүн хэсэг): тохиргоо, бусад",
+    "marks": [
+      {
+        "n": "5.1",
+        "btn": "«1 × нийт үнэ»",
+        "label": "Түрээсийг нэгж болгох"
+      },
+      {
+        "n": "5.2",
+        "btn": "Данс нэмэх",
+        "label": "Данс нэмэх",
+        "exact": true
+      },
+      {
+        "n": "5.3",
+        "btn": "Гэрээ дугаар засах",
+        "label": "Гэрээ дугаар засах ..."
+      },
+      {
+        "n": "5.4",
+        "btn": "Үндсэн гэрээний драфтад",
+        "label": "Драфт шинэчлэх"
+      },
+      {
+        "n": "5.5",
+        "btn": "Гэрээ хэвлэх",
+        "label": "Гэрээ хэвлэх"
+      },
+      {
+        "n": "5.6",
+        "btn": "Нэмэлт засах",
+        "label": "Нэмэлт засах ..."
+      }
+    ],
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "chunk": "тохиргоо, бусад"
+  },
+  {
+    "id": "owner/list/sale-1",
+    "page": "docs/owner/list/sale.md",
+    "nav": [
+      "Тооцоо",
+      "Төлөлт"
+    ],
+    "width": 1920,
+    "alt": "Төлөлт жагсаалтын toolbar: үндсэн товч",
+    "marks": [
+      {
+        "n": "1",
+        "btn": "Шинэ Төлөлт",
+        "label": "Шинэ",
+        "exact": true
+      },
+      {
+        "n": "2",
+        "btn": "хуваарилагдаагүй үлдэгдлийг",
+        "label": "Хуваарилах"
+      },
+      {
+        "n": "3",
+        "btn": "Сонгосон төлөлтийг цуцлах",
+        "label": "Цуцлах"
+      },
+      {
+        "n": "4",
+        "btn": "И-Баримт 3.0",
+        "label": "И-Баримт"
+      },
+      {
+        "n": "5",
+        "btn": "Е-баримт олноор гаргах",
+        "label": "Е-баримт олноор гаргах",
+        "exact": true
+      }
+    ],
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "chunk": "үндсэн товч"
+  },
+  {
+    "id": "owner/list/sale-2",
+    "page": "docs/owner/list/sale.md",
+    "nav": [
+      "Тооцоо",
+      "Төлөлт"
+    ],
+    "width": 1920,
+    "alt": "Төлөлт жагсаалтын toolbar: хуваах, ангилал, бусад",
+    "marks": [
+      {
+        "n": "6",
+        "btn": "Төлөлтийг хувааж",
+        "label": "Төлөлт хуваах"
+      },
+      {
+        "n": "7",
+        "btn": "төрлийг (ангиллыг)",
+        "label": "Ангилал солих"
+      },
+      {
+        "n": "8",
+        "btn": "Задаргаа нэмэх",
+        "label": "Задаргаа нэмэх",
+        "exact": true
+      },
+      {
+        "n": "9",
+        "btn": "Хөнгөлөлтийн хугацаанд",
+        "label": "Бонус шалгах"
+      },
+      {
+        "n": "10",
+        "btn": "тайлбарыг автоматаар",
+        "label": "Тайлбар бөглөх"
+      }
+    ],
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "chunk": "хуваах, ангилал, бусад"
+  },
+  {
+    "id": "owner/list/statement-1",
+    "page": "docs/owner/list/statement.md",
+    "nav": [
+      "Автоматжуулалт",
+      "Дансны хуулга"
+    ],
+    "waitTh": "Гүйлгээний утга",
+    "width": 1920,
+    "alt": "Дансны хуулга жагсаалтын toolbar: төлөлт бүртгэх",
+    "blurTh": [
+      "Гүйлгээний утга",
+      "Код"
+    ],
+    "blurAccount": true,
+    "marks": [
+      {
+        "n": "1",
+        "btn": "ХУРДАН ТӨЛӨХ",
+        "label": "ХУРДАН ТӨЛӨХ",
+        "exact": true
+      },
+      {
+        "n": "2",
+        "btn": "Төлөх",
+        "label": "Төлөх",
+        "exact": true
+      },
+      {
+        "n": "3",
+        "btn": "ХУРДАН ХУВААХ",
+        "label": "ХУРДАН ХУВААХ",
+        "exact": true
+      },
+      {
+        "n": "4",
+        "btn": "Хувааж төлөх",
+        "label": "Хувааж төлөх",
+        "exact": true
+      },
+      {
+        "n": "5",
+        "btn": "Багцаар төлөх",
+        "label": "Багцаар төлөх",
+        "exact": true
+      }
+    ],
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "chunk": "төлөлт бүртгэх"
+  },
+  {
+    "id": "owner/list/statement-2",
+    "page": "docs/owner/list/statement.md",
+    "nav": [
+      "Автоматжуулалт",
+      "Дансны хуулга"
+    ],
+    "waitTh": "Гүйлгээний утга",
+    "width": 1920,
+    "alt": "Дансны хуулга жагсаалтын toolbar: шалгах, цуцлах, хуулга татах",
+    "blurTh": [
+      "Гүйлгээний утга",
+      "Код"
+    ],
+    "blurAccount": true,
+    "marks": [
+      {
+        "n": "6",
+        "btn": "Шалгах",
+        "label": "Шалгах",
+        "exact": true
+      },
+      {
+        "n": "7",
+        "btn": "Төлөлт цуцлах",
+        "label": "Төлөлт цуцлах",
+        "exact": true
+      },
+      {
+        "n": "8",
+        "btn": "Хуулга татах",
+        "label": "Хуулга татах",
+        "exact": true
+      },
+      {
+        "n": "9",
+        "btn": "Хуулга татах (Excel)",
+        "label": "Хуулга татах (Excel)",
+        "exact": true
+      }
+    ],
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "chunk": "шалгах, цуцлах, хуулга татах"
+  },
+  {
+    "id": "owner/list/invoicebill-1",
+    "page": "docs/owner/list/invoicebill.md",
+    "nav": [
+      "Тооцоо",
+      "Нэхэмжлэх"
+    ],
+    "waitTh": "Илгээлт",
+    "width": 1920,
+    "alt": "Нэхэмжлэх жагсаалтын toolbar: илгээх",
+    "marks": [
+      {
+        "n": "1",
+        "btn": "мессежээр илгээх бол",
+        "label": "SMS илгээх"
+      },
+      {
+        "n": "2",
+        "btn": "таны оруулсан дугаар",
+        "label": "Өөр дугаар руу илгээх"
+      },
+      {
+        "n": "3",
+        "btn": "цахим шуудангаар",
+        "label": "Имэйл илгээх"
+      },
+      {
+        "n": "4",
+        "btn": "утасны аппаар илгээх",
+        "label": "Мэдэгдэл"
+      },
+      {
+        "n": "5",
+        "btn": "төлөвийг шалгах",
+        "label": "Төлөв шалгах"
+      }
+    ],
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "chunk": "илгээх"
+  },
+  {
+    "id": "owner/list/invoicebill-2",
+    "page": "docs/owner/list/invoicebill.md",
+    "nav": [
+      "Тооцоо",
+      "Нэхэмжлэх"
+    ],
+    "waitTh": "Илгээлт",
+    "width": 1920,
+    "alt": "Нэхэмжлэх жагсаалтын toolbar: шинэчлэх, алданги",
+    "marks": [
+      {
+        "n": "6",
+        "btn": "Нэхэмжлэх шинэчлэхдээ",
+        "label": "Нэхэмжлэх шинэчлэх"
+      },
+      {
+        "n": "7",
+        "btn": "нэхэмжлэхийн алдангийг 0",
+        "label": "Алданги цуцлах"
+      },
+      {
+        "n": "8",
+        "btn": "Цуцалсан алдангийг сэргээж",
+        "label": "Алданги сэргээх"
+      }
+    ],
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "chunk": "шинэчлэх, алданги"
+  },
+  {
+    "id": "owner/list/invoicebill-3",
+    "page": "docs/owner/list/invoicebill.md",
+    "nav": [
+      "Тооцоо",
+      "Нэхэмжлэх"
+    ],
+    "waitTh": "Илгээлт",
+    "width": 1920,
+    "alt": "Нэхэмжлэх жагсаалтын toolbar: хэвлэх, цуцлах",
+    "marks": [
+      {
+        "n": "9",
+        "btn": "Хэвлэх",
+        "label": "Хэвлэх",
+        "exact": true
+      },
+      {
+        "n": "10",
+        "btn": "Багц хэвлэх",
+        "label": "Багц хэвлэх",
+        "exact": true
+      },
+      {
+        "n": "11",
+        "btn": "Сонгосон нэхэмжлэхүүдийг цуцлах",
+        "label": "Цуцлах"
+      }
+    ],
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "chunk": "хэвлэх, цуцлах"
+  },
+  {
+    "id": "owner/list/contractpaymentchart-1",
+    "page": "docs/owner/list/contractpaymentchart.md",
+    "nav": [
+      "Тооцоо",
+      "Төлбөрийн хуваарь"
+    ],
+    "width": 1920,
+    "alt": "Төлбөрийн хуваарь жагсаалтын toolbar: тоолуур, төлбөр",
+    "marks": [
+      {
+        "n": "1",
+        "btn": "Тоолуур [",
+        "label": "Тоолуур [",
+        "exact": true
+      },
+      {
+        "n": "1",
+        "btn": "Тоолуур +",
+        "label": "Тоолуур +",
+        "exact": true
+      },
+      {
+        "n": "1",
+        "btn": "Тоолуур ]",
+        "label": "Тоолуур ]",
+        "exact": true
+      },
+      {
+        "n": "2",
+        "btn": "Төлбөр +",
+        "label": "Төлбөр +",
+        "exact": true
+      },
+      {
+        "n": "3",
+        "btn": "Төл & Нэх +",
+        "label": "Төл & Нэх +",
+        "exact": true
+      },
+      {
+        "n": "4",
+        "btn": "Төлбөр ]",
+        "label": "Төлбөр ]",
+        "exact": true
+      }
+    ],
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "chunk": "тоолуур, төлбөр"
+  },
+  {
+    "id": "owner/list/contractpaymentchart-2",
+    "page": "docs/owner/list/contractpaymentchart.md",
+    "nav": [
+      "Тооцоо",
+      "Төлбөрийн хуваарь"
+    ],
+    "width": 1920,
+    "alt": "Төлбөрийн хуваарь жагсаалтын toolbar: загвар, алданги, цахилгаан",
+    "marks": [
+      {
+        "n": "5",
+        "btn": "Төлбөр загвараас",
+        "label": "Төлбөр загвар"
+      },
+      {
+        "n": "6",
+        "btn": "Алдангийн одоогийн төлөвийг",
+        "label": "Алданги өөрчил"
+      },
+      {
+        "n": "7",
+        "btn": "цахилгаан тоолуур унших",
+        "label": "Цах Тоолуур ..."
+      }
+    ],
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "chunk": "загвар, алданги, цахилгаан"
+  },
+  {
+    "id": "owner/list/saleebarimt-1",
+    "page": "docs/owner/list/saleebarimt.md",
+    "nav": [
+      "Тооцоо",
+      "И-Баримт"
+    ],
+    "width": 1920,
+    "alt": "И-Баримт жагсаалтын toolbar: е-баримт",
+    "marks": [
+      {
+        "n": "1",
+        "btn": "И-Баримт 3.0",
+        "label": "И-Баримт"
+      },
+      {
+        "n": "2",
+        "btn": "Мэссэж илгээх",
+        "label": "Мэссэж илгээх",
+        "exact": true
+      }
+    ],
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "chunk": "е-баримт"
+  },
+  {
+    "id": "owner/huulga-harah",
+    "nav": [
+      "Автоматжуулалт",
+      "Дансны хуулга"
+    ],
+    "waitTh": "Гүйлгээний утга",
+    "width": 1920,
+    "blurTh": [
+      "Гүйлгээний утга",
+      "Код"
+    ],
+    "blurAccount": true,
+    "page": "docs/owner/huulga-tolbor.md",
+    "clip": "auto",
+    "alt": "Дансны хуулга: 1.1 цэс, 1.2 данс, 1.3 төлбөрийн шүүлт, 1.4 огноо",
+    "marks": [
+      {
+        "n": "1.1",
+        "tree": "Дансны хуулга",
+        "label": "Цэс"
+      },
+      {
+        "n": "1.2",
+        "account": true,
+        "label": "Данс"
+      },
+      {
+        "n": "1.3",
+        "btn": "Бүртгэсэн/Бүртгээгүй шүүх",
+        "label": "Төлбөр шүүлт"
+      },
+      {
+        "n": "1.4",
+        "btn": "Огноогоор шүүх",
+        "label": "Огноо"
+      }
+    ]
+  },
+  {
+    "id": "owner/huulga-hurdan-toloh",
+    "nav": [
+      "Автоматжуулалт",
+      "Дансны хуулга"
+    ],
+    "waitTh": "Гүйлгээний утга",
+    "width": 1920,
+    "blurTh": [
+      "Гүйлгээний утга",
+      "Код"
+    ],
+    "blurAccount": true,
+    "page": "docs/owner/huulga-tolbor.md",
+    "clip": {
+      "x": 272,
+      "y": 88,
+      "width": 820,
+      "height": 200
+    },
+    "alt": "Дансны хуулга: 2.1 гүйлгээ сонгох, 2.2 ХУРДАН ТӨЛӨХ",
+    "marks": [
+      {
+        "n": "2.1",
+        "rowCheck": true,
+        "label": "Гүйлгээ сонгох"
+      },
+      {
+        "n": "2.2",
+        "btn": "ХУРДАН ТӨЛӨХ",
+        "exact": true,
+        "label": "ХУРДАН ТӨЛӨХ"
+      }
+    ]
+  },
+  {
+    "id": "owner/huulga-hurdan-huvaah",
+    "nav": [
+      "Автоматжуулалт",
+      "Дансны хуулга"
+    ],
+    "waitTh": "Гүйлгээний утга",
+    "width": 1920,
+    "blurTh": [
+      "Гүйлгээний утга",
+      "Код"
+    ],
+    "blurAccount": true,
+    "page": "docs/owner/huulga-tolbor.md",
+    "clip": {
+      "x": 272,
+      "y": 88,
+      "width": 820,
+      "height": 200
+    },
+    "alt": "Дансны хуулга: 3.1 гүйлгээ сонгох, 3.2 ХУРДАН ХУВААХ",
+    "marks": [
+      {
+        "n": "3.1",
+        "rowCheck": true,
+        "label": "Гүйлгээ сонгох"
+      },
+      {
+        "n": "3.2",
+        "btn": "ХУРДАН ХУВААХ",
+        "exact": true,
+        "label": "ХУРДАН ХУВААХ"
+      }
+    ]
+  },
+  {
+    "id": "owner/nehemjleh-ilgeeh",
+    "page": "docs/owner/nehemjleh-ilgeeh.md",
+    "nav": [
+      "Тооцоо",
+      "Нэхэмжлэх"
+    ],
+    "waitTh": "Илгээлт",
+    "width": 1920,
+    "clip": "auto",
+    "alt": "Нэхэмжлэх илгээх: 2.1 цэс, 2.2 нэхэмжлэх сонгох, 2.3 SMS / имэйл / мэдэгдэл",
+    "marks": [
+      {
+        "n": "2.1",
+        "tree": "Нэхэмжлэх",
+        "label": "Цэс"
+      },
+      {
+        "n": "2.2",
+        "rowCheck": true,
+        "label": "Сонгох"
+      },
+      {
+        "n": "2.3",
+        "btn": "мессежээр илгээх бол",
+        "label": "SMS"
+      },
+      {
+        "n": "2.3",
+        "btn": "цахим шуудангаар",
+        "label": "Имэйл"
+      },
+      {
+        "n": "2.3",
+        "btn": "утасны аппаар илгээх",
+        "label": "Мэдэгдэл"
+      }
+    ],
+    "blurTh": [
+      "Гүйлгээний утга"
+    ]
+  },
+  {
+    "id": "owner/avto-ajil",
+    "page": "docs/owner/avto-tootsoo-garaagui.md",
+    "nav": [
+      "Автоматжуулалт",
+      "Авто ажил"
+    ],
+    "width": 1920,
+    "clip": "auto",
+    "alt": "Авто ажил: статус, Next Auto Job +, Job Create, Job start",
+    "marks": [
+      {
+        "n": "1.1",
+        "th": "Авто ажил статус",
+        "label": "Статус"
+      },
+      {
+        "n": "1.2",
+        "btn": "Next Auto Job",
+        "label": "Next Auto Job +"
+      },
+      {
+        "n": "1.3",
+        "btn": "Job Create",
+        "label": "Job Create"
+      },
+      {
+        "n": "1.4",
+        "btn": "Job start",
+        "label": "Job start"
+      }
+    ]
+  },
+  {
+    "id": "owner/huulga-dialog-toloh",
+    "page": "docs/owner/huulga-tolbor.md",
+    "nav": [
+      "Автоматжуулалт",
+      "Дансны хуулга"
+    ],
+    "waitTh": "Гүйлгээний утга",
+    "width": 1920,
+    "blurTh": [
+      "Гүйлгээний утга",
+      "Код",
+      "Харилцагч",
+      "Түрээслэгч"
+    ],
+    "blurAccount": true,
+    "selectRow": true,
+    "open": {
+      "btn": "ХУРДАН ТӨЛӨХ",
+      "exact": true
+    },
+    "mustSee": "Гэрээ сонгох",
+    "alt": "ХУРДАН ТӨЛӨХ: гэрээ хайх, сонгоод «За»",
+    "marks": [
+      {
+        "n": "2.3",
+        "text": "Хайх ( Код / Нэр / РД / Утас )",
+        "label": "Хайх"
+      },
+      {
+        "n": "2.4",
+        "exact": true,
+        "label": "За",
+        "btn": "За"
+      }
+    ],
+    "blurDialog": true,
+    "clip": "dialog"
+  },
+  {
+    "id": "owner/huulga-dialog-huvaah",
+    "page": "docs/owner/huulga-tolbor.md",
+    "nav": [
+      "Автоматжуулалт",
+      "Дансны хуулга"
+    ],
+    "waitTh": "Гүйлгээний утга",
+    "width": 1920,
+    "blurTh": [
+      "Гүйлгээний утга",
+      "Код",
+      "Харилцагч",
+      "Түрээслэгч"
+    ],
+    "blurAccount": true,
+    "selectRow": true,
+    "open": {
+      "btn": "ХУРДАН ХУВААХ",
+      "exact": true
+    },
+    "mustSee": "Гэрээ сонгох",
+    "alt": "ХУРДАН ХУВААХ: гэрээ хайх, сонгоод «За»",
+    "marks": [
+      {
+        "n": "3.3",
+        "text": "Хайх ( Код / Нэр / РД / Утас )",
+        "label": "Хайх"
+      },
+      {
+        "n": "3.4",
+        "exact": true,
+        "label": "За",
+        "btn": "За"
+      }
+    ],
+    "blurDialog": true,
+    "clip": "dialog"
+  },
+  {
+    "id": "owner/nehemjleh-dialog-sms",
+    "page": "docs/owner/nehemjleh-ilgeeh.md",
+    "nav": [
+      "Тооцоо",
+      "Нэхэмжлэх"
+    ],
+    "waitTh": "Илгээлт",
+    "width": 1920,
+    "selectRow": true,
+    "open": {
+      "btn": "мессежээр илгээх бол"
+    },
+    "mustSee": "Зурвасаар явуулах уу",
+    "alt": "SMS илгээхийн өмнөх асуулт: сонгосон нэхэмжлэхийн тоо",
+    "marks": [
+      {
+        "n": "2.4",
+        "text": "Зурвасаар явуулах уу",
+        "label": "Асуулт ба тоо",
+        "below": true
+      }
+    ],
+    "clip": "dialog"
+  },
+  {
+    "id": "owner/hugatsaa-dialog",
+    "page": "docs/owner/hugatsaa-songoh.md",
+    "nav": [
+      "Тооцоо",
+      "Төлбөр"
+    ],
+    "width": 1920,
+    "open": {
+      "btn": "Огноогоор шүүх"
+    },
+    "mustSee": "Огноогоор шүүх",
+    "clip": {
+      "x": 272,
+      "y": 40,
+      "width": 1100,
+      "height": 590
+    },
+    "alt": "Огноогоор шүүх цонх",
+    "marks": [
+      {
+        "n": "1.1",
+        "btn": "Огноогоор шүүх",
+        "label": "📅"
+      },
+      {
+        "n": "1.2",
+        "btn": "Энэ сар",
+        "exact": true,
+        "label": "Хурдан сонголт"
+      },
+      {
+        "n": "1.3",
+        "btn": "Шүүх",
+        "exact": true,
+        "label": "Шүүх"
+      }
+    ]
+  },
+  {
+    "id": "owner/sar-tootsoo-huvaari",
+    "page": "docs/owner/sar-tootsoo.md",
+    "nav": [
+      "Менежмент",
+      "Гэрээ"
+    ],
+    "width": 1920,
+    "rowOpen": 4,
+    "tab": "Хуваарь",
+    "clip": "auto",
+    "padRight": 24,
+    "padBottom": 120,
+    "alt": "Гэрээний карт, Хуваарь таб",
+    "marks": [
+      {
+        "n": "2.1",
+        "tree": "Гэрээ",
+        "label": "Гэрээ цэс"
+      },
+      {
+        "n": "2.2",
+        "text": "Хуваарь",
+        "exact": true,
+        "label": "Хуваарь таб"
+      },
+      {
+        "n": "2.3",
+        "rowCheck": true,
+        "label": "Сарын мөр"
+      },
+      {
+        "n": "2.4",
+        "btn": "Төлбөр +",
+        "exact": true,
+        "label": "Төлбөр +",
+        "below": true
+      },
+      {
+        "n": "2.4",
+        "btn": "Төл & Нэх +",
+        "exact": true,
+        "label": "Төл & Нэх +",
+        "below": true
+      },
+      {
+        "n": "2.4",
+        "btn": "Төлбөр ]",
+        "exact": true,
+        "label": "Төлбөр ]",
+        "below": true
+      },
+      {
+        "n": "2.5",
+        "tree": "Төлбөр",
+        "label": "Тооцоо → Төлбөр"
+      }
+    ]
+  },
+  {
+    "id": "owner/ebarimt-butsaah",
+    "page": "docs/owner/e-barimt.md",
+    "nav": [
+      "Тооцоо",
+      "Төлөлт"
+    ],
+    "width": 1920,
+    "clip": "auto",
+    "padBottom": 60,
+    "alt": "Төлөлт жагсаалт: сонгох, И-Баримт, Цуцлах",
+    "marks": [
+      {
+        "n": "3.1",
+        "rowCheck": true,
+        "label": "Төлөлт сонгох"
+      },
+      {
+        "n": "3.1",
+        "btn": "И-Баримт 3.0",
+        "label": "И-Баримт → Буцаах"
+      },
+      {
+        "n": "3.2",
+        "btn": "Сонгосон төлөлтийг цуцлах",
+        "label": "Цуцлах"
+      },
+      {
+        "n": "3.3",
+        "btn": "И-Баримт 3.0",
+        "label": "И-Баримт → Баримт гаргах",
+        "below": true
+      }
+    ],
+    "clearDate": true,
+    "blurTh": [
+      "Гүйлгээний утга",
+      "Төлбөр хэлбэр"
+    ]
+  },
+  {
+    "id": "owner/nevtruulelt-uilchilgee",
+    "page": "docs/owner/nevtruulelt/aldaa.md",
+    "nav": [
+      "Менежмент",
+      "Гэрээ"
+    ],
+    "width": 1920,
+    "rowOpen": 4,
+    "tab": "Үйлчилгээ",
+    "clip": "auto",
+    "padLeft": 300,
+    "padBottom": 160,
+    "alt": "Гэрээний Үйлчилгээ таб",
+    "marks": [
+      {
+        "n": "2.1",
+        "th": "Ашиглах",
+        "label": "Ашиглах"
+      },
+      {
+        "n": "2.2",
+        "th": "Нэгж үнэ",
+        "label": "Нэгж үнэ"
+      },
+      {
+        "n": "2.4",
+        "th": "Нийт үнэ",
+        "label": "Нийт үнэ"
+      }
+    ]
+  },
+  {
+    "id": "owner/list/customer-1",
+    "page": "docs/owner/list/customer.md",
+    "nav": [
+      "Менежмент",
+      "Харилцагч"
+    ],
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "chunk": "товчнууд",
+    "alt": "Харилцагч жагсаалтын товч",
+    "marks": [
+      {
+        "n": "1",
+        "btn": "Баримт тохиргоо (Сугалаагүй)",
+        "label": "Баримт тохиргоо"
+      },
+      {
+        "n": "2",
+        "btn": "Хэрэглэгч мэдээлэл",
+        "label": "Хэрэглэгч мэдээлэл ..."
+      },
+      {
+        "n": "3",
+        "btn": "Давхацсан",
+        "label": "Давхацсан",
+        "exact": true
+      },
+      {
+        "n": "5",
+        "btn": "Харилцагч шилжүүлэх",
+        "label": "Харилцагч шилжүүлэх +"
+      }
+    ]
+  },
+  {
+    "id": "owner/list/discount-1",
+    "page": "docs/owner/list/discount.md",
+    "nav": [
+      "Тооцоо",
+      "Хөнгөлөлт"
+    ],
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "chunk": "товчнууд",
+    "alt": "Хөнгөлөлт жагсаалтын товч",
+    "marks": [
+      {
+        "n": "1",
+        "btn": "Шинэчлэх",
+        "label": "Шинэчлэх",
+        "exact": true
+      },
+      {
+        "n": "2",
+        "btn": "Цуцлах",
+        "label": "Цуцлах",
+        "exact": true
+      }
+    ]
+  },
+  {
+    "id": "owner/list/autojob-1",
+    "page": "docs/owner/list/autojob.md",
+    "nav": [
+      "Автоматжуулалт",
+      "Авто ажил"
+    ],
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "chunk": "товчнууд",
+    "alt": "Авто ажил жагсаалтын товч",
+    "marks": [
+      {
+        "n": "1",
+        "btn": "Job Create",
+        "label": "Job Create",
+        "exact": true
+      },
+      {
+        "n": "2",
+        "btn": "Job start",
+        "label": "Job start",
+        "exact": true
+      },
+      {
+        "n": "2",
+        "btn": "Job stop",
+        "label": "Job stop",
+        "exact": true
+      },
+      {
+        "n": "3",
+        "btn": "Job Delete",
+        "label": "Job Delete",
+        "exact": true
+      },
+      {
+        "n": "4",
+        "btn": "Next Auto Job",
+        "label": "Next Auto Job +"
+      }
+    ]
+  },
+  {
+    "id": "owner/list/ebarimtrecord-1",
+    "page": "docs/owner/list/ebarimtrecord.md",
+    "nav": [
+      "Автоматжуулалт",
+      "Авто eBarimt"
+    ],
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "chunk": "товчнууд",
+    "alt": "Авто eBarimt жагсаалтын товч",
+    "marks": [
+      {
+        "n": "1",
+        "btn": "Job Create",
+        "label": "Job Create",
+        "exact": true
+      },
+      {
+        "n": "2",
+        "btn": "Job Start",
+        "label": "Job Start",
+        "exact": true
+      },
+      {
+        "n": "2",
+        "btn": "Job Stop",
+        "label": "Job Stop",
+        "exact": true
+      },
+      {
+        "n": "3",
+        "btn": "Job Delete",
+        "label": "Job Delete",
+        "exact": true
+      }
+    ]
+  },
+  {
+    "id": "owner/list/smscenter-1",
+    "page": "docs/owner/list/smscenter.md",
+    "nav": [
+      "Автоматжуулалт",
+      "Авто мессеж"
+    ],
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "chunk": "товчнууд",
+    "alt": "Авто мессеж жагсаалтын товч",
+    "marks": [
+      {
+        "n": "1",
+        "btn": "Тест мессеж",
+        "label": "Тест мессеж"
+      },
+      {
+        "n": "2",
+        "btn": "Job Create",
+        "label": "Job Create",
+        "exact": true
+      },
+      {
+        "n": "2",
+        "btn": "Job start",
+        "label": "Job start",
+        "exact": true
+      },
+      {
+        "n": "2",
+        "btn": "Job stop",
+        "label": "Job stop",
+        "exact": true
+      },
+      {
+        "n": "2",
+        "btn": "Job Delete",
+        "label": "Job Delete",
+        "exact": true
+      }
+    ]
+  },
+  {
+    "id": "owner/une-uilchilgee",
+    "page": "docs/owner/une-oorchloh.md",
+    "nav": [
+      "Менежмент",
+      "Гэрээ"
+    ],
+    "width": 1920,
+    "rowOpen": 4,
+    "tab": "Үйлчилгээ",
+    "clip": "auto",
+    "padRight": 40,
+    "padBottom": 60,
+    "alt": "Гэрээний Үйлчилгээ таб: мөр сонгоод Үнэ өөрчлөх",
+    "marks": [
+      {
+        "n": "3.1",
+        "tree": "Гэрээ",
+        "label": "Гэрээ цэс"
+      },
+      {
+        "n": "3.2",
+        "text": "Үйлчилгээ",
+        "exact": true,
+        "label": "Үйлчилгээ таб"
+      },
+      {
+        "n": "3.3",
+        "rowCheck": true,
+        "label": "Үйлчилгээний мөр"
+      },
+      {
+        "n": "3.4",
+        "btn": "Үнэ өөрчлөх",
+        "exact": true,
+        "label": "Үнэ өөрчлөх",
+        "below": true
+      }
+    ]
+  },
+  {
+    "id": "owner/une-dialog",
+    "page": "docs/owner/une-oorchloh.md",
+    "nav": [
+      "Менежмент",
+      "Гэрээ"
+    ],
+    "width": 1920,
+    "rowOpen": 4,
+    "tab": "Үйлчилгээ",
+    "selectRow": true,
+    "open": {
+      "btn": "Үнэ өөрчлөх",
+      "exact": true
+    },
+    "mustSee": "Хуучин үнэ",
+    "clip": "dialog",
+    "alt": "Үйлчилгээний үнэ өөрчлөх цонх",
+    "marks": [
+      {
+        "n": "3.5",
+        "text": "Огноо",
+        "exact": true,
+        "label": "Огноо",
+        "right": true
+      },
+      {
+        "n": "3.6",
+        "text": "Нэгж үнэ",
+        "exact": true,
+        "label": "Нэгж үнэ"
+      },
+      {
+        "n": "3.6",
+        "text": "Тоо",
+        "exact": true,
+        "label": "Тоо"
+      },
+      {
+        "n": "3.7",
+        "btn": "За",
+        "exact": true,
+        "label": "За"
+      }
+    ]
+  },
+  {
+    "id": "owner/jagsaalt-hooson",
+    "page": "docs/owner/jagsaalt-hooson-shuult.md",
+    "nav": [
+      "Тооцоо",
+      "Төлбөр"
+    ],
+    "waitTh": "Код",
+    "width": 1920,
+    "clip": "auto",
+    "padRight": 40,
+    "padBottom": 110,
+    "alt": "Төлбөр жагсаалт: огнооны шүүлт, хайлт, баганын шүүлт",
+    "marks": [
+      {
+        "n": "1.1",
+        "btn": "Огноогоор шүүх",
+        "label": "Огнооны хүрээ"
+      },
+      {
+        "n": "1.2",
+        "btn": "Огнооны шүүлтийг арилгах",
+        "label": "✕"
+      },
+      {
+        "n": "1.3",
+        "th": "Код",
+        "label": "Баганын шүүлт",
+        "below": true
+      },
+      {
+        "n": "1.4",
+        "input": "хай",
+        "label": "Хайлт"
+      }
+    ]
+  },
+  {
+    "id": "owner/tailan-garah",
+    "page": "docs/owner/list/reports.md",
+    "nav": [
+      "Тайлан",
+      "Reports"
+    ],
+    "width": 1920,
+    "clip": "auto",
+    "padRight": 60,
+    "padBottom": 120,
+    "alt": "Тайлан цэс, Reports жагсаалт, Execute Report товч",
+    "marks": [
+      {
+        "n": "1.1",
+        "tree": "Reports",
+        "label": "Тайлан → Reports"
+      },
+      {
+        "n": "1.2",
+        "rowCheck": true,
+        "label": "Тайлангийн мөр"
+      },
+      {
+        "n": "1.3",
+        "btn": "Execute Report",
+        "exact": true,
+        "label": "Execute Report"
+      }
+    ]
+  },
+  {
+    "id": "owner/list/beginbalance-1",
+    "page": "docs/owner/list/beginbalance.md",
+    "nav": [
+      "Тооцоо",
+      "Эхний үлдэгдэл"
+    ],
+    "width": 1920,
+    "clip": {
+      "x": 0,
+      "y": 95,
+      "width": 1350,
+      "height": 530
+    },
+    "alt": "Тооцоо → Эхний үлдэгдэл жагсаалт (owner эрхээр)",
+    "marks": [
+      {
+        "n": "1.1",
+        "tree": "Эхний үлдэгдэл",
+        "label": "Эхний үлдэгдэл цэс"
+      }
+    ]
+  },
+  {
+    "id": "owner/list/propertyowner-1",
+    "page": "docs/owner/list/propertyowner.md",
+    "nav": [
+      "Менежмент",
+      "Байгууллага"
+    ],
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "alt": "Байгууллага жагсаалтын toolbar",
+    "marks": [
+      {
+        "n": "1",
+        "btn": "Алданги тохиргоог",
+        "label": "Алданги хувилах"
+      },
+      {
+        "n": "2",
+        "btn": "Гэрээ драфт",
+        "label": "Гэрээ драфт"
+      }
+    ]
+  },
+  {
+    "id": "owner/list/user-1",
+    "page": "docs/owner/list/user.md",
+    "nav": [
+      "Харилцагч",
+      "Хэрэглэгч"
+    ],
+    "width": 1920,
+    "blurTh": [
+      "Овог",
+      "Албан тушаал"
+    ],
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "alt": "Хэрэглэгч жагсаалтын toolbar",
+    "marks": [
+      {
+        "n": "1",
+        "btn": "Нэвтрэх эрх",
+        "exact": true,
+        "label": "Нэвтрэх эрх"
+      },
+      {
+        "n": "2",
+        "btn": "Эрх илгээх",
+        "exact": true,
+        "label": "Эрх илгээх"
+      },
+      {
+        "n": "3",
+        "btn": "Эрх хаах",
+        "exact": true,
+        "label": "Эрх хаах"
+      },
+      {
+        "n": "3",
+        "btn": "Эрх сэргээх",
+        "exact": true,
+        "label": "Эрх сэргээх"
+      }
+    ],
+    "url": "User_ListView",
+    "waitTh": "Утас"
+  },
+  {
+    "page": "docs/owner/tooluur.md",
+    "nav": [
+      "Менежмент",
+      "Гэрээ"
+    ],
+    "width": 1920,
+    "rowOpen": 4,
+    "tab": "Үндсэн мэдээлэл",
+    "subTab": "Тоолуур",
+    "clip": {
+      "x": 835,
+      "y": 290,
+      "width": 1060,
+      "height": 340
+    },
+    "id": "owner/tooluur-gereend",
+    "alt": "Гэрээний карт: Үндсэн мэдээлэл → Тоолуур дэд таб, Шинэ",
+    "marks": [
+      {
+        "n": "2.1",
+        "text": "Тоолуур",
+        "exact": true,
+        "label": "Тоолуур дэд таб",
+        "first": true,
+        "right": true
+      },
+      {
+        "n": "2.2",
+        "btn": "Шинэ",
+        "exact": true,
+        "label": "Шинэ",
+        "below": true
+      }
+    ]
+  },
+  {
+    "page": "docs/owner/tooluur.md",
+    "nav": [
+      "Менежмент",
+      "Гэрээ"
+    ],
+    "width": 1920,
+    "rowOpen": 4,
+    "tab": "Үндсэн мэдээлэл",
+    "subTab": "Тоолуур",
+    "clip": {
+      "x": 835,
+      "y": 290,
+      "width": 1060,
+      "height": 340
+    },
+    "id": "owner/tooluur-tsutslah",
+    "alt": "Гэрээний тоолуур: Цуцлах, Сэргээх",
+    "marks": [
+      {
+        "n": "4.1",
+        "btn": "Цуцлах",
+        "last": true,
+        "label": "Цуцлах...",
+        "below": true
+      },
+      {
+        "n": "4.2",
+        "btn": "Сэргээх",
+        "exact": true,
+        "last": true,
+        "label": "Сэргээх",
+        "below": true
+      }
+    ]
+  },
+  {
+    "id": "owner/list/discountconfig-1",
+    "page": "docs/owner/list/discountconfig.md",
+    "nav": [
+      "Менежмент",
+      "Хөнгөлөлт тохиргоо"
+    ],
+    "url": "DiscountConfig_ListView",
+    "width": 1920,
+    "rowOpen": 2,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 60,
+    "alt": "Хөнгөлөлт тохиргооны карт: Үйлчилгээ татах, Бүх гэрээ, Хөнгөлөлт дүн шинэчил",
+    "marks": [
+      {
+        "n": "1",
+        "btn": "Үйлчилгээ татах",
+        "exact": true,
+        "label": "Үйлчилгээ татах",
+        "below": true
+      },
+      {
+        "n": "2",
+        "btn": "Бүх гэрээ",
+        "exact": true,
+        "label": "Бүх гэрээ",
+        "below": true
+      },
+      {
+        "n": "3",
+        "btn": "Хөнгөлөлт дүн шинэчил",
+        "exact": true,
+        "label": "Хөнгөлөлт дүн шинэчил",
+        "below": true
+      }
+    ]
+  },
+  {
+    "id": "owner/list/notifconfig-1",
+    "page": "docs/owner/list/notificationtodueinvoicebillsconfig.md",
+    "nav": [
+      "Менежмент",
+      "Нэхэмжлэх дахиж явуулах тохиргоо"
+    ],
+    "url": "NotificationToDueInvoiceBillsConfig_ListView",
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 60,
+    "alt": "Нэхэмжлэх дахиж явуулах тохиргооны toolbar",
+    "marks": [
+      {
+        "btn": "Ажил үүсгэх",
+        "exact": true,
+        "label": "Ажил үүсгэх",
+        "n": "1"
+      },
+      {
+        "btn": "Ажил эхлүүлэх",
+        "exact": true,
+        "label": "Ажил эхлүүлэх",
+        "n": "2"
+      },
+      {
+        "btn": "Ажил зогсоох",
+        "exact": true,
+        "label": "Ажил зогсоох",
+        "n": "3"
+      },
+      {
+        "btn": "Ажил устгах",
+        "exact": true,
+        "label": "Ажил устгах",
+        "n": "4"
+      }
+    ],
+    "waitTh": "Хүлээх"
+  },
+  {
+    "id": "owner/list/contractclose-1",
+    "page": "docs/owner/list/contractsublists.md",
+    "nav": [
+      "Менежмент",
+      "Гэрээ хаах"
+    ],
+    "url": "ContractClose_ListView",
+    "waitTh": "Код",
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 200,
+    "alt": "Гэрээ хаах жагсаалтын toolbar: Гэрээ сэргээх",
+    "marks": [
+      {
+        "btn": "Гэрээ сэргээх",
+        "exact": true,
+        "label": "Гэрээ сэргээх",
+        "below": true
+      }
+    ]
+  },
+  {
+    "id": "owner/list/contractextend-1",
+    "page": "docs/owner/list/contractsublists.md",
+    "nav": [
+      "Менежмент",
+      "Гэрээ сунгалт"
+    ],
+    "url": "ContractExtend_ListView",
+    "waitTh": "Код",
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 200,
+    "alt": "Гэрээ сунгалт жагсаалтын toolbar: Хуваарь засах",
+    "marks": [
+      {
+        "btn": "Хуваарь засах",
+        "exact": true,
+        "label": "Хуваарь засах",
+        "below": true
+      }
+    ]
+  },
+  {
+    "id": "owner/list/utilitysheet-1",
+    "page": "docs/owner/list/utilitysheet.md",
+    "nav": [
+      "Автоматжуулалт",
+      "Тоолуур татах"
+    ],
+    "url": "UtilitySheet_ListView",
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 900,
+    "waitTh": "Нэр",
+    "alt": "Тоолуур татах жагсаалт: Шинэ товч",
+    "marks": [
+      {
+        "n": "2.1",
+        "btn": "Шинэ",
+        "exact": true,
+        "label": "Шинэ",
+        "below": true
+      }
+    ],
+    "padBottom": 220
+  },
+  {
+    "id": "owner/list/utilitysheet-2",
+    "page": "docs/owner/list/utilitysheet.md",
+    "nav": [
+      "Автоматжуулалт",
+      "Тоолуур татах"
+    ],
+    "url": "UtilitySheet_ListView",
+    "width": 1920,
+    "rowOpen": 1,
+    "clip": "auto",
+    "padLeft": 60,
+    "padRight": 700,
+    "alt": "Тоолуур татах карт: Эзэмшигч, Нэхэмжлэх үүсгэх, Тоолуур татах товч",
+    "marks": [
+      {
+        "n": "2.2",
+        "text": "Эзэмшигч",
+        "first": true,
+        "label": "Эзэмшигч",
+        "left": true
+      },
+      {
+        "n": "2.3",
+        "text": "Нэхэмжлэх үүсгэх",
+        "label": "Нэхэмжлэх үүсгэх",
+        "left": true
+      },
+      {
+        "n": "2.4",
+        "btn": "Тоолуур татах",
+        "exact": true,
+        "last": true,
+        "label": "Тоолуур татах",
+        "right": true
+      }
+    ],
+    "padBottom": 260
+  },
+  {
+    "id": "owner/list/contractutility-1",
+    "page": "docs/owner/list/contractutility.md",
+    "nav": [
+      "Тооцоо",
+      "Тоолуур ашиглалт"
+    ],
+    "url": "ContractUtility_ListView",
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 700,
+    "padBottom": 200,
+    "waitTh": "Сар",
+    "blurTh": [
+      "Гэрээ"
+    ],
+    "alt": "Тоолуур ашиглалт жагсаалт: шүүлтийн сонголт",
+    "marks": [
+      {
+        "n": "1.1",
+        "value": "",
+        "label": "Шүүлтийн сонголт",
+        "below": true
+      }
+    ]
+  },
+  {
+    "id": "owner/gatsah-udaan",
+    "page": "docs/owner/gatsah-udaan.md",
+    "nav": [
+      "Тооцоо",
+      "Төлбөр"
+    ],
+    "width": 1920,
+    "open": {
+      "btn": "Огноогоор шүүх"
+    },
+    "mustSee": "Огноогоор шүүх",
+    "clip": {
+      "x": 272,
+      "y": 40,
+      "width": 1100,
+      "height": 590
+    },
+    "alt": "Огноогоор шүүх цонх: 📅 товч, Энэ сар, Шүүх",
+    "marks": [
+      {
+        "n": "2.1",
+        "btn": "Огноогоор шүүх",
+        "label": "📅"
+      },
+      {
+        "n": "2.2",
+        "btn": "Энэ сар",
+        "exact": true,
+        "label": "Хурдан сонголт",
+        "left": true
+      },
+      {
+        "n": "2.3",
+        "btn": "Шүүх",
+        "exact": true,
+        "label": "Шүүх"
+      }
+    ]
+  },
+  {
+    "page": "docs/owner/nehemjleh-dun-zoroh.md",
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 500,
+    "padRight": 200,
+    "id": "owner/nehemjleh-dun-1",
+    "nav": [
+      "Тооцоо",
+      "Төлбөр"
+    ],
+    "waitTh": "Код",
+    "alt": "Төлбөр жагсаалт: Төлбөр шинэчлэх товч",
+    "marks": [
+      {
+        "n": "3.1",
+        "btn": "Төлбөр шинэчлэх бол",
+        "label": "Төлбөр шинэчлэх"
+      }
+    ],
+    "padBottom": 80
+  },
+  {
+    "page": "docs/owner/nehemjleh-dun-zoroh.md",
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "id": "owner/nehemjleh-dun-2",
+    "nav": [
+      "Тооцоо",
+      "Нэхэмжлэх"
+    ],
+    "waitTh": "Илгээлт",
+    "padBottom": 60,
+    "alt": "Нэхэмжлэх жагсаалт: Нэхэмжлэх шинэчлэх, SMS илгээх",
+    "marks": [
+      {
+        "n": "3.2",
+        "btn": "Нэхэмжлэх шинэчлэхдээ",
+        "label": "Нэхэмжлэх шинэчлэх"
+      },
+      {
+        "n": "3.3",
+        "btn": "мессежээр илгээх бол",
+        "label": "SMS илгээх"
+      }
+    ]
+  },
+  {
+    "id": "owner/shine-geree-aldaa",
+    "page": "docs/owner/shine-geree-aldaa.md",
+    "nav": [
+      "Менежмент",
+      "Харилцагч"
+    ],
+    "url": "Customer_ListView",
+    "waitTh": "Регистр",
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 300,
+    "padBottom": 120,
+    "alt": "Харилцагч жагсаалт: цэс, хайлтын нүд, олдсон мөр",
+    "marks": [
+      {
+        "n": "1.1",
+        "tree": "Харилцагч",
+        "label": "Менежмент → Харилцагч"
+      },
+      {
+        "n": "1.2",
+        "input": "Энд бичиж хай",
+        "label": "Хайлтын нүд"
+      },
+      {
+        "n": "1.3",
+        "rowCheck": true,
+        "label": "Олдсон мөр"
+      }
+    ]
+  },
+  {
+    "id": "owner/tutorial/sar-buriin-ajil-2",
+    "page": "docs/owner/tutorial/sar-buriin-ajil.md",
+    "nav": [
+      "Автоматжуулалт",
+      "Авто ажил"
+    ],
+    "waitTh": "Авто ажил статус",
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 60,
+    "padBottom": 120,
+    "alt": "Авто ажил жагсаалт: цэс, Авто ажил статус, Next Auto Job +, Job Create",
+    "marks": [
+      {
+        "n": "2.1",
+        "tree": "Авто ажил",
+        "label": "Автоматжуулалт → Авто ажил"
+      },
+      {
+        "n": "2.2",
+        "th": "Авто ажил статус",
+        "label": "Авто ажил статус"
+      },
+      {
+        "n": "2.3",
+        "btn": "Next Auto Job",
+        "label": "Next Auto Job +"
+      },
+      {
+        "n": "2.4",
+        "btn": "Job Create",
+        "exact": true,
+        "label": "Job Create"
+      }
+    ]
+  },
+  {
+    "id": "owner/tutorial/ehnii-sar-5",
+    "page": "docs/owner/tutorial/ehnii-sar.md",
+    "nav": [
+      "Тооцоо",
+      "Нэхэмжлэх"
+    ],
+    "waitTh": "Илгээлт",
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 60,
+    "padBottom": 80,
+    "alt": "Нэхэмжлэх жагсаалт: цэс, Өөр дугаар руу илгээх, SMS илгээх",
+    "marks": [
+      {
+        "n": "5.1",
+        "tree": "Нэхэмжлэх",
+        "label": "Тооцоо → Нэхэмжлэх"
+      },
+      {
+        "n": "5.2",
+        "btn": "таны оруулсан дугаар",
+        "label": "Өөр дугаар руу илгээх"
+      },
+      {
+        "n": "5.3",
+        "btn": "мессежээр илгээх бол",
+        "label": "SMS илгээх"
+      }
+    ]
+  },
+  {
+    "id": "owner/navigation",
+    "page": "docs/owner/navigation.md",
+    "nav": [
+      "Тооцоо",
+      "Нэхэмжлэх"
+    ],
+    "waitTh": "Илгээлт",
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 120,
+    "padBottom": 80,
+    "alt": "Програмын дэлгэц: зүүн цэс, жагсаалт, товчны мөр, мөр сонгох, хайлт, өнгө, ? товч",
+    "marks": [
+      {
+        "n": "1",
+        "tree": "Нэхэмжлэх",
+        "label": "Зүүн цэс"
+      },
+      {
+        "n": "2",
+        "th": "Объект",
+        "label": "Жагсаалт"
+      },
+      {
+        "n": "3",
+        "btn": "Нэхэмжлэх шинэчлэхдээ",
+        "label": "Товчны мөр",
+        "row": true,
+        "left": true
+      },
+      {
+        "n": "4",
+        "rowCheck": true,
+        "label": "Мөр сонгох"
+      },
+      {
+        "n": "5",
+        "input": "Энд бичиж хай",
+        "label": "Хайх"
+      },
+      {
+        "n": "6",
+        "th": "Төлөлт",
+        "label": "Өнгө"
+      },
+      {
+        "n": "7",
+        "btn": "Энэ хуудасны гарын авлага",
+        "label": "? товч",
+        "below": true
+      }
+    ]
+  },
+  {
+    "id": "owner/erhgui-nevtreh",
+    "page": "docs/owner/erhgui-nevtreh.md",
+    "nav": [
+      "Харилцагч",
+      "Хэрэглэгч"
+    ],
+    "width": 1920,
+    "blurTh": [
+      "Овог",
+      "Албан тушаал"
+    ],
+    "clip": "auto",
+    "padLeft": 300,
+    "padRight": 200,
+    "alt": "Хэрэглэгч жагсаалт: Нэвтрэх эрх, Эрх сэргээх",
+    "marks": [
+      {
+        "n": "1.2",
+        "btn": "Нэвтрэх эрх",
+        "exact": true,
+        "label": "Нэвтрэх эрх"
+      },
+      {
+        "n": "1.3",
+        "btn": "Эрх сэргээх",
+        "exact": true,
+        "label": "Эрх сэргээх"
+      }
+    ],
+    "url": "User_ListView",
+    "waitTh": "Утас",
+    "padBottom": 120
+  },
+  {
+    "id": "owner/tureesiin-negj-m2",
+    "page": "docs/owner/tureesiin-negj-m2.md",
+    "nav": [
+      "Менежмент",
+      "Гэрээ"
+    ],
+    "width": 1920,
+    "clip": "auto",
+    "padRight": 40,
+    "alt": "Гэрээ жагсаалт: цэс, гэрээ сонгох нүд, «Түрээсийг нэгж (с) болгох» товч",
+    "marks": [
+      {
+        "tree": "Гэрээ",
+        "label": "1.1",
+        "n": "1.1"
+      },
+      {
+        "rowCheck": true,
+        "label": "1.2",
+        "n": "1.2"
+      },
+      {
+        "btn": "«1 × нийт үнэ»",
+        "label": "1.3",
+        "n": "1.3"
+      }
+    ],
+    "waitTh": "Гэрээний төрөл",
+    "url": "Contract_ListView"
+  }
+]
