@@ -46,6 +46,71 @@ function RolePick({ onPick }) {
 
 // Зураг дээр дарахад томоор (эзэн 10-27 «зураг дээр дарж томруулж хардаг, дугаар харагдахгүй байна»)
 function Zoom({ src, alt, onClose }) {
+  // Эхлээд дэлгэцэнд БҮТНЭЭР нь багтаана; зураг дээр дарвал жинхэнэ хэмжээ ↔ багтаах, жинхэнэ хэмжээнд хоёр тийш гүйлгэнэ
+  // (эзэн 10-27: «хэт томорч, гүйлгэж болохгүй байна»). Зургаас гадна, ✕, Esc = хаах.
+  const [full, setFull] = useState(false);
+  const [w, setW] = useState(0); // 2× зургийн жинхэнэ (CSS) өргөн = naturalWidth / 2
+  useEffect(() => {
+    const esc = (e) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", esc);
+    return () => window.removeEventListener("keydown", esc);
+  }, [onClose]);
+  return (
+    <div className={`img-zoom${full ? " img-zoom--full" : ""}`} role="dialog" aria-modal="true" aria-label={alt || "Зураг"} onClick={(e) => e.target === e.currentTarget && onClose()}>
+      <img src={src} alt={alt} onLoad={(e) => setW(e.currentTarget.naturalWidth / 2)} style={full && w ? { width: w } : undefined} onClick={() => setFull((f) => !f)} title={full ? "Дэлгэцэнд багтаах" : "Жинхэнэ хэмжээгээр"} />
+      <div className="img-zoom__hint">{full ? "Гүйлгэж харна · зураг дээр дарвал багтаана" : "Зураг дээр дарвал томорно"} · Esc / ✕ хаах</div>
+      <button type="button" className="img-zoom__close" aria-label="Хаах" onClick={onClose}>✕</button>
+    </div>
+  );
+}
+ Хэсэг бүр өөр өнгөтэй + анх ороход «Та хэн бэ?» сонголт (эзэн 10-27: «түрээслэгч, оршин суугчийг тусдаа
+// попапаар … өнгө солигдож байгаа мэдрэмж»). html[data-role] → src/css/custom.css.
+import React, { useEffect, useState } from "react";
+import { useHistory, useLocation } from "@docusaurus/router";
+
+const KEY = "spacehub-help-role";
+const roleOf = (path) => (/^\/(owner|lessor)(\/|$)/.test(path) ? "owner" : "resident");
+
+function read() {
+  try {
+    return window.localStorage.getItem(KEY);
+  } catch {
+    return null;
+  }
+}
+function save(role) {
+  try {
+    window.localStorage.setItem(KEY, role);
+  } catch {
+    /* хувийн цонх — сонголт хадгалагдахгүй, ажиллагаа хэвээр */
+  }
+}
+
+function RolePick({ onPick }) {
+  return (
+    <div className="role-pick" role="dialog" aria-modal="true" aria-labelledby="role-pick-title">
+      <div className="role-pick__box">
+        <h2 id="role-pick-title">Та хэн бэ?</h2>
+        <p>Өөрт тохирох тусламжаа сонгоно уу. Дараа нь дээд цэснээс солиж болно.</p>
+        <div className="role-pick__cards">
+          <button type="button" className="role-pick__card role-pick__card--resident" onClick={() => onPick("resident")}>
+            <div className="role-pick__icon">🏠</div>
+            <b>Түрээслэгч, оршин суугч</b>
+            <span>Гар утасны апп: төлбөр төлөх, нэхэмжлэх харах</span>
+          </button>
+          <button type="button" className="role-pick__card role-pick__card--owner" onClick={() => onPick("owner")}>
+            <div className="role-pick__icon">🏢</div>
+            <b>Эзэмшигч, менежер</b>
+            <span>Вэб програм: гэрээ, тооцоо, нэхэмжлэх, хуулга</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Зураг дээр дарахад томоор (эзэн 10-27 «зураг дээр дарж томруулж хардаг, дугаар харагдахгүй байна»)
+function Zoom({ src, alt, onClose }) {
   useEffect(() => {
     const esc = (e) => e.key === "Escape" && onClose();
     window.addEventListener("keydown", esc);

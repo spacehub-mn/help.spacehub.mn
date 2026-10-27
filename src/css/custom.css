@@ -226,23 +226,42 @@ html[data-role] .theme-doc-sidebar-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 16px;
-  background: rgba(15, 23, 42, 0.85);
-  cursor: zoom-out;
+  padding: 48px 16px 40px;
+  background: rgba(15, 23, 42, 0.88);
   overflow: auto;
+  overscroll-behavior: contain;
 }
+/* Багтаах: дэлгэцэнд бүтнээрээ */
 .img-zoom img {
-  max-width: none;
+  max-width: 100%;
+  max-height: 100%;
   width: auto;
-  max-height: none;
+  height: auto;
+  object-fit: contain;
+  cursor: zoom-in;
   border-radius: 8px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
   background: #fff;
 }
-@media (max-width: 996px) {
-  /* утсанд: өргөнөөр нь дүүргээд хэвтээ гүйлгэнэ */
-  .img-zoom { align-items: flex-start; justify-content: flex-start; }
-  .img-zoom img { width: 200%; }
+/* Жинхэнэ хэмжээ: блок байрлал (flex төвлөрөл зүүн хэсгийг тасалдаг) + хоёр тийш гүйлгэх */
+.img-zoom--full {
+  display: block;
+  text-align: center;
+}
+.img-zoom--full img {
+  max-width: none;
+  max-height: none;
+  cursor: zoom-out;
+}
+.img-zoom__hint {
+  position: fixed;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  color: #e5e7eb;
+  font-size: 0.85rem;
+  pointer-events: none;
+  white-space: nowrap;
 }
 .img-zoom__close {
   position: fixed;
