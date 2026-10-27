@@ -21,6 +21,8 @@
 //   W-order   жагсаалтын хуудас: Энэ юу вэ → Хэзээ хэрэглэх → Товчнууд → Түгээмэл асуулт
 //   E-imgmap  зураг дээрх тэмдэг доорх текстэд алга (W-imgmap: текстийн дугаар зураг дээр алга); E-img8 > 8 тэмдэг; W-imgcap «Зураг N.» алга
 //   E-img     ![…](/img/…) файл static/-д алга (build-д мөн унана); W-img: alt хоосон, эсвэл заавар/асуудал/сургалт хуудсанд зураг огт алга (HELP_PLAN §11)
+//   E-spell   ө/ү-г о/у болгож бичсэн үг («оорчлох», «толбор») — хэрэглэгчид харагдах бичвэрт
+//   W-tech    өгүүлбэр доторх кодын/дотоод нэр томьёо (ListView, ObjectSpace, deploy…); W-long 20-оос урт өгүүлбэр
 //   W-stale   verified_commit-оос хойш хуудасны иш татсан Spacehub23 файл өөрчлөгдсөн
 //   I-legacy  2023 оны загваргүй хуудас (frontmatter-гүй) — тоолно, алдаа биш
 import { execFileSync } from "node:child_process";
@@ -45,6 +47,10 @@ const TYPES_NEED_IMG = ["surgalt", "zaavar", "asuudal"];
 const STATIC = join(DOCS, "..", "static");
 const AUDIENCE = /[🏢🏠👔🧮]/u;
 const MAX_Q = 5;
+// E-spell: ө/ү-г о/у болгож бичсэн түгээмэл үг (хайлтын хувилбар хэрэглэгчид харагдсан — эзэн 10-27)
+const SPELL_RE = /(?<!\p{L})(оорчл\p{L}*|толбор\p{L}*|тулбур\p{L}*|турээс\p{L}*|хонгол\p{L}*|оноод\p{L}*|одроос|одрийн|оорийн|унэ|унийн|шуулт\p{L}*|омнох\p{L}*|уйлчилгээ\p{L}*|буртг\p{L}*|гуйлгээ\p{L}*|хуснэгт\p{L}*)(?!\p{L})/gu;
+// W-tech: өгүүлбэр доторх кодын/дотоод нэр томьёо (дэлгэц дээрх цэс, таб, товчны нэр биш — CEO 10-27 17:2x залруулга)
+const TECH = ["TargetObjectsCriteria", "ObjectSpace", "ListView", "DetailView", "nested", "PreBill", "FIFO", "refno", "hash", "migration", "deploy", "controller", "XAF", "XPO", "Hangfire", "cron", "commit", "null", "Oid", "enum", "SQL", "backend", "API"];
 const termsFile = join(ROOT, "scripts", "help-lint.terms.json");
 const TERMS = existsSync(termsFile) ? JSON.parse(readFileSync(termsFile, "utf8")) : [];
 
@@ -191,6 +197,15 @@ for (const file of walk(DOCS)) {
     const bad = btn.split(String.fromCharCode(10)).filter((l) => /(харагдахгүй|л харагдана|дээр харагдана|үед харагдана)/.test(l) && /(Сонголт|Хэзээ|товч)/.test(l) && !/саарал|^Товчны нэр/.test(l.trim()));
     if (bad.length) add("W", "W-gray", `товч «харагдана/харагдахгүй» ${bad.length} мөр — ихэнх товч нуугддаггүй, «саарал (дарагдахгүй)» гэж бич: «${bad[0].trim().slice(0, 60)}…»`);
   }
+
+  // Үг үсэг, найруулга (эзэн 10-27, чартер «Үг үсгийн алдаа — суурь хяналт»): хэрэглэгчид харагдах бичвэр — inline код, холбоосын URL, зургийн замгүй
+  const seen = prose.replace(/`[^`\n]*`/g, " ").replace(/\]\([^)]*\)/g, "]").replace(/^(slug|keywords):.*$/gm, "");
+  const spell = [...new Set([...seen.toLowerCase().matchAll(SPELL_RE)].map((m) => m[1]))];
+  if (spell.length) add("E", "E-spell", `ү/ө-гүй бичсэн үг: ${spell.slice(0, 5).join(", ")} — «ө», «ү»-гээр зас`);
+  const tech = TECH.filter((w) => new RegExp(`(?<![\\p{L}\\w])${w}(?![\\p{L}\\w])`, "iu").test(seen));
+  if (tech.length) add("W", "W-tech", `дотоод/кодын нэр томьёо: ${tech.slice(0, 5).join(", ")} — дэлгэц дээрх нэрээр эсвэл энгийн үгээр бич`);
+  const long = seen.split(/(?<=[.!?;])\s+|\n/).filter((s) => !/^\s*[|!<>#]/.test(s) && s.split(/\s+/).filter((w) => /\p{L}/u.test(w)).length > 20);
+  if (long.length) add("W", "W-long", `20-оос урт өгүүлбэр ${long.length}: «${long[0].trim().slice(0, 50)}…» — хуваа`);
 
   // Зураг ↔ текст 1:1 (эзэн 10-27, чартер «Агуулгын ойлгомж»): тэмдэг бүр доорх дугаартай мөртэй, ≤ 8 тэмдэг, «Зураг N.» тайлбар
   const type = fm.type || (/(^|\/)owner\/[^/]+\.mdx?$/.test(rel) && !/index\.mdx?$/.test(rel) ? "zaavar" : undefined);

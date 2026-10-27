@@ -118,3 +118,15 @@ test("E-pii: локал жагсаалтын харилцагчийн нэр <!-
   assert.ok(rules(out, "a.md").includes("E-pii") && rules(out, "a.md").includes("W-pii"));
   assert.ok(!rules(out, "b.md").includes("E-pii"));
 });
+
+test("E-spell: ө/ү-гүй үг (тайлбар, inline кодод тооцохгүй); W-tech; W-long", () => {
+  const body = good.replace("Бичвэр.", "Үнэ оорчлох, толбор шалга. `толбор` <!-- турээс --> ListView-ээс нээ.\n\nНэг хоёр гурав дөрөв тав зургаа долоо найм ес арав нэг хоёр гурав дөрөв тав зургаа долоо найм ес арав нэг.");
+  const { code, out } = run(fixture({ "s.md": body }));
+  assert.equal(code, 1);
+  const r = rules(out, "s.md");
+  assert.ok(r.includes("E-spell") && r.includes("W-tech") && r.includes("W-long"));
+  const msg = out.results[0].issues.find((i) => i.rule === "E-spell").msg;
+  assert.match(msg, /оорчлох, толбор/);
+  assert.doesNotMatch(msg, /турээс/);
+  assert.deepEqual(rules(run(fixture({ "a.md": good })).out, "a.md"), []);
+});
