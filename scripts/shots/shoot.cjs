@@ -38,6 +38,8 @@ async function blur(page, extraTh, account) {
         t.querySelectorAll("tbody tr").forEach((tr) => { const td = tr.children[i]; if (td) { td.classList.add("hs-pii"); n++; } });
       });
     });
+    // Хайлтын талбарт өмнөх хайлт (регистр, нэр) үлдсэн байж болно — үргэлж бүдгэрүүлнэ
+    document.querySelectorAll("input").forEach((el) => { if (el.offsetParent && el.value && /хай/i.test(el.placeholder || "")) { el.classList.add("hs-pii"); n++; } });
     if (account) document.querySelectorAll("input").forEach((el) => { if (el.offsetParent && /^\d{6,}\s/.test(el.value)) { el.classList.add("hs-pii"); n++; } });
     return n;
   }, { heads: [...PII_TH, ...extraTh], account });
