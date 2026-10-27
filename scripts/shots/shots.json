@@ -876,35 +876,30 @@
     ],
     "width": 1920,
     "clip": "auto",
-    "alt": "Авто ажил: 1.1 цэс, 1.2 статус, 1.3 Next Auto Job +, 1.4 Job Create, 1.5 Job start, 1.6 төрөл",
+    "alt": "Авто ажил: статус, Next Auto Job +, Job Create, Job start, төрөл",
     "marks": [
       {
         "n": "1.1",
-        "tree": "Авто ажил",
-        "label": "Цэс"
-      },
-      {
-        "n": "1.2",
         "th": "Авто ажил статус",
         "label": "Статус"
       },
       {
-        "n": "1.3",
+        "n": "1.2",
         "btn": "Next Auto Job",
         "label": "Next Auto Job +"
       },
       {
-        "n": "1.4",
+        "n": "1.3",
         "btn": "Job Create",
         "label": "Job Create"
       },
       {
-        "n": "1.5",
+        "n": "1.4",
         "btn": "Job start",
         "label": "Job start"
       },
       {
-        "n": "1.6",
+        "n": "1.5",
         "th": "Авто төлбөр төрөл",
         "label": "Төрөл"
       }

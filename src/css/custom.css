@@ -283,3 +283,10 @@ html[data-role] .theme-doc-sidebar-container {
 html[data-role] .navbar__logo img {
   filter: brightness(0) invert(1);
 }
+
+/* Дугаартай зураг жинхэнэ хэмжээгээрээ, өргөн бол хажуу тийш гүйлгэнэ (Root.js fit) */
+.markdown .img-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 4px;
+}

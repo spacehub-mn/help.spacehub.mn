@@ -65,6 +65,19 @@ export default function Root({ children }) {
   const [ask, setAsk] = useState(false);
   const [zoom, setZoom] = useState(null);
 
+  // Дугаартай зургийг (2× нягтрал) жинхэнэ хэмжээгээр нь (naturalWidth / 2) харуулна — утсан дээр жижигрэхгүй,
+  // тэмдэг 32px хэвээр; өргөн бол хажуу тийш гүйлгэнэ (Qa_Spacehub 10-27: 390px өргөнд тэмдэг 6–11px болж байсан).
+  useEffect(() => {
+    const fit = (img) => {
+      if (!img.naturalWidth) return;
+      img.style.width = `${img.naturalWidth / 2}px`;
+      img.style.maxWidth = "none";
+      img.parentElement?.classList.add("img-scroll");
+    };
+    const imgs = [...document.querySelectorAll('.markdown img[src*="/img/owner/"]')];
+    imgs.forEach((img) => (img.complete ? fit(img) : img.addEventListener("load", () => fit(img), { once: true })));
+  }, [pathname]);
+
   useEffect(() => {
     const open = (e) => {
       const img = e.target.closest && e.target.closest(".markdown img");
