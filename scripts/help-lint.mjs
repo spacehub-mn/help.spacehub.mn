@@ -39,6 +39,7 @@ const STRICT = args.includes("--strict");
 const AS_JSON = args.includes("--json");
 const REPO = opt("--repo", "E:/Projects/spacehub-mn/Spacehub23");
 const REF = opt("--ref", "origin/master");
+const APP_REPO = opt("--app-repo", "E:/Projects/spacehub-mn/spacehub");
 const DOCS = opt("--docs", join(ROOT, "docs")); // тестэд өөр хавтас
 
 const TYPES = ["nuur", "ehleh", "surgalt", "zaavar", "asuudal", "oilgolt", "lavlah", "hab"];
@@ -235,7 +236,13 @@ for (const file of walk(DOCS)) {
   const q = (prose.match(/❔/g) ?? []).length;
   if (q > MAX_Q) add("W", "W-q", `❔ ${q} (>${MAX_Q}) — батлах эсвэл хасах`);
 
-  if (gitOk && fm.verified_commit && /^[0-9a-f]{7,40}$/.test(fm.verified_commit)) {
+  // Гар утасны аппын хуудас (verified_repo: spacehub): commit нь Flutter аппын repo-д байх ёстой; хуучралтыг Spacehub23-аар шалгахгүй
+  if (fm.verified_repo === "spacehub") {
+    if (!NO_GIT && existsSync(APP_REPO) && /^[0-9a-f]{7,40}$/.test(fm.verified_commit ?? "")) {
+      try { execFileSync("git", ["-C", APP_REPO, "cat-file", "-e", `${fm.verified_commit}^{commit}`], { stdio: "ignore" }); }
+      catch { add("E", "E-fm", `verified_commit ${fm.verified_commit} аппын repo (spacehub)-д олдсонгүй`); }
+    }
+  } else if (gitOk && fm.verified_commit && /^[0-9a-f]{7,40}$/.test(fm.verified_commit)) {
     const changed = changedSince(fm.verified_commit);
     // Олдохгүй commit = нотолгоо шалгагдах боломжгүй (Dev_Research) → алдаа
     if (changed === null) add("E", "E-fm", `verified_commit ${fm.verified_commit} Spacehub23-д олдсонгүй`);

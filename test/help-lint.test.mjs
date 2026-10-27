@@ -150,3 +150,17 @@ test("тойм зураг: эхний бүлгийн өмнөх зураг — �
   const bad = rules(run(docs, "--shots", shots).out, "t.md");
   assert.ok(bad.includes("E-imgmap") && bad.includes("W-imgmap")); // 3 илүү, 2 дутуу
 });
+
+test("verified_repo: spacehub — commit аппын repo-д шалгагдана, Spacehub23-аар биш", () => {
+  const repo = mkdtempSync(join(tmpdir(), "help-lint-app-"));
+  const g = (...a) => execFileSync("git", ["-C", repo, ...a], { encoding: "utf8" }).trim();
+  g("init", "-q"); writeFileSync(join(repo, "a.txt"), "a"); g("add", "a.txt");
+  g("-c", "user.name=t", "-c", "user.email=t@t", "commit", "-q", "-m", "a");
+  const sha = g("rev-parse", "--short=8", "HEAD");
+  const page = (c) => good.replace("verified_commit: c68c602\n", `verified_commit: ${c}\nverified_repo: spacehub\n`);
+  const docs = fixture({ "ok.md": page(sha), "bad.md": page("deadbeef") });
+  const lint = () => { try { return JSON.parse(execFileSync("node", ["scripts/help-lint.mjs", "--json", "--docs", docs, "--repo", repo, "--ref", "HEAD", "--app-repo", repo], { encoding: "utf8" })); } catch (e) { return JSON.parse(e.stdout); } };
+  const out = lint();
+  assert.ok(!rules(out, "ok.md").includes("E-fm"));
+  assert.ok(out.results.find((r) => r.file.endsWith("bad.md")).issues.some((i) => i.rule === "E-fm" && /аппын repo/.test(i.msg)));
+});

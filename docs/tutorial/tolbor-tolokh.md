@@ -6,7 +6,8 @@ sidebar_position: 2
 type: surgalt
 roles: [resident]
 updated: 2026-10-27
-verified_commit: 5fa824f
+verified_commit: 03de3014
+verified_repo: spacehub
 keywords:
   - "нэхэмжлэх харах"
   - "төлбөр төлөх"
