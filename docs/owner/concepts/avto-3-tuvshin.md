@@ -10,6 +10,8 @@ keywords:
   - "авто тооцоо гарахгүй"
   - "Авто гэрээ"
 ---
+# Авто тооцоо: 3 түвшин
+
 <!--
 Нотолгоо (Spacehub23 origin/master c68c602):
 - AutoJob.cs:289-292 GetSpacehubCriteriaForChart: [ContractId.IsClosed] != true And [PropertyOwnerId.IsAuto] And [ContractId.IsAuto] And [ContractId.PropertyId.IsAuto]
@@ -18,8 +20,6 @@ keywords:
 - ContractClose.cs:189 хаахад IsAuto унтарна; сэргээхэд буцаж асахгүй (help_review_contractsub.md)
 - Гэрээний «Авто» сэлгэх товч: list-Contract_ListView.md :125-130
 -->
-
-# Авто тооцоо: 3 түвшин
 
 > 💡 Ойлголт · 🏢 Owner, менежер, нягтлан · Вэб (app.spacehub.mn)
 

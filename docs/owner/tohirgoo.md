@@ -13,6 +13,8 @@ keywords:
   - "дүн бүхэлчлэх"
   - "төлбөр төлөх өдөр"
 ---
+# Owner-ийн тохиргоо (Нэмэлт тохиргоо)
+
 <!--
 Нотолгоо (Spacehub23 origin/master c68c602):
 - PropertyOwner.cs:233 «Нэмэлт тохиргоо» (RuleRequiredField, Aggregated) → PropertyOwnerMore (PropertyOwnerMore.cs:15 «Бусад тохиргоо»)
@@ -29,8 +31,6 @@ keywords:
 - ElecPowerType: ElecPowerType.cs 5 сонголт
 - SMS: SmsView :256-275 (жишээ утгаар орлуулсан урьдчилсан харагдац), SmsParameters :278-293, UnpaidInvoiceBillSmsTemplateDefault :296-306
 -->
-
-# Owner-ийн тохиргоо (Нэмэлт тохиргоо)
 
 > 📋 Лавлах · 🏢 Owner (админ) · Вэб (app.spacehub.mn) · **Менежмент → Байгууллага → карт → Нэмэлт тохиргоо**
 

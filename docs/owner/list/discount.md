@@ -13,6 +13,8 @@ keywords:
   - "хөнгөлөлт цуцлах"
   - "хөнгөлөлт шинэчлэх"
 ---
+# Хөнгөлөлт (жагсаалт)
+
 <!--
 Хяналт: Dev_Research research/help_review_discount.md (❌ 3) → бүгдийг засав. BillItem.cs:286 (цуцалсныг тооцохгүй); «Задаргаа татах» CustomDiscount=true.
 Нотолгоо (Spacehub23 origin/master c68c602):
@@ -27,8 +29,6 @@ keywords:
   - «Задаргаа татах»: MainController.cs:316 — зөвхөн карт (DetailView) дээр
 - Хөнгөлөлт үүсэх зам: Bill_ListView «Хөнгөлөлт +» (list-Bill_ListView.md), сарын тооцоо (Discount.UpdateOrCreateDiscount, ContractUtility.cs:453)
 -->
-
-# Хөнгөлөлт (жагсаалт)
 
 > 🏢 Owner, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Тооцоо → Хөнгөлөлт**
 

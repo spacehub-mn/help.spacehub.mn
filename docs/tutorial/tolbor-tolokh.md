@@ -9,6 +9,8 @@ keywords:
   - "е-баримт авах"
   - "ebarimt"
 ---
+# Нэхэмжлэх харж төлөх, баримт авах
+
 <!--
 Нотолгоо (spacehub 03de3014 mn_MN.json):
 - Нүүр: pages.newTenantDashboard.payment «Төлбөр төлөх» :606, noActiveInvoice :604, chooseContract «Гэрээ сонгох» :594, seeContract «Гэрээ харах» :608
@@ -19,8 +21,6 @@ keywords:
 - Баримт харах: ContractPage.dart:190 таб «Төлөлт» (:290) → SalePage.dart:69-73 «ebarimt харах» (:295) зөвхөн saleEbarimtId != null үед
 - Баримтыг байгууллага гаргадаг; өмнөх сарын баримт дараа сарын 7-ны дотор (EbarimtAutoPolicy.cs:14 — owner талд)
 -->
-
-# Нэхэмжлэх харж төлөх, баримт авах
 
 > 📘 Сургалт · 🏠 Түрээслэгч, оршин суугч · Гар утасны апп · ⏱ 5 минут
 

@@ -13,6 +13,8 @@ keywords:
   - "Google Sheet тоолуур"
   - "олон айлын заалт нэг дор"
 ---
+# Тоолуур татах (жагсаалт)
+
 <!--
 Хяналт: Dev_Research research/help_review_utilitysheet.md (❌ 3) → засав.
 Нотолгоо (Spacehub23 origin/master c68c602):
@@ -26,8 +28,6 @@ keywords:
 - Sheet: GoogleSheetUtility.cs:13 «Google Sheet - ээс тоолуур татах», :25 SheetRange «Тоолуур таталт!A2:E», :41 «Татагдах тоолуурын сар», :59 Sheet Id, :75 Sheet range, :91 Татсан тоолуур; багана GoogleSheetsHelper.cs:371-376 (A гэрээ, B огноо, C цахилгаан, D халуун ус, E хүйтэн ус); хоосон нүд → «…'n/a' гэж тэмдэглэ…» (:383)
 - Хадгалах: ContractUtility.cs:430-457 — ШИНЭ мөр «Нэхэмжлэх үүсгэх» чагттай бол төлбөр + хөнгөлөлт + нэхэмжлэх
 -->
-
-# Тоолуур татах (жагсаалт)
 
 > 🏢 Owner, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Автоматжуулалт → Тоолуур татах**
 

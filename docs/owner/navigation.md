@@ -14,6 +14,8 @@ keywords:
   - "хайх шүүх"
   - "товч саарал"
 ---
+# Програм ашиглах
+
 <!--
 Нотолгоо (Spacehub23 origin/master c68c602):
 - Хяналт: research/help_review_navigation.md (❌3) → засав; «Устгах» = mn.xafml:8 Action Delete (Устга нь ValidationContext :222)
@@ -26,8 +28,6 @@ keywords:
 - Adaptive toolbar: Ebarimt3SaleController.cs:33-34 (нарийн үед дүрс болж агшина)
 - «?»: HelpLinkViewController.cs (Caption «?», дүрс Actions_Info, ToolTip «Энэ хуудасны гарын авлага (шинэ табаар нээгдэнэ)», Active: Help:BaseUrl тохируулсан, үндсэн цонх, popup биш); HelpLinks.cs:39-45
 -->
-
-# Програм ашиглах
 
 > 🏢 Owner, менежер, нягтлан · Вэб (app.spacehub.mn)
 

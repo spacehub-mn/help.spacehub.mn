@@ -10,11 +10,11 @@ keywords:
   - "е-баримт гараагүй"
   - "сугалаатай сугалаагүй"
 ---
+# Е-баримт гарах нөхцөл
+
 <!--
 Нотолгоо: EbarimtRecord.cs:205-236 (автомат нөхцөл); Sale.cs:1450-1530 IsAutoCreateEbarimt (олноор/авто); Sale.cs:1007-1014 CanIssueEbarimt (гараар); EbarimtAutoPolicy.cs:14 (7-ны cutoff); SaleEbarimtActionRules.cs; help_review_ebarimtrecord.md, help_review_sale.md, help_review_saleebarimt.md, help_review_customer.md
 -->
-
-# Е-баримт гарах нөхцөл
 
 > 💡 Ойлголт · 🏢 Owner, менежер, нягтлан · Вэб (app.spacehub.mn)
 

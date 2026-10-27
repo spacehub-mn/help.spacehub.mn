@@ -14,6 +14,8 @@ keywords:
   - "регистр"
   - "давхацсан харилцагч"
 ---
+# Харилцагч (жагсаалт)
+
 <!--
 Хяналт: Dev_Research research/help_review_customer.md (❌ 3) → бүгдийг засав.
 Нотолгоо (Spacehub23 origin/master c68c602):
@@ -29,8 +31,6 @@ keywords:
   - «Харилцагч шилжүүлэх +»: :683-695 (зөвхөн Administrators)
   - «Эзэмшигч»: MainController.cs:238-239, OwnerOnCustomer_Select (PropertyOwner_DetailView — харилцагчаас байгууллага үүсгэнэ; эрхийн хаалтгүй)
 -->
-
-# Харилцагч (жагсаалт)
 
 > 🏢 Owner, менежер · Вэб (app.spacehub.mn) · Цэс: **Менежмент → Харилцагч**
 

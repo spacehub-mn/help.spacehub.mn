@@ -14,6 +14,8 @@ keywords:
   - "нэхэмжлэх нээгдэхгүй апп"
   - "апп шинэчлэх"
 ---
+# Апп ажиллахгүй үед
+
 <!--
 Нотолгоо:
 - Хувилбар: research/ux/09_mobile_app.md §2-3 — апп ≥1.35.8 нь api.spacehub.mn, хуучин хувилбар api.dev руу ханддаг (09-21-ээс хойш засвар хүрээгүй; memory project_api_dev_legacy_host); enum эвдрэл — хуучин апп төлөвийг буруу харуулдаг (memory project_spacehub_app_enum_break, #1013/#1015)
@@ -21,8 +23,6 @@ keywords:
 - Харилцагч ↔ хэрэглэгч: Customer «Хэрэглэгч мэдээлэл ...» (list-Customer_ListView.md)
 - «200: Алдаа гарлаа»: хуучин апп + InvoiceBillStatusType enum өөрчлөлт (#1013/#1015) → Нэхэмжлэл таб (memory project_spacehub_app_enum_break, Dev_Research); зассан хувилбар дэлгүүрт гарсан эсэх ❔
 -->
-
-# Апп ажиллахгүй үед
 
 > 🏠 Түрээслэгч, оршин суугч · Гар утасны апп — 🏢 owner, менежер ч хэрэглэнэ
 

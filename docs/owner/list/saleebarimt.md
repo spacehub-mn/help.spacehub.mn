@@ -14,6 +14,8 @@ keywords:
   - "ДДТД"
   - "сугалааны код SMS"
 ---
+# И-Баримт (жагсаалт)
+
 <!--
 Хяналт: Dev_Research research/help_review_saleebarimt.md (❌ 5) → бүгдийг засав.
 Нотолгоо (Spacehub23 origin/master c68c602):
@@ -32,8 +34,6 @@ keywords:
   - «Мэссэж илгээх»: SaleEbarimt.cs:371-380 (EBarimtStatus != 6 And BillType == 0 = сугалаатай); EbarimtSmsPopup (Явуулсан огноо, Мэссэж хүлээн авагч = гэрээний утас, Мэдээ — сугалааны код, дүн); SmsKey хоосон бол юу ч хийхгүй
 - «?» холбоос одоо: HelpLinks.cs:27 (SaleEbarimt_ListView → owner/e-barimt)
 -->
-
-# И-Баримт (жагсаалт)
 
 > 🏢 Owner, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Тооцоо → И-Баримт**
 

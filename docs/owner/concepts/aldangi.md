@@ -11,6 +11,8 @@ keywords:
   - "алданги цуцлах"
   - "алданги тохиргоо"
 ---
+# Алданги
+
 <!--
 Нотолгоо (Spacehub23 origin/master c68c602):
 - 3 түвшин: PropertyOwnerMore.cs:453 «Алданги тооцно» (байгууллага) → PropertyMore.cs:92-201 «…(override)», «Алданги тохиргоог энэ объектод өөрчлөх» → ContractMore.cs:244-300 «…(override)», «Алданги тохиргоог энэ гэрээнд өөрчлөх» (ToolTip: хоосон үед Property/эзэмшигчийнхээс)
@@ -23,8 +25,6 @@ keywords:
 - Томьёо: LateFeeItem.cs:117-150 (хувь, тогтмол, 50% хязгаар); BillItem.cs:734-750 (анхдагч 0.5 / 5 / 2026-01-01, хоцорсон хоног)
 - Объектын override: PropertyMore.cs:160-205 (help_review_concepts.md З3)
 -->
-
-# Алданги
 
 > 💡 Ойлголт · 🏢 Owner, менежер, нягтлан · Вэб (app.spacehub.mn)
 

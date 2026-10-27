@@ -12,6 +12,8 @@ keywords:
   - "эхний үлдэгдэл"
   - "гэрээний дугаар солих"
 ---
+# Гэрээ (жагсаалт)
+
 <!--
 Нотолгоо (Spacehub23 origin/master 12cf242; e3d87a2-оос Contract.cs +9 мөр):
 - Цэс: Model.DesignedDiffs.xafml:42 (Менежмент → Гэрээ); :1535 Contract_ListView AllowNew/AllowDelete = True
@@ -37,8 +39,6 @@ keywords:
 - ⚠ ACTIONS_INVENTORY-оос хоцорсон 2 мөр: C1 «Үлдэгдэл хаах...» = IsCurrentUserInRole('Administrators') (Contract.cs:1877);
   C9 «Сар (-1)» ToolTip «ӨМНӨ рүү (−1 сар)».
 -->
-
-# Гэрээ (жагсаалт)
 
 > 🏢 Owner, менежер, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Менежмент → Гэрээ**
 

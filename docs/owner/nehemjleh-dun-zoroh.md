@@ -12,6 +12,8 @@ keywords:
   - "төлөх дүнд өмнөх үлдэгдэл"
   - "нэхэмжлэх шинэчлэгдэхгүй"
 ---
+# Нэхэмжлэхийн дүн зөрж байна
+
 <!--
 Хяналт: research/help_review_asuudal_a3a4.md ✅ (+тодотгол). GetDebtCutoff = min(нэхэмжлэхийн огноо, сарын сүүл); урсгал Bill.cs:1621-1651.
 Нотолгоо (Spacehub23 origin/master c68c602):
@@ -20,8 +22,6 @@ keywords:
 - SMS: InvoiceBill.cs:1207-1240 BuildDynamicInvoiceSms; илгээхийн өмнө төлөв шалгана (InvoiceBillController.cs:357)
 - Viber эх: «SMS-ээр 248 500₮ очсон атал төлбөр 201 500₮», «төлөх дүнд өмнөх саруудын үлдэгдэл орж ирдэг»
 -->
-
-# Нэхэмжлэхийн дүн зөрж байна
 
 > 🏢 Owner, нягтлан · Вэб (app.spacehub.mn)
 

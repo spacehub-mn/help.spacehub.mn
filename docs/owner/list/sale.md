@@ -15,6 +15,8 @@ keywords:
   - "е-баримт буцаах"
   - "төлөлт хуваах"
 ---
+# Төлөлт (жагсаалт)
+
 <!--
 Хяналт: Dev_Research research/help_review_sale.md (❌ 9 засвар) → бүгдийг засав. Дахин хяналт ✅, сонголтот 2 нэмэлт орсон.
 Нотолгоо (Spacehub23 origin/master c68c602):
@@ -43,8 +45,6 @@ keywords:
   - Хадгалсны дараа төлбөрийн төлөв: SaleController.cs:186-239 (#791)
 - «?» холбоос одоо: HelpLinks.cs:26 (Sale_ListView → owner/e-barimt); хуудас help-index.json-д орвол owner/list/Sale_ListView (HelpLinks.cs:39-45)
 -->
-
-# Төлөлт (жагсаалт)
 
 > 🏢 Owner, менежер, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Тооцоо → Төлөлт**
 

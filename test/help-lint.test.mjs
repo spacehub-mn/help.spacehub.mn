@@ -65,3 +65,11 @@ test("terms scope — owner-ийн дүрэм апп хуудсанд үйлчл
   assert.ok(rules(out, "owner/f.md").includes("W-term"));
   assert.ok(!rules(out, "lessor/g.md").includes("W-term"));
 });
+
+test("H1-ийн өмнө <!-- --> → E-h1first (гарчиг файлын нэрээр гарна)", () => {
+  const bad = `${fm()}<!-- нотолгоо -->\n\n# Гарчиг\n\n> 🏢 Owner · Вэб\n\n## 🔗 Холбоотой\n- [x](/x)\n`;
+  const { code, out } = run(fixture({ "c.md": bad, "a.md": good }));
+  assert.equal(code, 1);
+  assert.ok(rules(out, "c.md").includes("E-h1first"));
+  assert.ok(!rules(out, "a.md").includes("E-h1first"));
+});

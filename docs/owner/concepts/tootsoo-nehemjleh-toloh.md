@@ -11,11 +11,11 @@ keywords:
   - "хуваарилалт"
   - "төлбөр төлөлт ялгаа"
 ---
+# Төлбөр → Нэхэмжлэх → Төлөлт
+
 <!--
 Нотолгоо: list-Bill/InvoiceBill/Sale/Statement_ListView.md (Dev_Research ✅); Sale.cs:1101-1205 (Хуваарилах, алданги эхэлж); SaleController.cs:186-239 (#791 хадгалахад гэрээний төлбөрийн төлөв үлдэгдлээр); InvoiceBillController.cs:127-162 (Төлөв шалгах); Bill.cs:22-35, InvoiceBill.cs:39-41 (өнгө)
 -->
-
-# Төлбөр → Нэхэмжлэх → Төлөлт
 
 > 💡 Ойлголт · 🏢 Owner, менежер, нягтлан · Вэб (app.spacehub.mn)
 

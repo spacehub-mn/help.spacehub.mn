@@ -13,6 +13,8 @@ keywords:
   - "алданги тохиргоо объект"
   - "QPay хүсэлт"
 ---
+# Байгууллага (жагсаалт)
+
 <!--
 Хяналт: research/help_review_propertyowner.md (❌ 1) → засав. «Гэрээ драфт» → contractdraft/{oid} route олдсонгүй (Blazor @page зөвхөн /MonthlyBilling).
 Нотолгоо (Spacehub23 origin/master c68c602):
@@ -24,8 +26,6 @@ keywords:
   - «QPay хүсэлт» Blazor PropertyOwnerQPayRequestController.cs:17-53 (зөвхөн карт; текст үүсгэж «Хуулах»)
   - «Эрх хаах» PropertyOwnerController.cs:20-56 (ЗӨВХӨН админ; байгууллага + харилцагчдын бүх нэвтрэх эрхийг хаана, буцаах боломжгүй)
 -->
-
-# Байгууллага (жагсаалт)
 
 > 🏢 Owner (админ) · Вэб (app.spacehub.mn) · Цэс: **Менежмент → Байгууллага**
 

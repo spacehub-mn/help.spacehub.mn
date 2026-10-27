@@ -15,6 +15,8 @@ keywords:
   - "нэхэмжлэх цуцлах"
   - "алданги цуцлах нэхэмжлэх"
 ---
+# Нэхэмжлэх (жагсаалт)
+
 <!--
 Хяналт: Dev_Research research/help_review_invoicebill.md (❌ 6 засвар) → бүгдийг засав.
 Нотолгоо (Spacehub23 origin/master c68c602):
@@ -39,8 +41,6 @@ keywords:
   - «Хэвлэх» / «Багц хэвлэх»: MainController.cs:174-178; BlazorActionController.cs:84-85 (PDF), 121-136 (багц: харилцагч × сар)
 - «?» холбоос одоо: HelpLinks.cs:28 (InvoiceBill_ListView → owner/hugatsaa-songoh)
 -->
-
-# Нэхэмжлэх (жагсаалт)
 
 > 🏢 Owner, менежер, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Тооцоо → Нэхэмжлэх**
 

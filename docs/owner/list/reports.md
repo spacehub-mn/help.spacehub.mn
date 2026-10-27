@@ -13,6 +13,8 @@ keywords:
   - "тайлан хоосон"
   - "Excel татах"
 ---
+# Тайлан
+
 <!--
 Нотолгоо (Spacehub23 origin/master c68c602):
 - Цэс: mn.xafml «Reports» → «Тайлан»
@@ -22,8 +24,6 @@ keywords:
 - Тайлан харагч: ReportsBlazorModuleV2 ReportViewerDetailViewName (AccessReportViewerController.cs:12, ReportExecuteController.cs:13)
 - Хуучин ноорог 09-tailan-excel.md: «Waiting for parameter values», хоосон тайлан = параметр дутуу (Viber 7 мөр)
 -->
-
-# Тайлан
 
 > 🏢 Owner, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Тайлан**
 

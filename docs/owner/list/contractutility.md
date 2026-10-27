@@ -14,6 +14,8 @@ keywords:
   - "цахилгаан халуун ус хүйтэн ус"
   - "өмнөх сарын заалтаас их"
 ---
+# Тоолуур ашиглалт (жагсаалт)
+
 <!--
 Хяналт: Dev_Research research/help_review_contractutility.md (❌ 4 + 1) → бүгдийг засав. Дахин хяналт ✅; ContractUtilityChange цэсэнд нуугдсан (NavigationItem Hidden), UtilityChangeId Aggregated + ExpandObjectMembers.Never (ContractUtility.cs:405-413, Qa) → карт дээр шууд бөглөнө; прод 148 бичлэг.
 Нотолгоо (Spacehub23 origin/master c68c602):
@@ -28,8 +30,6 @@ keywords:
 - Хадгалах үед: :430-457 (дугаар «<гэрээ>-NN», сарын төлөв UtilityCreated, «Нэхэмжлэх үүсгэх» чагттай бол Bill + хөнгөлөлт + нэхэмжлэх; эхлэл заалт бол үүсгэхгүй #897)
 - Товч: ContractUtility-д чиглэсэн toolbar action алга (MainController.cs:138, 213, 217 коммент; BlazorEditorController.cs:8 зөвхөн DetailView-ийн доод хязгаар)
 -->
-
-# Тоолуур ашиглалт (жагсаалт)
 
 > 🏢 Owner, менежер, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Тооцоо → Тоолуур ашиглалт**
 

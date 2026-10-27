@@ -11,6 +11,8 @@ keywords:
   - "алданги цуцлах"
   - "нэхэмжлэх үүсгэх төлбөрөөс"
 ---
+# Төлбөр (жагсаалт)
+
 <!--
 Нотолгоо (Spacehub23 origin/master 12cf242, #1162 багтсан):
 - Цэс: Model.DesignedDiffs.xafml:72; mn.xafml MainItem = «Тооцоо»; Bill.cs XafDisplayName «Төлбөр»
@@ -27,8 +29,6 @@ keywords:
   - BillFilterController.cs:10; DateRangeFilterControllerBase.cs:29-44
 - «?» холбоос одоо: HelpLinks.cs:21 (Bill_ListView → owner/hugatsaa-songoh)
 -->
-
-# Төлбөр (жагсаалт)
 
 > 🏢 Owner, менежер, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Тооцоо → Төлбөр**
 

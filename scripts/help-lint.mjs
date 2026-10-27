@@ -10,6 +10,7 @@
 // Дүрмүүд:
 //   E-fm      frontmatter: type (зөвшөөрөгдсөн), roles (хоосон биш), updated (YYYY-MM-DD), verified_commit (hex 7+)
 //   E-h1      H1 яг нэг (code block-ийн гадна)
+//   E-h1first H1 нь frontmatter-ийн дараах эхний мөр (өмнө нь <!-- --> байвал гарчиг файлын нэрээр гарна)
 //   W-aud     H1-ийн дараах «> …» мөрөнд хэнд зориулсан нь (🏢/🏠/👔/🧮)
 //   W-rel     «## 🔗 Холбоотой» хэсэг (TYPES_NEED_REL төрөлд)
 //   W-term    хуучирсан/буруу нэр томьёо (scripts/help-lint.terms.json)
@@ -89,6 +90,9 @@ for (const file of walk(DOCS)) {
 
   const h1 = prose.split("\n").filter((l) => /^# \S/.test(l));
   if (h1.length !== 1 && !(legacy && h1.length === 0 && fm.title)) add(legacy ? "W" : "E", "E-h1", `H1 ${h1.length} ширхэг (1 байх ёстой)`);
+  // H1-ийн өмнө <!-- --> эсвэл бичвэр байвал Docusaurus гарчгийг файлын нэрээр («contract») гаргана
+  const firstLine = body.split("\n").find((l) => l.trim() !== "");
+  if (h1.length === 1 && !fm.title && !/^# \S/.test(firstLine ?? "")) add(legacy ? "W" : "E", "E-h1first", "H1 frontmatter-ийн дараах эхний мөр биш (гарчиг файлын нэрээр гарна)");
 
   if (!legacy) {
     const lines = prose.split("\n");

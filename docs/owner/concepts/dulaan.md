@@ -11,6 +11,8 @@ keywords:
   - "дулааны улирал"
   - "халаалт эхлэх огноо"
 ---
+# Дулааны төлбөр
+
 <!--
 Хяналт: research/help_review_dulaan_gatsah.md (❌ 2) → засав. Хоногоор: BillItem.cs:583-587, 692-695; хоногийн тооллого ContractPaymentChart.cs:525-558.
 Нотолгоо (Spacehub23 origin/master c68c602):
@@ -20,8 +22,6 @@ keywords:
 - Үйлчилгээний төрөл: ItemPriceType.cs — «Дулааны суурь үнэ» (12), «Дулааны үнэ» (13, хоногоор), «Дулааны тоолуур» (19)
 - Viber эх: viber_tasks.md T63 (11-dulaan.md)
 -->
-
-# Дулааны төлбөр
 
 > 💡 Ойлголт · 🏢 Owner, менежер, нягтлан · Вэб (app.spacehub.mn)
 

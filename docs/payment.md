@@ -1,14 +1,14 @@
 ---
 slug: /
 ---
+# Төлбөр төлөх заавар
+
 <!--
 Шинэчилсэн: Help_Spacehub 2026-10-26. Нотолгоо (spacehub-mn/spacehub origin/master 03de3014):
 - assets/lang/mn_MN.json: pages.newTenantDashboard.payment «Төлбөр төлөх» (:606), pages.rentor.invoices.invoice.pay «Төлөх» (:804) / paid «Төлсөн» (:803), general.continue «Үргэлжлүүлэх» (:152), general.payment.withQPay «QPay-ээр төлөх» (:190), withSocialPay «Social Pay-ээр төлөх» (:191), byTransfer «Дансаар төлөх» (:181), transfer.delayWarning (:189), qpay.qrcodepayment.desc (:186), qpay.confirmed / notYetConfirmed (:184-185), newTenantDashboard.noActiveInvoice (:604)
 - Төлбөр шалгах (апп origin/master 03de3014): InvoicePaymentSheet.dart:439-449 checkQpayPaymentState → v1InvoiceBillOidCheckPayGet, 200 биш бол false; SpacehubApiV2 InvoiceBillController CheckPay GetObjectByKey(criteria) → ArgumentException → 500 (492e8cd «CheckPay always returned 500»), засвар #1181 (2dc9301, deploy хүлээж байна); идэвхгүй SocialPay хаалт :1097 (#50п). Хост: апп 1.35.8+ → api.spacehub.mn (lib/APIs/api.dart:19, ApiV2 deploy энд ордог); ≤1.35.7 → api.dev, deploy-д шинэчлэгддэггүй (Dev_Research 10-27). Засварын дараа нөхцөл InvoiceBillStatus == Paid (:145) → дутуу төлсөн нэхэмжлэх «баталгаажаагүй» хэвээр
 - lib/Widgets/InvoicePaymentSheet.dart:128-147 (QPay/SocialPay зөвхөн байгууллага тохируулсан үед; Дансаар — банк, хүлээн авагч, данс, гүйлгээний утга = contractId.code :256-286 ↔ Spacehub23 Statement.cs:694 «Шалгах» гэрээний дугаараар тааруулна); QPay: банкны апп эсвэл QR (:166-188)
 -->
-
-# Төлбөр төлөх заавар
 
 > 🏠 Түрээслэгч, оршин суугч · Гар утасны апп
 

@@ -14,6 +14,8 @@ keywords:
   - "Дутуу Илүү"
   - "Гэрээ татах"
 ---
+# Эхний үлдэгдэл (жагсаалт)
+
 <!--
 Хяналт: Dev_Research research/help_review_beginbalance.md (❌ 4) → бүгдийг засав. Хуваарь бүрээс First() 1 bill/1 invoice; 0→X үед юу ч үүсэхгүй (🐞).
 Нотолгоо (Spacehub23 origin/master c68c602):
@@ -25,8 +27,6 @@ keywords:
 - Мөр засах: BeginBalanceContract.cs:35 «Үлдэгдэл», :68 «Төлбөр, төлөлт»; :47-53 е-баримттай бол хадгалахгүй; :76- OnChanged (хуучныг цуцалж шинээр үүсгэнэ)
 - Алгассан мэдэгдэл: BeginBalanceEbarimtSkipController.cs:32-34 (SkippedSummary)
 -->
-
-# Эхний үлдэгдэл (жагсаалт)
 
 > 🏢 Owner, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Тооцоо → Эхний үлдэгдэл** (доор нь **«Дутуу»**, **«Илүү»**)
 

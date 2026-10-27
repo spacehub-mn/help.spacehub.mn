@@ -13,6 +13,8 @@ keywords:
   - "эхний тооцоо"
   - "onboarding"
 ---
+# Эхний сар: шинэ owner
+
 <!--
 Нотолгоо:
 - Урсгал, гацаа: research/ux/08_onboarding.md §2 (owner 60: импорт Room↔PropertyItem холбоогүй, үнэ BasePrice → Price=0, ContractItem.IsUse=false, ContractItemPrice.Date NULL; Ebarimt үйлчилгээ хоосон, PropertyBillTemplate 0, SMS key хоосон; Sheet хоосон «Өндөр»/«Х1»; StoredPassword NULL)
@@ -21,8 +23,6 @@ keywords:
 - Room.cs:176 «Түрээсийн үйлчилгээ»; огноогүй үнэ = хуваарийн огнооны дотор хайдаг; «Үйлчилгээ татах» өнөөдрөөс өмнөх огноотой үнийг л (Dev_Research help_review_tutorials_settings.md)
 - Тохиргоог Spacehub баг хийдэг (wizard алга — memory project_owner_onboarding); объект/өрөөний картын яг замууд ❔
 -->
-
-# Эхний сар: шинэ owner
 
 > 📘 Сургалт · 🏢 Owner, нягтлан · Вэб (app.spacehub.mn) · ⏱ эхний тооцоо хүртэл 1–2 өдөр (шалгалттай)
 

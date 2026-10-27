@@ -15,6 +15,8 @@ keywords:
   - "хурдан төлөх"
   - "хувааж төлөх"
 ---
+# Дансны хуулга (жагсаалт)
+
 <!--
 Хяналт: Dev_Research research/help_review_statement.md (❌ 8 засвар) → бүгдийг засав. Дахин хяналт ✅, хэлбэржүүлэлт + сонголтот нэмэлт орсон.
 Нотолгоо (Spacehub23 origin/master c68c602):
@@ -38,8 +40,6 @@ keywords:
   - «Хуулга татах (Excel)»: StatementController.cs:27-31, 123-258 (давхардал алгасна, мөр бүрд DoSale); ExcelStatement.cs:15-106; ExcelBankStatement/*.cs (7 банк)
 - «?» холбоос одоо: HelpLinks.cs ByView-д Statement_ListView алга → owner/jagsaalt-hooson-shuult
 -->
-
-# Дансны хуулга (жагсаалт)
 
 > 🏢 Owner, менежер, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Автоматжуулалт → Дансны хуулга**
 

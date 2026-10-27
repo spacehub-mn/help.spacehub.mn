@@ -12,6 +12,8 @@ keywords:
   - "сарын хаалт"
   - "тулгалт"
 ---
+# Сар бүрийн ажил
+
 <!--
 Нотолгоо (бүгд Dev_Research ✅ хуудсууд):
 - Тоолуур: list-ContractPaymentChart #tooluur, list-UtilitySheet, Dashboards#tooluur-sar (энэ ба өмнөх сар л засагдана), owner апп upload-meter
@@ -20,8 +22,6 @@ keywords:
 - Тулгалт: Statement «Шалгах»/«ХУРДАН ТӨЛӨХ», Sale «Хуваарилах...», Contract «Төлбөрийн төлөв шинэчлэх», Dashboards#huulga-monitor
 - Хаалт: е-баримт 7-ны хязгаар (EbarimtAutoPolicy.cs:14), Reports «01. Нэгтгэл — Хурдан», Dashboards#talbai-sar, алданги (concepts/aldangi)
 -->
-
-# Сар бүрийн ажил
 
 > 📘 Сургалт · 🏢 Owner, нягтлан · Вэб (app.spacehub.mn)
 

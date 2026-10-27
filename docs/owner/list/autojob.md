@@ -14,6 +14,8 @@ keywords:
   - "Job start stop"
   - "дараа сарын авто ажил"
 ---
+# Авто ажил (жагсаалт)
+
 <!--
 Хяналт: Dev_Research research/help_review_autojob.md (❌ 4) → бүгдийг засав.
 Нотолгоо (Spacehub23 origin/master c68c602):
@@ -28,8 +30,6 @@ keywords:
   - «Next Auto Job + » :454-474 (дараа сарын ижил тохиргоотой авто ажил; аль хэдийн байвал юу ч хийхгүй, мэдэгдэлгүй)
 - Ажиллах зам: :488-500 (Automation сервисийн api/Automation/AutoJob/{Oid}, cron; bearer = PaymentConfig CronJob)
 -->
-
-# Авто ажил (жагсаалт)
 
 > 🏢 Owner, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Автоматжуулалт → Авто ажил**
 

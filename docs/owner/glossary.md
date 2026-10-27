@@ -13,6 +13,8 @@ keywords:
   - "төлбөр төлөлт ялгаа"
   - "цуцлах устгах ялгаа"
 ---
+# Нэр томьёо
+
 <!--
 Нэмэлт 10-26 16:3x: Автомат ажил (PropertyOwner.cs:108, Property.cs:360, Contract.cs:606), Хоног тооцох (PropertyItem.cs:234, ContractItem.cs:243), Өөрчлөх хувь (#1172), Тоолуурын бүртгэл (UtilityMeter.cs:13) / Гэрээний тоолуур (ContractUtilityMeter.cs:19). Хяналт: Dev_Research research/help_review_glossary.md (❌ 3 + 1 санал) → бүгдийг засав.
 Нотолгоо (Spacehub23 origin/master c68c602) — апп-д харагдах нэр (XafDisplayName):
@@ -26,8 +28,6 @@ keywords:
 - Цуцлах ≠ Устгах: Bill/InvoiceBill/Sale ListView AllowDelete=False (xafml:560, InvoiceBill_ListView, :6875); Statement AllowDelete=True (:7271)
 - Хуваарилах: Sale.cs:1101-1205; Алданги цуцлах: InvoiceBillController.cs:99-116
 -->
-
-# Нэр томьёо
 
 > 📖 Нэр томьёо · 🏢 Owner, менежер, нягтлан · Вэб (app.spacehub.mn)
 
