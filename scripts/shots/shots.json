@@ -2152,5 +2152,39 @@
         "below": true
       }
     ]
+  },
+  {
+    "id": "owner/erhgui-nevtreh",
+    "page": "docs/owner/erhgui-nevtreh.md",
+    "nav": [
+      "Харилцагч",
+      "Хэрэглэгч"
+    ],
+    "width": 1920,
+    "blurTh": [
+      "Овог",
+      "Албан тушаал"
+    ],
+    "clip": "auto",
+    "padLeft": 300,
+    "padRight": 200,
+    "alt": "Хэрэглэгч жагсаалт: Нэвтрэх эрх, Эрх сэргээх",
+    "marks": [
+      {
+        "n": "1.2",
+        "btn": "Нэвтрэх эрх",
+        "exact": true,
+        "label": "Нэвтрэх эрх"
+      },
+      {
+        "n": "1.3",
+        "btn": "Эрх сэргээх",
+        "exact": true,
+        "label": "Эрх сэргээх"
+      }
+    ],
+    "url": "User_ListView",
+    "waitTh": "Утас",
+    "padBottom": 120
   }
 ]
