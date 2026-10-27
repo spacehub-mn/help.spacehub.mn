@@ -190,6 +190,8 @@ async function toWebp(page, png) {
     else if (!s.navOnly) await leaf.click(); // navOnly: зөвхөн бүлгийг дэлгэнэ (дээр дэлгэсэн)
     await idle(page);
     if (s.waitTh) await page.locator("thead th:visible", { hasText: s.waitTh }).first().waitFor({ timeout: 60000 });
+    // Жагсаалт ачаалагдаагүй бол (URL ListView ч дэлгэц өмнөх Дашборд г.м.) зураг авахгүй — 10-27 бүдгэрээгүй нэртэй самбар буусан
+    else if (/_ListView/.test(page.url())) await page.locator("thead th:visible").first().waitFor({ timeout: 60000 });
     await page.waitForTimeout(1500);
     await page.mouse.move(vw.width - 5, vw.height - 5); // tooltip гаргахгүй
     // Хүснэгтийг хэвтээ гүйлгэж заасан баганыг харагдуулна (зөвхөн харагдах байдал, өгөгдөл өөрчлөхгүй)
