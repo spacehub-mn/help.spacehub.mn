@@ -1944,5 +1944,54 @@
         "label": "Шүүх"
       }
     ]
+  },
+  {
+    "page": "docs/owner/nehemjleh-dun-zoroh.md",
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 500,
+    "padRight": 200,
+    "id": "owner/nehemjleh-dun-1",
+    "nav": [
+      "Тооцоо",
+      "Төлбөр"
+    ],
+    "waitTh": "Код",
+    "alt": "Төлбөр жагсаалт: Төлбөр шинэчлэх товч",
+    "marks": [
+      {
+        "n": "3.1",
+        "btn": "Төлбөр шинэчлэх бол",
+        "label": "Төлбөр шинэчлэх"
+      }
+    ],
+    "padBottom": 80
+  },
+  {
+    "page": "docs/owner/nehemjleh-dun-zoroh.md",
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "id": "owner/nehemjleh-dun-2",
+    "nav": [
+      "Тооцоо",
+      "Нэхэмжлэх"
+    ],
+    "waitTh": "Илгээлт",
+    "padBottom": 60,
+    "alt": "Нэхэмжлэх жагсаалт: Нэхэмжлэх шинэчлэх, SMS илгээх",
+    "marks": [
+      {
+        "n": "3.2",
+        "btn": "Нэхэмжлэх шинэчлэхдээ",
+        "label": "Нэхэмжлэх шинэчлэх"
+      },
+      {
+        "n": "3.3",
+        "btn": "мессежээр илгээх бол",
+        "label": "SMS илгээх"
+      }
+    ]
   }
 ]
