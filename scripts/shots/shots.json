@@ -1768,5 +1768,51 @@
       }
     ],
     "waitTh": "Хүлээх"
+  },
+  {
+    "id": "owner/list/contractclose-1",
+    "page": "docs/owner/list/contractsublists.md",
+    "nav": [
+      "Менежмент",
+      "Гэрээ хаах"
+    ],
+    "url": "ContractClose_ListView",
+    "waitTh": "Код",
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 200,
+    "alt": "Гэрээ хаах жагсаалтын toolbar: Гэрээ сэргээх",
+    "marks": [
+      {
+        "btn": "Гэрээ сэргээх",
+        "exact": true,
+        "label": "Гэрээ сэргээх",
+        "below": true
+      }
+    ]
+  },
+  {
+    "id": "owner/list/contractextend-1",
+    "page": "docs/owner/list/contractsublists.md",
+    "nav": [
+      "Менежмент",
+      "Гэрээ сунгалт"
+    ],
+    "url": "ContractExtend_ListView",
+    "waitTh": "Код",
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 200,
+    "alt": "Гэрээ сунгалт жагсаалтын toolbar: Хуваарь засах",
+    "marks": [
+      {
+        "btn": "Хуваарь засах",
+        "exact": true,
+        "label": "Хуваарь засах",
+        "below": true
+      }
+    ]
   }
 ]
