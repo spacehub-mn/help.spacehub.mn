@@ -77,10 +77,9 @@ const sidebars = {
   resident: [
     { type: "doc", id: "payment", label: "🏠 Төлбөр төлөх" },
     group("1. 🚀 Эхлэх", ["tutorial/app-nevtreh", "tutorial/tolbor-tolokh", "account/change-contract", "account/change-number"], false),
-    group("2. 📊 Миний самбар", ["dashboard/payment-breakdown", "dashboard/reguest-write", "dashboard/work-time-history"]),
-    group("3. 🏢 Ажлын орчин", ["workspace/reguest-obect copy", "workspace/view-neighbour-information"]),
-    group("4. 📣 Бизнес зар", ["post/post"]),
-    group("5. 🆘 Асуудал гарвал", ["app-ajillahgui"]),
+    group("2. 📊 Миний самбар", ["dashboard/payment-breakdown", "dashboard/reguest-write"]),
+    group("3. 📣 Бизнес зар", ["post/post"]),
+    group("4. 🆘 Асуудал гарвал", ["app-ajillahgui"]),
   ],
 };
 
