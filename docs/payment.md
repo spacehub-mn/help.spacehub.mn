@@ -4,7 +4,7 @@ slug: /
 <!--
 Шинэчилсэн: Help_Spacehub 2026-10-26. Нотолгоо (spacehub-mn/spacehub origin/master 03de3014):
 - assets/lang/mn_MN.json: pages.newTenantDashboard.payment «Төлбөр төлөх» (:606), pages.rentor.invoices.invoice.pay «Төлөх» (:804) / paid «Төлсөн» (:803), general.continue «Үргэлжлүүлэх» (:152), general.payment.withQPay «QPay-ээр төлөх» (:190), withSocialPay «Social Pay-ээр төлөх» (:191), byTransfer «Дансаар төлөх» (:181), transfer.delayWarning (:189), qpay.qrcodepayment.desc (:186), qpay.confirmed / notYetConfirmed (:184-185), newTenantDashboard.noActiveInvoice (:604)
-- Төлбөр шалгах: InvoicePaymentSheet.dart:464-474 checkQpayPaymentState → v1InvoiceBillOidCheckPayGet, 200 биш бол false; SpacehubApiV2 InvoiceBillController CheckPay GetObjectByKey(criteria) → ArgumentException → 500 (492e8cd «CheckPay always returned 500»), засвар #1181 (2dc9301, deploy хүлээж байна); идэвхгүй SocialPay хаалт :1096-1099 (#50п). Прод апп аль API хост руу хандаж байгааг шалгаагүй ❔
+- Төлбөр шалгах (апп origin/master 03de3014): InvoicePaymentSheet.dart:439-449 checkQpayPaymentState → v1InvoiceBillOidCheckPayGet, 200 биш бол false; SpacehubApiV2 InvoiceBillController CheckPay GetObjectByKey(criteria) → ArgumentException → 500 (492e8cd «CheckPay always returned 500»), засвар #1181 (2dc9301, deploy хүлээж байна); идэвхгүй SocialPay хаалт :1097 (#50п). Хост: апп 1.35.8+ → api.spacehub.mn (lib/APIs/api.dart:19, ApiV2 deploy энд ордог); ≤1.35.7 → api.dev, deploy-д шинэчлэгддэггүй (Dev_Research 10-27). Засварын дараа нөхцөл InvoiceBillStatus == Paid (:145) → дутуу төлсөн нэхэмжлэх «баталгаажаагүй» хэвээр
 - lib/Widgets/InvoicePaymentSheet.dart:128-147 (QPay/SocialPay зөвхөн байгууллага тохируулсан үед; Дансаар — банк, хүлээн авагч, данс, гүйлгээний утга = contractId.code :256-286 ↔ Spacehub23 Statement.cs:694 «Шалгах» гэрээний дугаараар тааруулна); QPay: банкны апп эсвэл QR (:166-188)
 -->
 
@@ -24,7 +24,7 @@ slug: /
    - **Дансаар төлөх** — **Банк**, **Хүлээн авагч**, **Дансны дугаар**, **Гүйлгээний утга** (таны **гэрээний дугаар**) гарна. Гүйлгээний утгад гэрээний дугаараа **яг ингэж** бичнэ. Ингэвэл төлбөр автоматаар таны гэрээнд бүртгэгдэнэ.
    - QPay, Social Pay нь таны байгууллага тохируулж, **идэвхжүүлсэн** үед л харагдана (🆕 *#1181-ийн дараа* идэвхгүй Social Pay харагдахаа болино). Харагдах ёстой атал алга бол апп-аа **шинэчил**, эсвэл **Дансаар төлөх**-ийг ашигла. Дансаар төлөх нь үргэлж харагдана.
 4. Төлбөр баталгаажвал «Амжилттай төлөгдлөө» гэж гарна. Хараахан баталгаажаагүй бол «Хараахан баталгаажаагүй байна» гэж гарна. Түр хүлээгээд дахин шалга.
-   - 🆕 *Серверийн шинэчлэл (#1181) deploy хийгдэхээс өмнө* энэ шалгалт төлсөн ч «Хараахан баталгаажаагүй» гэж гарч болно. Ийм үед **Төлөх** товч **Төлсөн** болсон эсэхийг (5-р алхам) хар.
+   - 🆕 *Серверийн шинэчлэл (#1181) deploy хийгдэхээс өмнө* энэ шалгалт төлсөн ч **үргэлж** «Хараахан баталгаажаагүй» гэж гардаг. Ийм үед **Төлөх** товч **Төлсөн** болсон эсэхийг (5-р алхам) хар. Шинэчлэлийн дараа ч ингэж гарвал апп-аа **шинэчил** (хуучин хувилбар засваргүй сервер рүү ханддаг). Нэхэмжлэлийн зөвхөн хэсгийг төлсөн бол «баталгаажаагүй» гэж гарах нь хэвийн.
 5. Төлбөр төлөгдсөн бол **Төлөх** товч **Төлсөн** болж өөрчлөгдөнө.
 
 :::tip Дансаар шилжүүлсэн бол
