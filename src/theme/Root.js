@@ -15,7 +15,7 @@ const decode = (p) => {
   }
 };
 
-const roleOf = (path) => (/^\/(owner|lessor)(\/|$)/.test(path) ? "owner" : "resident");
+const roleOf = (path) => (/^\/(owner|lessor|changelog)(\/|$)/.test(path) ? "owner" : "resident");
 
 function read() {
   try {
