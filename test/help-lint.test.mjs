@@ -131,6 +131,13 @@ test("E-spell: ө/ү-гүй үг (тайлбар, inline кодод тооцох
   assert.deepEqual(rules(run(fixture({ "a.md": good })).out, "a.md"), []);
 });
 
+test("W-tech: changelog бичвэр (тайлбар, холбоосын хаягийг тооцохгүй)", () => {
+  const d = fixture({ "a.md": good, "../changelog/2026-10-24-x.md": "---\ntitle: 10-24\n---\n<!-- toolbar -->\nЖагсаалтын toolbar дээр гарав. [x](/owner/toolbar)\n", "../changelog/2026-10-25-x.md": "---\ntitle: 10-25\n---\nТовчны мөрөнд гарав.\n" });
+  const out = run(d).out;
+  assert.deepEqual(rules(out, "2026-10-24-x.md"), ["W-tech"]);
+  assert.ok(!out.results.some((r) => r.file.endsWith("2026-10-25-x.md")));
+});
+
 test("W-tech: өгүүлбэрийн owner; «Owner» эрхийн нэр, /owner/ зам зөвшөөрөгдөнө", () => {
   const ok = good.replace("Бичвэр.", "Эрхийн нэр нь «Owner». [Холбоос](/owner/tohirgoo) <img src='/img/owner/a.webp' />");
   assert.ok(!rules(run(fixture({ "a.md": ok })).out, "a.md").includes("W-tech"));

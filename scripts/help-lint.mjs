@@ -264,6 +264,16 @@ for (const file of readdirSync(DOCS, { recursive: true }).filter((n) => /_catego
   if (tech.length) results.push({ file: relative(join(DOCS, ".."), file).replace(/\\/g, "/"), type: "category", questions: 0, issues: [{ level: "W", rule: "W-tech", msg: `дотоод/кодын нэр томьёо: ${tech.join(", ")} — дэлгэц дээрх нэрээр эсвэл энгийн үгээр бич` }] });
 }
 
+// 🆕 Шинэ боломж (changelog/*.md) мөн хэрэглэгчид харагдана — бичвэрийн нэр томьёо (QA 10-28: «toolbar» алдагдсан)
+const CHANGELOG = join(DOCS, "..", "changelog");
+for (const file of existsSync(CHANGELOG) ? walk(CHANGELOG) : []) {
+  const src = readFileSync(file, "utf8");
+  const title = (src.match(/^title:\s*(.+)$/m) || [])[1] || "";
+  const body = src.replace(/^---[\s\S]*?\n---/, "").replace(/<!--[\s\S]*?-->/g, " ").replace(/`[^`]*`/g, " ").replace(/\]\([^)]*\)/g, "]");
+  const tech = techOf(`${title} ${body}`);
+  if (tech.length) results.push({ file: relative(join(DOCS, ".."), file).replace(/\\/g, "/"), type: "changelog", questions: 0, issues: [{ level: "W", rule: "W-tech", msg: `дотоод/кодын нэр томьёо: ${tech.join(", ")} — дэлгэц дээрх нэрээр эсвэл энгийн үгээр бич` }] });
+}
+
 const count = (lvl) => results.reduce((n, r) => n + r.issues.filter((i) => i.level === lvl).length, 0);
 const E = count("E"), W = count("W"), I = count("I");
 if (AS_JSON) {
