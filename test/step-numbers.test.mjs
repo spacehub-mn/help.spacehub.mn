@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { createRequire } from "node:module";
-import { mkdtempSync, writeFileSync } from "node:fs";
+import { mkdtempSync, mkdirSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
@@ -46,4 +46,13 @@ test("ойлголт, legacy хуудас хөндөгдөхгүй", () => {
 test("Товчнууд: бүлэг ### (доороо ####) → 1., #### → 1.1; зөвлөгөөний ### дугааргүй", () => {
   const t = run({ children: [h(2, "Товчнууд"), h(3, "Аль товчийг сонгох"), h(3, "Гэрээ хаах"), h(4, "«Сунгах»"), h(4, "«Хаах»"), h(3, "«Төлбөр+»")] }, "lavlah");
   assert.deepEqual(t.children.slice(1).map(text), ["Аль товчийг сонгох", "1. Гэрээ хаах", "1.1 «Сунгах»", "1.2 «Хаах»", "2. «Төлбөр+»"]);
+});
+
+test("owner-ийн type-гүй заавар дугаарлагдана, owner/index үгүй", () => {
+  const dir = mkdtempSync(join(tmpdir(), "steps-"));
+  const mk = (rel) => { const p = join(dir, rel); mkdirSync(join(p, ".."), { recursive: true }); writeFileSync(p, "# x\n"); return { path: p }; };
+  const a = { children: [h(2, "Хуулгаа харах")] }; plugin()(a, mk("docs/owner/huulga.md"));
+  const b = { children: [h(2, "Хуулгаа харах")] }; plugin()(b, mk("docs/owner/index.md"));
+  assert.equal(text(a.children[0]), "1. Хуулгаа харах");
+  assert.equal(text(b.children[0]), "Хуулгаа харах");
 });

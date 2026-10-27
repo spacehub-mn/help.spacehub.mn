@@ -52,6 +52,21 @@ async function box(page, m) {
       return r ? { x: r.x, y: r.y, width: r.width, height: r.height } : null;
     });
   }
+  if (m.tree) {
+    // Зүүн цэсний мөр (алхам 1: «… цэсийг нээ»)
+    // Цэсний нэрийн текст + зүүн талын дүрс (дэд мөртэй мөрийн бүтэн хайрцаг биш)
+    const txt = page.getByRole("treeitem", { name: m.tree, exact: true }).first().getByText(m.tree, { exact: true }).first();
+    const t = (await txt.isVisible().catch(() => false)) ? await txt.boundingBox() : null;
+    return t ? { x: t.x - 30, y: t.y - 4, width: t.width + 36, height: t.height + 8 } : null;
+  }
+  if (m.rowCheck) {
+    // Эхний мөрийн сонгох нүд (алхам: «гүйлгээг сонго») — зөвхөн тэмдэглэнэ, дарахгүй
+    return page.evaluate(() => {
+      const el = [...document.querySelectorAll("tbody tr td:first-child")].find((td) => td.offsetParent && td.getBoundingClientRect().x >= 0);
+      const r = el && el.getBoundingClientRect();
+      return r ? { x: r.x, y: r.y, width: r.width, height: r.height } : null;
+    });
+  }
   if (m.btn) {
     // Дүрстэй товчны нэр ихэвчлэн title (tooltip)-д байдаг — текст ба title хоёуланг хайна
     return page.evaluate(({ t, exact }) => {
@@ -141,7 +156,14 @@ async function toWebp(page, png) {
     await mark(page, boxes);
     await page.waitForTimeout(300);
     // clipHeight: доод хоосон хэсгийг тайрна (богино жагсаалт); clip {x,y,width,height}: зөвхөн toolbar — хуудсанд жижгэрэхгүй
-    const webp = await toWebp(page, await page.screenshot(s.clip ? { clip: s.clip } : s.clipHeight ? { clip: { x: 0, y: 0, width: vw.width, height: s.clipHeight } } : {}));
+    // clip "auto": бүх тэмдгийг багтаасан хамгийн бага хэсэг (+ зай) — цэс, toolbar, багана нэг зурагт
+    let clip = s.clip;
+    if (clip === "auto" && boxes.length) {
+      const x0 = Math.max(0, Math.min(...boxes.map((b) => b.x)) - 24), y0 = Math.max(0, Math.min(...boxes.map((b) => b.y)) - 28);
+      const x1 = Math.min(vw.width, Math.max(...boxes.map((b) => b.x + b.width)) + 24), y1 = Math.min(vw.height, Math.max(...boxes.map((b) => b.y + b.height)) + 16);
+      clip = { x: x0, y: y0, width: x1 - x0, height: y1 - y0 };
+    } else if (clip === "auto") clip = undefined;
+    const webp = await toWebp(page, await page.screenshot(clip ? { clip } : s.clipHeight ? { clip: { x: 0, y: 0, width: vw.width, height: s.clipHeight } } : {}));
     const out = path.join(ROOT, "static", "img", s.id + ".webp");
     fs.mkdirSync(path.dirname(out), { recursive: true });
     // Өмнөхтэй байт ижил бол файлыг солихгүй — git түүх хоосон өөрчлөлтөөр өсөхгүй

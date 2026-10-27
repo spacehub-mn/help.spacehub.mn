@@ -35,7 +35,10 @@ function plugin() {
   return (tree, file) => {
     const path = file.path || file.history?.[0];
     if (!path) return;
-    const type = typeOf(path);
+    // owner-ийн frontmatter type-гүй заавар (sar-tootsoo, huulga-tolbor …) = zaavar; нүүр хуудас биш
+    const norm = path.replace(/\\/g, "/");
+    const ownerGuide = /\/docs\/owner\/[^/]+\.mdx?$/.test(norm) && !/\/index\.mdx?$/.test(norm);
+    const type = typeOf(path) || (ownerGuide ? "zaavar" : undefined);
     if (!type || NO_STEPS.includes(type)) return;
 
     const kids = tree.children;
