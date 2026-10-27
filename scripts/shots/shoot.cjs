@@ -19,7 +19,7 @@ const APP = "https://app.spacehub.mn/";
 const VIEWPORT = { width: 1600, height: 900 };
 const QUALITY = 0.8;
 // Багана нэр нь апп дээр «Регистер» гэж бичигдсэн (Contract_ListView) — хоёуланг нь барина
-const PII_TH = ["Харилцагч", "Бизнес нэр", "Регистр", "Регистер", "Утас", "Имэйл", "Данс", "Нэр"];
+const PII_TH = ["Харилцагч", "Түрээслэгч", "Бизнес нэр", "Регистр", "Регистер", "Утас", "Имэйл", "Данс", "Нэр"];
 const SHOTS = JSON.parse(fs.readFileSync(path.join(__dirname, "shots.json"), "utf8"));
 const only = process.argv.slice(2);
 
@@ -55,7 +55,8 @@ async function box(page, m) {
   if (m.tree) {
     // Зүүн цэсний мөр (алхам 1: «… цэсийг нээ»)
     // Цэсний нэрийн текст + зүүн талын дүрс (дэд мөртэй мөрийн бүтэн хайрцаг биш)
-    const txt = page.getByRole("treeitem", { name: m.tree, exact: true }).first().getByText(m.tree, { exact: true }).first();
+    // Бүлгийн мөрийн (Тооцоо г.м.) нэр нь дэд цэсийг агуулдаг тул treeitem доторх яг тэр бичгийг хайна
+    const txt = page.getByRole("treeitem").getByText(m.tree, { exact: true }).locator("visible=true").first();
     const t = (await txt.isVisible().catch(() => false)) ? await txt.boundingBox() : null;
     return t ? { x: t.x - 30, y: t.y - 4, width: t.width + 36, height: t.height + 8 } : null;
   }
@@ -106,8 +107,9 @@ async function mark(page, boxes) {
         border: "3px solid #fff", boxShadow: "0 2px 6px rgba(0,0,0,.45)", zIndex: 2147483647, pointerEvents: "none" });
       document.body.append(r, n);
       const w = n.getBoundingClientRect().width;
-      const left = Math.max(0, b.x + b.width / 2 - w / 2);
-      let top = b.below ? b.y + b.height + 6 : Math.max(0, b.y - BADGE - 6); // below: дээр нь чухал бичиг байвал (гарчиг г.м.)
+      const left = b.right ? b.x + b.width + 6 : Math.max(0, b.x + b.width / 2 - w / 2); // right: цэсний мөр — дээр/доорх мөрийг дарахгүй
+      let top = b.below ? b.y + b.height + 6 : Math.max(0, b.y - BADGE - 6);
+      if (b.right) { top = b.y + (b.height - BADGE) / 2; } // below: дээр нь чухал бичиг байвал (гарчиг г.м.)
       const hit = (t) => placed.some((p) => left < p.left + p.w + 2 && p.left < left + w + 2 && Math.abs(p.top - t) < BADGE);
       if (hit(top)) top = b.y + b.height + 6;
       Object.assign(n.style, { left: left + "px", top: top + "px" });
@@ -163,7 +165,9 @@ async function toWebp(page, png) {
     // Цонхны алхмын зураг (эзэн 10-27 А, CEO 11:2x): мөр СОНГООД товчоор цонх НЭЭНЭ, зураг аваад Esc / «Үгүй, Хаах»-аар хаана.
     // Хадгалах / илгээх / төлөх / «Тийм»-ийг ХЭЗЭЭ Ч дарахгүй, талбарт бичихгүй. mustSee текст гарахгүй бол бүх ажлыг зогсооно.
     // Зөвхөн харах шилжилт: эхний мөрийн карт нээх (rowOpen = баганын индекс), таб сонгох (tab)
-    if (s.rowOpen != null) { await page.locator("tbody tr").nth(0).locator("td").nth(s.rowOpen).click(); await idle(page); await page.waitForTimeout(2500); }
+    // Огнооны шүүлтийг арилгах (✕) — зөвхөн харагдац, өгөгдөл хөндөхгүй; хоосон жагсаалтад мөр гаргана
+    if (s.clearDate) { const x = page.locator("button[title^=\"Огнооны шүүлтийг арилгах\"]:visible").first(); if (await x.isEnabled().catch(() => false)) { await x.click(); await idle(page); await page.waitForTimeout(2500); } }
+    if (s.rowOpen != null) { await page.locator("tbody tr:visible").first().locator("td").nth(s.rowOpen).click(); await idle(page); await page.waitForTimeout(2500); }
     if (s.tab) { await page.getByText(s.tab, { exact: true }).first().click(); await idle(page); await page.waitForTimeout(2000); }
     if (s.open) {
       if (s.selectRow) await page.locator("tbody tr td:first-child input[type=checkbox], tbody tr td:first-child .dxbl-checkbox").first().click();
@@ -192,7 +196,7 @@ async function toWebp(page, png) {
     for (const m of s.marks) {
       const b = await box(page, m);
       // Дэлгэцээс гадуур (баруун тийш гүйлгэх шаардлагатай) багана = олдоогүй гэж тооцно
-      if (b && b.x + b.width <= vw.width && b.y + b.height <= vw.height) boxes.push({ ...b, label: m.label, n: m.n, below: !!m.below });
+      if (b && b.x + b.width <= vw.width && b.y + b.height <= vw.height) boxes.push({ ...b, label: m.label, n: m.n, below: !!m.below, right: m.right ?? !!m.tree });
       else missing.push(m.label || m.btn || m.th);
     }
     // Дугаарыг уншигдах дарааллаар (мөр, дараа нь зүүнээс баруун) — хуудасны тайлбар энэ дарааллаар
