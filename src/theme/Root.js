@@ -4,6 +4,17 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useLocation } from "@docusaurus/router";
 
 const KEY = "spacehub-help-role";
+// Нэрэндээ хоосон зайтай хуучин хаяг: src/pages-аар хийхэд route нь «%20»-оор кодлогдож таарахгүй (build 10-28) —
+// 404 хуудас ачаалагдмагц энд шилжүүлнэ. Бусад хуучин хаяг src/pages/**-д.
+const OLD = { "/workspace/reguest-obect copy": "/dashboard/reguest-write" };
+const decode = (p) => {
+  try {
+    return decodeURIComponent(p);
+  } catch {
+    return p;
+  }
+};
+
 const roleOf = (path) => (/^\/(owner|lessor)(\/|$)/.test(path) ? "owner" : "resident");
 
 function read() {
@@ -112,6 +123,11 @@ export default function Root({ children }) {
     document.addEventListener("click", open);
     return () => document.removeEventListener("click", open);
   }, []);
+
+  useEffect(() => {
+    const to = OLD[decode(pathname)];
+    if (to) history.replace(to);
+  }, [pathname]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     const role = roleOf(pathname);
