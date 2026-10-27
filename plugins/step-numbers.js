@@ -27,7 +27,8 @@ const textOf = (n) => (n.type === "text" || n.type === "inlineCode" ? n.value : 
 function renumber(heading, label) {
   const first = heading.children.find((c) => c.type === "text");
   if (first) first.value = first.value.replace(PREFIX, "");
-  heading.children.unshift({ type: "text", value: `${label}. ` });
+  // «1. Нэр», дэд нь «1.1 Нэр» (цэс, 1.1 жагсаалттай ижил)
+  heading.children.unshift({ type: "text", value: label.includes(".") ? `${label} ` : `${label}. ` });
 }
 
 function plugin() {
@@ -37,22 +38,34 @@ function plugin() {
     const type = typeOf(path);
     if (!type || NO_STEPS.includes(type)) return;
 
-    let step = 0; // одоогийн алхмын дугаар (0 = алхам биш хэсэгт)
+    const kids = tree.children;
+    // «Товчнууд» доторх ### нь товч («…») эсвэл доороо #### товчтой бүлэг бол дугаарлана (Гэрээ: 1. бүлэг → 1.1 товч).
+    // Зөвлөгөөний ### («Аль товчийг сонгох») дугааргүй — зурган дээрх дугаар товчны дугаартай таарна.
+    const isGroup = (i) => {
+      const next = kids.slice(i + 1).find((n) => n.type === "heading");
+      return next && next.depth === 4;
+    };
+    let step = ""; // одоогийн алхмын дугаар ("" = алхам биш хэсэгт)
     let h2 = 0;
     let inButtons = false;
     let btn = 0;
-    for (const node of tree.children) {
+    let sub = 0;
+    kids.forEach((node, i) => {
       if (node.type === "heading" && node.depth === 2) {
         const t = textOf(node).trim();
         inButtons = /^Товчнууд/u.test(t);
         btn = 0;
-        if (META.test(t)) { step = 0; continue; }
-        step = ++h2;
+        if (META.test(t)) { step = ""; return; }
+        step = String(++h2);
         renumber(node, step);
       } else if (node.type === "heading" && node.depth === 3 && inButtons) {
         const t = textOf(node).trim();
-        if (/^Бусад/u.test(t)) { step = 0; continue; }
-        step = ++btn;
+        if (/^Бусад/u.test(t) || !(t.startsWith("«") || isGroup(i))) { step = ""; return; }
+        step = String(++btn);
+        sub = 0;
+        renumber(node, step);
+      } else if (node.type === "heading" && node.depth === 4 && inButtons && btn) {
+        step = `${btn}.${++sub}`;
         renumber(node, step);
       } else if (node.type === "list" && node.ordered && step) {
         node.data = node.data || {};
@@ -62,7 +75,7 @@ function plugin() {
           li.data.hProperties = { ...(li.data.hProperties || {}), "data-step": String(step) };
         }
       }
-    }
+    });
   };
 }
 

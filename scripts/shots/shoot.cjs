@@ -54,11 +54,12 @@ async function box(page, m) {
   }
   if (m.btn) {
     // Дүрстэй товчны нэр ихэвчлэн title (tooltip)-д байдаг — текст ба title хоёуланг хайна
-    return page.evaluate((t) => {
-      const el = [...document.querySelectorAll("button")].find((b) => b.offsetParent && ((b.innerText || "") + " " + (b.title || "")).includes(t));
+    return page.evaluate(({ t, exact }) => {
+      // XAF хаалттай табын toolbar дэлгэцээс гадна (x < 0) үлддэг — зөвхөн харагдаж буйг ав
+      const el = [...document.querySelectorAll("button")].find((b) => { const r = b.getBoundingClientRect(); return b.offsetParent && r.x >= 0 && r.y >= 0 && (exact ? [(b.innerText || "").trim(), (b.title || "").split(/\r?\n/)[0].trim()].includes(t) : ((b.innerText || "") + " " + (b.title || "")).includes(t)); });
       const r = el && el.getBoundingClientRect();
       return r ? { x: r.x, y: r.y, width: r.width, height: r.height } : null;
-    }, m.btn);
+    }, { t: m.btn, exact: !!m.exact });
   }
   const loc = page.locator("thead th:visible").filter({ hasText: new RegExp(`^\\s*${m.th}\\s*$`) }).first();
   return (await loc.count()) ? loc.boundingBox() : null;
@@ -75,9 +76,9 @@ async function mark(page, boxes) {
         border: "3px solid #e11d48", borderRadius: "6px", zIndex: 2147483646, pointerEvents: "none", boxSizing: "border-box" });
       const n = document.createElement("div");
       n.className = "hs-mark";
-      n.textContent = String(i + 1);
-      Object.assign(n.style, { position: "fixed", left: Math.max(0, b.x - 12) + "px", top: Math.max(0, b.y - 14) + "px", width: "20px", height: "20px",
-        borderRadius: "50%", background: "#e11d48", color: "#fff", font: "700 12px/20px Segoe UI,Arial", textAlign: "center", zIndex: 2147483647, pointerEvents: "none" });
+      n.textContent = b.n || String(i + 1);
+      Object.assign(n.style, { position: "fixed", left: Math.max(0, b.x - 12) + "px", top: Math.max(0, b.y - 14) + "px", minWidth: "20px", height: "20px", padding: "0 4px", boxSizing: "border-box",
+        borderRadius: "10px", background: "#e11d48", color: "#fff", font: "700 12px/20px Segoe UI,Arial", textAlign: "center", zIndex: 2147483647, pointerEvents: "none" });
       document.body.append(r, n);
     });
   }, boxes);
@@ -130,11 +131,12 @@ async function toWebp(page, png) {
     for (const m of s.marks) {
       const b = await box(page, m);
       // Дэлгэцээс гадуур (баруун тийш гүйлгэх шаардлагатай) багана = олдоогүй гэж тооцно
-      if (b && b.x + b.width <= vw.width && b.y + b.height <= vw.height) boxes.push({ ...b, label: m.label });
+      if (b && b.x + b.width <= vw.width && b.y + b.height <= vw.height) boxes.push({ ...b, label: m.label, n: m.n });
       else missing.push(m.label || m.btn || m.th);
     }
     // Дугаарыг уншигдах дарааллаар (мөр, дараа нь зүүнээс баруун) — хуудасны тайлбар энэ дарааллаар
-    boxes.sort((a, b) => Math.round(a.y / 40) - Math.round(b.y / 40) || a.x - b.x);
+    // m.n өгсөн бол (жагсаалтын «Товчнууд»-ын 1., 1.1 дугаар) дарааллыг хөндөхгүй — зураг ба бичвэрийн дугаар таарна
+    if (!s.marks.some((m) => m.n)) boxes.sort((a, b) => Math.round(a.y / 40) - Math.round(b.y / 40) || a.x - b.x);
     await mark(page, boxes);
     await page.waitForTimeout(300);
     // clipHeight: доод хоосон хэсгийг тайрна (богино жагсаалт)
