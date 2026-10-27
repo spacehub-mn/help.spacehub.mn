@@ -1434,7 +1434,8 @@
         "n": "3.5",
         "text": "Огноо",
         "exact": true,
-        "label": "Огноо"
+        "label": "Огноо",
+        "right": true
       },
       {
         "n": "3.6",
@@ -1521,6 +1522,29 @@
         "btn": "Execute Report",
         "exact": true,
         "label": "Execute Report"
+      }
+    ]
+  },
+  {
+    "id": "owner/list/beginbalance-1",
+    "page": "docs/owner/list/beginbalance.md",
+    "nav": [
+      "Тооцоо",
+      "Эхний үлдэгдэл"
+    ],
+    "width": 1920,
+    "clip": {
+      "x": 0,
+      "y": 95,
+      "width": 1350,
+      "height": 530
+    },
+    "alt": "Тооцоо → Эхний үлдэгдэл жагсаалт (owner эрхээр)",
+    "marks": [
+      {
+        "n": "1.1",
+        "tree": "Эхний үлдэгдэл",
+        "label": "Эхний үлдэгдэл цэс"
       }
     ]
   }
