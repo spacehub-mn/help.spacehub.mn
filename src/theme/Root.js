@@ -44,10 +44,35 @@ function RolePick({ onPick }) {
   );
 }
 
+// Зураг дээр дарахад томоор (эзэн 10-27 «зураг дээр дарж томруулж хардаг, дугаар харагдахгүй байна»)
+function Zoom({ src, alt, onClose }) {
+  useEffect(() => {
+    const esc = (e) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", esc);
+    return () => window.removeEventListener("keydown", esc);
+  }, [onClose]);
+  return (
+    <div className="img-zoom" role="dialog" aria-modal="true" aria-label={alt || "Зураг"} onClick={onClose}>
+      <img src={src} alt={alt} />
+      <button type="button" className="img-zoom__close" aria-label="Хаах">✕</button>
+    </div>
+  );
+}
+
 export default function Root({ children }) {
   const { pathname } = useLocation();
   const history = useHistory();
   const [ask, setAsk] = useState(false);
+  const [zoom, setZoom] = useState(null);
+
+  useEffect(() => {
+    const open = (e) => {
+      const img = e.target.closest && e.target.closest(".markdown img");
+      if (img && !img.closest("a")) setZoom({ src: img.currentSrc || img.src, alt: img.alt });
+    };
+    document.addEventListener("click", open);
+    return () => document.removeEventListener("click", open);
+  }, []);
 
   useEffect(() => {
     document.documentElement.dataset.role = roleOf(pathname);
@@ -68,6 +93,7 @@ export default function Root({ children }) {
     <>
       {children}
       {ask && <RolePick onPick={pick} />}
+      {zoom && <Zoom {...zoom} onClose={() => setZoom(null)} />}
     </>
   );
 }

@@ -100,7 +100,8 @@ async function toWebp(page, png) {
 (async () => {
   const todo = SHOTS.filter((s) => !only.length || only.includes(s.id));
   const browser = await chromium.launch();
-  const context = await browser.newContext({ viewport: VIEWPORT });
+  // 2× нягтрал: зураг дээр дарж томруулахад дугаар тод (эзэн 10-27)
+  const context = await browser.newContext({ viewport: VIEWPORT, deviceScaleFactor: 2 });
   const page = await context.newPage();
   await page.goto(APP);
   await page.getByLabel(/user\s*name|нэр/i).fill(process.env.TEST_USER);
@@ -139,8 +140,8 @@ async function toWebp(page, png) {
     if (!s.marks.some((m) => m.n)) boxes.sort((a, b) => Math.round(a.y / 40) - Math.round(b.y / 40) || a.x - b.x);
     await mark(page, boxes);
     await page.waitForTimeout(300);
-    // clipHeight: доод хоосон хэсгийг тайрна (богино жагсаалт)
-    const webp = await toWebp(page, await page.screenshot(s.clipHeight ? { clip: { x: 0, y: 0, width: vw.width, height: s.clipHeight } } : {}));
+    // clipHeight: доод хоосон хэсгийг тайрна (богино жагсаалт); clip {x,y,width,height}: зөвхөн toolbar — хуудсанд жижгэрэхгүй
+    const webp = await toWebp(page, await page.screenshot(s.clip ? { clip: s.clip } : s.clipHeight ? { clip: { x: 0, y: 0, width: vw.width, height: s.clipHeight } } : {}));
     const out = path.join(ROOT, "static", "img", s.id + ".webp");
     fs.mkdirSync(path.dirname(out), { recursive: true });
     // Өмнөхтэй байт ижил бол файлыг солихгүй — git түүх хоосон өөрчлөлтөөр өсөхгүй
