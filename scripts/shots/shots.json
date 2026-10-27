@@ -1492,5 +1492,36 @@
         "label": "Хайлт"
       }
     ]
+  },
+  {
+    "id": "owner/tailan-garah",
+    "page": "docs/owner/list/reports.md",
+    "nav": [
+      "Тайлан",
+      "Reports"
+    ],
+    "width": 1920,
+    "clip": "auto",
+    "padRight": 60,
+    "padBottom": 120,
+    "alt": "Тайлан цэс, Reports жагсаалт, Execute Report товч",
+    "marks": [
+      {
+        "n": "1.1",
+        "tree": "Reports",
+        "label": "Тайлан → Reports"
+      },
+      {
+        "n": "1.2",
+        "rowCheck": true,
+        "label": "Тайлангийн мөр"
+      },
+      {
+        "n": "1.3",
+        "btn": "Execute Report",
+        "exact": true,
+        "label": "Execute Report"
+      }
+    ]
   }
 ]
