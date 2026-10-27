@@ -3,6 +3,10 @@
 slug: /tutorial/app-nevtreh
 sidebar_label: Апп суулгаж нэвтрэх
 sidebar_position: 1
+type: surgalt
+roles: [resident]
+updated: 2026-10-27
+verified_commit: 5fa824f
 keywords:
   - "нэвтрэх"
   - "анх нэвтрэх"
@@ -20,7 +24,9 @@ keywords:
 - Биометр :530-536
 - OTP 6 орон OTPConfirmationPage.dart:180; «@» бол имэйлээр (LoginScreen.dart:482, :495) — Dev_Research ✅ help_review_roles_resident.md
 - Бүртгэлийг байгууллага үүсгэдэг (owner «Харилцагч»/«Хэрэглэгч», «Эрх илгээх» — list-User ✅)
-- App Store / Google Play-ийн апп-ын нэр «Spacehub» ❔ (дэлгүүрийн жагсаалтыг шалгаагүй)
+- Утсан дээрх апп-ын нэр «Spacehub»: android/app/src/main/AndroidManifest.xml:47 (android:label), ios/Runner/Info.plist:9-10 (CFBundleDisplayName)
+- App Store / Google Play дэлгүүрийн жагсаалтын нэр «Spacehub» эсэх ❔ (дэлгүүрийг шалгаагүй) → харагдах бичвэрт «Spacehub гэж хайна» гэж төвийг сахисан
+- Шилжүүлэлт 10-27: frontmatter type/roles, ❔-г тайлбар руу, «🔗 Холбоотой» нэмэв
 -->
 
 > 📘 Сургалт · 🏠 Түрээслэгч, оршин суугч · Гар утасны апп · ⏱ 3 минут
@@ -29,7 +35,9 @@ keywords:
 Таны **утасны дугаар** эсвэл **имэйл** байгууллагын (СӨХ, түрээслүүлэгч) системд бүртгэгдсэн байх ёстой. Бүртгэлийг та өөрөө үүсгэдэггүй, **байгууллага** үүсгэнэ.
 
 ## 1. Апп суулгах
-- **App Store** (iPhone) эсвэл **Google Play** (Android)-оос **Spacehub** аппыг хайж суулгана ❔.
+1. **App Store** (iPhone) эсвэл **Google Play** (Android)-г нээнэ.
+2. «Spacehub» гэж хайж апп-ыг суулгана.
+3. Суулгасны дараа утсан дээр **Spacehub** нэртэй апп гарна.
 
 ## 2. Анх удаа нэвтрэх
 1. **Утас / Шуудан** хэсэгт бүртгэлтэй утасны дугаар эсвэл имэйлээ оруулаад **Үргэлжлүүлэх** дар.
@@ -50,3 +58,7 @@ keywords:
 
 ## Дараагийн алхам
 → [Нэхэмжлэх харж төлөх, баримт авах](/tutorial/tolbor-tolokh)
+
+## 🔗 Холбоотой
+- [Бүртгэлтэй утасны дугаар солих](/account/change-number)
+- [Апп ажиллахгүй үед](/app-ajillahgui)
