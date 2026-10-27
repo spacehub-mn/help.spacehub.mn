@@ -137,3 +137,16 @@ test("W-tech: өгүүлбэрийн owner; «Owner» эрхийн нэр, /owne
   const out = run(fixture({ "o.md": good.replace("Бичвэр.", "Owner-ийн тохиргоог нээ.") })).out;
   assert.match(out.results[0].issues.find((i) => i.rule === "W-tech").msg, /owner → байгууллага/);
 });
+
+test("тойм зураг: эхний бүлгийн өмнөх зураг — тэмдэг = бүлгийн дугаар (1, 2)", () => {
+  const docs = fixture({
+    "t.md": `${fm()}# Гарчиг\n\n> 🏢 Байгууллага · Вэб\n\n![x](/img/x.webp)\n\n*Зураг 1. Тойм.*\n\n## 1. Цэс\nБичвэр.\n\n## 2. Жагсаалт\nБичвэр.\n\n## 🔗 Холбоотой\n- [x](/x)\n`,
+  });
+  const shots = join(docs, "..", "shots.json");
+  writeFileSync(shots, JSON.stringify([{ id: "x", marks: [{ n: "1", btn: "x" }, { n: "2", btn: "x" }] }]));
+  const ok = rules(run(docs, "--shots", shots).out, "t.md");
+  assert.ok(!ok.includes("E-imgmap") && !ok.includes("W-imgmap"));
+  writeFileSync(shots, JSON.stringify([{ id: "x", marks: [{ n: "1", btn: "x" }, { n: "3", btn: "x" }] }]));
+  const bad = rules(run(docs, "--shots", shots).out, "t.md");
+  assert.ok(bad.includes("E-imgmap") && bad.includes("W-imgmap")); // 3 илүү, 2 дутуу
+});
