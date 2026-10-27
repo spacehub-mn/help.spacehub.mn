@@ -50,6 +50,12 @@ const MAX_Q = 5;
 // E-spell: ө/ү-г о/у болгож бичсэн түгээмэл үг (хайлтын хувилбар хэрэглэгчид харагдсан — эзэн 10-27)
 const SPELL_RE = /(?<!\p{L})(оорчл\p{L}*|толбор\p{L}*|тулбур\p{L}*|турээс\p{L}*|хонгол\p{L}*|оноод\p{L}*|одроос|одрийн|оорийн|унэ|унийн|шуулт\p{L}*|омнох\p{L}*|уйлчилгээ\p{L}*|буртг\p{L}*|гуйлгээ\p{L}*|хуснэгт\p{L}*)(?!\p{L})/gu;
 // W-tech: өгүүлбэр доторх кодын/дотоод нэр томьёо (дэлгэц дээрх цэс, таб, товчны нэр биш — CEO 10-27 17:2x залруулга)
+// Эзэн 10-27 18:4x: өгүүлбэрийн «owner» → «байгууллага»; дэлгэцийн эрхийн нэр «Owner» (хашилттай), /owner/ зам зөвшөөрөгдөнө
+const OWNER_RE = /(?<![\p{L}\w/.«-])owner(?![\w/»])/iu;
+const techOf = (seen) => [
+  ...TECH.filter((w) => new RegExp(`(?<![\\p{L}\\w])${w}(?![\\p{L}\\w])`, "iu").test(seen)),
+  ...(OWNER_RE.test(seen) ? ["owner → байгууллага"] : []),
+];
 const TECH = ["toolbar", "popup", "TargetObjectsCriteria", "ObjectSpace", "ListView", "DetailView", "nested", "PreBill", "FIFO", "refno", "hash", "migration", "deploy", "controller", "XAF", "XPO", "Hangfire", "cron", "commit", "null", "Oid", "enum", "SQL", "backend", "API"];
 const termsFile = join(ROOT, "scripts", "help-lint.terms.json");
 const TERMS = existsSync(termsFile) ? JSON.parse(readFileSync(termsFile, "utf8")) : [];
@@ -199,12 +205,12 @@ for (const file of walk(DOCS)) {
   }
 
   // Үг үсэг, найруулга (эзэн 10-27, чартер «Үг үсгийн алдаа — суурь хяналт»): хэрэглэгчид харагдах бичвэр — inline код, холбоосын URL, зургийн замгүй
-  const seen = prose.replace(/`[^`\n]*`/g, " ").replace(/\]\([^)]*\)/g, "]").replace(/^(slug|keywords):.*$/gm, "");
+  // frontmatter title/sidebar_label/description нь цэс, хайлт, хуудасны толгойд харагдана; keywords харагдахгүй (хайлтын туслах) тул хамрахгүй
+  const fmSeen = ["title", "sidebar_label", "description"].map((k) => fm[k]).filter(Boolean).join("\n");
+  const seen = fmSeen + "\n" + prose.replace(/`[^`\n]*`/g, " ").replace(/\]\([^)]*\)/g, "]");
   const spell = [...new Set([...seen.toLowerCase().matchAll(SPELL_RE)].map((m) => m[1]))];
   if (spell.length) add("E", "E-spell", `ү/ө-гүй бичсэн үг: ${spell.slice(0, 5).join(", ")} — «ө», «ү»-гээр зас`);
-  const tech = TECH.filter((w) => new RegExp(`(?<![\\p{L}\\w])${w}(?![\\p{L}\\w])`, "iu").test(seen));
-  // Эзэн 10-27 18:4x: өгүүлбэрийн «owner» → «байгууллага»; дэлгэцийн эрхийн нэр «Owner» (хашилттай), /owner/ зам зөвшөөрөгдөнө
-  if (/(?<![\p{L}\w/.«-])owner(?![\w/»])/iu.test(seen)) tech.push("owner → байгууллага");
+  const tech = techOf(seen);
   if (tech.length) add("W", "W-tech", `дотоод/кодын нэр томьёо: ${tech.slice(0, 5).join(", ")} — дэлгэц дээрх нэрээр эсвэл энгийн үгээр бич`);
   const long = seen.split(/(?<=[.!?;])\s+|\n/).filter((s) => !/^\s*[|!<>#]/.test(s) && s.split(/\s+/).filter((w) => /\p{L}/u.test(w)).length > 20);
   if (long.length) add("W", "W-long", `20-оос урт өгүүлбэр ${long.length}: «${long[0].trim().slice(0, 50)}…» — хуваа`);
@@ -238,6 +244,14 @@ for (const file of walk(DOCS)) {
   }
 
   results.push({ file: rel, type: fm.type ?? null, questions: q, issues });
+}
+
+// Цэсийн бүлгийн нэр, generated-index тайлбар (_category_.json) мөн хэрэглэгчид харагдана (QA 10-27)
+for (const file of readdirSync(DOCS, { recursive: true }).filter((n) => /_category_\.json$/.test(n)).map((n) => join(DOCS, n))) {
+  const c = JSON.parse(readFileSync(file, "utf8"));
+  const seen = [c.label, c.link?.title, c.link?.description].filter(Boolean).join(" ");
+  const tech = techOf(seen);
+  if (tech.length) results.push({ file: relative(join(DOCS, ".."), file).replace(/\\/g, "/"), type: "category", questions: 0, issues: [{ level: "W", rule: "W-tech", msg: `дотоод/кодын нэр томьёо: ${tech.join(", ")} — дэлгэц дээрх нэрээр эсвэл энгийн үгээр бич` }] });
 }
 
 const count = (lvl) => results.reduce((n, r) => n + r.issues.filter((i) => i.level === lvl).length, 0);

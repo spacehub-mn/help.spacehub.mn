@@ -41,7 +41,7 @@ keywords:
 - «?» холбоос одоо: HelpLinks.cs ByView-д Statement_ListView алга → owner/jagsaalt-hooson-shuult
 -->
 
-> 🏢 Байгууллага, менежер, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Автоматжуулалт → Дансны хуулга**
+> 🏢 Эзэмшигч, менежер, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Автоматжуулалт → Дансны хуулга**
 
 🔄 Ажлын урсгал: **Гэрээ** → [Сарын тооцоо](/owner/sar-tootsoo) → [Нэхэмжлэх](/owner/nehemjleh-ilgeeh) → **[Төлбөр ба хуулга](/owner/huulga-tolbor)** → [Е-баримт](/owner/e-barimt)
 

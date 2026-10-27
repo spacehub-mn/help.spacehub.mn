@@ -31,7 +31,7 @@ keywords:
 - Товч: ContractUtility-д чиглэсэн toolbar action алга (MainController.cs:138, 213, 217 коммент; BlazorEditorController.cs:8 зөвхөн DetailView-ийн доод хязгаар)
 -->
 
-> 🏢 Байгууллага, менежер, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Тооцоо → Тоолуур ашиглалт**
+> 🏢 Эзэмшигч, менежер, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Тооцоо → Тоолуур ашиглалт**
 
 🔄 Ажлын урсгал: **Гэрээ** → **[Сарын тооцоо](/owner/sar-tootsoo)** → [Нэхэмжлэх](/owner/nehemjleh-ilgeeh) → [Төлбөр ба хуулга](/owner/huulga-tolbor) → [Е-баримт](/owner/e-barimt)
 

@@ -1,9 +1,9 @@
 {
-  "label": "Гар утасны апп (байгууллага)",
+  "label": "Гар утасны апп (эзэмшигч)",
   "position": 11,
   "link": {
     "type": "generated-index",
-    "description": "Spacehub гар утасны аппын owner горимын заавар (2023).",
+    "description": "Spacehub гар утасны аппын байгууллагын горимын заавар (2023).",
     "slug": "/lessor"
   }
 }

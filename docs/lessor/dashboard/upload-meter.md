@@ -2,7 +2,7 @@
 
 <!-- Help_Spacehub 10-26: spacehub 03de3014 mn_MN.json:564-583 (massUtil «Тоолуурын заалт», roomMeterMass «Өрөөний тоолуур», dupeValue, indicator, utilNull, utilMalformed#1/#2/#short, value «Одоо. заалт», lastValue «Өмнөх заалт»), :339 report.success; зураг заавал биш (ContractUtilityMeterValueUploadPage.dart:302-345; хоосон=0 :313); massUtil хуваарь бүрээр hasContractUtilityMeters (UtilityList.dart:37-50), roomMeterMass үргэлж шинэ систем — Dev_Research -->
 
-> 🏢 Байгууллага, менежер · Гар утасны апп
+> 🏢 Эзэмшигч, менежер · Гар утасны апп
 
 :::caution 2023 оны заавар
 Спейсхаб аппын (ҮХХ эзэмшигч) 2023 оны хувилбарын заавар. Дэлгэц өөрчлөгдсөн байж болно — зураг/видеог шинэчилж байна.
