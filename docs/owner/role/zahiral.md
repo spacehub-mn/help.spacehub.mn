@@ -1,4 +1,8 @@
 ---
+type: hab
+roles: [owner]
+updated: 2026-10-27
+verified_commit: 5fa824f
 # НООРОГ (Help_Spacehub 10-26). docs/owner/role/zahiral.md — дүр × хуудас хаб (CEO 16:5x). Шинэ агуулгагүй, зөвхөн Dev_Research ✅ хуудсууд руу холбоос.
 slug: /owner/role/zahiral
 sidebar_label: 👔 Захирал, байгууллагын эзэн

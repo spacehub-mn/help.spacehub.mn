@@ -1,4 +1,8 @@
 ---
+type: nuur
+roles: [owner, nyagtlan, menejer]
+updated: 2026-10-27
+verified_commit: 5fa824f
 slug: /owner
 sidebar_position: 0
 sidebar_label: Нүүр
