@@ -90,9 +90,39 @@ html[data-theme="dark"][data-role="resident"] {
 html[data-theme="dark"][data-role="owner"] {
   --role-bg: #0f2624;
 }
+/* Дээд мөр бүтэн өнгөтэй — хоёр тусдаа сайт шиг (эзэн 10-27 «бүр тусдаа салгая») */
+html[data-role="owner"] { --role-nav: #055c59; }
+html[data-role="resident"] { --role-nav: #c4500c; }
 html[data-role] .navbar {
-  background: var(--role-bg);
-  border-bottom: 4px solid var(--role-strip);
+  background: var(--role-nav);
+  border-bottom: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+html[data-role] .navbar .navbar__link,
+html[data-role] .navbar .navbar__toggle,
+html[data-role] .navbar .clean-btn {
+  color: #fff;
+}
+html[data-role] .navbar .navbar__link:hover { color: #fff; opacity: 0.85; }
+/* Зөвхөн өөрийн хэсгийн гарчиг; нөгөөх рүү жижиг шилжих холбоос */
+html[data-role="owner"] .role-only--resident,
+html[data-role="resident"] .role-only--owner,
+html[data-role="owner"] .role-switch--resident,
+html[data-role="resident"] .role-switch--owner {
+  display: none !important;
+}
+html[data-role] .navbar .role-only {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #fff;
+}
+html[data-role] .navbar .role-switch {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 999px;
+  margin-right: 8px;
 }
 html[data-role] .theme-doc-sidebar-container {
   background: var(--role-bg);
@@ -248,4 +278,8 @@ html[data-role] .theme-doc-sidebar-container {
 .table-of-contents .step-badge {
   font-size: 0.75em;
   box-shadow: none;
+}
+/* Өнгөт дээд мөрөнд лого цагаан */
+html[data-role] .navbar__logo img {
+  filter: brightness(0) invert(1);
 }

@@ -75,7 +75,10 @@ export default function Root({ children }) {
   }, []);
 
   useEffect(() => {
-    document.documentElement.dataset.role = roleOf(pathname);
+    const role = roleOf(pathname);
+    document.documentElement.dataset.role = role;
+    // Дээд мөрний «… үү? →» холбоосоор шилжвэл сонголтыг санана — дараа нүүрэнд ороход дахин асуухгүй
+    if (new URLSearchParams(window.location.search).get("role") === role) save(role);
   }, [pathname]);
 
   // Зөвхөн нүүр хуудсанд, анх удаа. Апп-ын «?» товчноос шууд хуудас руу орсон бол асуухгүй.

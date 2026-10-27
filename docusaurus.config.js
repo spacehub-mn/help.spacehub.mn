@@ -84,8 +84,12 @@ const config = {
           src: "img/logo.svg",
         },
         items: [
-          { type: "docSidebar", sidebarId: "resident", position: "left", label: "🏠 Түрээслэгч, оршин суугч" },
-          { type: "docSidebar", sidebarId: "owner", position: "left", label: "🏢 Эзэмшигч, менежер" },
+          // Хоёр тусдаа тусламж (эзэн 10-27 «түрээслэгч, owner 2-ыг бүр тусдаа салгая»): src/theme/Root.js html[data-role]-оор
+          // зөвхөн өөрийн гарчиг харагдана; нөгөөх рүү баруун талын жижиг холбоосоор шилжинэ (src/css/custom.css).
+          { type: "docSidebar", sidebarId: "owner", position: "left", label: "🏢 Эзэмшигч, менежерийн тусламж", className: "role-only role-only--owner" },
+          { type: "docSidebar", sidebarId: "resident", position: "left", label: "🏠 Түрээслэгч, оршин суугчийн тусламж", className: "role-only role-only--resident" },
+          { to: "/?role=resident", position: "right", label: "Түрээслэгч үү? →", className: "role-switch role-switch--owner" },
+          { to: "/owner?role=owner", position: "right", label: "Эзэмшигч, менежер үү? →", className: "role-switch role-switch--resident" },
           // {
           //   type: 'doc',
           //   docId: 'lessor/contract/view-contract-details',
