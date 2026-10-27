@@ -161,7 +161,8 @@ async function toWebp(page, png) {
     const [group, item] = s.nav;
     const leaf = page.getByRole("treeitem", { name: item, exact: true }).first();
     if (!(await leaf.isVisible())) { await page.getByText(group, { exact: true }).first().click({ force: true }); await page.waitForTimeout(700); }
-    if (!s.navOnly) await leaf.click(); // navOnly: зөвхөн бүлгийг дэлгэнэ (дээр дэлгэсэн)
+    if (s.url) { await page.goto(APP + s.url); await idle(page); } // url: дэд цэс (Харилцагч → Хэрэглэгч г.м.) — зөвхөн харах
+    else if (!s.navOnly) await leaf.click(); // navOnly: зөвхөн бүлгийг дэлгэнэ (дээр дэлгэсэн)
     await idle(page);
     if (s.waitTh) await page.locator("thead th:visible", { hasText: s.waitTh }).first().waitFor({ timeout: 60000 });
     await page.waitForTimeout(1500);

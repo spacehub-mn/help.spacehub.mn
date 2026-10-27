@@ -1547,5 +1547,75 @@
         "label": "Эхний үлдэгдэл цэс"
       }
     ]
+  },
+  {
+    "id": "owner/list/propertyowner-1",
+    "page": "docs/owner/list/propertyowner.md",
+    "nav": [
+      "Менежмент",
+      "Байгууллага"
+    ],
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "alt": "Байгууллага жагсаалтын toolbar",
+    "marks": [
+      {
+        "n": "1",
+        "btn": "Алданги тохиргоог",
+        "label": "Алданги хувилах"
+      },
+      {
+        "n": "2",
+        "btn": "Гэрээ драфт",
+        "label": "Гэрээ драфт"
+      }
+    ]
+  },
+  {
+    "id": "owner/list/user-1",
+    "page": "docs/owner/list/user.md",
+    "nav": [
+      "Харилцагч",
+      "Хэрэглэгч"
+    ],
+    "width": 1920,
+    "blurTh": [
+      "Овог",
+      "Албан тушаал"
+    ],
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 40,
+    "alt": "Хэрэглэгч жагсаалтын toolbar",
+    "marks": [
+      {
+        "n": "1",
+        "btn": "Нэвтрэх эрх",
+        "exact": true,
+        "label": "Нэвтрэх эрх"
+      },
+      {
+        "n": "2",
+        "btn": "Эрх илгээх",
+        "exact": true,
+        "label": "Эрх илгээх"
+      },
+      {
+        "n": "3",
+        "btn": "Эрх хаах",
+        "exact": true,
+        "label": "Эрх хаах"
+      },
+      {
+        "n": "3",
+        "btn": "Эрх сэргээх",
+        "exact": true,
+        "label": "Эрх сэргээх"
+      }
+    ],
+    "url": "User_ListView",
+    "waitTh": "Утас"
   }
 ]
