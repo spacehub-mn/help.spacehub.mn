@@ -1689,5 +1689,84 @@
         "below": true
       }
     ]
+  },
+  {
+    "id": "owner/list/discountconfig-1",
+    "page": "docs/owner/list/discountconfig.md",
+    "nav": [
+      "Менежмент",
+      "Хөнгөлөлт тохиргоо"
+    ],
+    "url": "DiscountConfig_ListView",
+    "width": 1920,
+    "rowOpen": 2,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 60,
+    "alt": "Хөнгөлөлт тохиргооны карт: Үйлчилгээ татах, Бүх гэрээ, Хөнгөлөлт дүн шинэчил",
+    "marks": [
+      {
+        "n": "1",
+        "btn": "Үйлчилгээ татах",
+        "exact": true,
+        "label": "Үйлчилгээ татах",
+        "below": true
+      },
+      {
+        "n": "2",
+        "btn": "Бүх гэрээ",
+        "exact": true,
+        "label": "Бүх гэрээ",
+        "below": true
+      },
+      {
+        "n": "3",
+        "btn": "Хөнгөлөлт дүн шинэчил",
+        "exact": true,
+        "label": "Хөнгөлөлт дүн шинэчил",
+        "below": true
+      }
+    ]
+  },
+  {
+    "id": "owner/list/notifconfig-1",
+    "page": "docs/owner/list/notificationtodueinvoicebillsconfig.md",
+    "nav": [
+      "Менежмент",
+      "Нэхэмжлэх дахиж явуулах тохиргоо"
+    ],
+    "url": "NotificationToDueInvoiceBillsConfig_ListView",
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 60,
+    "alt": "Нэхэмжлэх дахиж явуулах тохиргооны toolbar",
+    "marks": [
+      {
+        "btn": "Ажил үүсгэх",
+        "exact": true,
+        "label": "Ажил үүсгэх",
+        "n": "1"
+      },
+      {
+        "btn": "Ажил эхлүүлэх",
+        "exact": true,
+        "label": "Ажил эхлүүлэх",
+        "n": "2"
+      },
+      {
+        "btn": "Ажил зогсоох",
+        "exact": true,
+        "label": "Ажил зогсоох",
+        "n": "3"
+      },
+      {
+        "btn": "Ажил устгах",
+        "exact": true,
+        "label": "Ажил устгах",
+        "n": "4"
+      }
+    ],
+    "waitTh": "Хүлээх"
   }
 ]
