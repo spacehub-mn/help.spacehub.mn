@@ -16,6 +16,7 @@
 //   W-rel     «## 🔗 Холбоотой» хэсэг (TYPES_NEED_REL төрөлд)
 //   W-term    хуучирсан/буруу нэр томьёо (scripts/help-lint.terms.json)
 //   W-q       ❔ (батлагдаагүй) MAX_Q-ээс олон
+//   W-order   жагсаалтын хуудас: Энэ юу вэ → Хэзээ хэрэглэх → Товчнууд → Түгээмэл асуулт
 //   E-imgmap  зураг дээрх тэмдэг доорх текстэд алга (W-imgmap: текстийн дугаар зураг дээр алга); E-img8 > 8 тэмдэг; W-imgcap «Зураг N.» алга
 //   E-img     ![…](/img/…) файл static/-д алга (build-д мөн унана); W-img: alt хоосон, эсвэл заавар/асуудал/сургалт хуудсанд зураг огт алга (HELP_PLAN §11)
 //   W-stale   verified_commit-оос хойш хуудасны иш татсан Spacehub23 файл өөрчлөгдсөн
@@ -164,6 +165,15 @@ for (const file of walk(DOCS)) {
     if (!alt.trim()) add("W", "W-img", `${url} alt текст хоосон`);
   }
   if (!legacy && TYPES_NEED_IMG.includes(fm.type) && !imgs.length) add("W", "W-img", "дэлгэцийн зураг алга (scripts/shots/shots.json-д нэм)");
+
+  // Хуудасны тогтсон бүтэц (чартер §4): Энэ юу вэ → Хэзээ хэрэглэх → Товчнууд → … → Түгээмэл асуулт (жагсаалтын хуудас)
+  if (rel.includes("/list/") && !legacy) {
+    const h2s = [...prose.matchAll(/^## (.+)$/gm)].map((m) => m[1].trim());
+    const want = ["Энэ юу вэ", "Хэзээ хэрэглэх", "Товчнууд", "Түгээмэл асуулт"];
+    const at = want.map((w) => h2s.findIndex((h) => h.startsWith(w)));
+    if (at.includes(-1) || at.some((v, i) => i && v < at[i - 1]))
+      add("W", "W-order", `бүтэц: ${want.join(" → ")} дарааллаар байх (одоо: ${want.filter((_, i) => at[i] < 0).map((w) => w + " алга").join(", ") || "дараалал буруу"})`);
+  }
 
   // Зураг ↔ текст 1:1 (эзэн 10-27, чартер «Агуулгын ойлгомж»): тэмдэг бүр доорх дугаартай мөртэй, ≤ 8 тэмдэг, «Зураг N.» тайлбар
   const type = fm.type || (/(^|\/)owner\/[^/]+\.mdx?$/.test(rel) && !/index\.mdx?$/.test(rel) ? "zaavar" : undefined);
