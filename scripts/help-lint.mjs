@@ -16,6 +16,7 @@
 //   W-rel     «## 🔗 Холбоотой» хэсэг (TYPES_NEED_REL төрөлд)
 //   W-term    хуучирсан/буруу нэр томьёо (scripts/help-lint.terms.json)
 //   W-q       ❔ (батлагдаагүй) MAX_Q-ээс олон
+//   E-pii     харилцагчийн нэр (ЛОКАЛ agent-ops/help_pii_names.txt); W-pii 6 оронтой гэрээний дугаар маягийн тоо
 //   W-gray    товчны хэсэгт «харагдана/харагдахгүй» — код нь ихэвчлэн саарал болгодог
 //   W-order   жагсаалтын хуудас: Энэ юу вэ → Хэзээ хэрэглэх → Товчнууд → Түгээмэл асуулт
 //   E-imgmap  зураг дээрх тэмдэг доорх текстэд алга (W-imgmap: текстийн дугаар зураг дээр алга); E-img8 > 8 тэмдэг; W-imgcap «Зураг N.» алга
@@ -110,6 +111,9 @@ function imageSections(body, type) {
   });
 }
 
+// Харилцагчийн нэрсийн ЛОКАЛ жагсаалт (репод байхгүй; CI-д файл алга бол шалгахгүй)
+const piiFile = opt("--pii", "E:/Projects/spacehub-mn/.claude/agent-ops/help_pii_names.txt");
+const PII_NAMES = existsSync(piiFile) ? readFileSync(piiFile, "utf8").split(String.fromCharCode(10)).map((l) => l.trim()).filter((l) => l && !l.startsWith("#")) : [];
 const results = [];
 for (const file of walk(DOCS)) {
   const rel = relative(join(DOCS, ".."), file).replace(/\\/g, "/");
@@ -177,6 +181,10 @@ for (const file of walk(DOCS)) {
       add("W", "W-order", `бүтэц: ${want.join(" → ")} дарааллаар байх (одоо: ${want.filter((_, i) => at[i] < 0).map((w) => w + " алга").join(", ") || "дараалал буруу"})`);
   }
 
+  // Нууцлал (Dev_Research 10-27: help репо PUBLIC — <!-- --> тайлбар ч GitHub дээр уншигдана): харилцагчийн нэр, гэрээний дугаар
+  for (const n of PII_NAMES) if (raw.includes(n)) add("E", "E-pii", `харилцагчийн нэр «${n}» (тайлбарт ч бүү бич — «owner N» гэж бич)`);
+  const cno = raw.replace(/^verified_commit:.*$/m, "").match(/(?<![\w.#/-])(60|10|12|27|28)\d{4}(?![\w.])/g);
+  if (cno) add("W", "W-pii", `6 оронтой гэрээний дугаар маягийн тоо: ${[...new Set(cno)].slice(0, 3).join(", ")} — харилцагчийн гэрээ бол «нэг гэрээ» гэж бич`);
   // Товч нуугддаггүй, саарал болдог (TargetObjectsCriteria) — «харагдана/харагдахгүй» гэж бичих нь давтагдсан алдаа (Dev_Research 10-27)
   if (rel.includes("/list/")) {
     const btn = (prose.split(/^## Товчнууд.*$/m)[1] || "").split(/^## /m)[0];

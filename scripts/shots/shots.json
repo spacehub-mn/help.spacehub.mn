@@ -1002,5 +1002,106 @@
       }
     ],
     "clip": "dialog"
+  },
+  {
+    "id": "owner/hugatsaa-dialog",
+    "page": "docs/owner/hugatsaa-songoh.md",
+    "nav": [
+      "Тооцоо",
+      "Төлбөр"
+    ],
+    "width": 1920,
+    "open": {
+      "btn": "Огноогоор шүүх"
+    },
+    "mustSee": "Огноогоор шүүх",
+    "clip": {
+      "x": 272,
+      "y": 88,
+      "width": 1100,
+      "height": 540
+    },
+    "alt": "Огноогоор шүүх цонх",
+    "marks": [
+      {
+        "n": "1.1",
+        "btn": "Огноогоор шүүх",
+        "label": "📅"
+      },
+      {
+        "n": "1.2",
+        "btn": "Энэ сар",
+        "exact": true,
+        "label": "Хурдан сонголт",
+        "below": true
+      },
+      {
+        "n": "1.2",
+        "text": "Эхлэл <=",
+        "label": "Эхлэл"
+      },
+      {
+        "n": "1.3",
+        "btn": "Шүүх",
+        "exact": true,
+        "label": "Шүүх"
+      }
+    ]
+  },
+  {
+    "id": "owner/sar-tootsoo-huvaari",
+    "page": "docs/owner/sar-tootsoo.md",
+    "nav": [
+      "Менежмент",
+      "Гэрээ"
+    ],
+    "width": 1920,
+    "rowOpen": 4,
+    "tab": "Хуваарь",
+    "clip": "auto",
+    "padRight": 24,
+    "padBottom": 120,
+    "alt": "Гэрээний карт, Хуваарь таб",
+    "marks": [
+      {
+        "n": "2.1",
+        "tree": "Гэрээ",
+        "label": "Гэрээ цэс"
+      },
+      {
+        "n": "2.2",
+        "text": "Хуваарь",
+        "exact": true,
+        "label": "Хуваарь таб"
+      },
+      {
+        "n": "2.3",
+        "rowCheck": true,
+        "label": "Сарын мөр"
+      },
+      {
+        "n": "2.4",
+        "btn": "Төлбөр +",
+        "exact": true,
+        "label": "Төлбөр +"
+      },
+      {
+        "n": "2.4",
+        "btn": "Төл & Нэх +",
+        "exact": true,
+        "label": "Төл & Нэх +"
+      },
+      {
+        "n": "2.4",
+        "btn": "Төлбөр ]",
+        "exact": true,
+        "label": "Төлбөр ]"
+      },
+      {
+        "n": "2.5",
+        "tree": "Тооцоо",
+        "label": "Тооцоо цэс"
+      }
+    ]
   }
 ]

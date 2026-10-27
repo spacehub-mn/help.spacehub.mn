@@ -108,3 +108,13 @@ test("W-gray: жагсаалтын «Товчнууд»-д «… дээр л х�
   assert.ok(rules(out, "list/a.md").includes("W-gray"));
   assert.ok(!rules(out, "list/b.md").includes("W-gray"));
 });
+
+test("E-pii: локал жагсаалтын харилцагчийн нэр <!-- --> тайлбарт ч барина; W-pii 6 оронтой гэрээний дугаар", () => {
+  const docs = fixture({ "a.md": `${fm()}# Гарчиг\n\n<!-- Тестийн Нэр ХХК-ийн 601050 гэрээ -->\n\n> 🏢 Owner · Вэб\n\n1. Алхам.\n\n## 🔗 Холбоотой\n- [x](/x)\n`, "b.md": good });
+  const pii = join(docs, "..", "pii.txt");
+  writeFileSync(pii, "# тайлбар\nТестийн Нэр\n");
+  const { code, out } = run(docs, "--pii", pii);
+  assert.equal(code, 1);
+  assert.ok(rules(out, "a.md").includes("E-pii") && rules(out, "a.md").includes("W-pii"));
+  assert.ok(!rules(out, "b.md").includes("E-pii"));
+});

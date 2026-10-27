@@ -162,6 +162,9 @@ async function toWebp(page, png) {
     await page.waitForTimeout(400);
     // Цонхны алхмын зураг (эзэн 10-27 А, CEO 11:2x): мөр СОНГООД товчоор цонх НЭЭНЭ, зураг аваад Esc / «Үгүй, Хаах»-аар хаана.
     // Хадгалах / илгээх / төлөх / «Тийм»-ийг ХЭЗЭЭ Ч дарахгүй, талбарт бичихгүй. mustSee текст гарахгүй бол бүх ажлыг зогсооно.
+    // Зөвхөн харах шилжилт: эхний мөрийн карт нээх (rowOpen = баганын индекс), таб сонгох (tab)
+    if (s.rowOpen != null) { await page.locator("tbody tr").nth(0).locator("td").nth(s.rowOpen).click(); await idle(page); await page.waitForTimeout(2500); }
+    if (s.tab) { await page.getByText(s.tab, { exact: true }).first().click(); await idle(page); await page.waitForTimeout(2000); }
     if (s.open) {
       if (s.selectRow) await page.locator("tbody tr td:first-child input[type=checkbox], tbody tr td:first-child .dxbl-checkbox").first().click();
       await page.waitForTimeout(800);

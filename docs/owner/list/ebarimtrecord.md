@@ -17,7 +17,7 @@ keywords:
 # Авто eBarimt (жагсаалт)
 
 <!--
-Хяналт: Dev_Research research/help_review_ebarimtrecord.md (❌ 4) → засав. Perpetual: AutomationController.cs:349-356 (Жил/Сар автоматаар шилжинэ); Дорнодод 5 давхар ажлын жишээ.
+Хяналт: Dev_Research research/help_review_ebarimtrecord.md (❌ 4) → засав. Perpetual: AutomationController.cs:349-356 (Жил/Сар автоматаар шилжинэ); нэг байгууллагад 5 давхар ажлын жишээ.
 Нотолгоо (Spacehub23 origin/master c68c602):
 - EbarimtRecord.cs:21 «Авто eBarimt», класс дээрх NavigationItem → Автоматжуулалт (help_review_navigation); xafml-д ListView тохиргоо алга
 - Талбар: :45 Код, :57 Гарчиг, :67 Эзэмшигч, :77 Жил, :85 Сар, :97-99 Нөхөх хоног (ToolTip), :106 Статус (CronJobStatus), :124 Дүгнэлт илгээсэн, :137 Сүүлийн үйлдэл, :150 Шүүлтүүр (Criteria), :159 И-Баримтууд, :169 Нэмэлт Авто Ажлууд
