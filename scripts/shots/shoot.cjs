@@ -98,13 +98,20 @@ async function box(page, m) {
   }
   if (m.btn) {
     // Дүрстэй товчны нэр ихэвчлэн title (tooltip)-д байдаг — текст ба title хоёуланг хайна
-    return page.evaluate(({ t, exact, last }) => {
+    return page.evaluate(({ t, exact, last, row }) => {
       // XAF хаалттай табын toolbar дэлгэцээс гадна (x < 0) үлддэг — зөвхөн харагдаж буйг ав
       // last: дэд табын toolbar (үндсэн toolbar-тай ижил нэртэй товч) — DOM-д сүүлд байдаг
       const el = [...document.querySelectorAll("button")][last ? "findLast" : "find"]((b) => { const r = b.getBoundingClientRect(); return b.offsetParent && r.x >= 0 && r.y >= 0 && (exact ? [(b.innerText || "").trim(), (b.title || "").split(/\r?\n/)[0].trim()].includes(t) : ((b.innerText || "") + " " + (b.title || "")).includes(t)); });
       const r = el && el.getBoundingClientRect();
+      if (r && row) {
+        // row: тэр товчны бүх мөр (ижил өндөрт байгаа харагдах товчнууд) — «Товчны мөр» тойм тэмдэг
+        const cy = r.y + r.height / 2;
+        const rs = [...document.querySelectorAll("button")].filter((b) => b.offsetParent).map((b) => b.getBoundingClientRect()).filter((q) => q.x >= 0 && Math.abs(q.y + q.height / 2 - cy) < 8);
+        const x0 = Math.min(...rs.map((q) => q.x)), x1 = Math.max(...rs.map((q) => q.x + q.width));
+        return { x: x0, y: r.y, width: x1 - x0, height: r.height };
+      }
       return r ? { x: r.x, y: r.y, width: r.width, height: r.height } : null;
-    }, { t: m.btn, exact: !!m.exact, last: !!m.last });
+    }, { t: m.btn, exact: !!m.exact, last: !!m.last, row: !!m.row });
   }
   const loc = page.locator("thead th:visible").filter({ hasText: new RegExp(`^\\s*${m.th}\\s*$`) }).first();
   return (await loc.count()) ? loc.boundingBox() : null;
