@@ -23,7 +23,7 @@ keywords:
 - Хаалт: е-баримт 7-ны хязгаар (EbarimtAutoPolicy.cs:14), Reports «01. Нэгтгэл — Хурдан», Dashboards#talbai-sar, алданги (concepts/aldangi)
 -->
 
-> 📘 Сургалт · 🏢 Owner, нягтлан · Вэб (app.spacehub.mn)
+> 📘 Сургалт · 🏢 Байгууллага, нягтлан · Вэб (app.spacehub.mn)
 
 Сар бүр давтагддаг 6 ажил, ойролцоогоор хэдний өдөр хийх дарааллаар. Яг огноо нь танай гэрээний нөхцөл, авто ажлын тохиргооноос хамаарна.
 
@@ -67,4 +67,4 @@ keywords:
 5. Дуусах дөхсөн гэрээг сунга. → [Гэрээ](/owner/list/Contract_ListView)
 
 ## 🔗 Холбоотой
-- [Эхний сар — шинэ owner](/owner/tutorial/ehnii-sar) · [Түгээмэл асуулт](/owner/tugeemel-asuult) · [Нэр томьёо](/owner/glossary)
+- [Эхний сар — шинэ байгууллага](/owner/tutorial/ehnii-sar) · [Түгээмэл асуулт](/owner/tugeemel-asuult) · [Нэр томьёо](/owner/glossary)

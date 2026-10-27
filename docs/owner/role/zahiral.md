@@ -1,12 +1,12 @@
 ---
 # НООРОГ (Help_Spacehub 10-26). docs/owner/role/zahiral.md — дүр × хуудас хаб (CEO 16:5x). Шинэ агуулгагүй, зөвхөн Dev_Research ✅ хуудсууд руу холбоос.
 slug: /owner/role/zahiral
-sidebar_label: 👔 Захирал, owner
+sidebar_label: 👔 Захирал, байгууллагын эзэн
 sidebar_position: 1
 keywords: ["захирал", "удирдлага", "хяналт", "тайлан"]
 ---
 
-# 👔 Захирал, owner
+# 👔 Захирал, байгууллагын эзэн
 
 > 🏢 Байгууллагын удирдлага · Вэб (app.spacehub.mn)
 
@@ -26,7 +26,7 @@ keywords: ["захирал", "удирдлага", "хяналт", "тайлан
 - Дуусах дөхсөн гэрээ, үнийн өөрчлөлт. → [Гэрээ](/owner/list/Contract_ListView) · [Үнэ өөрчлөх](/owner/une-oorchloh)
 
 ## Тохиргоо (хааяа)
-- [Owner-ийн тохиргоо](/owner/tohirgoo) — SMS, алданги, дүн бүхэлчлэх, төлөх өдөр.
+- [Байгууллагын тохиргоо](/owner/tohirgoo) — SMS, алданги, дүн бүхэлчлэх, төлөх өдөр.
 - [Байгууллага](/owner/list/PropertyOwner_ListView) · [Хэрэглэгч, эрх](/owner/list/User_ListView) · [Авто тооцоо — 3 түвшин](/owner/concepts/avto-3-tuvshin)
 
 ## 🔗 Бусад дүр

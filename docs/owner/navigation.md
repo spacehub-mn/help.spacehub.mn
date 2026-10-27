@@ -29,7 +29,7 @@ keywords:
 - «?»: HelpLinkViewController.cs (Caption «?», дүрс Actions_Info, ToolTip «Энэ хуудасны гарын авлага (шинэ табаар нээгдэнэ)», Active: Help:BaseUrl тохируулсан, үндсэн цонх, popup биш); HelpLinks.cs:39-45
 -->
 
-> 🏢 Owner, менежер, нягтлан · Вэб (app.spacehub.mn)
+> 🏢 Байгууллага, менежер, нягтлан · Вэб (app.spacehub.mn)
 
 Spacehub-ийн бүх дэлгэц ижил зарчмаар ажилладаг. Энэ хуудсыг нэг уншчихвал бусад жагсаалтын хуудас ойлгомжтой болно.
 

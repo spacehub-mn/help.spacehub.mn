@@ -19,7 +19,7 @@ keywords:
 Нэмэлт (кодоор): StatementLog_ListView DataAccessMode=Client (бүх мөр ачаална — help_review_statementlog.md); «— Хурдан» тайлан SP-аар (NegtgelReportFastController.cs:13); 📅 шүүлт хэрэглэгч бүрээр санана (#1156); Шөнийн шинэчлэл: memory feedback_nightly_auto_deploy_standing (23–24 цаг) — цагийг нийтэд бичихгүй.
 -->
 
-> 🏢 Owner, менежер, нягтлан · Вэб (app.spacehub.mn)
+> 🏢 Байгууллага, менежер, нягтлан · Вэб (app.spacehub.mn)
 
 Програм ачаалахгүй, гацах, нэвтэрч чадахгүй байх нь ихэнхдээ **богино хугацааны шинэчлэл**, браузерийн кэш эсвэл интернэтийн холболтоос болдог. Мэдээлэл тань устахгүй.
 

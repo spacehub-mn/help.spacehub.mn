@@ -35,7 +35,7 @@ keywords:
 - «?» холбоос одоо: HelpLinks.cs:27 (SaleEbarimt_ListView → owner/e-barimt)
 -->
 
-> 🏢 Owner, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Тооцоо → И-Баримт**
+> 🏢 Байгууллага, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Тооцоо → И-Баримт**
 
 🔄 Ажлын урсгал: **Гэрээ** → [Сарын тооцоо](/owner/sar-tootsoo) → [Нэхэмжлэх](/owner/nehemjleh-ilgeeh) → [Төлбөр ба хуулга](/owner/huulga-tolbor) → **[Е-баримт](/owner/e-barimt)**
 

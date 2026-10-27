@@ -203,6 +203,8 @@ for (const file of walk(DOCS)) {
   const spell = [...new Set([...seen.toLowerCase().matchAll(SPELL_RE)].map((m) => m[1]))];
   if (spell.length) add("E", "E-spell", `ү/ө-гүй бичсэн үг: ${spell.slice(0, 5).join(", ")} — «ө», «ү»-гээр зас`);
   const tech = TECH.filter((w) => new RegExp(`(?<![\\p{L}\\w])${w}(?![\\p{L}\\w])`, "iu").test(seen));
+  // Эзэн 10-27 18:4x: өгүүлбэрийн «owner» → «байгууллага»; дэлгэцийн эрхийн нэр «Owner» (хашилттай), /owner/ зам зөвшөөрөгдөнө
+  if (/(?<![\p{L}\w/.«-])owner(?![\w/»])/iu.test(seen)) tech.push("owner → байгууллага");
   if (tech.length) add("W", "W-tech", `дотоод/кодын нэр томьёо: ${tech.slice(0, 5).join(", ")} — дэлгэц дээрх нэрээр эсвэл энгийн үгээр бич`);
   const long = seen.split(/(?<=[.!?;])\s+|\n/).filter((s) => !/^\s*[|!<>#]/.test(s) && s.split(/\s+/).filter((w) => /\p{L}/u.test(w)).length > 20);
   if (long.length) add("W", "W-long", `20-оос урт өгүүлбэр ${long.length}: «${long[0].trim().slice(0, 50)}…» — хуваа`);

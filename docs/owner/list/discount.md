@@ -30,7 +30,7 @@ keywords:
 - Хөнгөлөлт үүсэх зам: Bill_ListView «Хөнгөлөлт +» (list-Bill_ListView.md), сарын тооцоо (Discount.UpdateOrCreateDiscount, ContractUtility.cs:453)
 -->
 
-> 🏢 Owner, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Тооцоо → Хөнгөлөлт**
+> 🏢 Байгууллага, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Тооцоо → Хөнгөлөлт**
 
 🔄 Ажлын урсгал: **Гэрээ** → **[Сарын тооцоо](/owner/sar-tootsoo)** → [Нэхэмжлэх](/owner/nehemjleh-ilgeeh) → [Төлбөр ба хуулга](/owner/huulga-tolbor) → [Е-баримт](/owner/e-barimt)
 

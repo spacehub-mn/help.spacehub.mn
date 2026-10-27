@@ -34,7 +34,7 @@ keywords:
 - «?» холбоос одоо: HelpLinks.cs:21 (Bill_ListView → owner/hugatsaa-songoh)
 -->
 
-> 🏢 Owner, менежер, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Тооцоо → Төлбөр**
+> 🏢 Байгууллага, менежер, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Тооцоо → Төлбөр**
 
 🔄 Ажлын урсгал: **Гэрээ** → **[Сарын тооцоо](/owner/sar-tootsoo)** → [Нэхэмжлэх](/owner/nehemjleh-ilgeeh) → [Төлбөр ба хуулга](/owner/huulga-tolbor) → [Е-баримт](/owner/e-barimt)
 

@@ -44,7 +44,7 @@ keywords:
   C9 «Сар (-1)» ToolTip «ӨМНӨ рүү (−1 сар)».
 -->
 
-> 🏢 Owner, менежер, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Менежмент → Гэрээ**
+> 🏢 Байгууллага, менежер, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Менежмент → Гэрээ**
 
 🔄 Ажлын урсгал: **Гэрээ** → [Сарын тооцоо](/owner/sar-tootsoo) → [Нэхэмжлэх](/owner/nehemjleh-ilgeeh) → [Төлбөр ба хуулга](/owner/huulga-tolbor) → [Е-баримт](/owner/e-barimt)
 

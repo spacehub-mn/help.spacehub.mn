@@ -23,7 +23,7 @@ const fixture = (files) => {
   return d;
 };
 const fm = (extra = "") => `---\ntype: zaavar\nroles: [owner]\nupdated: 2026-10-26\nverified_commit: c68c602\n${extra}---\n`;
-const good = `${fm()}# Гарчиг\n\n> 🏢 Owner · Вэб\n\nБичвэр.\n\n1. Алхам.\n\n![Жагсаалт](/img/x.webp)\n\n## 🔗 Холбоотой\n- [x](/x)\n`;
+const good = `${fm()}# Гарчиг\n\n> 🏢 Байгууллага · Вэб\n\nБичвэр.\n\n1. Алхам.\n\n![Жагсаалт](/img/x.webp)\n\n## 🔗 Холбоотой\n- [x](/x)\n`;
 const rules = (out, file) => out.results.find((r) => r.file.endsWith(file)).issues.map((i) => i.rule);
 
 test("загварт нийцсэн хуудас — алдаагүй, exit 0", () => {
@@ -78,7 +78,7 @@ test("зургийн файл алга → E-img (exit 1); alt хоосон, з�
 });
 
 test("H1-ийн өмнө <!-- --> → E-h1first (гарчиг файлын нэрээр гарна)", () => {
-  const bad = `${fm()}<!-- нотолгоо -->\n\n# Гарчиг\n\n> 🏢 Owner · Вэб\n\n## 🔗 Холбоотой\n- [x](/x)\n`;
+  const bad = `${fm()}<!-- нотолгоо -->\n\n# Гарчиг\n\n> 🏢 Байгууллага · Вэб\n\n## 🔗 Холбоотой\n- [x](/x)\n`;
   const { code, out } = run(fixture({ "c.md": bad, "a.md": good }));
   assert.equal(code, 1);
   assert.ok(rules(out, "c.md").includes("E-h1first"));
@@ -87,8 +87,8 @@ test("H1-ийн өмнө <!-- --> → E-h1first (гарчиг файлын нэ�
 
 test("зураг ↔ текст 1:1: илүү тэмдэг E-imgmap, дутуу W-imgmap, > 8 E-img8, «Зураг N.» алга W-imgcap", () => {
   const docs = fixture({
-    "z.md": `${fm()}# Гарчиг\n\n> 🏢 Owner · Вэб\n\n## Хуулга харах\n\n![x](/img/x.webp)\n\n*Зураг 1. Хуулга.*\n\n1. Цэс.\n2. Данс.\n3. Огноо.\n\n## 🔗 Холбоотой\n- [x](/x)\n`,
-    "y.md": `${fm()}# Гарчиг\n\n> 🏢 Owner · Вэб\n\n## Алхам\n\n![x](/img/x.webp)\n\nТайлбаргүй.\n\n1. Нэг.\n\n## 🔗 Холбоотой\n- [x](/x)\n`,
+    "z.md": `${fm()}# Гарчиг\n\n> 🏢 Байгууллага · Вэб\n\n## Хуулга харах\n\n![x](/img/x.webp)\n\n*Зураг 1. Хуулга.*\n\n1. Цэс.\n2. Данс.\n3. Огноо.\n\n## 🔗 Холбоотой\n- [x](/x)\n`,
+    "y.md": `${fm()}# Гарчиг\n\n> 🏢 Байгууллага · Вэб\n\n## Алхам\n\n![x](/img/x.webp)\n\nТайлбаргүй.\n\n1. Нэг.\n\n## 🔗 Холбоотой\n- [x](/x)\n`,
   });
   const shots = join(docs, "..", "shots.json");
   const m = (n) => ({ n, btn: "x" });
@@ -102,7 +102,7 @@ test("зураг ↔ текст 1:1: илүү тэмдэг E-imgmap, дутуу 
 });
 
 test("W-gray: жагсаалтын «Товчнууд»-д «… дээр л харагдана» → анхааруулга; «Товчны нэр … харагдана» биш", () => {
-  const body = (line) => `${fm()}# Гарчиг\n\n> 🏢 Owner · Вэб\n\n## Товчнууд\nТовчны нэр апп дээр яг ингэж харагдана.\n\n### «Цуцлах»\n- **Сонголт:** ${line}\n\n## 🔗 Холбоотой\n- [x](/x)\n`;
+  const body = (line) => `${fm()}# Гарчиг\n\n> 🏢 Байгууллага · Вэб\n\n## Товчнууд\nТовчны нэр апп дээр яг ингэж харагдана.\n\n### «Цуцлах»\n- **Сонголт:** ${line}\n\n## 🔗 Холбоотой\n- [x](/x)\n`;
   const docs = fixture({ "list/a.md": body("цуцлаагүй төлбөр дээр л харагдана."), "list/b.md": body("цуцлаагүй үед идэвхтэй, бусад үед **саарал**.") });
   const { out } = run(docs);
   assert.ok(rules(out, "list/a.md").includes("W-gray"));
@@ -110,7 +110,7 @@ test("W-gray: жагсаалтын «Товчнууд»-д «… дээр л х�
 });
 
 test("E-pii: локал жагсаалтын харилцагчийн нэр <!-- --> тайлбарт ч барина; W-pii 6 оронтой гэрээний дугаар", () => {
-  const docs = fixture({ "a.md": `${fm()}# Гарчиг\n\n<!-- Тестийн Нэр ХХК-ийн 601050 гэрээ -->\n\n> 🏢 Owner · Вэб\n\n1. Алхам.\n\n## 🔗 Холбоотой\n- [x](/x)\n`, "b.md": good });
+  const docs = fixture({ "a.md": `${fm()}# Гарчиг\n\n<!-- Тестийн Нэр ХХК-ийн 601050 гэрээ -->\n\n> 🏢 Байгууллага · Вэб\n\n1. Алхам.\n\n## 🔗 Холбоотой\n- [x](/x)\n`, "b.md": good });
   const pii = join(docs, "..", "pii.txt");
   writeFileSync(pii, "# тайлбар\nТестийн Нэр\n");
   const { code, out } = run(docs, "--pii", pii);
@@ -129,4 +129,11 @@ test("E-spell: ө/ү-гүй үг (тайлбар, inline кодод тооцох
   assert.match(msg, /оорчлох, толбор/);
   assert.doesNotMatch(msg, /турээс/);
   assert.deepEqual(rules(run(fixture({ "a.md": good })).out, "a.md"), []);
+});
+
+test("W-tech: өгүүлбэрийн owner; «Owner» эрхийн нэр, /owner/ зам зөвшөөрөгдөнө", () => {
+  const ok = good.replace("Бичвэр.", "Эрхийн нэр нь «Owner». [Холбоос](/owner/tohirgoo) <img src='/img/owner/a.webp' />");
+  assert.ok(!rules(run(fixture({ "a.md": ok })).out, "a.md").includes("W-tech"));
+  const out = run(fixture({ "o.md": good.replace("Бичвэр.", "Owner-ийн тохиргоог нээ.") })).out;
+  assert.match(out.results[0].issues.find((i) => i.rule === "W-tech").msg, /owner → байгууллага/);
 });

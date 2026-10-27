@@ -10,7 +10,7 @@ keywords:
 
 # Удирдлагын систем — веб
 
-> 🏢 Owner, менежер, нягтлан · Вэб (app.spacehub.mn)
+> 🏢 Байгууллага, менежер, нягтлан · Вэб (app.spacehub.mn)
 
 Барилгын удирдлага, нягтлан, ажилтанд зориулсан Spacehub удирдлагын системийн заавар. Шинээр эхэлж байгаа бол → [Эхлэх: эхний сар](/owner/start)
 
@@ -36,9 +36,9 @@ keywords:
 
 ## Гарын авлагын хэсгүүд
 - 🎓 [Эхлэх: эхний сар](/owner/start) — анх ашиглаж байгаа бол.
-- 👥 **Дүрээр** — [👔 Захирал, owner](/owner/role/zahiral) · [🧮 Нягтлан](/owner/role/nyagtlan) · [🏢 Менежер](/owner/role/menejer).
-- 📘 **Сургалт** — [Эхний сар — шинэ owner](/owner/tutorial/ehnii-sar) · [Сар бүрийн ажил](/owner/tutorial/sar-buriin-ajil).
-- ⚙️ [Owner-ийн тохиргоо](/owner/tohirgoo) — «Нэмэлт тохиргоо»-ны талбар бүр.
+- 👥 **Дүрээр** — [👔 Захирал, байгууллагын эзэн](/owner/role/zahiral) · [🧮 Нягтлан](/owner/role/nyagtlan) · [🏢 Менежер](/owner/role/menejer).
+- 📘 **Сургалт** — [Эхний сар — шинэ байгууллага](/owner/tutorial/ehnii-sar) · [Сар бүрийн ажил](/owner/tutorial/sar-buriin-ajil).
+- ⚙️ [Байгууллагын тохиргоо](/owner/tohirgoo) — «Нэмэлт тохиргоо»-ны талбар бүр.
 - 🧭 [Програм ашиглах](/owner/navigation) — цэс, жагсаалт, карт, шүүлт, «?» товч.
 - 📋 **Жагсаалтууд** — дэлгэц бүрийн товч бүрийн тайлбар. Апп-ын **«?»** товч тухайн жагсаалтын хуудсыг нээнэ. Жишээ: [Төлбөр](/owner/list/Bill_ListView) · [Төлөлт](/owner/list/Sale_ListView) · [Дансны хуулга](/owner/list/Statement_ListView) · [Нэхэмжлэх](/owner/list/InvoiceBill_ListView).
 - 💡 **Ойлголт** — [Төлбөр → Нэхэмжлэх → Төлөлт](/owner/concepts/tootsoo-nehemjleh-toloh) · [Авто тооцоо — 3 түвшин](/owner/concepts/avto-3-tuvshin) · [Алданги](/owner/concepts/aldangi) · [Е-баримт гарах нөхцөл](/owner/concepts/e-barimt-nohtsol) · [Дулааны төлбөр](/owner/concepts/dulaan).
