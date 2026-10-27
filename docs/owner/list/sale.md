@@ -6,7 +6,7 @@ slug: /owner/list/Sale_ListView
 sidebar_label: Төлөлт
 type: lavlah
 roles: [owner, nyagtlan]
-updated: 2026-10-26
+updated: 2026-10-27
 verified_commit: c68c602
 keywords:
   - "Төлөлт жагсаалт"
@@ -35,6 +35,8 @@ keywords:
   - «Задаргаа нэмэх»: SaleController.cs:41-51, 61-133; AddSaleItemPopup.cs:24-28 (зөвхөн «Барьцаа»)
   - «Бонус шалгах...»: Sale.cs:1023-1034
   - «Тайлбар бөглөх (данснаас)...»: Sale.cs:1039-1050 (StatementId null шалгалтгүй :1044 — Dev_Research батлав)
+    → #1183 (2dc9301, deploy хүлээж байна): FillDescriptionCriteria Sale.cs:1040 «[StatementId.BankAccountId] Is Not Null And [ContractId.PropertyId] Is Not Null» = TargetObjectsCriteria → товч идэвхгүй; null хамгаалалт :1048
+  - Буцаах #1177 (deploy хүлээж байна): Ebarimt3SaleController.cs:116-123 SaleEbarimtActionRules.ReturnBlockReason (үүсээгүй / аль хэдийн буцаасан / Success=false)
   - «Е-баримт олноор гаргах»: MainController.cs:165-167, 2704-2765; Sale.cs:1392 autoCreateEbarimt, 1450-1530 IsAutoCreateEbarimt
   - «Шинэ»: Sale.cs:300-303 (Түрээслэгч RuleRequired, DataSource PropertyId.Contracts), :351; SaleController.cs:198-202 (автоматаар бөглөхийг хассан)
   - Хэвлэх: Ebarimt3SaleController.cs:111 PrepareEbarimt_Select — subscriber олдсонгүй (git grep «PrepareEbarimt_Select +=» 0); BlazorActionController.cs:90 «case Sale» нь PrepareContract замд, Sale-д тийм товч алга — Dev_Research батлав
@@ -141,6 +143,7 @@ keywords:
 **«Буцаах»**
 - **Юу хийдэг:** татварын системд баримтыг **хүчингүй** болгоно. Төлөлтийн төлөв «Буцаасан» болно.
 - **Баталгаажуулалт:** баримтын дугаар, дүн, огноотой асуулт гарна. **«Тийм, хүчингүй болго»** эсвэл **«Болих»** дар.
+- **Буцаахгүй тохиолдол** — шар мэдэгдэл гарч юу ч хийхгүй: баримт үүсээгүй. 🆕 *#1177 шинэчлэл deploy хийгдсэний дараа* мөн: баримт **аль хэдийн буцаагдсан**, эсвэл амжилттай бүртгэгдээгүй.
 - **Хэзээ хэрэглэх:** регистр буруу гарсан, эсвэл төлөлтийг цуцлах шаардлагатай үед.
 - **Буцаах:** ❌ хүчингүй болгосон баримт сэргэхгүй. Шинээр «Баримт гаргах» хэрэгтэй.
 
@@ -196,6 +199,7 @@ keywords:
 - **Юу хийдэг:** хуулгын дансанд тохирох төлбөрийн загвараас төлөлтийн **Тайлбарыг** автоматаар бөглөнө.
 - **Сонголт:** 1 мөр.
 - **Анхаар:** зөвхөн **хуулгаас үүссэн, гэрээтэй** төлөлт дээр дар. Гараар бүртгэсэн төлөлт дээр **алдаа гарна**. Тохирох загвар олдохгүй бол юу ч өөрчлөхгүй.
+  - 🆕 *#1183 шинэчлэл deploy хийгдсэний дараа:* гараар бүртгэсэн эсвэл гэрээгүй төлөлт дээр товч **идэвхгүй** болж, алдаа гарахгүй.
 
 ### Бусад товч
 - **Сэргээх** (жагсаалтыг дахин ачаална), **Export** (Excel рүү гаргах), багана тохируулах — бүх жагсаалтад ижил.
