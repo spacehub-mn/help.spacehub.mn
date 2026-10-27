@@ -29,3 +29,126 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+/* ── Алхмын дугаар 1.1, 1.2 (plugins/step-numbers.js) ── */
+.markdown ol.substeps {
+  list-style: none;
+  counter-reset: sub;
+  padding-left: 2.6em;
+}
+.markdown ol.substeps > li {
+  counter-increment: sub;
+  position: relative;
+}
+.markdown ol.substeps > li::before {
+  content: attr(data-step) "." counter(sub);
+  position: absolute;
+  left: -2.6em;
+  width: 2.2em;
+  text-align: right;
+  font-weight: 700;
+  color: var(--ifm-color-primary);
+}
+
+/* ── Хэсэг бүр өөр өнгө (src/theme/Root.js → html[data-role]) ──
+   Эзэмшигч = ногоон (brand), Түрээслэгч = улбар шар (логоны өнгө). Аль хэсэгт байгаагаа шууд мэдрэх. */
+html[data-role="resident"] {
+  --ifm-color-primary: #d9590f;
+  --ifm-color-primary-dark: #c35009;
+  --ifm-color-primary-darker: #b84c09;
+  --ifm-color-primary-darkest: #983e07;
+  --ifm-color-primary-light: #ef6a1f;
+  --ifm-color-primary-lighter: #f07a35;
+  --ifm-color-primary-lightest: #f39a63;
+  --role-bg: #fff4ec;
+  --role-strip: #f26a21;
+}
+html[data-role="owner"] {
+  --role-bg: #e8f5f4;
+  --role-strip: #07847f;
+}
+html[data-theme="dark"][data-role="resident"] {
+  --ifm-color-primary: #ff8c4a;
+  --ifm-color-primary-dark: #ff7a30;
+  --ifm-color-primary-darker: #ff7124;
+  --ifm-color-primary-darkest: #f05a00;
+  --ifm-color-primary-light: #ff9e64;
+  --ifm-color-primary-lighter: #ffa770;
+  --ifm-color-primary-lightest: #ffc196;
+  --role-bg: #2a1a10;
+}
+html[data-theme="dark"][data-role="owner"] {
+  --role-bg: #0f2624;
+}
+html[data-role] .navbar {
+  background: var(--role-bg);
+  border-bottom: 4px solid var(--role-strip);
+}
+html[data-role] .theme-doc-sidebar-container {
+  background: var(--role-bg);
+}
+
+/* ── «Та хэн бэ?» цонх ── */
+.role-pick {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(15, 23, 42, 0.55);
+}
+.role-pick__box {
+  width: 100%;
+  max-width: 640px;
+  border-radius: 16px;
+  padding: 28px 24px;
+  background: var(--ifm-background-surface-color);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+.role-pick__box h2 {
+  margin-bottom: 4px;
+}
+.role-pick__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+.role-pick__card {
+  cursor: pointer;
+  border: 3px solid transparent;
+  border-radius: 14px;
+  padding: 22px 16px;
+  text-align: center;
+  font: inherit;
+  color: #1c1e21;
+  transition: transform 0.1s, border-color 0.1s;
+}
+.role-pick__card:hover,
+.role-pick__card:focus-visible {
+  transform: translateY(-2px);
+  border-color: currentColor;
+}
+.role-pick__card b {
+  display: block;
+  font-size: 1.25rem;
+  margin: 8px 0 4px;
+}
+.role-pick__card span {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+.role-pick__card--resident {
+  background: #fff4ec;
+  color: #983e07;
+}
+.role-pick__card--owner {
+  background: #e8f5f4;
+  color: #055c59;
+}
+.role-pick__icon {
+  font-size: 2.6rem;
+}

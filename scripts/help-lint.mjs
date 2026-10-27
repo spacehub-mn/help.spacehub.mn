@@ -10,6 +10,7 @@
 // Дүрмүүд:
 //   E-fm      frontmatter: type (зөвшөөрөгдсөн), roles (хоосон биш), updated (YYYY-MM-DD), verified_commit (hex 7+)
 //   E-h1      H1 яг нэг (code block-ийн гадна)
+//   W-steps   сургалт/заавар/асуудал хуудсанд дугаартай алхам (1. 2.) байх — дэд дугаарыг plugin тавина
 //   E-h1first H1 нь frontmatter-ийн дараах эхний мөр (өмнө нь <!-- --> байвал гарчиг файлын нэрээр гарна)
 //   W-aud     H1-ийн дараах «> …» мөрөнд хэнд зориулсан нь (🏢/🏠/👔/🧮)
 //   W-rel     «## 🔗 Холбоотой» хэсэг (TYPES_NEED_REL төрөлд)
@@ -100,6 +101,8 @@ for (const file of walk(DOCS)) {
     const next = lines.slice(i + 1).find((l) => l.trim() !== "");
     if (!next?.startsWith(">") || !AUDIENCE.test(next)) add("W", "W-aud", "H1-ийн дараа «> 🏢 …» (хэнд, хаана) мөр алга");
     if (TYPES_NEED_REL.includes(fm.type) && !/^## 🔗 Холбоотой/m.test(prose)) add("W", "W-rel", "«## 🔗 Холбоотой» хэсэг алга");
+    // Алхмыг «1. 2.» жагсаалтаар бич — plugins/step-numbers.js 1.1, 1.2 болгоно (эзэн 10-27 дэд дугаар)
+    if (["surgalt", "zaavar", "asuudal"].includes(fm.type) && !/^\d+\. \S/m.test(prose)) add("W", "W-steps", "дугаартай алхам (1. 2. …) алга — алхмыг дугаартай жагсаалтаар бич");
   }
 
   for (const { bad, good, note, scope } of TERMS) {

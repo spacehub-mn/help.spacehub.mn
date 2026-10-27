@@ -44,6 +44,8 @@ const config = {
           routeBasePath: "/",
           // owner хэсэгт ү/ө ↔ у/о хайлтын түлхүүр үг (plugins/search-variants.js)
           remarkPlugins: [require("./plugins/search-variants")],
+          // Алхмын дугаар 1., 1.1 — TOC-д ч дугаартай харагдахын тулд default plugin-оос өмнө
+          beforeDefaultRemarkPlugins: [require("./plugins/step-numbers")],
         },
         // blog: {
         //   showReadingTime: true,
