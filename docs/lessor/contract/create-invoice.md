@@ -1,6 +1,6 @@
-<!-- Help_Spacehub 10-26: spacehub 03de3014 — Chart.dart:168 «Нэхэмжлэх» (paymentHistory.invoice :201); PreInvoiceDataPage.dart:36-37 (sendSms/sendEmail = true), :207-223 (opts.phone «Утасруу илгээх» :738, opts.email «Мэйлрүү илгээх» :737), :140 caution :732; асуулт байхгүй — createInvoice шууд :228-233 (Dev_Research) -->
-
 # Нэхэмжлэл үүсгэж илгээх
+
+<!-- Help_Spacehub 10-26: spacehub 03de3014 — Chart.dart:168 «Нэхэмжлэх» (paymentHistory.invoice :201); PreInvoiceDataPage.dart:36-37 (sendSms/sendEmail = true), :207-223 (opts.phone «Утасруу илгээх» :738, opts.email «Мэйлрүү илгээх» :737), :140 caution :732; асуулт байхгүй — createInvoice шууд :228-233 (Dev_Research) -->
 
 > 🏢 Owner, менежер · Гар утасны апп
 

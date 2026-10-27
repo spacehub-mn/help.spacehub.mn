@@ -82,13 +82,8 @@ const config = {
           src: "img/logo.svg",
         },
         items: [
-          {
-            type: "doc",
-            docId: "payment",
-            position: "left",
-            label: "🏠 Түрээслэгч",
-          },
-          { to: "/owner", label: "🏢 Owner, менежер", position: "left" },
+          { type: "docSidebar", sidebarId: "resident", position: "left", label: "🏠 Түрээслэгч, оршин суугч" },
+          { type: "docSidebar", sidebarId: "owner", position: "left", label: "🏢 Эзэмшигч, менежер" },
           // {
           //   type: 'doc',
           //   docId: 'lessor/contract/view-contract-details',
