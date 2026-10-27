@@ -172,7 +172,7 @@ async function toWebp(page, png) {
     if (s.rowOpen != null) { await page.locator("tbody tr:visible").first().locator("td").nth(s.rowOpen).click(); await idle(page); await page.waitForTimeout(2500); }
     if (s.tab) { await page.getByText(s.tab, { exact: true }).first().click(); await idle(page); await page.waitForTimeout(2000); }
     if (s.open) {
-      if (s.selectRow) await page.locator("tbody tr td:first-child input[type=checkbox], tbody tr td:first-child .dxbl-checkbox").first().click();
+      if (s.selectRow) await page.locator("tbody tr td:first-child input[type=checkbox]:visible, tbody tr td:first-child .dxbl-checkbox:visible").first().click();
       await page.waitForTimeout(800);
       const ob = await box(page, s.open);
       if (!ob) throw new Error(`${s.id}: нээх товч олдсонгүй — зогсов`);

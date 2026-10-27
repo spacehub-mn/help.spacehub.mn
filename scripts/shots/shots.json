@@ -1370,5 +1370,90 @@
         "exact": true
       }
     ]
+  },
+  {
+    "id": "owner/une-uilchilgee",
+    "page": "docs/owner/une-oorchloh.md",
+    "nav": [
+      "Менежмент",
+      "Гэрээ"
+    ],
+    "width": 1920,
+    "rowOpen": 4,
+    "tab": "Үйлчилгээ",
+    "clip": "auto",
+    "padRight": 40,
+    "padBottom": 60,
+    "alt": "Гэрээний Үйлчилгээ таб: мөр сонгоод Үнэ өөрчлөх",
+    "marks": [
+      {
+        "n": "3.1",
+        "tree": "Гэрээ",
+        "label": "Гэрээ цэс"
+      },
+      {
+        "n": "3.2",
+        "text": "Үйлчилгээ",
+        "exact": true,
+        "label": "Үйлчилгээ таб"
+      },
+      {
+        "n": "3.3",
+        "rowCheck": true,
+        "label": "Үйлчилгээний мөр"
+      },
+      {
+        "n": "3.4",
+        "btn": "Үнэ өөрчлөх",
+        "exact": true,
+        "label": "Үнэ өөрчлөх",
+        "below": true
+      }
+    ]
+  },
+  {
+    "id": "owner/une-dialog",
+    "page": "docs/owner/une-oorchloh.md",
+    "nav": [
+      "Менежмент",
+      "Гэрээ"
+    ],
+    "width": 1920,
+    "rowOpen": 4,
+    "tab": "Үйлчилгээ",
+    "selectRow": true,
+    "open": {
+      "btn": "Үнэ өөрчлөх",
+      "exact": true
+    },
+    "mustSee": "Хуучин үнэ",
+    "clip": "dialog",
+    "alt": "Үйлчилгээний үнэ өөрчлөх цонх",
+    "marks": [
+      {
+        "n": "3.5",
+        "text": "Огноо",
+        "exact": true,
+        "label": "Огноо"
+      },
+      {
+        "n": "3.6",
+        "text": "Нэгж үнэ",
+        "exact": true,
+        "label": "Нэгж үнэ"
+      },
+      {
+        "n": "3.6",
+        "text": "Тоо",
+        "exact": true,
+        "label": "Тоо"
+      },
+      {
+        "n": "3.7",
+        "btn": "За",
+        "exact": true,
+        "label": "За"
+      }
+    ]
   }
 ]
