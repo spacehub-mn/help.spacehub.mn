@@ -1993,5 +1993,38 @@
         "label": "SMS илгээх"
       }
     ]
+  },
+  {
+    "id": "owner/shine-geree-aldaa",
+    "page": "docs/owner/shine-geree-aldaa.md",
+    "nav": [
+      "Менежмент",
+      "Харилцагч"
+    ],
+    "url": "Customer_ListView",
+    "waitTh": "Регистр",
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 300,
+    "padBottom": 120,
+    "alt": "Харилцагч жагсаалт: цэс, хайлтын нүд, олдсон мөр",
+    "marks": [
+      {
+        "n": "1.1",
+        "tree": "Харилцагч",
+        "label": "Менежмент → Харилцагч"
+      },
+      {
+        "n": "1.2",
+        "input": "Энд бичиж хай",
+        "label": "Хайлтын нүд"
+      },
+      {
+        "n": "1.3",
+        "rowCheck": true,
+        "label": "Олдсон мөр"
+      }
+    ]
   }
 ]
