@@ -107,7 +107,7 @@ async function mark(page, boxes) {
       document.body.append(r, n);
       const w = n.getBoundingClientRect().width;
       const left = Math.max(0, b.x + b.width / 2 - w / 2);
-      let top = Math.max(0, b.y - BADGE - 6);
+      let top = b.below ? b.y + b.height + 6 : Math.max(0, b.y - BADGE - 6); // below: дээр нь чухал бичиг байвал (гарчиг г.м.)
       const hit = (t) => placed.some((p) => left < p.left + p.w + 2 && p.left < left + w + 2 && Math.abs(p.top - t) < BADGE);
       if (hit(top)) top = b.y + b.height + 6;
       Object.assign(n.style, { left: left + "px", top: top + "px" });
@@ -189,7 +189,7 @@ async function toWebp(page, png) {
     for (const m of s.marks) {
       const b = await box(page, m);
       // Дэлгэцээс гадуур (баруун тийш гүйлгэх шаардлагатай) багана = олдоогүй гэж тооцно
-      if (b && b.x + b.width <= vw.width && b.y + b.height <= vw.height) boxes.push({ ...b, label: m.label, n: m.n });
+      if (b && b.x + b.width <= vw.width && b.y + b.height <= vw.height) boxes.push({ ...b, label: m.label, n: m.n, below: !!m.below });
       else missing.push(m.label || m.btn || m.th);
     }
     // Дугаарыг уншигдах дарааллаар (мөр, дараа нь зүүнээс баруун) — хуудасны тайлбар энэ дарааллаар
