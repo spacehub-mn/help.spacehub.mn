@@ -119,6 +119,8 @@ function imageSections(body, type) {
     const prev = items[k - 1];
     const group = prev && prev.kind === "h" && !prev.label.includes(".") && span.some((x) => x.label.startsWith(prev.label + ".")) ? prev.label + "." : "";
     const caption = lines.slice(img.line + 1).find((l) => l.trim()) ?? "";
+    // Тойм зураг: эхний ## бүлгээс өмнө, доор нь алхамгүй → тэмдэг = бүлгийн дугаар (1, 2 …)
+    if (!span.length && !items.slice(0, k).some((x) => x.kind === "h2")) return { id: img.id, caption, labels: next.filter((x) => x.kind === "h2").map((x) => x.label) };
     return { id: img.id, caption, labels: span.filter((x) => x.kind === want && x.label.startsWith(group)).map((x) => x.label) };
   });
 }
