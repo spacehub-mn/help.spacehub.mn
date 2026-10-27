@@ -40,6 +40,13 @@ async function blur(page, extraTh, account) {
     });
     // Хайлтын талбарт өмнөх хайлт (регистр, нэр) үлдсэн байж болно — үргэлж бүдгэрүүлнэ
     document.querySelectorAll("input").forEach((el) => { if (el.offsetParent && el.value && /хай/i.test(el.placeholder || "")) { el.classList.add("hs-pii"); n++; } });
+    // Имэйл (Бүртгэсэн хэрэглэгч г.м.) — хаана ч байсан бүдгэрүүлнэ
+    const mail = /[\w.+-]+@[\w-]+(\.[\w-]+)*|@\S*\.\.\./;
+    document.querySelectorAll("td, a, span, input").forEach((el) => {
+      if (!el.offsetParent || el.closest(".hs-pii")) return;
+      const own = el.tagName === "INPUT" ? el.value : [...el.childNodes].filter((c) => c.nodeType === 3).map((c) => c.textContent).join("");
+      if (mail.test(own || "")) { el.classList.add("hs-pii"); n++; }
+    });
     if (account) document.querySelectorAll("input").forEach((el) => { if (el.offsetParent && /^\d{6,}\s/.test(el.value)) { el.classList.add("hs-pii"); n++; } });
     return n;
   }, { heads: [...PII_TH, ...extraTh], account });
@@ -115,9 +122,10 @@ async function mark(page, boxes) {
         border: "3px solid #fff", boxShadow: "0 2px 6px rgba(0,0,0,.45)", zIndex: 2147483647, pointerEvents: "none" });
       document.body.append(r, n);
       const w = n.getBoundingClientRect().width;
-      const left = b.right ? b.x + b.width + 6 : Math.max(0, b.x + b.width / 2 - w / 2); // right: цэсний мөр — дээр/доорх мөрийг дарахгүй
+      // right: цэсний мөр — дээр/доорх мөрийг дарахгүй; left: талбарын шошго — баруун талын утга/чагтыг дарахгүй
+      const left = b.right ? b.x + b.width + 6 : b.left ? Math.max(0, b.x - w - 8) : Math.max(0, b.x + b.width / 2 - w / 2);
       let top = b.below ? b.y + b.height + 6 : Math.max(0, b.y - BADGE - 6);
-      if (b.right) { top = b.y + (b.height - BADGE) / 2; } // below: дээр нь чухал бичиг байвал (гарчиг г.м.)
+      if (b.right || b.left) { top = b.y + (b.height - BADGE) / 2; } // below: дээр нь чухал бичиг байвал (гарчиг г.м.)
       const hit = (t) => placed.some((p) => left < p.left + p.w + 2 && p.left < left + w + 2 && Math.abs(p.top - t) < BADGE);
       if (hit(top)) top = b.y + b.height + 6;
       Object.assign(n.style, { left: left + "px", top: top + "px" });
@@ -207,7 +215,7 @@ async function toWebp(page, png) {
     for (const m of s.marks) {
       const b = await box(page, m);
       // Дэлгэцээс гадуур (баруун тийш гүйлгэх шаардлагатай) багана = олдоогүй гэж тооцно
-      if (b && b.x + b.width <= vw.width && b.y + b.height <= vw.height) boxes.push({ ...b, label: m.label, n: m.n, below: !!m.below, right: m.right ?? !!m.tree });
+      if (b && b.x + b.width <= vw.width && b.y + b.height <= vw.height) boxes.push({ ...b, label: m.label, n: m.n, below: !!m.below, right: m.right ?? !!m.tree, left: !!m.left });
       else missing.push(m.label || m.btn || m.th);
     }
     // Дугаарыг уншигдах дарааллаар (мөр, дараа нь зүүнээс баруун) — хуудасны тайлбар энэ дарааллаар

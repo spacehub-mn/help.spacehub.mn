@@ -1814,5 +1814,69 @@
         "below": true
       }
     ]
+  },
+  {
+    "id": "owner/list/utilitysheet-1",
+    "page": "docs/owner/list/utilitysheet.md",
+    "nav": [
+      "Автоматжуулалт",
+      "Тоолуур татах"
+    ],
+    "url": "UtilitySheet_ListView",
+    "width": 1920,
+    "clip": "auto",
+    "padLeft": 40,
+    "padRight": 900,
+    "waitTh": "Нэр",
+    "alt": "Тоолуур татах жагсаалт: Шинэ товч",
+    "marks": [
+      {
+        "n": "2.1",
+        "btn": "Шинэ",
+        "exact": true,
+        "label": "Шинэ",
+        "below": true
+      }
+    ],
+    "padBottom": 220
+  },
+  {
+    "id": "owner/list/utilitysheet-2",
+    "page": "docs/owner/list/utilitysheet.md",
+    "nav": [
+      "Автоматжуулалт",
+      "Тоолуур татах"
+    ],
+    "url": "UtilitySheet_ListView",
+    "width": 1920,
+    "rowOpen": 1,
+    "clip": "auto",
+    "padLeft": 60,
+    "padRight": 700,
+    "alt": "Тоолуур татах карт: Эзэмшигч, Нэхэмжлэх үүсгэх, Тоолуур татах товч",
+    "marks": [
+      {
+        "n": "2.2",
+        "text": "Эзэмшигч",
+        "first": true,
+        "label": "Эзэмшигч",
+        "left": true
+      },
+      {
+        "n": "2.3",
+        "text": "Нэхэмжлэх үүсгэх",
+        "label": "Нэхэмжлэх үүсгэх",
+        "left": true
+      },
+      {
+        "n": "2.4",
+        "btn": "Тоолуур татах",
+        "exact": true,
+        "last": true,
+        "label": "Тоолуур татах",
+        "right": true
+      }
+    ],
+    "padBottom": 260
   }
 ]
