@@ -21,7 +21,7 @@ const fixture = (files) => {
   return d;
 };
 const fm = (extra = "") => `---\ntype: zaavar\nroles: [owner]\nupdated: 2026-10-26\nverified_commit: c68c602\n${extra}---\n`;
-const good = `${fm()}# Гарчиг\n\n> 🏢 Owner · Вэб\n\nБичвэр.\n\n## 🔗 Холбоотой\n- [x](/x)\n`;
+const good = `${fm()}# Гарчиг\n\n> 🏢 Owner · Вэб\n\nБичвэр.\n\n1. Алхам.\n\n## 🔗 Холбоотой\n- [x](/x)\n`;
 const rules = (out, file) => out.results.find((r) => r.file.endsWith(file)).issues.map((i) => i.rule);
 
 test("загварт нийцсэн хуудас — алдаагүй, exit 0", () => {
@@ -43,7 +43,7 @@ test("code block доторх «# » H1 гэж тоологдохгүй; «хэ�
   const body = `${fm()}# Гарчиг\n\nШууд бичвэр.\n\n\`\`\`\n# энэ тайлбар\n\`\`\`\n`;
   const { code, out } = run(fixture({ "c.md": body }));
   assert.equal(code, 0);
-  assert.deepEqual(rules(out, "c.md").sort(), ["W-aud", "W-rel"]);
+  assert.deepEqual(rules(out, "c.md").sort(), ["W-aud", "W-rel", "W-steps"]); // zaavar-д дугаартай алхам алга
   assert.equal(run(fixture({ "c.md": body }), "--strict").code, 1);
 });
 
