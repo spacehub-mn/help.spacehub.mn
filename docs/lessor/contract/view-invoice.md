@@ -11,7 +11,7 @@ verified_repo: spacehub
 <!-- Кодын тулгалт spacehub 03de3014 (Help_Spacehub 10-27):
 - доод цэс «Гэрээ» mn_MN.json:480; LessorPage.dart:102-107; гэрээн дээр дарахад ContractPage CustomerListTile.dart:69-76
 - таб «Нэхэмжлэл» pages.contract.invoice :256; ContractPage.dart:158, :189, :204-209
-- шүүлт «Төлөгдсөн эсэх» :815, анхдагч = false «Төлөгдөөгүй / Үлдэгдэлтэй» :816; «Бүгд» enum.all :19; «Бүрэн төлөгдсөн» :818; InvoicesTab.dart:88-116
+- шүүлт «Төлөгдсөн эсэх» :815, анхдагч = false «Төлөгдөөгүй / Үлдэгдэлтэй» :816; «Бүрэн төлөгдсөн» :818; InvoicesTab.dart:88-116; шүүлтийн жагсаалтад «Бүгд» сонголт байхгүй: null мөр «Төлөгдсөн эсэх» (pages.rentor.invoices.isPayed#null mn_MN.json:817) гэж гарна InvoicesTab.dart:99-105; «Бүгд» (enum.all :19) зөвхөн сонгосны дараа шүүлтүүрийн товчин дээр (itemName InvoicesTab.dart:92-97) — Dev_Research 10-27
 - эрэмбэ анхдагч billDate буурахаар InvoicesTab.dart:118-120
 - мөрөн дээр дарахад InvoiceBillPage PaymentChartInfo.Invoice.dart:98-103; гарчиг «Нэхэмжлэл» :798 InvoiceBillPage.dart:62-65
 - баруун дээд: татах тэмдэг «Нэхэмжлэл татах» :811 InvoiceBillPage.dart:69-88; PDF тэмдэг «Хэвлэх хувилбар харах» :813 InvoiceBillPage.dart:90-108
@@ -42,7 +42,8 @@ verified_repo: spacehub
 
 ## ⚠️ Анхаар
 - Жагсаалт анхдагчаар зөвхөн **Төлөгдөөгүй / Үлдэгдэлтэй** нэхэмжлэлийг харуулна.
-- Төлөгдсөнийг харах бол шүүлтүүрийг **Бүгд** эсвэл **Бүрэн төлөгдсөн** болго.
+- Төлөгдсөнийг харах бол шүүлтүүрээс **Бүрэн төлөгдсөн**-ийг сонго.
+- Бүгдийг харах бол жагсаалтын **Төлөгдсөн эсэх** мөрийг сонго. Шүүлтүүр дээр «Бүгд» гэж гарна.
 
 ## 🔗 Холбоотой
 - [Нэхэмжлэл үүсгэж илгээх](/lessor/contract/create-invoice)

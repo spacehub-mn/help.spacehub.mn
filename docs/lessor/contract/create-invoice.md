@@ -16,6 +16,7 @@ verified_repo: spacehub
 - «Та нэхэмжлэлийн урьдчилсан задаргааг харж байна» pages.preinvoice.caution :732; PreInvoiceDataPage.dart:140
 - «Утасруу илгээх» :738, «Мэйлрүү илгээх» :737 анхдагчаар тэмдэглэгдсэн PreInvoiceDataPage.dart:36-37, :207-225
 - «Нэхэмжлэх» товч PreInvoiceDataPage.dart:227-232; баталгаажуулах асуултгүй, шууд илгээнэ :42-56 (confirmMessage :202 ашиглагдаагүй)
+- хоёр чагт хоёулаа авсан үед: апп sendSms=false, sendEmail=false-ээр v1InvoiceBillCreateBillandInvoicePost дуудна PreInvoiceDataPage.dart:42-56 — нэхэмжлэл үүсээд илгээгдэхгүй эсэх нь сервер тал ❔ (аппын кодоор батлагдаагүй тул харагдах бичвэрт оруулаагүй, Dev_Research 10-27 санал)
 - амжилт «%-д нэхэмжлэлийг амжилттай илгээлээ» :203; PreInvoiceDataPage.dart:60-67
 - задаргаа үүсэхгүй үед: Invoice.ChartMissing :127, Invoice.UtilityMissing :128 — задаргааг FetchPageBuilder-ээр татдаг (PreInvoiceDataPage.dart:95), алдааг getSpacehubError харуулна (FetchBuilder.dart:120); сервер яг энэ кодыг буцаадаг эсэх ❔
 -->
