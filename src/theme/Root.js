@@ -74,7 +74,8 @@ export default function Root({ children }) {
       img.style.maxWidth = "none";
       img.parentElement?.classList.add("img-scroll");
     };
-    const imgs = [...document.querySelectorAll('.markdown img[src*="/img/owner/"]')];
+    // build-д зураг /assets/images/*.webp эсвэл жижиг нь data:image/webp болж орно — shoot.cjs-ийн зураг бүгд webp, 2×
+    const imgs = [...document.querySelectorAll(".markdown img")].filter((i) => /\.webp($|\?)|^data:image\/webp/.test(i.getAttribute("src") || ""));
     imgs.forEach((img) => (img.complete ? fit(img) : img.addEventListener("load", () => fit(img), { once: true })));
   }, [pathname]);
 
