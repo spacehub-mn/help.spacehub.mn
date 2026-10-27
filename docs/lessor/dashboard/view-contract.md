@@ -8,7 +8,7 @@ verified_commit: 5fa824f
 # Түрээслэгчийн гэрээг QR-аар харах
 
 <!-- Кодын тулгалт spacehub 03de3014 (Help_Spacehub 10-27):
-- QR тэмдэг (Symbols.qr_code_rounded) апп-ын дээд мөрөнд, бүх доод цэсний хэсэгт: LessorPage.dart:93-95 (SpacehubAppBar actions), QRScanIconButton.dart:11-14 → routes.qrscan
+- QR тэмдэг (Symbols.qr_code_rounded) аппын дээд мөрөнд, бүх доод цэсний хэсэгт: LessorPage.dart:93-95 (SpacehubAppBar actions), QRScanIconButton.dart:11-14 → routes.qrscan
 - дэлгэцийн гарчиг «QR код» general.scanQR mn_MN.json:210; QRScanScreen.dart:41; гар чийдэн товч баруун доод QRScanScreen.dart:50-62
 - уншсан холбоос contract/ID бол ContractPage нээгдэнэ, утас чичирнэ QRScanScreen.dart:70-84; User.dart:1478-1482
 - түрээслэгчийн талд «Миний QR» pages.newTenantDashboard.myQR :601; ActiveContractCard.dart:44-50 → ContractQRDialog (зургийг серверээс /v1/Contract/ID/QRCode татна ContractQRDialog.dart:25-36; доторх холбоос contract/ID гэдэг нь ❔)

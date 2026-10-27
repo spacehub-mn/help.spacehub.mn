@@ -24,7 +24,7 @@ keywords:
 - IsAllowEdit=false → гэрээний 12 талбар түгжигдэнэ (Contract.cs:34-38 IsLockOnContract); ContractRoom үнэ/талбай (ContractRoom.cs:22)
 - IsNotVatForInvoice → InvoiceBill.cs:1774; SenderEmail/SecondEmail → EmailDTO.cs:15-21
 - IsLock (Данс хуулга түгжих): ашигладаг код алга (Dev_Research ✅)
-- TotalSumCalcMethod: TotalSumCalcMethodType.cs «Тухайн он сард орсноор» / «Төлбөрийн гүйцэтгэлээр»; хэрэглэгч SpacehubApiV2 BillController.cs:148,233 (апп-ын нэгтгэл)
+- TotalSumCalcMethod: TotalSumCalcMethodType.cs «Тухайн он сард орсноор» / «Төлбөрийн гүйцэтгэлээр»; хэрэглэгч SpacehubApiV2 BillController.cs:148,233 (аппын нэгтгэл)
 - AmountRounding: AmountRoundingMode.cs «Хэвээр»/«Төгрөгөөр бүхэлчлэх»; commit 5b0e0fe (#1113) master-т бий, CEO: «deploy-ийн дараа» гэж тэмдэглэ
 - Алданги: PenaltyCalculationMode / LateFeeCalculateType / LateFeeDeliveryMode / LateFeeAccrualMethod / LateFeeDebtScope enum-ууд; дэлгэрэнгүй concepts/aldangi
 - Төлөлт хөнгөлөлт: InvoiceBill.cs:2131-2148 (PayDiscountItemId, IsPayDiscount, PayDiscount>0, DiscountDay 1–31; тухайн сарын DiscountDay-ээс өмнө → түрээсийн мөрүүдийн дүн × PayDiscount хасна). PayDiscount бутархайгаар хадгалагдана (0.1), EditMask p2 → 10 гэж бичих ❔, DisplayFormat «{0:n2} %» → «0.10 %» ❔ (UI дараалал); зам = SpacehubApiV2 QPay/SocialPay :267, :1125-1126 (Dev_Research)

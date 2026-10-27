@@ -45,7 +45,7 @@ keywords:
 - 📘 **Сургалт** — [Эхний сар — шинэ байгууллага](/owner/tutorial/ehnii-sar) · [Сар бүрийн ажил](/owner/tutorial/sar-buriin-ajil).
 - ⚙️ [Байгууллагын тохиргоо](/owner/tohirgoo) — «Нэмэлт тохиргоо»-ны талбар бүр.
 - 🧭 [Програм ашиглах](/owner/navigation) — цэс, жагсаалт, карт, шүүлт, «?» товч.
-- 📋 **Жагсаалтууд** — дэлгэц бүрийн товч бүрийн тайлбар. Апп-ын **«?»** товч тухайн жагсаалтын хуудсыг нээнэ. Жишээ: [Төлбөр](/owner/list/Bill_ListView) · [Төлөлт](/owner/list/Sale_ListView) · [Дансны хуулга](/owner/list/Statement_ListView) · [Нэхэмжлэх](/owner/list/InvoiceBill_ListView).
+- 📋 **Жагсаалтууд** — дэлгэц бүрийн товч бүрийн тайлбар. Аппын **«?»** товч тухайн жагсаалтын хуудсыг нээнэ. Жишээ: [Төлбөр](/owner/list/Bill_ListView) · [Төлөлт](/owner/list/Sale_ListView) · [Дансны хуулга](/owner/list/Statement_ListView) · [Нэхэмжлэх](/owner/list/InvoiceBill_ListView).
 - 💡 **Ойлголт** — [Төлбөр → Нэхэмжлэх → Төлөлт](/owner/concepts/tootsoo-nehemjleh-toloh) · [Авто тооцоо — 3 түвшин](/owner/concepts/avto-3-tuvshin) · [Алданги](/owner/concepts/aldangi) · [Е-баримт гарах нөхцөл](/owner/concepts/e-barimt-nohtsol) · [Дулааны төлбөр](/owner/concepts/dulaan).
 - 📖 [Нэр томьёо](/owner/glossary).
 - 🩺 **Асуудал гарвал** — [Жагсаалт хоосон](/owner/jagsaalt-hooson-shuult) · [Нэвтэрч чадахгүй](/owner/erhgui-nevtreh) · [Удаан, гацсан үед](/owner/gatsah-udaan).

@@ -24,7 +24,7 @@ keywords:
 - Биометр :530-536
 - OTP 6 орон OTPConfirmationPage.dart:180; «@» бол имэйлээр (LoginScreen.dart:482, :495) — Dev_Research ✅ help_review_roles_resident.md
 - Бүртгэлийг байгууллага үүсгэдэг (owner «Харилцагч»/«Хэрэглэгч», «Эрх илгээх» — list-User ✅)
-- Утсан дээрх апп-ын нэр «Spacehub»: android/app/src/main/AndroidManifest.xml:47 (android:label), ios/Runner/Info.plist:9-10 (CFBundleDisplayName)
+- Утсан дээрх аппын нэр «Spacehub»: android/app/src/main/AndroidManifest.xml:47 (android:label), ios/Runner/Info.plist:9-10 (CFBundleDisplayName)
 - App Store / Google Play дэлгүүрийн жагсаалтын нэр «Spacehub» эсэх ❔ (дэлгүүрийг шалгаагүй) → харагдах бичвэрт «Spacehub гэж хайна» гэж төвийг сахисан
 - Шилжүүлэлт 10-27: frontmatter type/roles, ❔-г тайлбар руу, «🔗 Холбоотой» нэмэв
 -->
@@ -36,7 +36,7 @@ keywords:
 
 ## 1. Апп суулгах
 1. **App Store** (iPhone) эсвэл **Google Play** (Android)-г нээнэ.
-2. «Spacehub» гэж хайж апп-ыг суулгана.
+2. «Spacehub» гэж хайж аппыг суулгана.
 3. Суулгасны дараа утсан дээр **Spacehub** нэртэй апп гарна.
 
 ## 2. Анх удаа нэвтрэх

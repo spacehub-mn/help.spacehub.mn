@@ -12,7 +12,7 @@ verified_commit: 5fa824f
 - нэмэх товч (Symbols.add_rounded) БАРУУН ДООД буланд UserPostsPage.dart:279-296 → CreateUserPostPage :331-343 — хуучин «баруун дээд» гэснийг засав
 - гарчиг «Шинэ зар» pages.createPost.title :372; CreateUserPostPage.dart:121
 - текст талбар «Та юу бодож байна?» :362, 300 тэмдэгт хүртэл CreateUserPostPage.dart:150-159
-- «Ангилал нэмэх» :368 CreateUserPostPage.dart:188-190; зураг 4 хүртэл maxImages = 4 :61, :213-223; «Хавсралтууд» :346 :232-241
+- «Ангилал нэмэх» :368 CreateUserPostPage.dart:188-190; шинэ зар: зураг 5 хүртэл ImageSelectorGallery.dart:21 (roomForPhotos = 5 - n), CreateUserPostPage.dart:213; засахад MultiImageEditGallery maxImages = 4 :61 (QA 10-27); «Хавсралтууд» :346 :232-241
 - «Нийтлэх» pages.postUpdates.publish :718; өөрчлөлтгүй бол идэвхгүй CreateUserPostPage.dart:254-257
 - объект сонгох: хуучин 2-р алхам «объектыг сонгох»-ыг дараалал зассан — «Нийтлэх» дарсны дараа, олон объекттой бол «Объект сонгох» :365 цонх, тайлбар :366, «Хадгалах» :209 (PickPropertySheet.dart:23, :43, :69); ганц объекттой бол автоматаар CreateUserPostPage.dart:424-434
 - объект сонгоогүй бол «Объект сонгоогүй байна» :364 :436-440
@@ -47,7 +47,7 @@ verified_commit: 5fa824f
 
 ## ⚠️ Анхаар
 - Текст 300 тэмдэгт хүртэл байна.
-- Нэг зард ихдээ 4 зураг оруулна.
+- Шинэ зард ихдээ 5 зураг оруулна.
 - Зар тухайн объектын оршин суугчид болон эзэмшигчид харагдана.
 
 ## 🔗 Холбоотой

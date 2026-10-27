@@ -17,7 +17,7 @@ keywords:
 
 <!--
 Нэмэлт 10-26 16:3x: Автомат ажил (PropertyOwner.cs:108, Property.cs:360, Contract.cs:606), Хоног тооцох (PropertyItem.cs:234, ContractItem.cs:243), Өөрчлөх хувь (#1172), Тоолуурын бүртгэл (UtilityMeter.cs:13) / Гэрээний тоолуур (ContractUtilityMeter.cs:19). Хяналт: Dev_Research research/help_review_glossary.md (❌ 3 + 1 санал) → бүгдийг засав.
-Нотолгоо (Spacehub23 origin/master c68c602) — апп-д харагдах нэр (XafDisplayName):
+Нотолгоо (Spacehub23 origin/master c68c602) — аппад харагдах нэр (XafDisplayName):
 - Contract.cs «Гэрээ»; Property.cs:30 «Объект»; Room.cs:25 «Өрөө/Талбай»; ContractRoom.cs:28 «Гэрээ өрөө/талбай»; Customer.cs:29 «Харилцагч»;
   PropertyOwner.cs «Байгууллага»; ContractPaymentChart.cs:35 «Төлбөрийн хуваарь»; Bill.cs «Төлбөр»; InvoiceBill.cs:26 «Нэхэмжлэх»;
   Sale.cs:25 «Төлөлт»; Statement.cs:25 «Дансны хуулга»; BillPayment.cs:15 «Хуваарилалт»; LateFeeItem.cs:24 «Алданги задаргаа»;
