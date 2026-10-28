@@ -42,10 +42,10 @@ const BADGE = 64;
         g.beginPath(); g.roundRect(x - 4, y - 4, m.w + 8, m.h + 8, 14); g.stroke();
         g.font = `800 ${BADGE * 0.62}px Segoe UI, Arial`;
         const w = Math.max(BADGE, g.measureText(m.n).width + 28);
-        let left = Math.min(Math.max(0, x + m.w / 2 - w / 2), c.w - w);
-        let top = m.below ? y + m.h + 10 : y - BADGE - 10;
-        if (top < 0) top = y + m.h + 10;
-        if (placed.some((p) => left < p.left + p.w && p.left < left + w && Math.abs(p.top - top) < BADGE)) top = y + m.h + 10;
+        // Дугаар хүрээний зүүн дээд буланд, шугам дээр нь (below: зүүн доод буланд) — дараалсан мөрүүдийн дугаар давхцахгүй
+        let left = Math.min(Math.max(0, x - 12), c.w - w);
+        let top = Math.min(Math.max(0, (m.below ? y + m.h : y) - BADGE / 2), c.h - BADGE);
+        for (let k = 0; k < 8 && placed.some((p) => left < p.left + p.w + 6 && p.left < left + w + 6 && Math.abs(p.top - top) < BADGE); k++) left = Math.min(left + w + 12, c.w - w);
         placed.push({ left, top, w });
         g.shadowColor = "rgba(0,0,0,.45)"; g.shadowBlur = 10;
         g.fillStyle = "#e11d48"; g.beginPath(); g.roundRect(left, top, w, BADGE, BADGE / 2); g.fill();

@@ -1,7 +1,7 @@
 ---
 type: zaavar
 roles: [owner, menejer]
-updated: 2026-10-27
+updated: 2026-10-28
 verified_commit: 03de3014
 verified_repo: spacehub
 ---
@@ -9,6 +9,7 @@ verified_repo: spacehub
 # Гэрээ хэсгээс тоолуурын заалт оруулах
 
 <!-- Кодын тулгалт spacehub 03de3014 (Help_Spacehub 10-26/10-27):
+- Зураг: прод api.spacehub.mn, Рентхаб owner, апп 03de3014 эмулятор (Help_Spacehub 10-28); хадгалах/илгээх/OK товч дараагүй, нэр/утас бүдгэрүүлсэн
 - доод цэс «Гэрээ» mn_MN.json:480; гэрээн дээр дарахад ContractPage CustomerListTile.dart:69-76; таб «Хуваарь» :198 ContractPage.dart:155
 - 3 цэгтэй цэс төлөгдөөгүй сард Chart.dart:137; showUtils = isUtility ба !hasContractUtilityMeters ба startDate өмнө ирэх сарын төгсгөл ContractPaymentChartDTO.dart:37-42; «Ашиглалт бүртгэх» pages.contract.utils.report :337 — зөвхөн data.showUtils үед Chart.dart:151-160 → UtilityReportPage Chart.dart:51-63
 - UtilityReportPage: тоолуур бүрийн карт (Халуун ус :326, Хүйтэн ус :343, Цахилгаан :324) UtilityReportPage.dart:81-107; MeterUtils.dart:40-49
@@ -21,10 +22,6 @@ verified_repo: spacehub
 
 > 🏢 Эзэмшигч, менежер · Гар утасны апп
 
-:::caution 2023 оны заавар
-Спейсхаб аппын (ҮХХ эзэмшигч) 2023 оны хувилбарын заавар. Дэлгэц өөрчлөгдсөн байж болно — зураг/видеог шинэчилж байна.
-:::
-
 ## Энэ юу вэ
 Нэг гэрээний тухайн сарын тоолуурын заалтыг гэрээн дотроос оруулах заавар.
 
@@ -33,8 +30,16 @@ verified_repo: spacehub
 - Олон айлын заалтыг нэг дор оруулах бол **Тоолуурын заалт** хэсгийг ашигла.
 
 ## Алхам
+![Гэрээ цэс, гэрээний мөр](/img/lessor/view-meter-1.webp)
+
+*Зураг 1. Гэрээ цэс, гэрээний мөр. Улаан дугаар = алхмын дугаар.*
+
 1. Доод цэсний **Гэрээ** хэсгийг сонго.
 2. Заалт оруулах гэрээн дээр дар.
+![Хуваарь таб, сарын 3 цэг](/img/lessor/view-meter-2.webp)
+
+*Зураг 2. Хуваарь таб, сарын 3 цэг. Улаан дугаар = алхмын дугаар.*
+
 3. **Хуваарь** табыг сонго.
 4. Оруулах сарын баруун талын 3 цэг дээр дар.
 5. **Ашиглалт бүртгэх** гэснийг сонго.

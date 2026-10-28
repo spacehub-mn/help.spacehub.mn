@@ -22,3 +22,6 @@ yarn-error.log*
 # Зургийн скриптийн тайлан (ажиллуулах бүрд өөрчлөгдөнө)
 /scripts/shots/shots-report.json
 __pycache__/
+
+# Аппын түүхий дэлгэцийн зураг (хувийн мэдээлэлтэй) — зөвхөн локал, annotate.cjs-ийн эх
+scripts/shots/app-src/
