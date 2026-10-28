@@ -84,7 +84,9 @@ const changedSince = (sha) => {
 
 // shots.json: зургийн id → тэмдгүүд (n = доорх текстийн дугаар)
 const shotsFile = opt("--shots", join(ROOT, "scripts", "shots", "shots.json"));
-const SHOTS = new Map(existsSync(shotsFile) ? JSON.parse(readFileSync(shotsFile, "utf8")).map((s) => [s.id, s]) : []);
+// app-shots.json: гар утасны аппын зураг (annotate.cjs) — ижил дүрмээр шалгана
+const appShotsFile = join(dirname(shotsFile), "app-shots.json");
+const SHOTS = new Map([shotsFile, appShotsFile].filter(existsSync).flatMap((f) => JSON.parse(readFileSync(f, "utf8"))).map((s) => [s.id, s]));
 const { META } = createRequire(import.meta.url)("../plugins/step-numbers.js");
 
 /**
