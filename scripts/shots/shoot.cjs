@@ -83,6 +83,14 @@ async function box(page, m) {
       return r ? { x: r.x, y: r.y, width: r.width, height: r.height } : null;
     }, m.value);
   }
+  if (m.select) {
+    // Дашбордын энгийн <select> — одоо сонгогдсон сонголтын бичгээр
+    return page.evaluate((v) => {
+      const el = [...document.querySelectorAll("select")].find((e) => e.offsetParent && e.selectedIndex >= 0 && e.options[e.selectedIndex].text.trim() === v);
+      const r = el && el.getBoundingClientRect();
+      return r ? { x: r.x, y: r.y, width: r.width, height: r.height } : null;
+    }, m.select);
+  }
   if (m.input) {
     // Хайлтын нүд г.м. — placeholder-оор (утга нь бүдгэрсэн хэвээр)
     const loc = page.locator(`input[placeholder*="${m.input}"]:visible`).first();
@@ -185,14 +193,28 @@ async function toWebp(page, png) {
     await page.setViewportSize(vw);
     const [group, item] = s.nav;
     const leaf = page.getByRole("treeitem", { name: item, exact: true }).first();
+    // Цэсгүй дэлгэцээс (MonthlyBilling г.м.) буцаж ирэх — нүүрийг ачаалж цэсийг гаргана
+    if (!(await page.getByRole("treeitem").first().isVisible().catch(() => false))) { await page.goto(APP); await page.getByRole("treeitem").first().waitFor({ timeout: 60000 }); await idle(page); }
     if (!(await leaf.isVisible())) { await page.getByText(group, { exact: true }).first().click({ force: true }); await page.waitForTimeout(700); }
     if (s.url) { await page.goto(APP + s.url); await idle(page); } // url: дэд цэс (Харилцагч → Хэрэглэгч г.м.) — зөвхөн харах
     else if (!s.navOnly) await leaf.click(); // navOnly: зөвхөн бүлгийг дэлгэнэ (дээр дэлгэсэн)
     await idle(page);
+    // expand: дэд бүлгийг (Менежмент → Дашборд г.м.) сумаар нь дэлгэнэ — нэрээр нь дарвал тэр дэлгэц нээгдэнэ
+    for (const g of s.expand || []) {
+      const tree = s.marks.find((m) => m.tree);
+      if (tree && (await page.getByRole("treeitem").getByText(tree.tree, { exact: true }).first().isVisible().catch(() => false))) break;
+      const bb = await page.getByRole("treeitem").getByText(g, { exact: true }).first().boundingBox();
+      if (bb) { await page.mouse.click(bb.x - 44, bb.y + bb.height / 2); await page.waitForTimeout(1200); }
+    }
+    // navBtn: зөвхөн харагдац солих товч (сар/жил/хуудас/хугацаа) — өөр товчийг ЭНД дарахгүй
+    for (const t of s.navBtn || []) {
+      if (!/^(←|→|◀|▶|‹ Өмнөх|Дараах ›|7 хоног|Сар)$/.test(t)) throw new Error(`${s.id}: navBtn «${t}» зөвшөөрөгдөөгүй — зогсов`);
+      await page.getByRole("button", { name: t, exact: true }).first().click(); await idle(page); await page.waitForTimeout(3000);
+    }
     if (s.waitTh) await page.locator("thead th:visible", { hasText: s.waitTh }).first().waitFor({ timeout: 60000 });
     // Жагсаалт ачаалагдаагүй бол (URL ListView ч дэлгэц өмнөх Дашборд г.м.) зураг авахгүй — 10-27 бүдгэрээгүй нэртэй самбар буусан
-    else if (/_ListView/.test(page.url())) await page.locator("thead th:visible").first().waitFor({ timeout: 60000 });
-    await page.waitForTimeout(1500);
+    else if (!s.noTable && /_ListView/.test(page.url())) await page.locator("thead th:visible").first().waitFor({ timeout: 60000 });
+    await page.waitForTimeout(s.wait || 1500); // wait: Blazor самбар удаан ачаалагдана
     await page.mouse.move(vw.width - 5, vw.height - 5); // tooltip гаргахгүй
     // Хүснэгтийг хэвтээ гүйлгэж заасан баганыг харагдуулна (зөвхөн харагдах байдал, өгөгдөл өөрчлөхгүй)
     if (s.scrollTh) await page.locator("thead th:visible", { hasText: s.scrollTh }).first().evaluate((th) => th.scrollIntoView({ block: "nearest", inline: "end" }));
@@ -227,6 +249,8 @@ async function toWebp(page, png) {
       if (title) [...title.parentElement.children].filter((e) => e !== title).forEach(pii);
       document.querySelectorAll(".dxbl-modal input[type=text], .dxbl-popup input[type=text], [role=dialog] input[type=text]").forEach(pii);
     });
+    // blurSel: хүснэгт биш самбарын нэр, данс (CSS сонгогч) — Дашбордын карт, мөрийн гарчиг
+    if (s.blurSel) await page.evaluate((sel) => document.querySelectorAll(sel.join(",")).forEach((e) => e.classList.add("hs-pii")), s.blurSel);
     const blurred = await blur(page, s.blurTh || [], !!s.blurAccount);
     const boxes = [];
     const missing = [];

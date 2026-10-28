@@ -2217,5 +2217,226 @@
     ],
     "waitTh": "Гэрээний төрөл",
     "url": "Contract_ListView"
+  },
+  {
+    "id": "owner/list/dashboards-1",
+    "page": "docs/owner/list/dashboards.md",
+    "nav": [
+      "Менежмент",
+      "Дашборд"
+    ],
+    "url": "MonthlyBilling",
+    "clip": "auto",
+    "padRight": 180,
+    "padBottom": 20,
+    "alt": "Сарын тооцоо самбар: цэс, сар солих, объект, хайлт, шүүлт, эрэмбэ",
+    "marks": [
+      {
+        "select": "Бүх объект",
+        "n": "1.1",
+        "label": "1.1"
+      },
+      {
+        "btn": "↻ Шинэчлэх",
+        "exact": true,
+        "n": "1.2",
+        "label": "1.2"
+      },
+      {
+        "btn": "←",
+        "exact": true,
+        "n": "1.3",
+        "label": "1.3"
+      },
+      {
+        "select": "Дүнгээр ↓",
+        "n": "1.4",
+        "label": "1.4"
+      },
+      {
+        "select": "Бүгд",
+        "n": "1.5",
+        "label": "1.5"
+      },
+      {
+        "input": "Хайх",
+        "n": "1.6",
+        "label": "1.6"
+      }
+    ],
+    "wait": 7000,
+    "padLeft": 140
+  },
+  {
+    "id": "owner/list/dashboards-2",
+    "page": "docs/owner/list/dashboards.md",
+    "nav": [
+      "Менежмент",
+      "Дашборд"
+    ],
+    "url": "RoomMonthBoard_ListView",
+    "clip": "auto",
+    "padRight": 20,
+    "padBottom": 160,
+    "alt": "Талбай/Сар нэгтгэл: цэс, жил, объект, давхар, талбайн шүүлт, хайлт",
+    "marks": [
+      {
+        "btn": "◀",
+        "exact": true,
+        "n": "2.1",
+        "label": "2.1"
+      },
+      {
+        "select": "Spacehub Tower",
+        "n": "2.2",
+        "label": "2.2"
+      },
+      {
+        "select": "Бүх давхар",
+        "n": "2.3",
+        "label": "2.3"
+      },
+      {
+        "select": "Бүх талбай",
+        "n": "2.4",
+        "label": "2.4"
+      },
+      {
+        "input": "#талбай",
+        "n": "2.5",
+        "label": "2.5"
+      }
+    ],
+    "wait": 7000
+  },
+  {
+    "id": "owner/list/dashboards-3",
+    "page": "docs/owner/list/dashboards.md",
+    "nav": [
+      "Менежмент",
+      "Дашборд"
+    ],
+    "url": "MeterUsageBoard_ListView",
+    "blurSel": [
+      ".rmb-room small"
+    ],
+    "clip": "auto",
+    "padRight": 20,
+    "padBottom": 160,
+    "alt": "Тоолуур/Сар: цэс, жил, объект, төрөл, харах, тэмдэг, хайлт",
+    "marks": [
+      {
+        "btn": "◀",
+        "exact": true,
+        "n": "3.1",
+        "label": "3.1"
+      },
+      {
+        "select": "Spacehub Tower",
+        "n": "3.2",
+        "label": "3.2"
+      },
+      {
+        "select": "Цахилгаан",
+        "n": "3.3",
+        "label": "3.3"
+      },
+      {
+        "select": "Заалт",
+        "n": "3.4",
+        "label": "3.4"
+      },
+      {
+        "select": "Бүгд",
+        "n": "3.5",
+        "label": "3.5",
+        "below": true
+      },
+      {
+        "input": "#өрөө",
+        "n": "3.6",
+        "label": "3.6",
+        "below": true
+      }
+    ],
+    "wait": 7000,
+    "padLeft": 120
+  },
+  {
+    "id": "owner/list/dashboards-4",
+    "page": "docs/owner/list/dashboards.md",
+    "nav": [
+      "Менежмент",
+      "Дашборд"
+    ],
+    "url": "StatementHealth_ListView",
+    "blurSel": [
+      ".sh-acct-hd b"
+    ],
+    "clip": "auto",
+    "padRight": 420,
+    "padBottom": 120,
+    "alt": "Хуулга монитор: цэс, 7 хоног / Сар, гүйлгэх, төлөвийн тайлбар",
+    "marks": [
+      {
+        "btn": "7 хоног",
+        "exact": true,
+        "n": "4.1",
+        "label": "4.1"
+      },
+      {
+        "text": "Шинэ хуулга ирсэн",
+        "first": true,
+        "exact": true,
+        "n": "4.2",
+        "label": "4.2"
+      },
+      {
+        "btn": "‹ Өмнөх",
+        "exact": true,
+        "n": "4.3",
+        "label": "4.3"
+      }
+    ],
+    "noTable": true,
+    "wait": 7000
+  },
+  {
+    "id": "owner/list/dashboards-5",
+    "page": "docs/owner/list/dashboards.md",
+    "nav": [
+      "Менежмент",
+      "Дашборд"
+    ],
+    "url": "DiscountMonthBoard_ListView",
+    "clip": "auto",
+    "padRight": 20,
+    "padBottom": 120,
+    "alt": "Хөнгөлөлт/Сар: цэс, жил, объект, Зөвхөн идэвхтэй, хайлт",
+    "marks": [
+      {
+        "btn": "◀",
+        "exact": true,
+        "n": "5.1",
+        "label": "5.1"
+      },
+      {
+        "select": "БҮГД",
+        "n": "5.2",
+        "label": "5.2"
+      },
+      {
+        "text": "Зөвхөн идэвхтэй",
+        "n": "5.3",
+        "label": "5.3"
+      },
+      {
+        "input": "нэр / код",
+        "n": "5.4",
+        "label": "5.4"
+      }
+    ],
+    "wait": 7000,
+    "padLeft": 300
   }
 ]
