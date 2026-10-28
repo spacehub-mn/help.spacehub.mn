@@ -41,8 +41,9 @@ async function blur(page, extraTh, account) {
     // Хайлтын талбарт өмнөх хайлт (регистр, нэр) үлдсэн байж болно — үргэлж бүдгэрүүлнэ
     document.querySelectorAll("input").forEach((el) => { if (el.offsetParent && el.value && /хай/i.test(el.placeholder || "")) { el.classList.add("hs-pii"); n++; } });
     // Имэйл (Бүртгэсэн хэрэглэгч г.м.) — хаана ч байсан бүдгэрүүлнэ
-    const mail = /[\w.+-]+@[\w-]+(\.[\w-]+)*|@\S*\.\.\./;
-    document.querySelectorAll("td, a, span, input").forEach((el) => {
+    // GUID (SMS key г.м. нууц түлхүүр) ч мөн адил
+    const mail = /[\w.+-]+@[\w-]+(\.[\w-]+)*|@\S*\.\.\.|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-/i;
+    document.querySelectorAll("td, a, span, input, div, b, strong").forEach((el) => {
       if (!el.offsetParent || el.closest(".hs-pii")) return;
       const own = el.tagName === "INPUT" ? el.value : [...el.childNodes].filter((c) => c.nodeType === 3).map((c) => c.textContent).join("");
       if (mail.test(own || "")) { el.classList.add("hs-pii"); n++; }
@@ -82,6 +83,15 @@ async function box(page, m) {
       const r = el && (el.closest("[class*=combo]") || el.parentElement).getBoundingClientRect();
       return r ? { x: r.x, y: r.y, width: r.width, height: r.height } : null;
     }, m.value);
+  }
+  if (m.field) {
+    // Картын талбар шошгоор: холбоос (lookup) байвал түүнийг, үгүй бол удирдлагыг бүхэлд нь
+    return page.evaluate((t) => {
+      const item = [...document.querySelectorAll("dxbl-form-layout-item")].find((e) => { const l = e.querySelector("label"); return l && l.offsetParent && l.innerText.trim().replace(/\*$/, "") === t; });
+      const el = item && (item.querySelector(".dxbl-fl-ctrl a") || item.querySelector(".dxbl-fl-ctrl"));
+      const r = el && el.getBoundingClientRect();
+      return r ? { x: r.x, y: r.y, width: r.width, height: r.height } : null;
+    }, m.field);
   }
   if (m.select) {
     // Дашбордын энгийн <select> — одоо сонгогдсон сонголтын бичгээр
@@ -224,7 +234,8 @@ async function toWebp(page, png) {
     // Зөвхөн харах шилжилт: эхний мөрийн карт нээх (rowOpen = баганын индекс), таб сонгох (tab)
     // Огнооны шүүлтийг арилгах (✕) — зөвхөн харагдац, өгөгдөл хөндөхгүй; хоосон жагсаалтад мөр гаргана
     if (s.clearDate) { const x = page.locator("button[title^=\"Огнооны шүүлтийг арилгах\"]:visible").first(); if (await x.isEnabled().catch(() => false)) { await x.click(); await idle(page); await page.waitForTimeout(2500); } }
-    if (s.rowOpen != null) { await page.locator("tbody tr:visible").first().locator("td").nth(s.rowOpen).click(); await idle(page); await page.waitForTimeout(2500); }
+    // rowHas: нээх мөрийг текстээр (жишээ нь өөрийн байгууллага) — эхний мөр өөр байгууллага байж болно
+    if (s.rowOpen != null) { await page.locator("tbody tr:visible").filter(s.rowHas ? { hasText: new RegExp(s.rowHas) } : {}).first().locator("td").nth(s.rowOpen).click(); await idle(page); await page.waitForTimeout(2500); }
     if (s.tab) { await page.getByText(s.tab, { exact: true }).first().click(); await idle(page); await page.waitForTimeout(2000); }
     // Дэд таб (Үндсэн мэдээлэл доторх «Тоолуур» г.м.) — role=tab-аар, гүйлгэж харагдуулна; зөвхөн харах
     if (s.subTab) { const t = page.getByText(s.subTab, { exact: true }).last(); await t.scrollIntoViewIfNeeded(); await t.click(); await idle(page); await page.waitForTimeout(2500); }
