@@ -56,6 +56,13 @@ const sidebars = {
     group("6. ⚙️ Тохиргоо, өөрчлөлт", ["owner/tohirgoo", "owner/une-oorchloh", "owner/tooluur", "owner/tureesiin-negj-m2"]),
     group("7. 🆘 Асуудал гарвал", [
       "owner/tugeemel-asuult",
+      group("❓ Сэдвээр", [
+        "owner/asuult/nehemjleh",
+        "owner/asuult/geree",
+        "owner/asuult/tooluur",
+        "owner/asuult/e-barimt",
+        "owner/asuult/aldangi",
+      ]),
       "owner/jagsaalt-hooson-shuult",
       "owner/hugatsaa-songoh",
       "owner/erhgui-nevtreh",
