@@ -1,5 +1,5 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Байрлах газар: docs/owner/gatsah-udaan.md. Орлох: help-drafts/10-gatsah-udaan.md (Crm_Viber 10-23, viber_complaints модуль=сервер 5 мөр).
+# Орлох: help-drafts/10-gatsah-udaan.md (Crm_Viber 10-23, viber_complaints модуль=сервер 5 мөр)
 slug: /owner/gatsah-udaan
 sidebar_label: Удаан, гацсан үед
 type: asuudal

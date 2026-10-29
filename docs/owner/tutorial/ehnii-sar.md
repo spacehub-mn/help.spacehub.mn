@@ -1,5 +1,5 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Байрлах газар: docs/owner/tutorial/ehnii-sar.md. Diátaxis «📘 Сургалт» (CEO 16:4x).
+# Diátaxis «📘 Сургалт» (CEO 16:4x)
 # Эх: research/ux/08_onboarding.md (400 хоногт 6 шинэ байгууллага; эхний тооцоо 12–17 хоног), memory project_owner60_first_billing_defects (9 доголдол, 10-14).
 slug: /owner/tutorial/ehnii-sar
 sidebar_label: Эхний сар — шинэ байгууллага

@@ -1,6 +1,4 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Нийтлээгүй, help repo-д ороогүй. Загвар: list-Bill_ListView.md
-# Байрлах газар: docs/owner/list/notificationtodueinvoicebillsconfig.md
 slug: /owner/list/NotificationToDueInvoiceBillsConfig_ListView
 sidebar_label: Нэхэмжлэх дахиж явуулах
 type: lavlah

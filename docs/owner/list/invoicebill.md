@@ -1,6 +1,4 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Нийтлээгүй, help repo-д ороогүй. Загвар: list-Bill_ListView.md
-# Байрлах газар: docs/owner/list/invoicebill.md
 # Линкийн дүрэм: onBrokenLinks "throw" — зөвхөн help main (9a388a4) дээр байгаа 8 хуудас руу линк, бусад нь тод текст.
 slug: /owner/list/InvoiceBill_ListView
 sidebar_label: Нэхэмжлэх
@@ -39,7 +37,7 @@ keywords:
   - «Нэхэмжлэх шинэчлэх»: InvoiceBill.cs:687-704; InvoiceBillMultiUpdateGuardController.cs:14, 59-66 (20)
   - «Өөр дугаар руу илгээх»: InvoiceBillOtherNumberController.cs:22-30; SendInvoiceToOtherNumberPopup; InvoiceBill.cs:1316-1340
   - «Хэвлэх» / «Багц хэвлэх»: MainController.cs:174-178; BlazorActionController.cs:84-85 (PDF), 121-136 (багц: харилцагч × сар)
-- «?» холбоос одоо: HelpLinks.cs:28 (InvoiceBill_ListView → owner/hugatsaa-songoh)
+- «?» холбоос: HelpLinks.PathFor — help-index-д owner/list/InvoiceBill_ListView байгаа тул энэ хуудас руу (ByView :28 DatePeriod нь зөвхөн нөөц, Help_Spacehub 10-29 шалгав)
 -->
 
 > 🏢 Эзэмшигч, менежер, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Тооцоо → Нэхэмжлэх**

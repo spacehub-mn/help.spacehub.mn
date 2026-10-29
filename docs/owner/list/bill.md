@@ -1,6 +1,5 @@
 ---
 # Жагсаалтын хуудасны загвар (TASKS #37). help/batch1-lists, PR #8.
-# Байрлах газар: docs/owner/list/bill.md
 # Линкийн дүрэм: onBrokenLinks "throw" — зөвхөн help main дээр байгаа 8 хуудас руу линк. Бусад нь тод энгийн текст;
 #   тухайн хуудас нийтлэгдэх үед линк болгоно. (Dev_Research хяналт 10-26 §5)
 slug: /owner/list/Bill_ListView

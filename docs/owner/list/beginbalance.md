@@ -1,6 +1,5 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Нийтлээгүй, help repo-д ороогүй. Загвар: list-Bill_ListView.md
-# Байрлах газар: docs/owner/list/beginbalance.md. 3 жагсаалтыг нэгтгэсэн (help-wiki-structure §7): BeginBalance_ListView + Bill_ListView_Begin («Дутуу») + Sale_ListView_Begin («Илүү»).
+# 3 жагсаалтыг нэгтгэсэн (help-wiki-structure §7): BeginBalance_ListView + Bill_ListView_Begin («Дутуу») + Sale_ListView_Begin («Илүү»)
 # Bill_ListView_Begin, Sale_ListView_Begin-ийн «?» нь энэ хуудас руу заах ёстой (HelpLinks ByView — Dev_Spacehub, хуудас нийтлэгдсэний дараа).
 slug: /owner/list/BeginBalance_ListView
 sidebar_label: Эхний үлдэгдэл

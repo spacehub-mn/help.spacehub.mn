@@ -1,5 +1,5 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Байрлах газар: docs/tutorial/app-nevtreh.md. 🏠 Сургалт (CEO 16:5x).
+# 🏠 Сургалт (CEO 16:5x)
 slug: /tutorial/app-nevtreh
 sidebar_label: Апп суулгаж нэвтрэх
 sidebar_position: 1

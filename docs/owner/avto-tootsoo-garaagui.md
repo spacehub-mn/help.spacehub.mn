@@ -1,5 +1,5 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Байрлах газар: docs/owner/avto-tootsoo-garaagui.md. Viber A3 Σ14, 5 owner (viber-top-questions.md).
+# Viber A3 Σ14, 5 owner (viber-top-questions.md)
 slug: /owner/avto-tootsoo-garaagui
 sidebar_label: Авто тооцоо гараагүй
 type: asuudal

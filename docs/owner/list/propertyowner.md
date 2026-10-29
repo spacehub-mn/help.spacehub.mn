@@ -1,6 +1,4 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Нийтлээгүй, help repo-д ороогүй. Загвар: list-Bill_ListView.md
-# Байрлах газар: docs/owner/list/propertyowner.md
 slug: /owner/list/PropertyOwner_ListView
 sidebar_label: Байгууллага
 type: lavlah

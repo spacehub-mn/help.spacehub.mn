@@ -1,5 +1,4 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Нийтлээгүй. Байрлах газар: docs/owner/list/contract-sub.md
 # 3 жагсаалтыг нэгтгэсэн: ContractDefination_ListView (#todorhoiolt), ContractClose_ListView (#geree-haah), ContractExtend_ListView (#sungalt).
 # «?» → anchor (HelpLinks ByView — Dev_Spacehub, нийтлэгдсэний дараа). Гэрээний үндсэн хуудас: list-Contract_ListView.md (эзэн хэлбэр батлахыг хүлээж).
 slug: /owner/list/ContractSubLists

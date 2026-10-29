@@ -1,5 +1,5 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Байрлах газар: docs/owner/tooluur.md. Орлох: 04-tooluur.md-ийн «тоолуур нэмэх / солих» хэсэг (Viber модуль=тоолуур).
+# Орлох: 04-tooluur.md-ийн «тоолуур нэмэх / солих» хэсэг (Viber модуль=тоолуур)
 slug: /owner/tooluur
 sidebar_label: Тоолуур нэмэх, солих, цуцлах
 type: zaavar

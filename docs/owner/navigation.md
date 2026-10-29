@@ -1,5 +1,4 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Нийтлээгүй. Байрлах газар: docs/owner/navigation.md
 # Линкийн дүрэм: onBrokenLinks "throw" — зөвхөн help main (9a388a4) дээр байгаа 8 хуудас руу линк.
 slug: /owner/navigation
 sidebar_label: Програм ашиглах

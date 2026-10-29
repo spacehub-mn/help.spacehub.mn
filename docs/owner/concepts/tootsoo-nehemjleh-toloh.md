@@ -1,5 +1,4 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Байрлах газар: docs/owner/concepts/tootsoo-nehemjleh-toloh.md
 slug: /owner/concepts/tootsoo-nehemjleh-toloh
 sidebar_label: Төлбөр → Нэхэмжлэх → Төлөлт
 type: oilgolt

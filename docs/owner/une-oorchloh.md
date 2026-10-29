@@ -1,5 +1,5 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Байрлах газар: docs/owner/une-oorchloh.md. Орлох: 08-une-uilchilgee-hungulult.md-ийн «үнэ өөрчлөх» хэсэг (Viber модуль=тооцоо 13 мөр).
+# Орлох: 08-une-uilchilgee-hungulult.md-ийн «үнэ өөрчлөх» хэсэг (Viber модуль=тооцоо 13 мөр)
 slug: /owner/une-oorchloh
 sidebar_label: Үнэ өөрчлөх
 type: zaavar

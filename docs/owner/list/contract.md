@@ -1,5 +1,4 @@
 ---
-# НООРОГ (TASKS #37, 2 дахь хуудас). Нийтлээгүй. Байрлах газар: docs/owner/list/Contract_ListView.md
 # Линкийн дүрэм: onBrokenLinks "throw" — зөвхөн help main дээр байгаа 8 хуудас руу линк. Бусад нь тод энгийн текст;
 #   тухайн хуудас нийтлэгдэх үед линк болгоно. (Dev_Research хяналт 10-26 §5)
 slug: /owner/list/Contract_ListView

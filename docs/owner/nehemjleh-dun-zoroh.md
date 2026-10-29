@@ -1,5 +1,5 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Байрлах газар: docs/owner/nehemjleh-dun-zoroh.md. Viber A4 Σ11, 4 owner (viber-top-questions.md; #833, #1115).
+# Viber A4 Σ11, 4 owner (viber-top-questions.md; #833, #1115)
 slug: /owner/nehemjleh-dun-zoroh
 sidebar_label: Нэхэмжлэхийн дүн зөрж байна
 type: asuudal

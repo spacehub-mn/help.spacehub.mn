@@ -1,5 +1,4 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Нийтлээгүй. Байрлах газар: docs/owner/start.md
 # Линкийн дүрэм: onBrokenLinks "throw" — зөвхөн help main (9a388a4) дээр байгаа 8 хуудас руу линк.
 # ⚠️ Onboarding (owner-onboarding-selfserve.md, PR-1..5) хэрэгжмэгц §1-ийг шинэчилнэ.
 slug: /owner/start

@@ -1,5 +1,4 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Байрлах газар: docs/owner/concepts/e-barimt-nohtsol.md
 slug: /owner/concepts/e-barimt-nohtsol
 sidebar_label: Е-баримт гарах нөхцөл
 type: oilgolt

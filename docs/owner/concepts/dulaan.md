@@ -1,5 +1,5 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Байрлах газар: docs/owner/concepts/dulaan.md. Орлох: help-drafts/11-dulaan.md (Crm_Viber 10-24, «10/1–5/1 тогтмол» гэсэн нь тохиргоо болохыг кодоор засав).
+# Орлох: help-drafts/11-dulaan.md (Crm_Viber 10-24, «10/1–5/1 тогтмол» гэсэн нь тохиргоо болохыг кодоор засав)
 slug: /owner/concepts/dulaan
 sidebar_label: Дулааны төлбөр
 type: oilgolt

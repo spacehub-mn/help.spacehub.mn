@@ -1,5 +1,5 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Байрлах газар: docs/owner/tutorial/sar-buriin-ajil.md. Diátaxis «📘 Сургалт» (CEO 16:4x).
+# Diátaxis «📘 Сургалт» (CEO 16:4x)
 slug: /owner/tutorial/sar-buriin-ajil
 sidebar_label: Сар бүрийн ажил
 type: surgalt

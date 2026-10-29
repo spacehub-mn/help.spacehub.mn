@@ -1,5 +1,5 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Байрлах газар: docs/app-ajillahgui.md (түрээслэгчийн хэсэг). Viber A5 «200: Алдаа гарлаа» Σ11, 4 owner (viber-top-questions.md).
+# (түрээслэгчийн хэсэг). Viber A5 «200: Алдаа гарлаа» Σ11, 4 owner (viber-top-questions.md)
 slug: /app-ajillahgui
 sidebar_label: Апп ажиллахгүй үед
 sidebar_position: 90

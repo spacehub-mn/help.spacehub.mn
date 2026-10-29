@@ -1,5 +1,5 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Байрлах газар: docs/owner/shine-geree-aldaa.md. Viber A1 Σ19, 6 owner (viber-top-questions.md; GitHub #1097 OPEN «Шинэ гэрээн дээр талбай нэмэхэд Application Error (утасгүй иргэн харилцагч)», #1050).
+# Viber A1 Σ19, 6 owner (viber-top-questions.md; GitHub #1097 OPEN «Шинэ гэрээн дээр талбай нэмэхэд Application Error (утасгүй иргэн харилцагч)», #1050)
 slug: /owner/shine-geree-aldaa
 sidebar_label: Шинэ гэрээ, харилцагч бүртгэхэд алдаа
 type: asuudal

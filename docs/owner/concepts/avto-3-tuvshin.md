@@ -1,5 +1,4 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Байрлах газар: docs/owner/concepts/avto-3-tuvshin.md
 slug: /owner/concepts/avto-3-tuvshin
 sidebar_label: Авто тооцоо — 3 түвшин
 type: oilgolt

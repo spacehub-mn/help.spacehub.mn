@@ -1,5 +1,4 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Нийтлээгүй. Байрлах газар: docs/owner/list/reports.md
 # Эх ноорог: help-drafts/09-tailan-excel.md (Crm_Viber 10-23) — энэ хуудас түүнийг орлоно.
 slug: /owner/list/Reports
 sidebar_label: Тайлан

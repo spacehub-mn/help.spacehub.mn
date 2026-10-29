@@ -1,5 +1,5 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Байрлах газар: docs/tutorial/tolbor-tolokh.md. 🏠 Сургалт (CEO 16:5x).
+# 🏠 Сургалт (CEO 16:5x)
 slug: /tutorial/tolbor-tolokh
 sidebar_label: Нэхэмжлэх харж төлөх, баримт авах
 sidebar_position: 2

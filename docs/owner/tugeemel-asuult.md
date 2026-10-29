@@ -1,5 +1,5 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Байрлах газар: docs/owner/tugeemel-asuult.md. Эх: viber-top-questions.md (Crm_Viber, 269 мөр, 13 owner, 04-14 → 10-22) A1–A16 + B.
+# Эх: viber-top-questions.md (Crm_Viber, 269 мөр, 13 owner, 04-14 → 10-22) A1–A16 + B
 slug: /owner/tugeemel-asuult
 sidebar_label: Түгээмэл асуулт
 sidebar_position: 1

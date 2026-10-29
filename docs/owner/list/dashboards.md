@@ -1,5 +1,4 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Нийтлээгүй. Байрлах газар: docs/owner/list/dashboard.md
 # 6 дашбордыг нэг хуудсанд нэгтгэсэн (help-wiki-structure §7). Slug нэг; ViewId бүрийн «?»-ийг anchor руу заах (HelpLinks ByView — Dev_Spacehub, нийтлэгдсэний дараа):
 #   Ordering_ListView → #sar-tootsoo · RoomMonthBoard_ListView → #talbai-sar · MeterUsageBoard_ListView → #tooluur-sar
 #   LegacyMeterBoard_ListView → #huuchin · StatementHealth_ListView → #huulga-monitor · DiscountMonthBoard_ListView → #hungulult-sar

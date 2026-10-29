@@ -3,7 +3,7 @@ type: hab
 roles: [menejer]
 updated: 2026-10-27
 verified_commit: 5fa824f
-# НООРОГ (Help_Spacehub 10-26). docs/owner/role/menejer.md — дүр × хуудас хаб (CEO 16:5x).
+# дүр × хуудас хаб (CEO 16:5x)
 slug: /owner/role/menejer
 sidebar_label: 🏢 Менежер
 sidebar_position: 3

@@ -1,5 +1,4 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Байрлах газар: docs/owner/concepts/aldangi.md
 slug: /owner/concepts/aldangi
 sidebar_label: Алданги
 type: oilgolt

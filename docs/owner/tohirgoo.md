@@ -1,5 +1,5 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Байрлах газар: docs/owner/tohirgoo.md. Diátaxis «📋 Лавлах» (CEO 16:4x).
+# Diátaxis «📋 Лавлах» (CEO 16:4x)
 slug: /owner/tohirgoo
 sidebar_label: Байгууллагын тохиргоо
 type: lavlah
