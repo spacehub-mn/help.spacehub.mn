@@ -2593,5 +2593,90 @@
         "label": "1.4"
       }
     ]
+  },
+  {
+    "page": "docs/owner/nuuts-ug-solih.md",
+    "nav": [
+      "Менежмент",
+      "Дашборд"
+    ],
+    "navOnly": true,
+    "noTable": true,
+    "id": "owner/nuuts-ug-solih-1",
+    "clipHeight": 420,
+    "open": {
+      "sel": "button.account-button"
+    },
+    "mustSee": "Нууц үг солих",
+    "alt": "Хэрэглэгчийн цэс: хүний дүрс, Нууц үг солих",
+    "marks": [
+      {
+        "n": "1.1",
+        "sel": "button.account-button",
+        "left": true,
+        "label": "Хэрэглэгчийн цэс"
+      },
+      {
+        "n": "1.2",
+        "btn": "Нууц үг солих",
+        "exact": true,
+        "left": true,
+        "label": "Нууц үг солих"
+      }
+    ],
+    "blurSel": [
+      ".dash-page"
+    ]
+  },
+  {
+    "page": "docs/owner/nuuts-ug-solih.md",
+    "nav": [
+      "Менежмент",
+      "Дашборд"
+    ],
+    "navOnly": true,
+    "noTable": true,
+    "id": "owner/nuuts-ug-solih-2",
+    "clip": "dialog",
+    "preClick": [
+      {
+        "sel": "button.account-button",
+        "wait": 1000
+      },
+      {
+        "btn": "Нууц үг солих",
+        "exact": true,
+        "wait": 4000
+      }
+    ],
+    "open": {
+      "btn": "Нууц үг солих",
+      "exact": true
+    },
+    "mustSee": "Хуучин нууц үг",
+    "alt": "Нууц үг солих цонх: Хуучин нууц үг, Шинэ нууц үг, Нууц үг баталгаажуул, За",
+    "marks": [
+      {
+        "n": "1.4",
+        "field": "Хуучин нууц үг",
+        "label": "Хуучин нууц үг"
+      },
+      {
+        "n": "1.5",
+        "field": "Шинэ нууц үг",
+        "label": "Шинэ нууц үг"
+      },
+      {
+        "n": "1.5",
+        "field": "Нууц үг баталгаажуул",
+        "label": "Нууц үг баталгаажуул"
+      },
+      {
+        "n": "1.6",
+        "btn": "За",
+        "exact": true,
+        "label": "За"
+      }
+    ]
   }
 ]
