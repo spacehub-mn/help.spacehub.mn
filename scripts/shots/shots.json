@@ -2044,22 +2044,22 @@
     "alt": "Авто ажил жагсаалт: цэс, Авто ажил статус, Next Auto Job +, Job Create",
     "marks": [
       {
-        "n": "2.1",
+        "n": "1.1",
         "tree": "Авто ажил",
         "label": "Автоматжуулалт → Авто ажил"
       },
       {
-        "n": "2.2",
+        "n": "1.2",
         "th": "Авто ажил статус",
         "label": "Авто ажил статус"
       },
       {
-        "n": "2.3",
+        "n": "1.3",
         "btn": "Next Auto Job",
         "label": "Next Auto Job +"
       },
       {
-        "n": "2.4",
+        "n": "1.4",
         "btn": "Job Create",
         "exact": true,
         "label": "Job Create"
