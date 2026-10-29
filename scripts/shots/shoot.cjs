@@ -113,11 +113,12 @@ async function box(page, m) {
   }
   if (m.rowCheck) {
     // Эхний мөрийн сонгох нүд (алхам: «гүйлгээг сонго») — зөвхөн тэмдэглэнэ, дарахгүй
-    return page.evaluate(() => {
-      const el = [...document.querySelectorAll("tbody tr td:first-child")].find((td) => td.offsetParent && td.getBoundingClientRect().x >= 0);
+    // rowHas: тухайн текст агуулсан эхний мөр (жишээ нь «Идэвхтэй» — товч ажиллах мөр, QA 10-29)
+    return page.evaluate((has) => {
+      const el = [...document.querySelectorAll("tbody tr td:first-child")].find((td) => td.offsetParent && td.getBoundingClientRect().x >= 0 && (!has || new RegExp(has).test(td.parentElement.innerText)));
       const r = el && el.getBoundingClientRect();
       return r ? { x: r.x, y: r.y, width: r.width, height: r.height } : null;
-    });
+    }, m.rowHas || null);
   }
   if (m.btn) {
     // Дүрстэй товчны нэр ихэвчлэн title (tooltip)-д байдаг — текст ба title хоёуланг хайна
