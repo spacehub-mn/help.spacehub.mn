@@ -2574,12 +2574,10 @@
         "label": "1.1"
       },
       {
-        "text": "Дүүрсэн",
-        "exact": true,
-        "first": true,
+        "sel": ".ob-kpis",
         "n": "1.2",
         "label": "1.2",
-        "right": true
+        "below": true
       },
       {
         "btn": "Бүгд",

@@ -101,6 +101,11 @@ async function box(page, m) {
       return r ? { x: r.x, y: r.y, width: r.width, height: r.height } : null;
     }, m.select);
   }
+  if (m.sel) {
+    // CSS сонгогчоор бүтэн хэсэг (самбарын KPI мөр г.м.) — бичиг дундуур зурахгүй
+    const loc = page.locator(m.sel).locator("visible=true").first();
+    return (await loc.isVisible().catch(() => false)) ? loc.boundingBox() : null;
+  }
   if (m.input) {
     // Хайлтын нүд г.м. — placeholder-оор (утга нь бүдгэрсэн хэвээр)
     const loc = page.locator(`input[placeholder*="${m.input}"]:visible`).first();
