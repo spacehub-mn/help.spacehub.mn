@@ -46,6 +46,7 @@ const sidebars = {
       group("Автоматжуулалт", [
         "owner/list/statement",
         "owner/list/statementlog",
+        "owner/list/billrecord",
         "owner/list/smscenter",
         "owner/list/autojob",
         "owner/list/utilitysheet",

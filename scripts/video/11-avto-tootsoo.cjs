@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-// 11 — «Авто тооцоо гараагүй» видео (SCRIPTS.md 11, HELP_PLAN §11). Прод app.spacehub.mn, тест эрх, туршилтын owner.
-// ЗӨВХӨН УНШИНА: зөвхөн цэс нээж, хүснэгтийг гүйлгэнэ. «Next Auto Job +», «Job Create» зэрэг товчийг хулганаар
+// 11 — «Авто тооцоо гараагүй» видео («Авто нэхэмжлэх» = BillRecord, QA/CEO 10-29) (SCRIPTS.md 11, HELP_PLAN §11). Прод app.spacehub.mn, тест эрх, туршилтын owner.
+// ЗӨВХӨН УНШИНА: зөвхөн цэс нээж, хүснэгтийг гүйлгэнэ. «Next Auto Bill +», «Job Create» зэрэг товчийг хулганаар
 // ЗААНА, ДАРАХГҮЙ. Хувийн мэдээллийн багана бүдгэрнэ. Нэвтрэлт бичлэгт орохгүй.
 //
 //   node scripts/video/11-avto-tootsoo.cjs <гаралтын хавтас>   → raw .webm + timing.json; дараа нь build.py
@@ -15,7 +15,8 @@ const APP = "https://app.spacehub.mn/";
 const OUT = path.resolve(process.argv[2] || ".");
 // 1280 өргөнд toolbar зөвхөн дүрстэй болдог тул товчны нэр харагдахаар 1600×900 (Dev_Research 10-26)
 const SIZE = { width: 1600, height: 900 };
-const PII_TH = ["Харилцагч", "Бизнес нэр", "Регистр", "Регистер", "Утас", "Имэйл", "Данс"];
+// «Гэрээ дугаар» — help репо нийтэд нээлттэй тул гэрээний дугаарыг бүдгэрүүлнэ (CEO 10-29)
+const PII_TH = ["Харилцагч", "Бизнес нэр", "Регистр", "Регистер", "Утас", "Имэйл", "Данс", "Гэрээ дугаар", "Гэрээний дугаар"];
 
 // Хадмал, хулганы цэг, PII blur, улаан хүрээ — бүгд хуудсан дээрх давхарга
 const OVERLAY = `(() => {
@@ -38,7 +39,7 @@ const OVERLAY = `(() => {
   };
   const mask = () => document.querySelectorAll('table').forEach(t => {
     [...t.querySelectorAll('thead th')].forEach((th, i) => {
-      if (!PII.some(p => th.innerText.includes(p))) return;
+      if (!PII.some(p => th.innerText.replace(/\\s+/g, ' ').includes(p))) return;
       t.querySelectorAll('tbody tr').forEach(tr => { const td = tr.children[i]; if (td) td.classList.add('hv-pii'); });
     });
   });
@@ -106,26 +107,26 @@ const idle = (page) => page.locator("#xaf-loading.show").waitFor({ state: "hidde
   await page.waitForTimeout(1500);
   const tLead = now();
 
-  await cap("1. «Автоматжуулалт» → «Авто ажил»-ыг нээ");
-  let c1 = await openMenu("Автоматжуулалт", "Авто ажил");
+  await cap("1. «Автоматжуулалт» → «Авто нэхэмжлэх»-ийг нээ");
+  let c1 = await openMenu("Автоматжуулалт", "Авто нэхэмжлэх");
   await th("Авто ажил статус").waitFor({ timeout: 60000 });
   cuts.push([c1, now()]);
   await page.waitForTimeout(1500);
 
-  await cap("2. Тухайн сарын ажил (1) байгаа, статус (2) нь «Ажиллаж байна» эсэхийг шалга");
+  await cap("2. Тухайн сарын мөр (1) байгаа, статус (2) нь «Ажиллаж байна» эсэхийг шалга");
   await th("Авто ажил статус").evaluate((e) => e.scrollIntoView({ block: "nearest", inline: "end" }));
   await page.waitForTimeout(500);
   await boxes([th("Сар"), th("Авто ажил статус")]);
   await moveTo(th("Авто ажил статус"));
   await page.waitForTimeout(3500);
 
-  await cap("3. Ажил алга бол өмнөх сарын ажлыг сонгоод (1) «Next Auto Job +», дараа нь (2) «Job Create»");
+  await cap("3. Мөр алга бол өмнөх сарын мөрийг сонгоод (1) «Next Auto Bill +», дараа нь (2) «Job Create»");
   // Сонгох нүд, Код харагдахаар буцааж зүүн тийш гүйлгэнэ
   await boxes([]);
   await th("Код").evaluate((e) => e.scrollIntoView({ block: "nearest", inline: "start" }));
   await page.waitForTimeout(500);
-  await boxes([btn("Next Auto Job"), btn("Job Create")]);
-  await moveTo(btn("Next Auto Job"));
+  await boxes([btn("Next Auto Bill"), btn("Job Create")]);
+  await moveTo(btn("Next Auto Bill"));
   await page.waitForTimeout(2200);
   await moveTo(btn("Job Create"));
   await page.waitForTimeout(2200);
