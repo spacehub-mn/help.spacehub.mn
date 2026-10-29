@@ -244,6 +244,15 @@ async function toWebp(page, png) {
     if (s.tab) { await page.getByText(s.tab, { exact: true }).first().click(); await idle(page); await page.waitForTimeout(2000); }
     // Дэд таб (Үндсэн мэдээлэл доторх «Тоолуур» г.м.) — role=tab-аар, гүйлгэж харагдуулна; зөвхөн харах
     if (s.subTab) { const t = page.getByText(s.subTab, { exact: true }).last(); await t.scrollIntoViewIfNeeded(); await t.click(); await idle(page); await page.waitForTimeout(2500); }
+    // preClick: цэс/хуудас руу шилжих зөвхөн харах товч (баруун дээд хэрэглэгчийн цэс → «Нууц үг солих» г.м.).
+    // Хадгалах/илгээх/төлөх/баталгаажуулах нэртэй товчийг хориглоно.
+    for (const m of s.preClick || []) {
+      const t = m.btn || m.text || m.sel || "";
+      if (/хадгал|илгээ|төлө|тийм|^за$|ok|устга|нийтлэ|блок|шийдсэн|save|send|delete/i.test(t)) throw new Error(`${s.id}: preClick «${t}» зөвшөөрөгдөөгүй — зогсов`);
+      const pb = await box(page, m);
+      if (!pb) throw new Error(`${s.id}: preClick «${t}» олдсонгүй — зогсов`);
+      await page.mouse.click(pb.x + pb.width / 2, pb.y + pb.height / 2); await idle(page); await page.waitForTimeout(m.wait || 2500);
+    }
     if (s.open) {
       if (s.selectRow) await page.locator("tbody tr td:first-child input[type=checkbox]:visible, tbody tr td:first-child .dxbl-checkbox:visible").first().click();
       await page.waitForTimeout(800);
