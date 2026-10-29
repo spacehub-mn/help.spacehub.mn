@@ -50,7 +50,17 @@ const OVERLAY = `(() => {
       Object.assign(d.style, { left: r.x - 3 + 'px', top: r.y - 3 + 'px', width: r.width + 6 + 'px', height: r.height + 6 + 'px' }); document.body.appendChild(d);
       const n = document.createElement('div'); n.className = 'hv-num'; n.textContent = i + 1;
       Object.assign(n.style, { left: Math.max(0, r.x - 13) + 'px', top: Math.max(0, r.y - 15) + 'px' }); document.body.appendChild(n); }); };
-  setInterval(() => { add(); mask(); }, 150);
+  // window.hvOnly = '<багана>' үед зөвхөн тэр баганыг үлдээж бусад нүд, нийлбэрийг бүдгэрүүлнэ.
+  // TEST_USER бусад owner-ийн гэрээг ч хардаг (QA 10-29) — огноо/өрөө/дүн ч нийтэд гарахгүй.
+  const only = () => {
+    if (!window.hvOnly) return;
+    const th = [...document.querySelectorAll('thead th')].find(e => e.offsetParent && e.innerText.replace(/\\s+/g, ' ').trim() === window.hvOnly);
+    const r = th && th.getBoundingClientRect();
+    document.querySelectorAll('tbody td').forEach(td => { const q = td.getBoundingClientRect(); if (!r || q.right <= r.left + 2 || q.left >= r.right - 2) td.classList.add('hv-pii'); });
+    document.querySelectorAll('tfoot, .dxbl-grid-footer, [class*=grid-footer], [class*=group-footer]').forEach(e => e.classList.add('hv-pii'));
+    document.querySelectorAll('div, span, td').forEach(e => { if (/^(Sum|Count):/.test((e.innerText || '').trim()) && e.innerText.length < 60) e.classList.add('hv-pii'); });
+  };
+  setInterval(() => { add(); mask(); only(); }, 150);
 })();`;
 
 const idle = (page) => page.locator("#xaf-loading.show").waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
@@ -133,6 +143,7 @@ const idle = (page) => page.locator("#xaf-loading.show").waitFor({ state: "hidde
   await boxes([]);
 
   await cap("4. Гэрээ «Автомат ажил»-д орсон эсэхийг «Гэрээ» жагсаалтаас шалга");
+  await page.evaluate(() => { window.hvOnly = "Автомат ажил"; });
   c1 = await openMenu("Менежмент", "Гэрээ");
   await th("Автомат ажил").waitFor({ state: "attached", timeout: 60000 });
   cuts.push([c1, now()]);

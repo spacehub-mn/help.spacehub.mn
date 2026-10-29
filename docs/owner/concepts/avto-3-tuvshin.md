@@ -14,7 +14,6 @@ keywords:
 <!--
 Нотолгоо (Spacehub23 origin/master c68c602):
 - BillRecord.cs:373-376 (Авто нэхэмжлэх) ба AutoJob.cs:289-292 GetSpacehubCriteriaForChart — ижил: [ContractId.IsClosed] != true And [PropertyOwnerId.IsAuto] And [ContractId.IsAuto] And [ContractId.PropertyId.IsAuto]
-- BillRecord.cs:373-376 — ижил 3 нөхцөл
 - Апп дээрх нэр 3 түвшинд «Автомат ажил»: PropertyOwner.cs:108, Property.cs:360, Contract.cs:606 (help_review_concepts.md)
 - ContractClose.cs:189 хаахад IsAuto унтарна; сэргээхэд буцаж асахгүй (help_review_contractsub.md)
 - Гэрээний «Авто» сэлгэх товч: list-Contract_ListView.md :125-130
