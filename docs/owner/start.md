@@ -1,7 +1,4 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Нийтлээгүй. Байрлах газар: docs/owner/start.md
-# Линкийн дүрэм: onBrokenLinks "throw" — зөвхөн help main (9a388a4) дээр байгаа 8 хуудас руу линк.
-# ⚠️ Onboarding (owner-onboarding-selfserve.md, PR-1..5) хэрэгжмэгц §1-ийг шинэчилнэ.
 slug: /owner/start
 sidebar_label: Эхлэх
 type: ehleh
@@ -15,16 +12,6 @@ keywords:
   - "эхний сар"
 ---
 # Эхлэх: эхний сар
-
-<!--
-Help_Spacehub 10-26: §2 дэлгэрэнгүйг tutorial/sar-buriin-ajil руу шилжүүлэв (давхардал арилгах; ягаан/бэлэн мөнгө мөрийг тэнд нэмэв).
-Хяналт: research/help_review_start.md (❌2+1) → засав.
-Эх сурвалж:
-- Тохиргоог Spacehub баг хийдэг (owner wizard/seeder байхгүй — memory project_owner_onboarding, owner-onboarding-selfserve.md; owner 60 2026-10-14 Sheet-ээр)
-- Сарын мөчлөг: list-Bill/InvoiceBill/Statement/Sale/SaleEbarimt/ContractUtility_ListView ноорог (Dev_Research ✅) + help main хуудсууд
-- Тоолуур оруулах 3 зам: help_review_contractutility.md ❔1
-- Е-баримт дараа сарын 7: EbarimtAutoPolicy.cs:14 (#1137) — автомат замд; гараар 8-наас хойш ч гаргах боломжтой (эзэн help-д бичих эсэхийг шийднэ ❔)
--->
 
 > 🏢 Эзэмшигч, менежер, нягтлан · Вэб (app.spacehub.mn)
 

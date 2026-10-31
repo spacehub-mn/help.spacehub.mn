@@ -100,7 +100,7 @@ html[data-theme="dark"][data-role="resident"] {
 html[data-theme="dark"][data-role="owner"] {
   --role-bg: #0f2624;
 }
-/* Дээд мөр бүтэн өнгөтэй — хоёр тусдаа сайт шиг (эзэн 10-27 «бүр тусдаа салгая») */
+/* Дээд мөр бүтэн өнгөтэй — хоёр тусдаа сайт шиг (10-27 «бүр тусдаа салгая») */
 html[data-role="owner"] { --role-nav: #055c59; }
 html[data-role="resident"] { --role-nav: #c4500c; }
 html[data-role] .navbar {

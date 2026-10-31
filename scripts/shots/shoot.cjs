@@ -1,17 +1,18 @@
 #!/usr/bin/env node
 // shoot.cjs — гарын авлагын дэлгэцийн зургийг прод app.spacehub.mn-ээс автоматаар авна (HELP_PLAN §11).
 // ЗӨВХӨН УНШИНА: цэсээр жагсаалт нээж, товчийг улаан хүрээ + дугаараар тэмдэглээд зураг авна. Toolbar товч ДАРАХГҮЙ.
-// Хувийн мэдээллийн багана (PII_TH) анхдагчаар бүдгэрнэ. Зураг бүрийг Dev_Research шалгана.
+// Хувийн мэдээллийн багана (PII_TH) анхдагчаар бүдгэрнэ. Зураг бүрийг хяналт шалгана.
 //
 //   node scripts/shots/shoot.cjs                 # бүх мөр
 //   node scripts/shots/shoot.cjs <id> [<id>…]    # зөвхөн эдгээр (help_impact-ийн 🔴/🟡 хуудсуудад)
 //
-// Шаардлага: Spacehub23/tests/e2e (playwright + .env TEST_USER/TEST_PASS). Өөр газар бол SPACEHUB_E2E=<зам>.
+// Шаардлага: кодын репогийн tests/e2e (playwright + .env TEST_USER/TEST_PASS). Зам: SPACEHUB_E2E эсвэл help_local_paths.json (scripts/local-paths.cjs).
 const fs = require("fs");
 const path = require("path");
 
 const ROOT = path.join(__dirname, "..", "..");
-const E2E = process.env.SPACEHUB_E2E || "E:/Projects/spacehub-mn/Spacehub23/tests/e2e";
+const E2E = require(path.join(__dirname, "..", "local-paths.cjs"))("e2e");
+if (!E2E) throw new Error("e2e орчны зам алга — SPACEHUB_E2E эсвэл help_local_paths.json (e2e)");
 require(path.join(E2E, "node_modules/dotenv")).config({ path: path.join(E2E, ".env") });
 const { chromium } = require(path.join(E2E, "node_modules/playwright"));
 
@@ -41,8 +42,9 @@ async function blur(page, extraTh, account) {
     // Хайлтын талбарт өмнөх хайлт (регистр, нэр) үлдсэн байж болно — үргэлж бүдгэрүүлнэ
     document.querySelectorAll("input").forEach((el) => { if (el.offsetParent && el.value && /хай/i.test(el.placeholder || "")) { el.classList.add("hs-pii"); n++; } });
     // Имэйл (Бүртгэсэн хэрэглэгч г.м.) — хаана ч байсан бүдгэрүүлнэ
-    const mail = /[\w.+-]+@[\w-]+(\.[\w-]+)*|@\S*\.\.\./;
-    document.querySelectorAll("td, a, span, input").forEach((el) => {
+    // GUID (SMS key г.м. нууц түлхүүр) ч мөн адил
+    const mail = /[\w.+-]+@[\w-]+(\.[\w-]+)*|@\S*\.\.\.|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-/i;
+    document.querySelectorAll("td, a, span, input, div, b, strong").forEach((el) => {
       if (!el.offsetParent || el.closest(".hs-pii")) return;
       const own = el.tagName === "INPUT" ? el.value : [...el.childNodes].filter((c) => c.nodeType === 3).map((c) => c.textContent).join("");
       if (mail.test(own || "")) { el.classList.add("hs-pii"); n++; }
@@ -83,6 +85,28 @@ async function box(page, m) {
       return r ? { x: r.x, y: r.y, width: r.width, height: r.height } : null;
     }, m.value);
   }
+  if (m.field) {
+    // Картын талбар шошгоор: холбоос (lookup) байвал түүнийг, үгүй бол удирдлагыг бүхэлд нь
+    return page.evaluate((t) => {
+      const item = [...document.querySelectorAll("dxbl-form-layout-item")].find((e) => { const l = e.querySelector("label"); return l && l.offsetParent && l.innerText.trim().replace(/\*$/, "") === t; });
+      const el = item && (item.querySelector(".dxbl-fl-ctrl a") || item.querySelector(".dxbl-fl-ctrl"));
+      const r = el && el.getBoundingClientRect();
+      return r ? { x: r.x, y: r.y, width: r.width, height: r.height } : null;
+    }, m.field);
+  }
+  if (m.select) {
+    // Дашбордын энгийн <select> — одоо сонгогдсон сонголтын бичгээр
+    return page.evaluate((v) => {
+      const el = [...document.querySelectorAll("select")].find((e) => e.offsetParent && e.selectedIndex >= 0 && e.options[e.selectedIndex].text.trim() === v);
+      const r = el && el.getBoundingClientRect();
+      return r ? { x: r.x, y: r.y, width: r.width, height: r.height } : null;
+    }, m.select);
+  }
+  if (m.sel) {
+    // CSS сонгогчоор бүтэн хэсэг (самбарын KPI мөр г.м.) — бичиг дундуур зурахгүй
+    const loc = page.locator(m.sel).locator("visible=true").first();
+    return (await loc.isVisible().catch(() => false)) ? loc.boundingBox() : null;
+  }
   if (m.input) {
     // Хайлтын нүд г.м. — placeholder-оор (утга нь бүдгэрсэн хэвээр)
     const loc = page.locator(`input[placeholder*="${m.input}"]:visible`).first();
@@ -90,11 +114,12 @@ async function box(page, m) {
   }
   if (m.rowCheck) {
     // Эхний мөрийн сонгох нүд (алхам: «гүйлгээг сонго») — зөвхөн тэмдэглэнэ, дарахгүй
-    return page.evaluate(() => {
-      const el = [...document.querySelectorAll("tbody tr td:first-child")].find((td) => td.offsetParent && td.getBoundingClientRect().x >= 0);
+    // rowHas: тухайн текст агуулсан эхний мөр (жишээ нь «Идэвхтэй» — товч ажиллах мөр, QA 10-29)
+    return page.evaluate((has) => {
+      const el = [...document.querySelectorAll("tbody tr td:first-child")].find((td) => td.offsetParent && td.getBoundingClientRect().x >= 0 && (!has || new RegExp(has).test(td.parentElement.innerText)));
       const r = el && el.getBoundingClientRect();
       return r ? { x: r.x, y: r.y, width: r.width, height: r.height } : null;
-    });
+    }, m.rowHas || null);
   }
   if (m.btn) {
     // Дүрстэй товчны нэр ихэвчлэн title (tooltip)-д байдаг — текст ба title хоёуланг хайна
@@ -117,7 +142,7 @@ async function box(page, m) {
   return (await loc.count()) ? loc.boundingBox() : null;
 }
 
-// DOM дээр давхарга зурна: улаан хүрээ + ТОМ дугаар (эзэн 10-27: тэмдэг ≥32px, утсан дээр уншигдана).
+// DOM дээр давхарга зурна: улаан хүрээ + ТОМ дугаар (10-27: тэмдэг ≥32px, утсан дээр уншигдана).
 // Дугаар товчны ДЭЭР голлож байрлана; хөрш тэмдэгтэй давхцвал товчны ДООР — хоёулаа уншигдана.
 const BADGE = 32;
 async function mark(page, boxes) {
@@ -168,7 +193,7 @@ async function toWebp(page, png) {
 (async () => {
   const todo = SHOTS.filter((s) => !only.length || only.includes(s.id));
   const browser = await chromium.launch();
-  // 2× нягтрал: зураг дээр дарж томруулахад дугаар тод (эзэн 10-27)
+  // 2× нягтрал: зураг дээр дарж томруулахад дугаар тод (10-27)
   const context = await browser.newContext({ viewport: VIEWPORT, deviceScaleFactor: 2 });
   const page = await context.newPage();
   await page.goto(APP);
@@ -180,34 +205,69 @@ async function toWebp(page, png) {
 
   const report = [];
   for (const s of todo) {
-    // Өргөн хүснэгтэд хуудас тус бүрийн өргөн (гүйлгэвэл сонгох нүд, Код харагдахгүй болдог — Dev_Research 10-26)
-    const vw = { width: s.width || VIEWPORT.width, height: VIEWPORT.height };
+    // Өргөн хүснэгтэд хуудас тус бүрийн өргөн (гүйлгэвэл сонгох нүд, Код харагдахгүй болдог — хяналт 10-26)
+    const vw = { width: s.width || VIEWPORT.width, height: s.height || VIEWPORT.height };
     await page.setViewportSize(vw);
-    const [group, item] = s.nav;
+    // urlOnly: утасны өргөнд (375px) цэс нуугдсан байдаг — цэсгүйгээр шууд url-аар нээнэ (зөвхөн харах)
+    if (s.urlOnly) { await page.goto(APP + s.url); await idle(page); }
+    const [group, item] = s.nav || [];
     const leaf = page.getByRole("treeitem", { name: item, exact: true }).first();
-    if (!(await leaf.isVisible())) { await page.getByText(group, { exact: true }).first().click({ force: true }); await page.waitForTimeout(700); }
-    if (s.url) { await page.goto(APP + s.url); await idle(page); } // url: дэд цэс (Харилцагч → Хэрэглэгч г.м.) — зөвхөн харах
+    // Цэсгүй дэлгэцээс (MonthlyBilling г.м.) буцаж ирэх — нүүрийг ачаалж цэсийг гаргана
+    if (!s.urlOnly && !(await page.getByRole("treeitem").first().isVisible().catch(() => false))) { await page.goto(APP); await page.getByRole("treeitem").first().waitFor({ timeout: 60000 }); await idle(page); }
+    if (!s.urlOnly && !(await leaf.isVisible())) { await page.getByText(group, { exact: true }).first().click({ force: true }); await page.waitForTimeout(700); }
+    if (s.urlOnly) { /* дээр нээсэн */ }
+    else if (s.url) { await page.goto(APP + s.url); await idle(page); } // url: дэд цэс (Харилцагч → Хэрэглэгч г.м.) — зөвхөн харах
     else if (!s.navOnly) await leaf.click(); // navOnly: зөвхөн бүлгийг дэлгэнэ (дээр дэлгэсэн)
     await idle(page);
+    // expand: дэд бүлгийг (Менежмент → Дашборд г.м.) сумаар нь дэлгэнэ — нэрээр нь дарвал тэр дэлгэц нээгдэнэ
+    for (const g of s.expand || []) {
+      const tree = s.marks.find((m) => m.tree);
+      if (tree && (await page.getByRole("treeitem").getByText(tree.tree, { exact: true }).first().isVisible().catch(() => false))) break;
+      const bb = await page.getByRole("treeitem").getByText(g, { exact: true }).first().boundingBox();
+      if (bb) { await page.mouse.click(bb.x - 44, bb.y + bb.height / 2); await page.waitForTimeout(1200); }
+    }
+    // navBtn: зөвхөн харагдац солих товч (сар/жил/хуудас/хугацаа) — өөр товчийг ЭНД дарахгүй
+    for (const t of s.navBtn || []) {
+      if (!/^(←|→|◀|▶|‹ Өмнөх|Дараах ›|7 хоног|Сар)$/.test(t)) throw new Error(`${s.id}: navBtn «${t}» зөвшөөрөгдөөгүй — зогсов`);
+      await page.getByRole("button", { name: t, exact: true }).first().click(); await idle(page); await page.waitForTimeout(3000);
+    }
     if (s.waitTh) await page.locator("thead th:visible", { hasText: s.waitTh }).first().waitFor({ timeout: 60000 });
     // Жагсаалт ачаалагдаагүй бол (URL ListView ч дэлгэц өмнөх Дашборд г.м.) зураг авахгүй — 10-27 бүдгэрээгүй нэртэй самбар буусан
-    else if (/_ListView/.test(page.url())) await page.locator("thead th:visible").first().waitFor({ timeout: 60000 });
-    await page.waitForTimeout(1500);
+    else if (!s.noTable && /_ListView/.test(page.url())) await page.locator("thead th:visible").first().waitFor({ timeout: 60000 });
+    await page.waitForTimeout(s.wait || 1500); // wait: Blazor самбар удаан ачаалагдана
     await page.mouse.move(vw.width - 5, vw.height - 5); // tooltip гаргахгүй
     // Хүснэгтийг хэвтээ гүйлгэж заасан баганыг харагдуулна (зөвхөн харагдах байдал, өгөгдөл өөрчлөхгүй)
     if (s.scrollTh) await page.locator("thead th:visible", { hasText: s.scrollTh }).first().evaluate((th) => th.scrollIntoView({ block: "nearest", inline: "end" }));
     await page.waitForTimeout(400);
-    // Цонхны алхмын зураг (эзэн 10-27 А, CEO 11:2x): мөр СОНГООД товчоор цонх НЭЭНЭ, зураг аваад Esc / «Үгүй, Хаах»-аар хаана.
+    // Цонхны алхмын зураг (10-27 А, 11:2x): мөр СОНГООД товчоор цонх НЭЭНЭ, зураг аваад Esc / «Үгүй, Хаах»-аар хаана.
     // Хадгалах / илгээх / төлөх / «Тийм»-ийг ХЭЗЭЭ Ч дарахгүй, талбарт бичихгүй. mustSee текст гарахгүй бол бүх ажлыг зогсооно.
     // Зөвхөн харах шилжилт: эхний мөрийн карт нээх (rowOpen = баганын индекс), таб сонгох (tab)
     // Огнооны шүүлтийг арилгах (✕) — зөвхөн харагдац, өгөгдөл хөндөхгүй; хоосон жагсаалтад мөр гаргана
     if (s.clearDate) { const x = page.locator("button[title^=\"Огнооны шүүлтийг арилгах\"]:visible").first(); if (await x.isEnabled().catch(() => false)) { await x.click(); await idle(page); await page.waitForTimeout(2500); } }
-    if (s.rowOpen != null) { await page.locator("tbody tr:visible").first().locator("td").nth(s.rowOpen).click(); await idle(page); await page.waitForTimeout(2500); }
+    // rowHas: нээх мөрийг текстээр (жишээ нь өөрийн байгууллага) — эхний мөр өөр байгууллага байж болно
+    if (s.rowOpen != null) { await page.locator("tbody tr:visible").filter(s.rowHas ? { hasText: new RegExp(s.rowHas) } : {}).first().locator("td").nth(s.rowOpen).click(); await idle(page); await page.waitForTimeout(2500); }
     if (s.tab) { await page.getByText(s.tab, { exact: true }).first().click(); await idle(page); await page.waitForTimeout(2000); }
     // Дэд таб (Үндсэн мэдээлэл доторх «Тоолуур» г.м.) — role=tab-аар, гүйлгэж харагдуулна; зөвхөн харах
     if (s.subTab) { const t = page.getByText(s.subTab, { exact: true }).last(); await t.scrollIntoViewIfNeeded(); await t.click(); await idle(page); await page.waitForTimeout(2500); }
+    // preClick: цэс/хуудас руу шилжих зөвхөн харах товч (баруун дээд хэрэглэгчийн цэс → «Нууц үг солих» г.м.).
+    // Хадгалах/илгээх/төлөх/баталгаажуулах нэртэй товчийг хориглоно.
+    for (const m of s.preClick || []) {
+      const t = m.btn || m.text || m.sel || "";
+      if (/хадгал|илгээ|төлө|тийм|^за$|ok|устга|нийтлэ|блок|шийдсэн|save|send|delete/i.test(t)) throw new Error(`${s.id}: preClick «${t}» зөвшөөрөгдөөгүй — зогсов`);
+      const pb = await box(page, m);
+      if (!pb) throw new Error(`${s.id}: preClick «${t}» олдсонгүй — зогсов`);
+      await page.mouse.click(pb.x + pb.width / 2, pb.y + pb.height / 2); await idle(page); await page.waitForTimeout(m.wait || 2500);
+    }
+    // Цонх нээхгүй зурагт ч мөр сонгосон төлөвийг харуулна (selectRows) — зөвхөн сонголт
+    if (!s.open && s.selectRows) {
+      for (let i = 0; i < s.selectRows; i++) { await page.locator("tbody tr:visible").nth(i).locator("td:first-child input[type=checkbox], td:first-child .dxbl-checkbox").first().click(); await page.waitForTimeout(500); }
+      await page.mouse.move(vw.width - 5, vw.height - 5);
+    }
     if (s.open) {
-      if (s.selectRow) await page.locator("tbody tr td:first-child input[type=checkbox]:visible, tbody tr td:first-child .dxbl-checkbox:visible").first().click();
+      // selectRow: эхний мөр; selectRows: N — эхний N мөрийг сонгоно (олон мөрийн товч, жишээ нь «Сунгах»). Зөвхөн сонголт, өгөгдөл хөндөхгүй.
+      const nSel = s.selectRows || (s.selectRow ? 1 : 0);
+      // Мөр бүрд input ба .dxbl-checkbox хоёулаа таардаг — мөрөөр нь авч эхнийг нь дарна (давхар дарж сонголт арилгахгүй)
+      for (let i = 0; i < nSel; i++) { await page.locator("tbody tr:visible").nth(i).locator("td:first-child input[type=checkbox], td:first-child .dxbl-checkbox").first().click(); await page.waitForTimeout(500); }
       await page.waitForTimeout(800);
       const ob = await box(page, s.open);
       if (!ob) throw new Error(`${s.id}: нээх товч олдсонгүй — зогсов`);
@@ -227,6 +287,11 @@ async function toWebp(page, png) {
       if (title) [...title.parentElement.children].filter((e) => e !== title).forEach(pii);
       document.querySelectorAll(".dxbl-modal input[type=text], .dxbl-popup input[type=text], [role=dialog] input[type=text]").forEach(pii);
     });
+    // blurSel: хүснэгт биш самбарын нэр, данс (CSS сонгогч) — Дашбордын карт, мөрийн гарчиг
+    // blurCells: хүснэгтийн (жагсаалт + цонх) бүх нүдийг бүдгэрүүлнэ, зөвхөн сонгох нүд үлдэнэ —
+    // Хувийн мэдээлэл гарахгүйн тулд мөрийн аль ч утга бүдгэрнэ
+    if (s.blurCells) await page.evaluate(() => document.querySelectorAll("tbody td:not(:first-child), tfoot, .dxbl-grid-footer").forEach((e) => e.classList.add("hs-pii")));
+    if (s.blurSel) await page.evaluate((sel) => document.querySelectorAll(sel.join(",")).forEach((e) => e.classList.add("hs-pii")), s.blurSel);
     const blurred = await blur(page, s.blurTh || [], !!s.blurAccount);
     const boxes = [];
     const missing = [];
@@ -257,7 +322,9 @@ async function toWebp(page, png) {
           .map((e) => e.getBoundingClientRect()).filter((r) => r.width > 200 && r.height > 100).sort((a, b) => b.width * b.height - a.width * a.height)[0];
         return c ? { x: c.x, y: c.y, width: c.width, height: c.height } : null;
       });
-      clip = d ? { x: Math.max(0, d.x - 24), y: Math.max(0, d.y - 44), width: Math.min(vw.width - Math.max(0, d.x - 24), d.width + 48), height: Math.min(vw.height - Math.max(0, d.y - 44), d.height + 60) } : undefined;
+      // padX: 0 бол хажуугийн 24px зайг авахгүй — цонхны ард жагсаалтын үсэг харагдахаас сэргийлнэ
+      const px = s.dialogPadX ?? 24;
+      clip = d ? { x: Math.max(0, d.x - px), y: Math.max(0, d.y - 44), width: Math.min(vw.width - Math.max(0, d.x - px), d.width + 2 * px), height: Math.min(vw.height - Math.max(0, d.y - 44), d.height + 60) } : undefined;
     }
     const webp = await toWebp(page, await page.screenshot(clip ? { clip } : s.clipHeight ? { clip: { x: 0, y: 0, width: vw.width, height: s.clipHeight } } : {}));
     const out = path.join(ROOT, "static", "img", s.id + ".webp");
@@ -280,6 +347,8 @@ async function toWebp(page, png) {
       if (still) throw new Error(`${s.id}: цонх хаагдсангүй — зогсов`);
       await page.reload(); await idle(page); await page.getByRole("treeitem").first().waitFor({ timeout: 60000 });
     }
+    // Сонголтыг дараагийн зурагт үлдээхгүй (давхар дарвал арилдаг) — хуудсыг дахин ачаална
+    if (!s.open && s.selectRows) { await page.reload(); await idle(page); await page.getByRole("treeitem").first().waitFor({ timeout: 60000 }); }
     const view = page.url().replace(APP, "");
     report.push({ id: s.id, page: s.page, view, kb: Math.round(webp.length / 1024), legend: boxes.map((b) => b.label), missing, blurred, changed: !same });
     console.log(`${missing.length ? "⚠️" : "✅"} ${s.id} ${view} ${Math.round(webp.length / 1024)}KB тэмдэг ${boxes.length}/${s.marks.length} blur ${blurred}${missing.length ? " олдоогүй: " + missing.join(", ") : ""}`);

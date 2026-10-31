@@ -1,21 +1,23 @@
 #!/usr/bin/env node
-// 11 — «Авто тооцоо гараагүй» видео (SCRIPTS.md 11, HELP_PLAN §11). Прод app.spacehub.mn, тест эрх, туршилтын owner.
-// ЗӨВХӨН УНШИНА: зөвхөн цэс нээж, хүснэгтийг гүйлгэнэ. «Next Auto Job +», «Job Create» зэрэг товчийг хулганаар
+// 11 — «Авто тооцоо гараагүй» видео («Авто нэхэмжлэх» = BillRecord, QA/10-29) (SCRIPTS.md 11, HELP_PLAN §11). Прод app.spacehub.mn, тест эрх, туршилтын owner.
+// ЗӨВХӨН УНШИНА: зөвхөн цэс нээж, хүснэгтийг гүйлгэнэ. «Next Auto Bill +», «Job Create» зэрэг товчийг хулганаар
 // ЗААНА, ДАРАХГҮЙ. Хувийн мэдээллийн багана бүдгэрнэ. Нэвтрэлт бичлэгт орохгүй.
 //
 //   node scripts/video/11-avto-tootsoo.cjs <гаралтын хавтас>   → raw .webm + timing.json; дараа нь build.py
 const fs = require("fs");
 const path = require("path");
 
-const E2E = process.env.SPACEHUB_E2E || "E:/Projects/spacehub-mn/Spacehub23/tests/e2e";
+const E2E = require(path.join(__dirname, "..", "local-paths.cjs"))("e2e");
+if (!E2E) throw new Error("e2e орчны зам алга — SPACEHUB_E2E эсвэл help_local_paths.json (e2e)");
 require(path.join(E2E, "node_modules/dotenv")).config({ path: path.join(E2E, ".env") });
 const { chromium } = require(path.join(E2E, "node_modules/playwright"));
 
 const APP = "https://app.spacehub.mn/";
 const OUT = path.resolve(process.argv[2] || ".");
-// 1280 өргөнд toolbar зөвхөн дүрстэй болдог тул товчны нэр харагдахаар 1600×900 (Dev_Research 10-26)
+// 1280 өргөнд toolbar зөвхөн дүрстэй болдог тул товчны нэр харагдахаар 1600×900 (хяналт 10-26)
 const SIZE = { width: 1600, height: 900 };
-const PII_TH = ["Харилцагч", "Бизнес нэр", "Регистр", "Регистер", "Утас", "Имэйл", "Данс"];
+// «Гэрээ дугаар» — help репо нийтэд нээлттэй тул гэрээний дугаарыг бүдгэрүүлнэ (10-29)
+const PII_TH = ["Харилцагч", "Бизнес нэр", "Регистр", "Регистер", "Утас", "Имэйл", "Данс", "Гэрээ дугаар", "Гэрээний дугаар"];
 
 // Хадмал, хулганы цэг, PII blur, улаан хүрээ — бүгд хуудсан дээрх давхарга
 const OVERLAY = `(() => {
@@ -38,7 +40,7 @@ const OVERLAY = `(() => {
   };
   const mask = () => document.querySelectorAll('table').forEach(t => {
     [...t.querySelectorAll('thead th')].forEach((th, i) => {
-      if (!PII.some(p => th.innerText.includes(p))) return;
+      if (!PII.some(p => th.innerText.replace(/\\s+/g, ' ').includes(p))) return;
       t.querySelectorAll('tbody tr').forEach(tr => { const td = tr.children[i]; if (td) td.classList.add('hv-pii'); });
     });
   });
@@ -49,7 +51,17 @@ const OVERLAY = `(() => {
       Object.assign(d.style, { left: r.x - 3 + 'px', top: r.y - 3 + 'px', width: r.width + 6 + 'px', height: r.height + 6 + 'px' }); document.body.appendChild(d);
       const n = document.createElement('div'); n.className = 'hv-num'; n.textContent = i + 1;
       Object.assign(n.style, { left: Math.max(0, r.x - 13) + 'px', top: Math.max(0, r.y - 15) + 'px' }); document.body.appendChild(n); }); };
-  setInterval(() => { add(); mask(); }, 150);
+  // window.hvOnly = '<багана>' үед зөвхөн тэр баганыг үлдээж бусад нүд, нийлбэрийг бүдгэрүүлнэ.
+  // Хувийн мэдээлэл гарахгүйн тулд огноо, өрөө, дүнг ч бүдгэрүүлнэ.
+  const only = () => {
+    if (!window.hvOnly) return;
+    const th = [...document.querySelectorAll('thead th')].find(e => e.offsetParent && e.innerText.replace(/\\s+/g, ' ').trim() === window.hvOnly);
+    const r = th && th.getBoundingClientRect();
+    document.querySelectorAll('tbody td').forEach(td => { const q = td.getBoundingClientRect(); if (!r || q.right <= r.left + 2 || q.left >= r.right - 2) td.classList.add('hv-pii'); });
+    document.querySelectorAll('tfoot, .dxbl-grid-footer, [class*=grid-footer], [class*=group-footer]').forEach(e => e.classList.add('hv-pii'));
+    document.querySelectorAll('div, span, td').forEach(e => { if (/^(Sum|Count):/.test((e.innerText || '').trim()) && e.innerText.length < 60) e.classList.add('hv-pii'); });
+  };
+  setInterval(() => { add(); mask(); only(); }, 150);
 })();`;
 
 const idle = (page) => page.locator("#xaf-loading.show").waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
@@ -106,32 +118,33 @@ const idle = (page) => page.locator("#xaf-loading.show").waitFor({ state: "hidde
   await page.waitForTimeout(1500);
   const tLead = now();
 
-  await cap("1. «Автоматжуулалт» → «Авто ажил»-ыг нээ");
-  let c1 = await openMenu("Автоматжуулалт", "Авто ажил");
+  await cap("1. «Автоматжуулалт» → «Авто нэхэмжлэх»-ийг нээ");
+  let c1 = await openMenu("Автоматжуулалт", "Авто нэхэмжлэх");
   await th("Авто ажил статус").waitFor({ timeout: 60000 });
   cuts.push([c1, now()]);
   await page.waitForTimeout(1500);
 
-  await cap("2. Тухайн сарын ажил (1) байгаа, статус (2) нь «Ажиллаж байна» эсэхийг шалга");
+  await cap("2. Тухайн сарын мөр (1) байгаа, статус (2) нь «Ажиллаж байна» эсэхийг шалга");
   await th("Авто ажил статус").evaluate((e) => e.scrollIntoView({ block: "nearest", inline: "end" }));
   await page.waitForTimeout(500);
   await boxes([th("Сар"), th("Авто ажил статус")]);
   await moveTo(th("Авто ажил статус"));
   await page.waitForTimeout(3500);
 
-  await cap("3. Ажил алга бол өмнөх сарын ажлыг сонгоод (1) «Next Auto Job +», дараа нь (2) «Job Create»");
+  await cap("3. Мөр алга бол өмнөх сарын мөрийг сонгоод (1) «Next Auto Bill +», дараа нь (2) «Job Create»");
   // Сонгох нүд, Код харагдахаар буцааж зүүн тийш гүйлгэнэ
   await boxes([]);
   await th("Код").evaluate((e) => e.scrollIntoView({ block: "nearest", inline: "start" }));
   await page.waitForTimeout(500);
-  await boxes([btn("Next Auto Job"), btn("Job Create")]);
-  await moveTo(btn("Next Auto Job"));
+  await boxes([btn("Next Auto Bill"), btn("Job Create")]);
+  await moveTo(btn("Next Auto Bill"));
   await page.waitForTimeout(2200);
   await moveTo(btn("Job Create"));
   await page.waitForTimeout(2200);
   await boxes([]);
 
   await cap("4. Гэрээ «Автомат ажил»-д орсон эсэхийг «Гэрээ» жагсаалтаас шалга");
+  await page.evaluate(() => { window.hvOnly = "Автомат ажил"; });
   c1 = await openMenu("Менежмент", "Гэрээ");
   await th("Автомат ажил").waitFor({ state: "attached", timeout: 60000 });
   cuts.push([c1, now()]);

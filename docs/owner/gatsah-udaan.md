@@ -1,5 +1,4 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Байрлах газар: docs/owner/gatsah-udaan.md. Орлох: help-drafts/10-gatsah-udaan.md (Crm_Viber 10-23, viber_complaints модуль=сервер 5 мөр).
 slug: /owner/gatsah-udaan
 sidebar_label: Удаан, гацсан үед
 type: asuudal
@@ -14,14 +13,13 @@ keywords:
 ---
 # Програм удаан, гацсан, ажиллахгүй үед
 
-<!--
-Эх: 10-gatsah-udaan.md (Viber 5 мөр — ихэнх нь шинэчлэлтэй давхацсан).
-Нэмэлт (кодоор): StatementLog_ListView DataAccessMode=Client (бүх мөр ачаална — help_review_statementlog.md); «— Хурдан» тайлан SP-аар (NegtgelReportFastController.cs:13); 📅 шүүлт хэрэглэгч бүрээр санана (#1156); Шөнийн шинэчлэл: memory feedback_nightly_auto_deploy_standing (23–24 цаг) — цагийг нийтэд бичихгүй.
--->
-
 > 🏢 Эзэмшигч, менежер, нягтлан · Вэб (app.spacehub.mn)
 
 Програм ачаалахгүй, гацах, нэвтэрч чадахгүй байх нь ихэнхдээ **богино хугацааны шинэчлэл**, браузерийн кэш эсвэл интернэтийн холболтоос болдог. Мэдээлэл тань устахгүй.
+
+<video controls preload="metadata" width="100%" src="/video/08-gatsah-udaan.mp4"></video>
+
+*Видео (дуугүй, хадмалтай). Удаан, гацсан үед.*
 
 ## Алхам (энэ дарааллаар)
 1. **5–10 минут** хүлээгээд дахин оролд. Энэ хугацаанд шинэчлэл хийгдэж байж болно. Шинэчлэлийг ихэвчлэн шөнө хийдэг.

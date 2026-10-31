@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { pageOf, slugify, frontMatter } from '../scripts/help-index-lib.mjs';
+import { pageOf, slugify, frontMatter, isDraft } from '../scripts/help-index-lib.mjs';
 
 test('slugify: Docusaurus-тай ижил кирилл анхор', () => {
   assert.equal(slugify('Түгээмэл алдаа'), 'түгээмэл-алдаа');
@@ -32,4 +32,11 @@ test('pageOf: «Гарчиг {#id}» — тусгай anchor ашиглана, �
     { text: 'Энгийн гарчиг', anchor: 'энгийн-гарчиг' },
   ]);
   assert.ok(!p.text.includes('{#'));
+});
+
+test('isDraft: «draft: true» ноорог — хайлт, docs хуулбарт орохгүй', () => {
+  assert.equal(isDraft('---\ntype: zaavar\ndraft: true\n---\n# A\n'), true);
+  assert.equal(isDraft('---\r\ndraft: "true"\r\n---\r\n# A\r\n'), true);
+  assert.equal(isDraft('---\ntype: zaavar\n---\n# A\n'), false);
+  assert.equal(isDraft('# frontmatter-гүй\n'), false);
 });

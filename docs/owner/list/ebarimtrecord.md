@@ -1,13 +1,10 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Нийтлээгүй, help repo-д ороогүй. Загвар: list-Bill_ListView.md
-# Байрлах газар: docs/owner/list/ebarimtrecord.md
-# Линкийн дүрэм: onBrokenLinks "throw" — зөвхөн help main (9a388a4) дээр байгаа 8 хуудас руу линк, бусад нь тод текст.
 slug: /owner/list/EbarimtRecord_ListView
 sidebar_label: Авто eBarimt
 type: lavlah
 roles: [owner, nyagtlan]
 updated: 2026-10-26
-verified_commit: c68c602
+verified_commit: 84985f8
 keywords:
   - "Авто eBarimt"
   - "автомат е-баримт"
@@ -15,17 +12,6 @@ keywords:
   - "е-баримт яагаад гараагүй"
 ---
 # Авто eBarimt (жагсаалт)
-
-<!--
-Хяналт: Dev_Research research/help_review_ebarimtrecord.md (❌ 4) → засав. Perpetual: AutomationController.cs:349-356 (Жил/Сар автоматаар шилжинэ); нэг байгууллагад 5 давхар ажлын жишээ.
-Нотолгоо (Spacehub23 origin/master c68c602):
-- EbarimtRecord.cs:21 «Авто eBarimt», класс дээрх NavigationItem → Автоматжуулалт (help_review_navigation); xafml-д ListView тохиргоо алга
-- Талбар: :45 Код, :57 Гарчиг, :67 Эзэмшигч, :77 Жил, :85 Сар, :97-99 Нөхөх хоног (ToolTip), :106 Статус (CronJobStatus), :124 Дүгнэлт илгээсэн, :137 Сүүлийн үйлдэл, :150 Шүүлтүүр (Criteria), :159 И-Баримтууд, :169 Нэмэлт Авто Ажлууд
-- Хуваарь: :353-359 (өдөр бүр, BR-127)
-- Сонгох нөхцөл: :205-236 GetCriteriaForSale — тухайн жил/сар (одоогийн сар + Нөхөх хоног > 0 бол SaleWindowStart-аас), төлбөрийн хэлбэр бэлэн/данс (0, 1), EBarimtStatus 0 эсвэл 9, ContractId.CustomerId.CustomerMoreId.IsAuto, гэрээ + барилга IsAllowEbarimt, гэрээ хаагдаагүй; EbarimtAutoPolicy.cs:14 cutoff (дараа сарын 7)
-- Товчнууд: «Job Create» :287-299 (CronJobData хоосон үед, «Автоматжуулалт үүсгэх гэж байна»), «Job Start» :302-317 («…эхлүүлэх гэж байна»), «Job Stop» :319-334 («…зогсоох гэж байна»), «Job Delete» :337-350 («Автоматжуулалтийг устгах»); бүгд 1 мөр; үр дүн «Сүүлийн үйлдэл»-д (:296, :314, :331)
-- Дүгнэлт: SendReport :238- (зогссон бөгөөд илгээгээгүй үед)
--->
 
 > 🏢 Эзэмшигч, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Автоматжуулалт → Авто eBarimt**
 
@@ -59,8 +45,6 @@ keywords:
 
 ## Товчнууд
 Бүгд **1 мөр** дээр ажиллана. Дарсны дараа **Сүүлийн үйлдэл** ба **Статус**-ыг шалга.
-
-<!-- Зургийг scripts/shots/shoot.cjs автоматаар авсан (прод, туршилтын owner Рентхаб, PII blur). Дугаар = shots.json «n» = доорх дугаар. Гараар засахгүй. -->
 
 ![Авто eBarimt жагсаалтын товч 1–3](/img/owner/list/ebarimtrecord-1.webp)
 

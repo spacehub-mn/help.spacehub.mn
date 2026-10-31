@@ -7,19 +7,6 @@ verified_repo: spacehub
 ---
 # Төлбөрийн задаргаа харах
 
-<!--
-Шинэ бүтэц рүү шилжүүлэв (Help_Spacehub 10-27). Нотолгоо (spacehub 03de3014):
-- «Гэрээ харах» (mn_MN.json:608) гэрээний карт дээр → ContractPage: ActiveContractCard.dart:30-41
-- ContractPage таб «Нэхэмжлэл» (pages.contract.invoice, mn_MN.json:256): ContractPage.dart:158, :189, :204-209 InvoicesTab
-- Нэхэмжлэл таб анхдагч шүүлт «Төлөгдөөгүй / Үлдэгдэлтэй» (isPayed=false): InvoicesTab.dart:88-98; сонголт «Төлөгдсөн эсэх»/«Төлөгдөөгүй / Үлдэгдэлтэй»/«Бүрэн төлөгдсөн» mn_MN.json:816-818; шүүлтийн жагсаалтад «Бүгд» сонголт байхгүй: null мөр «Төлөгдсөн эсэх» (pages.rentor.invoices.isPayed#null mn_MN.json:817) гэж гарна InvoicesTab.dart:99-105; «Бүгд» (enum.all :19) зөвхөн сонгосны дараа шүүлтүүрийн товчин дээр (itemName InvoicesTab.dart:92-97) — Dev_Research 10-27
-- Мөр дээр дарахад «Нэхэмжлэл» дэлгэц: PaymentChartInfo.Invoice.dart:97-109 → InvoiceBillPage.dart:62-65 (mn_MN.json:798)
-- Дэлгэцэнд: Дугаар, Үүссэн огноо, Төлөв, Төлөх хугацаа, Гэрээ, Нийт дүн — InvoiceBillPage/Content.dart:54-128 (mn_MN.json:435-445)
-- Баруун дээд: ⬇ «Нэхэмжлэл татах» InvoiceBillPage.dart:69-89 (mn_MN.json:811), PDF дүрс «Хэвлэх хувилбар харах» :90-108 (mn_MN.json:813) → PDF харагч
-- «Төлбөр төлөх» (mn_MN.json:606) нь зөвхөн төлөгдөөгүй нэхэмжлэлийн жагсаалт, «Нэхэмжлэл» таб байхгүй: PayBillPage.dart:26-77 (filter :36-37)
-- Засвар: хуучин «Төлбөр төлөх → Нэхэмжлэл хэсэг» алхам буруу байсан → «Гэрээ харах → Нэхэмжлэл»
-- Мөр бүрийн задаргаа (түрээс, ашиглалт…) зөвхөн PDF-д байна ❔ (PDF-ийн агуулгыг сервер үүсгэдэг, шалгаагүй)
--->
-
 > 🏠 Түрээслэгч, оршин суугч · Гар утасны апп
 
 :::caution

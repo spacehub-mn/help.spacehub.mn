@@ -2,7 +2,7 @@
 // docs/**/*.md-ээс уншина (routeBasePath "/", trailingSlash false). `npm run build`-ийн төгсгөлд ажиллана.
 import fs from 'node:fs';
 import path from 'node:path';
-import { pageOf } from './help-index-lib.mjs';
+import { pageOf, isDraft } from './help-index-lib.mjs';
 
 const DOCS = 'docs';
 
@@ -15,7 +15,7 @@ function walk(dir, out = []) {
   return out;
 }
 
-const pages = walk(DOCS).map((f) => pageOf(path.relative(DOCS, f), fs.readFileSync(f, 'utf8')));
+const pages = walk(DOCS).map((f) => [f, fs.readFileSync(f, 'utf8')]).filter(([, src]) => !isDraft(src)).map(([f, src]) => pageOf(path.relative(DOCS, f), src));
 fs.mkdirSync('build', { recursive: true });
 fs.writeFileSync('build/help-index.json', JSON.stringify(pages));
 console.log(`help-index.json: ${pages.length} хуудас`);

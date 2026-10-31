@@ -1,34 +1,16 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Нийтлээгүй, help repo-д ороогүй. Загвар: list-Bill_ListView.md
-# Байрлах газар: docs/owner/list/discount.md
-# Линкийн дүрэм: onBrokenLinks "throw" — зөвхөн help main (9a388a4) дээр байгаа 8 хуудас руу линк, бусад нь тод текст.
 slug: /owner/list/Discount_ListView
 sidebar_label: Хөнгөлөлт
 type: lavlah
 roles: [owner, nyagtlan]
 updated: 2026-10-26
-verified_commit: c68c602
+verified_commit: 84985f8
 keywords:
   - "Хөнгөлөлт жагсаалт"
   - "хөнгөлөлт цуцлах"
   - "хөнгөлөлт шинэчлэх"
 ---
 # Хөнгөлөлт (жагсаалт)
-
-<!--
-Хяналт: Dev_Research research/help_review_discount.md (❌ 3) → бүгдийг засав. BillItem.cs:286 (цуцалсныг тооцохгүй); «Задаргаа татах» CustomDiscount=true.
-Нотолгоо (Spacehub23 origin/master c68c602):
-- Discount.cs:16 XafDisplayName «Хөнгөлөлт», :26 class Discount : Invoice; цэс xafml:73 (Тооцоо → Хөнгөлөлт, Index 4), дэд нь DiscountConfig_ListView :75
-- Жагсаалт: xafml Discount_ListView (AllowNew/Delete тохируулаагүй); «Шинэ» нуусан Discount.cs:21 (HideNewOnDiscount); багана DiscountContractId «Гэрээ» (:205), ItemNames (талбай), Description, StartDate «Эхлэх огноо» (:231), EndDate «Дуусах огноо» (:244), Days «Хөнгөлөх хоног» (:254)
-- Өнгө: :20 цуцалсан = зураас
-- Шүүлт: :23-24 «Бүгд» (= зөвхөн идэвхтэй), «Хүчингүй» (= цуцалсан)
-- Шалгалт: :22 Эхлэх огноо < Дуусах огноо
-- Товчнууд:
-  - «Цуцлах»: :386-391 (1 мөр; ConfirmationMessage «Та сонгосон төлөлтийг цуцлах уу?» — «төлөлт» гэж буруу бичигдсэн; base.ToCancel() — тооцооны мөрийн хөнгөлөлтийн дүнг дахин бодох эсэх ❔)
-  - «Шинэчлэх»: :393-408, 410- (1 мөр; «Үндсэн тохиргооноос хөнгөлөлтийг шинэчлэх үү?»; тохиргооноос задаргааг цэвэрлээд дахин нэмнэ; нэг төлбөр дээрх бусад хөнгөлөлтийн үйлчилгээг алгасна; хуваалцсан тоолуурын мөрийг алгасна #1034)
-  - «Задаргаа татах»: MainController.cs:316 — зөвхөн карт (DetailView) дээр
-- Хөнгөлөлт үүсэх зам: Bill_ListView «Хөнгөлөлт +» (list-Bill_ListView.md), сарын тооцоо (Discount.UpdateOrCreateDiscount, ContractUtility.cs:453)
--->
 
 > 🏢 Эзэмшигч, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Тооцоо → Хөнгөлөлт**
 
@@ -59,8 +41,6 @@ keywords:
 
 ## Товчнууд
 > ℹ️ Энэ жагсаалтад **«Шинэ»** товч нуугдсан байх ёстой ❔ (UI-аар батлаагүй). Хөнгөлөлтийг **Тооцоо → Төлбөр**-өөс «Хөнгөлөлт +»-ээр, эсвэл **Хөнгөлөлт тохиргоо**-гоор үүсгэнэ.
-
-<!-- Зургийг scripts/shots/shoot.cjs автоматаар авсан (прод, туршилтын owner Рентхаб, PII blur). Дугаар = shots.json «n» = доорх дугаар. Гараар засахгүй. -->
 
 ![Хөнгөлөлт жагсаалтын товч 1–2](/img/owner/list/discount-1.webp)
 

@@ -1,29 +1,18 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Нийтлээгүй. Байрлах газар: docs/owner/list/reports.md
-# Эх ноорог: help-drafts/09-tailan-excel.md (Crm_Viber 10-23) — энэ хуудас түүнийг орлоно.
 slug: /owner/list/Reports
 sidebar_label: Тайлан
 type: lavlah
 roles: [owner, nyagtlan]
-updated: 2026-10-26
-verified_commit: c68c602
+updated: 2026-10-30
+verified_commit: 84985f8
 keywords:
   - "Тайлан"
   - "Нэгтгэл тайлан"
   - "тайлан хоосон"
   - "Excel татах"
+imgmap_skip: "1.4 тайлан ажиллуулсны дараа · 1.5 тайлан ажиллуулсны дараа · 1.6 тайлан ажиллуулсны дараа"
 ---
 # Тайлан
-
-<!--
-Нотолгоо (Spacehub23 origin/master c68c602):
-- Цэс: mn.xafml «Reports» → «Тайлан»
-- Тайлангууд кодонд биш, баазад хадгалагддаг (Startup.cs:114 ReportStoreMode = XML, ReportDataV2). Нэрсийн жагсаалт: research/help_review_reports.md (прод SELECT, 52 тайлан; owner дүр ReportDataV2 Read=Allow нөхцөлгүй → бүгд харагдана)
-- Кодонд дурдагдсан нэр: «01. Нэгтгэл — Хурдан» (NegtgelReportFastController.cs:13, SP-аар хурдан), «01. Нэгтгэл» (SpacehubApiV2 InvoiceBillController.cs:1014), «06. Дансны хуулга» (ReportAccountParamController.cs:9 — «Данс» параметр нэвтэрсэн хэрэглэгчийн эрхийн данснуудаар, #836)
-- Жагсаалтын «Тайлан харах» (ShowInReportV2) товчийг бүх ListView-д нуусан: DisableReportsButtonController.cs:7-14
-- Тайлан харагч: ReportsBlazorModuleV2 ReportViewerDetailViewName (AccessReportViewerController.cs:12, ReportExecuteController.cs:13)
-- Хуучин ноорог 09-tailan-excel.md: «Waiting for parameter values», хоосон тайлан = параметр дутуу (Viber 7 мөр)
--->
 
 > 🏢 Эзэмшигч, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Тайлан**
 
@@ -51,7 +40,7 @@ keywords:
 - **22. Ашиглалт, Түрээс задаргаа жилээр**.
 - **23. Ашиглалт нэгтгэл задаргаа жилээр**.
 
-Жагсаалтад өөр байгууллагын нэртэй (08, 15, 18, 21) эсвэл туршилтын («Report by …») тайлан харагдаж болно. Тэдгээрийг **бүү ашигла**.
+Туршилтын («Report by …» г.м.) болон өөр байгууллагад зориулсан тайлан, хэвлэх загваруудыг жагсаалтаас нууж байна. Ийм тайлан таны жагсаалтад харагдсаар байвал **бүү ашигла**, бидэнд мэдэгдээрэй.
 
 ## Хэзээ хэрэглэх
 - Сарын **нэгтгэл**, **дансны хуулга**, тооцооны хуудас зэрэг тайлан гаргах, Excel-ээр татах.

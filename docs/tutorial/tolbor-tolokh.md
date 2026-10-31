@@ -1,5 +1,4 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Байрлах газар: docs/tutorial/tolbor-tolokh.md. 🏠 Сургалт (CEO 16:5x).
 slug: /tutorial/tolbor-tolokh
 sidebar_label: Нэхэмжлэх харж төлөх, баримт авах
 sidebar_position: 2
@@ -15,22 +14,6 @@ keywords:
   - "ebarimt"
 ---
 # Нэхэмжлэх харж төлөх, баримт авах
-
-<!--
-Нотолгоо (spacehub 03de3014 mn_MN.json):
-- Нүүр: pages.newTenantDashboard.payment «Төлбөр төлөх» :606, noActiveInvoice :604, chooseContract «Гэрээ сонгох» :594, seeContract «Гэрээ харах» :608
-- «Төлбөр төлөх» = зөвхөн төлөгдөөгүй нэхэмжлэлийн жагсаалт (PayBillPage.dart:26-77, filter :36-37); мөр дээр дарахад «Нэхэмжлэл» дэлгэц (PaymentChartInfo.Invoice.dart:97-109 → InvoiceBillPage.dart:62-65)
-- PDF дүрс «Хэвлэх хувилбар харах» InvoiceBillPage.dart:90-108 (mn_MN.json:813), ⬇ «Нэхэмжлэл татах» :69-89 (:811) ✅ (өмнөх ❔ батлагдсан)
-- Гэрээ солих: гэрээний карт дээрх ⇄ дүрс (ActiveContractCard.dart:75-82) → «Гэрээ сонгох» цонх (ContractChooser.dart:22-24); 2+ гэрээтэй үед л (DashboardTab.dart:204-206)
-- Төлөгдсөн нэхэмжлэл «Төлбөр төлөх» жагсаалтаас алга болно (PayBillPage.dart:36-37); шошго «Төлөгдсөн» mn_MN.json:49. «Төлсөн» (:803) кодод ашиглагддаггүй → хуучин «Төлөх товч Төлсөн болно» гэснийг засав
-- Төлөх: payment.md (InvoicePaymentSheet.dart:128-147; QPay/Social Pay/Дансаар; гүйлгээний утга = гэрээний дугаар)
-- ebarimt тохиргоо: general.ebarimt.settings «Хялбар бүртгэл» :167 (CustomerProfileScreen.dart:238). Сонголт зөвхөн 2: «Хувь хүн» :165 / «Байгууллага» :157 (eBarimtSettingsScreen.dart:106-125); «Хувь хүн татвар төлөгч (Сугалаагүй)» :166 = «Хувь хүн» сонгосон үед гарах чагт (eBarimtSettingsScreen.dart:179-190); регистр :164 хоёуланд заавал (ebarimtIdValidator eBarimtSettingsScreen.dart:274-277)
-- «Төлбөр төлөх үед харуулах» (doubleCheck :160): утас тус бүрийн тохиргоо, анхдагч ON (LocalSettings.dart:115-121 getAskEbarimtBeforePayment хоосон → true); чагт зөвхөн positionIsOfHighAuthority үед CustomerProfileScreen.dart:254-261 = Захирал/Нягтлан/Менежер (Spacehub23 Position.cs:40-45, UserController.cs:581). Төлөхөд «ebarimt шалгах» (:163) цонх InvoicePaymentSheet.dart:48-53 → EBarimtConfirmationSheet.dart:48; цонхонд дарж тохиргоо засна :59, :111-115 (эрх шалгахгүй)
-- Хассан (Dev_Research 10-27): «Хялбар бүртгэл нээгдэхгүй бол эрх алга» — профайлын мөр readonly үед дарахад юу ч болохгүй (FieldEditListTile.odata.dart:81), гэвч төлөх үеийн цонхоос эрхгүй нээгдэнэ; readonly хэнд тохиолддог нь ❔
-- «Гэрээ харах» → ContractPage (ActiveContractCard.dart:31-37); «Төлөлт» таб нөхцөлгүй (ContractPage.dart:154-161) — Dev_Research ✅
-- Баримт харах: ContractPage.dart:190 таб «Төлөлт» (:290) → SalePage.dart:69-73 «ebarimt харах» (:295) зөвхөн saleEbarimtId != null үед
-- Баримтыг байгууллага гаргадаг; өмнөх сарын баримт дараа сарын 7-ны дотор (EbarimtAutoPolicy.cs:14 — owner талд)
--->
 
 > 📘 Сургалт · 🏠 Түрээслэгч, оршин суугч · Гар утасны апп · ⏱ 5 минут
 

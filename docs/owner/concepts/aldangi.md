@@ -1,30 +1,16 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Байрлах газар: docs/owner/concepts/aldangi.md
 slug: /owner/concepts/aldangi
 sidebar_label: Алданги
 type: oilgolt
 roles: [owner, nyagtlan]
 updated: 2026-10-26
-verified_commit: c68c602
+verified_commit: 84985f8
 keywords:
   - "алданги"
   - "алданги цуцлах"
   - "алданги тохиргоо"
 ---
 # Алданги
-
-<!--
-Нотолгоо (Spacehub23 origin/master c68c602):
-- 3 түвшин: PropertyOwnerMore.cs:453 «Алданги тооцно» (байгууллага) → PropertyMore.cs:92-201 «…(override)», «Алданги тохиргоог энэ объектод өөрчлөх» → ContractMore.cs:244-300 «…(override)», «Алданги тохиргоог энэ гэрээнд өөрчлөх» (ToolTip: хоосон үед Property/эзэмшигчийнхээс)
-- LateFeeCalculateType.cs: Нэхэмжлэхийн өдрөөр / Сар бүрийн нэг өдөр / Дараа сарын эхний өдөр
-- PenaltyCalculationMode: Хувиар / Тогтмол дүн / Тооцохгүй (ContractMore.cs:270 ToolTip); «Тогтмол алданги (₮/өдөр)»
-- LateFeeDeliveryMode: Хамт нэхэмжлэх / Салгаж нэхэмжлэх (ContractMore.cs:244)
-- Цуцлах/сэргээх: Bill (list-Bill), InvoiceBill (InvoiceBillController.cs:99-116); хуваарийн «Алданги өөрчил» (ContractPaymentChart.cs:954); «Алданги тохиргоог объектууд руу хувилах» (PropertyOwner.cs:524)
-- Хуваарилалт: алданги эхэлж (Sale.cs:1118-1170)
-- 4 түвшин: PenaltyConfigResolver.cs:44-52 (Хуваарь > Гэрээ > Объект > Байгууллага), 0/хоосон = тохируулаагүй (:27)
-- Томьёо: LateFeeItem.cs:117-150 (хувь, тогтмол, 50% хязгаар); BillItem.cs:734-750 (анхдагч 0.5 / 5 / 2026-01-01, хоцорсон хоног)
-- Объектын override: PropertyMore.cs:160-205 (help_review_concepts.md З3)
--->
 
 > 💡 Ойлголт · 🏢 Эзэмшигч, менежер, нягтлан · Вэб (app.spacehub.mn)
 

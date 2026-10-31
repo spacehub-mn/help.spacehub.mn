@@ -47,7 +47,7 @@ const config = {
           // Алхмын дугаар 1., 1.1 — TOC-д ч дугаартай харагдахын тулд default plugin-оос өмнө
           beforeDefaultRemarkPlugins: [require("./plugins/step-numbers")],
         },
-        // 🆕 Шинэ боломж — deploy бүрд нэг оруулга (HELP_PLAN §4, эзэн 10-26)
+        // 🆕 Шинэ боломж — deploy бүрд нэг оруулга (HELP_PLAN §4, 10-26)
         blog: {
           path: "changelog",
           routeBasePath: "changelog",
@@ -87,7 +87,7 @@ const config = {
           src: "img/logo.svg",
         },
         items: [
-          // Хоёр тусдаа тусламж (эзэн 10-27 «түрээслэгч, owner 2-ыг бүр тусдаа салгая»): src/theme/Root.js html[data-role]-оор
+          // Хоёр тусдаа тусламж (10-27 «түрээслэгч, owner 2-ыг бүр тусдаа салгая»): src/theme/Root.js html[data-role]-оор
           // зөвхөн өөрийн гарчиг харагдана; нөгөөх рүү баруун талын жижиг холбоосоор шилжинэ (src/css/custom.css).
           { type: "docSidebar", sidebarId: "owner", position: "left", label: "🏢 Эзэмшигч, менежерийн тусламж", className: "role-only role-only--owner" },
           { type: "docSidebar", sidebarId: "resident", position: "left", label: "🏠 Түрээслэгч, оршин суугчийн тусламж", className: "role-only role-only--resident" },

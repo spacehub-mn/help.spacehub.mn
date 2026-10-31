@@ -1,13 +1,10 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Нийтлээгүй, help repo-д ороогүй. Загвар: list-Bill_ListView.md
-# Байрлах газар: docs/owner/list/invoicebill.md
-# Линкийн дүрэм: onBrokenLinks "throw" — зөвхөн help main (9a388a4) дээр байгаа 8 хуудас руу линк, бусад нь тод текст.
 slug: /owner/list/InvoiceBill_ListView
 sidebar_label: Нэхэмжлэх
 type: lavlah
 roles: [owner, nyagtlan, menejer]
-updated: 2026-10-27
-verified_commit: c68c602
+updated: 2026-10-29
+verified_commit: 84985f8
 keywords:
   - "Нэхэмжлэх жагсаалт"
   - "нэхэмжлэх SMS"
@@ -16,31 +13,6 @@ keywords:
   - "алданги цуцлах нэхэмжлэх"
 ---
 # Нэхэмжлэх (жагсаалт)
-
-<!--
-Хяналт: Dev_Research research/help_review_invoicebill.md (❌ 6 засвар) → бүгдийг засав.
-Нотолгоо (Spacehub23 origin/master c68c602):
-- Хяналтын нэмэлт: ResolveSendPhone InvoiceBill.cs:994-1009; WasSentTodayForSameBill :1032; Төлөв шалгах count зөвхөн Paid :153-157; CreateSimpleAction анхдагч RequireSingleObject MainController.cs:797; TryNormalizeOtherPhone :1316-1331
-- Ангилал: InvoiceBill.cs:26 XafDisplayName «Нэхэмжлэх»
-- Жагсаалт: Model.DesignedDiffs.xafml InvoiceBill_ListView — AllowNew/AllowDelete/AllowEdit = False; Filters «Идэвхтэй» (анхдагч) / «Цуцалсан»
-- Багана: PropertyId, InvoiceContractId, SentStatus «Илгээлт» (InvoiceBill.cs:450), InvoiceBillStatus «Төлөлт» (:459), Description, TaxAmt, Total, PayAmt «Төлөх дүн» (:509), ToEmail, ToPhone, CreatedDate
-- Өнгө: InvoiceBill.cs:32 (цуцалсан зураас), :39-41 (Төлөлт: ногоон/улбар шар/улаан), :44 (Илгээлт тод)
-- Enum: SentStatusType 40/42/43/44; InvoiceBillStatusType 20/30/31
-- Шүүлт: InvoiceBillFilterController.cs:21-36 («Шүүх ...», «Шүүлт Х»), FloorFilterPopup (Барилга, Давхар, Төлбөрийн төлөв). Огнооны 📅 шүүлт алга (DateRangeFilterControllerBase<InvoiceBill> 0).
-- Товчнууд:
-  - «SMS илгээх» (Жирийн / Төлөөгүй): InvoiceBillController.cs:43-54, 349-418; InvoiceBill.cs:1207-1240 (хаалт: доод дүн, төлөгдсөн, гар утас биш, өнөөдөр илгээсэн; загвар SmsTemplate / UnpaidInvoiceBillSmsTemplate)
-  - «Имэйл илгээх» (Имэйл илгээх / Имэйл багц илгээх): :57-69, 264-347
-  - «Мэдэгдэл»: :72-78, 241-257
-  - «Төлөв шалгах»: :79-85, 127-162
-  - «Алданги цуцлах» / «Алданги сэргээх»: :99-116, 421-450, 558-575 (LateFeeWaiveConfirm)
-  - «ebarimt»: :86-96 — НУУСАН (Active=false)
-  - Баталгаажуулалт: :544-555 («<суваг> явуулах уу? Сонгосон нэхэмжлэхийн тоо: N»)
-  - «Цуцлах»: Blazor.Server/Controllers/InvoiceBillController.cs:15-24, 28-62; InvoiceBill.cs ToCancelInvoiceBill (хуучин BillPays-ийг л шалгадаг — Dev_Research батлав 🐞)
-  - «Нэхэмжлэх шинэчлэх»: InvoiceBill.cs:687-704; InvoiceBillMultiUpdateGuardController.cs:14, 59-66 (20)
-  - «Өөр дугаар руу илгээх»: InvoiceBillOtherNumberController.cs:22-30; SendInvoiceToOtherNumberPopup; InvoiceBill.cs:1316-1340
-  - «Хэвлэх» / «Багц хэвлэх»: MainController.cs:174-178; BlazorActionController.cs:84-85 (PDF), 121-136 (багц: харилцагч × сар)
-- «?» холбоос одоо: HelpLinks.cs:28 (InvoiceBill_ListView → owner/hugatsaa-songoh)
--->
 
 > 🏢 Эзэмшигч, менежер, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Тооцоо → Нэхэмжлэх**
 
@@ -59,8 +31,6 @@ keywords:
 - **Хэвлэх** → **9**, **10**; буруу нэхэмжлэх **цуцлах** → **11**.
 
 ## Товчнууд
-
-<!-- Зургийг scripts/shots/shoot.cjs автоматаар авсан (прод, туршилтын owner Рентхаб, PII blur). Дугаар = shots.json «n» = доорх дугаар. Гараар засахгүй. -->
 
 Товчны нэр апп дээр яг ингэж харагдана. Мөр сонгоогүй эсвэл нөхцөл тохироогүй үед товч саарал байна эсвэл огт харагдахгүй.
 
@@ -88,7 +58,7 @@ keywords:
 ### «Өөр дугаар руу илгээх»
 - **Юу хийдэг:** нэхэмжлэхийн SMS-ийг гэрээний биш, **таны оруулсан дугаар** руу нэг удаа илгээнэ. Цонхонд **Илгээх утасны дугаар** ба **Загвар** (Жирийн / Төлөөгүй) сонгоод **«Илгээх»** дарна.
 - **Сонголт:** 1 мөр.
-- Цонхонд засах боломжгүй нэг талбар бас харагдана — **гэрээний утас** (жирийн SMS үргэлж очдог дугаар). Нэр нь **«Гэрээний утас (жирийн SMS очдог)»**. <!-- #1184, 4452433: SendInvoiceToOtherNumberPopup.cs:31 (Dev_Research 10-27) -->
+- Цонхонд засах боломжгүй нэг талбар бас харагдана — **гэрээний утас** (жирийн SMS үргэлж очдог дугаар). Нэр нь **«Гэрээний утас (жирийн SMS очдог)»**.
 - **Нөхцөл:** дугаар **8 оронтой, 8 эсвэл 9-өөр эхэлсэн** байх ёстой. Төлөгдсөн нэхэмжлэх рүү илгээхгүй.
 - **Анхаар:** нэхэмжлэх дээрх утас, **Илгээлт** төлөв **өөрчлөгдөхгүй**. «Өнөөдөр илгээсэн» хаалтад ч тоологдохгүй. Гэрээний утсыг засах бол гэрээгээ засна.
 
@@ -152,7 +122,7 @@ keywords:
 - **Сонголт:** олон мөр. Идэвхтэй нэхэмжлэх дээр л идэвхтэй, бусад үед **саарал**.
 - **Баталгаажуулалт:** «Та сонгосон нэхэмжлэхүүдийг цуцлах уу?»
 - **Анхаар:**
-  - Цуцлахад төлсөн (эсвэл дутуу төлсөн) төлбөрийн төлөв **хэвээр** үлдэнэ. <!-- 4452433 #50г: зөвхөн !IsPaymentStatus үед буцна (Dev_Research 10-27) -->
+  - Цуцлахад төлсөн (эсвэл дутуу төлсөн) төлбөрийн төлөв **хэвээр** үлдэнэ.
   - Шинэ нэхэмжлэхийг **Төлбөр** жагсаалтаас үүсгэнэ.
 - **Буцаах:** ❌ цуцалсан нэхэмжлэхийг сэргээх товч байхгүй. Шинээр үүсгэнэ.
 

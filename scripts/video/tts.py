@@ -1,9 +1,9 @@
-# Монгол дуу (Azure Speech, mn-MN Yesui/Bataa) — эзний шийдвэр 10-26. REST API, нэмэлт сангүй.
+# Монгол дуу (Azure Speech, mn-MN Yesui/Bataa) — шийдвэр 10-26. REST API, нэмэлт сангүй.
 #   python scripts/video/tts.py <name>.voice.json <гаралт> [--voice yesui|bataa]   → <гаралт>/cue-01.wav … + manifest.json
 #   python scripts/video/tts.py --test tts-test.txt <гаралт>                        → мөр бүр түүхий/хувиргасан × 2 дуу
 #   --dry: Azure руу илгээхгүй, хувиргасан бичвэр ба тэмдэгтийн тоог (F0 = сард 0.5 сая) хэвлэнэ
 #
-# Түлхүүр зөвхөн Windows Credential Manager-т (кодонд/файлд/чатад ХЭЗЭЭ Ч бичихгүй). Эзэн нэг удаа:
+# Түлхүүр зөвхөн Windows Credential Manager-т (кодонд/файлд/чатад ХЭЗЭЭ Ч бичихгүй). нэг удаа:
 #   cmdkey /generic:spacehub-help/azure-speech /user:<region, ж: eastasia> /pass
 #   (/pass-ийг утгагүй бичвэл нууц үгийг асууж авна — shell-ийн түүхэнд үлдэхгүй)
 import ctypes, hashlib, json, os, re, sys, urllib.request, wave
@@ -48,7 +48,7 @@ def credential():
     adv = ctypes.WinDLL("advapi32", use_last_error=True)
     p = ctypes.POINTER(CREDENTIAL)()
     if not adv.CredReadW(CRED_TARGET, 1, 0, ctypes.byref(p)):  # 1 = CRED_TYPE_GENERIC
-        sys.exit(f"Түлхүүр алга: Windows Credential «{CRED_TARGET}». Эзэн: cmdkey /generic:{CRED_TARGET} /user:<region> /pass")
+        sys.exit(f"Түлхүүр алга: Windows Credential «{CRED_TARGET}». Тохируулах: cmdkey /generic:{CRED_TARGET} /user:<region> /pass")
     try:
         c = p.contents
         key = ctypes.string_at(c.CredentialBlob, c.CredentialBlobSize).decode("utf-16-le")

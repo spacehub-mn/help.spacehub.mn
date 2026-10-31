@@ -15,15 +15,6 @@ keywords:
 
 # Жагсаалт хоосон эсвэл айл «алга болсон» үед — шүүлтээ шалгах
 
-<!--
-Шинэ бүтэц рүү шилжүүлэв (Help_Spacehub 10-27). Нотолгоо (Spacehub23 origin/master 5fa824f):
-- Зураг: прод Төлбөр жагсаалт (jagsaalt-hooson), Рентхаб
-- Хайлтын үг хадгалагдаж дараа нээхэд дахин хэрэглэгдэнэ: PreserveFullTextSearchResultsListViewController.cs:40-43 (FullTextSearchParameter → DoExecute)
-- 📅 хүрээ хэрэглэгч бүрээр хадгалагдана: DateRangeFilterModelExtender.cs (#1156)
-- Хайлт хэсэгчлэн таарна: XAF FullTextFilterAction анхдагч (Contains)
-- Хассан (батлагдаагүй): «Сарын 1-нд жагсаалт энэ сар-аар шүүгддэг» (жагсаалт бүрт өөр), «Өөр байгууллага сонгогдсон»
--->
-
 > 🏢 Эзэмшигч, менежер, нягтлан · Вэб (app.spacehub.mn)
 
 ## Энэ юу вэ

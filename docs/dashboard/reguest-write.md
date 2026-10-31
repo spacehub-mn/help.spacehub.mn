@@ -7,20 +7,6 @@ verified_repo: spacehub
 ---
 # Санал хүсэлт бичих
 
-<!--
-Шинэ бүтэц рүү шилжүүлэв (Help_Spacehub 10-27). Нотолгоо (spacehub 03de3014):
-- Нүүрний карт «Санал хүсэлтүүд» (pages.newTenantDashboard.feedbacks, mn_MN.json:596): RequestsCard.dart:14-25, DashboardTab.dart:263-267
-- Жагсаалтын баруун дээд «+» (Symbols.add_rounded): TenantRequestsPage.dart:64-79
-- Цонх «Санал хүсэлт илгээх» (mn_MN.json:373): CreateTenantSuggestionPage.dart:166-168; тайлбар #desc :144 (mn_MN.json:374)
-- Нээгдэнгүүт төрөл сонгох цонх: CreateTenantSuggestionPage.dart:128-134, :519-533; утгууд EnumAdaptors.dart:747-753 → mn_MN.json:13-18 (Бараа оруулах хүсэлт, Сантехникийн үйлчилгээ, Цахилгааны үйлчилгээ, Цахилгаан шатны асуудал, Засвар үйлчилгээ, Санал хүсэлт); дахин солих :179-185
-- Текст «Та юу бодож байна?» (mn_MN.json:362), ихдээ 300 тэмдэгт: CreateTenantSuggestionPage.dart:187-197
-- Зураг: ImageSelectorGallery :199-205; ихдээ 5 (ImageSelectorGallery.dart:21)
-- Илгээх товч «Нийтлэх» (pages.postUpdates.publish, mn_MN.json:718): CreateTenantSuggestionPage.dart:229-233 (өөрчлөлтгүй бол идэвхгүй)
-- Объект сонгох алхам байхгүй (Dev_Research 10-27): нүүрний карт сонгосон гэрээний объектыг дамжуулна DashboardTab.dart:264-265 → «+» CreateTenantSuggestionPage.single(propertyOid) TenantRequestsPage.dart:72-76 → ганц объект тул PickPropertySheet гарахгүй CreateTenantSuggestionPage.dart:44-48, :401-402
-- Гэрээ солих ⇄ дүрс: ActiveContractCard.dart:75-82 (tolbor-tolokh.md-ийн нотолгоо)
-- Засвар: хуучин «Хадгалах» товч буруу → «Нийтлэх»; «Санал хүсэлт» карт → «Санал хүсэлтүүд»
--->
-
 > 🏠 Түрээслэгч, оршин суугч · Гар утасны апп
 
 :::caution

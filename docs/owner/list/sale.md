@@ -1,13 +1,10 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Нийтлээгүй, help repo-д ороогүй. Загвар: list-Bill_ListView.md
-# Байрлах газар: docs/owner/list/sale.md
-# Линкийн дүрэм: onBrokenLinks "throw" — зөвхөн help main (9a388a4) дээр байгаа 8 хуудас руу линк, бусад нь тод текст.
 slug: /owner/list/Sale_ListView
 sidebar_label: Төлөлт
 type: lavlah
 roles: [owner, nyagtlan]
-updated: 2026-10-27
-verified_commit: c68c602
+updated: 2026-10-29
+verified_commit: 84985f8
 keywords:
   - "Төлөлт жагсаалт"
   - "төлөлт цуцлах"
@@ -16,35 +13,6 @@ keywords:
   - "төлөлт хуваах"
 ---
 # Төлөлт (жагсаалт)
-
-<!--
-Хяналт: Dev_Research research/help_review_sale.md (❌ 9 засвар) → бүгдийг засав. Дахин хяналт ✅, сонголтот 2 нэмэлт орсон.
-Нотолгоо (Spacehub23 origin/master c68c602):
-- Картын таб: xafml:6678, 6712, 6715, 6718 (BillPays :6656 Removed); ViewEbarimtSale.cs:15 «Ebarimt хэвлэх», :261 «Илгээх эсэх»; Sale.cs:1495 (олноор — буцаасныг тооцно), 1505-1555
-- Цэс: Model.DesignedDiffs.xafml:83 (Sale_ListView, MainItem «Тооцоо», Index 6); Sale.cs:25 XafDisplayName «Төлөлт», :27 NavigationItem MainItem
-- Жагсаалт: Model.DesignedDiffs.xafml:6875 AllowNew=True, AllowDelete=False; багана :6876-6908; анхдагч шүүлт CurrentFilterId=ActiveOnSale (:6909)
-- Багана нэр: Sale.cs:301 Түрээслэгч, :312 Дугаар, :331 Төлсөн дүн, :351 Төлбөр хэлбэр, :405 И-Баримт статус, :413 Төрөл
-- Өнгө: Sale.cs:30-32 (цуцалсан = зураас), :35-36 (Код ногоон тод, нөхцөлгүй), :37-38 (BalanceAmount < 0 улаан)
-- Шүүлтүүд: Sale.cs:49-53 (Хүчинтэй / Ebarimt гарсан / Ebarimt гараагүй / Цуцлагдсан / Ebarimt буцаасан)
-- Огноо: SaleFilterController.cs:10-13 (Date, applyDefault)
-- Товчнууд:
-  - «И-Баримт»: Ebarimt3SaleController.cs:29-57 (TargetObjectsCriteria :44, 1 мөр :38); Баримт гаргах :75-112 (CanIssueEbarimt Sale.cs:1007-1014);
-    Буцаах :114-133 + SaleEbarimtActionRules.ReturnConfirmMessage; Илгээх :134-152 (StatusAfterSend); хэвлэх хуудас BlazorActionController.cs:90-93
-  - «Хуваарилах...»: Sale.cs:1101-1205 (алданги эхэлж :1118-1170, дараа нь бусад :1173-1205; 1000₮ tolerance :1185)
-  - «Цуцлах ...»: Sale.cs:1065-1098 + SaleEbarimtActionRules.CancelBlockReason
-  - «Төлөлт хуваах»: Sale.cs:710-758; SaleSplitPopup.cs:61-89
-  - «Ангилал солих...»: SaleController.cs:28-39, 135-174; SaleCategoryType.cs:7-12
-  - «Задаргаа нэмэх»: SaleController.cs:41-51, 61-133; AddSaleItemPopup.cs:24-28 (зөвхөн «Барьцаа»)
-  - «Бонус шалгах...»: Sale.cs:1023-1034
-  - «Тайлбар бөглөх (данснаас)...»: Sale.cs:1039-1050 (StatementId null шалгалтгүй :1044 — Dev_Research батлав)
-    → #1183 (2dc9301, deploy хүлээж байна): FillDescriptionCriteria Sale.cs:1040 «[StatementId.BankAccountId] Is Not Null And [ContractId.PropertyId] Is Not Null» = TargetObjectsCriteria → товч идэвхгүй; null хамгаалалт :1048
-  - Буцаах #1177 (deploy хүлээж байна): Ebarimt3SaleController.cs:116-123 SaleEbarimtActionRules.ReturnBlockReason (үүсээгүй / аль хэдийн буцаасан / Success=false)
-  - «Е-баримт олноор гаргах»: MainController.cs:165-167, 2704-2765; Sale.cs:1392 autoCreateEbarimt, 1450-1530 IsAutoCreateEbarimt
-  - «Шинэ»: Sale.cs:300-303 (Түрээслэгч RuleRequired, DataSource PropertyId.Contracts), :351; SaleController.cs:198-202 (автоматаар бөглөхийг хассан)
-  - Хэвлэх: Ebarimt3SaleController.cs:111 PrepareEbarimt_Select — subscriber олдсонгүй (git grep «PrepareEbarimt_Select +=» 0); BlazorActionController.cs:90 «case Sale» нь PrepareContract замд, Sale-д тийм товч алга — Dev_Research батлав
-  - Хадгалсны дараа төлбөрийн төлөв: SaleController.cs:186-239 (#791)
-- «?» холбоос одоо: HelpLinks.cs:26 (Sale_ListView → owner/e-barimt); хуудас help-index.json-д орвол owner/list/Sale_ListView (HelpLinks.cs:39-45)
--->
 
 > 🏢 Эзэмшигч, менежер, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Тооцоо → Төлөлт**
 
@@ -65,8 +33,6 @@ keywords:
 
 ## Товчнууд
 
-<!-- Зургийг scripts/shots/shoot.cjs автоматаар авсан (прод, туршилтын owner Рентхаб, PII blur). Дугаар = shots.json «n» = доорх дугаар. Гараар засахгүй. -->
-
 Товчны нэр апп дээр яг ингэж харагдана. Мөр сонгоогүй эсвэл нөхцөл тохироогүй үед товч саарал байна эсвэл огт харагдахгүй.
 
 > ℹ️ Энэ жагсаалтад **«Шинэ»** товч байгаа (гараар төлөлт бүртгэх), **«Устгах»** товч байхгүй. Төлөлтийг устгадаггүй, **«Цуцлах ...»**.
@@ -84,6 +50,11 @@ keywords:
 - Банкаар орсон мөнгийг гараар бүү бүртгэ, хуулгаас холбо. Эс бөгөөс давхар бүртгэгдэнэ. → [Хуулгаас төлбөр бүртгэх](/owner/huulga-tolbor)
 
 ### «Хуваарилах...» {#huvaarilah}
+
+<video controls preload="metadata" width="100%" src="/video/04-huvaarilah.mp4"></video>
+
+*Видео (дуугүй, хадмалтай). Төлсөн боловч «төлөөгүй» харагдах.*
+
 - **Юу хийдэг:** төлөлтийн **хуваарилагдаагүй үлдэгдлийг** гэрээний төлөгдөөгүй төлбөрүүдэд хуваарилна.
   - Эхлээд **алдангийн** төлбөрт, дараа нь бусад төлбөрт хуваарилна.
   - Хуваарилсан төлбөр бүрэн төлөгдвөл «төлсөн», дутуу бол «дутуу» болно.
@@ -93,7 +64,7 @@ keywords:
 - **Баталгаажуулалт:** «Та сонгосон төлөлтийг хуваарилах уу?»
 - **Анхаар:**
   - Алдангийн дараа бусад төлбөрт **огнооны дарааллаар (хуучнаас нь) хуваарилах баталгаагүй**. Тодорхой сард хуваарилах шаардлагатай бол дараа нь картын «Төлөлтийн хуваарилалт» табаас шалга.
-  - Гэрээгүй эсвэл цуцалсан төлөлт дээр дарвал алдаа гарахгүй, **юу ч хийхгүй**. <!-- Sale.cs:1114 (4452433, #50в) -->
+  - Гэрээгүй эсвэл цуцалсан төлөлт дээр дарвал алдаа гарахгүй, **юу ч хийхгүй**.
 - **Буцаах:** ⚠️ тусдаа «буцаах» товч байхгүй. Төлөлтийг цуцалбал хуваарилалт нь арилна (доор).
 
 ### «Цуцлах ...» {#tsutslah}
@@ -163,7 +134,7 @@ keywords:
   - задаргаатай төлөлт;
   - хуваах дүн 0, эсвэл нийт дүнтэй тэнцүү/их;
   - одоогийн сувагтай ижил суваг.
-- **⚠️ Анхаар:** **хуваарилсан** төлөлтийг хуваах боломжгүй — систем зөвшөөрөхгүй. Эхлээд хуваагаад, дараа нь «Хуваарилах...» дар. <!-- SplitSale BillPayments.Any() (4452433, #50в) -->
+- **⚠️ Анхаар:** **хуваарилсан** төлөлтийг хуваах боломжгүй — систем зөвшөөрөхгүй. Эхлээд хуваагаад, дараа нь «Хуваарилах...» дар.
 
 ### «Ангилал солих...»
 - **Юу хийдэг:** сонгосон төлөлтүүдийн **Төрлийг** солино: Үндсэн төлөлт · Барьцаа төлөлт · Эхний үлдэгдэл.

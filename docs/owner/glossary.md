@@ -1,12 +1,10 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Нийтлээгүй. Байрлах газар: docs/owner/glossary.md
-# Линкийн дүрэм: onBrokenLinks "throw" — зөвхөн help main (9a388a4) дээр байгаа 8 хуудас руу линк. /owner/list/* хуудсууд нийтлэгдмэгц тод текстийг линк болгоно.
 slug: /owner/glossary
 sidebar_label: Нэр томьёо
 type: oilgolt
 roles: [owner, nyagtlan, menejer]
 updated: 2026-10-26
-verified_commit: c68c602
+verified_commit: 84985f8
 keywords:
   - "нэр томьёо"
   - "тооцоо гэж юу вэ"
@@ -14,20 +12,6 @@ keywords:
   - "цуцлах устгах ялгаа"
 ---
 # Нэр томьёо
-
-<!--
-Нэмэлт 10-26 16:3x: Автомат ажил (PropertyOwner.cs:108, Property.cs:360, Contract.cs:606), Хоног тооцох (PropertyItem.cs:234, ContractItem.cs:243), Өөрчлөх хувь (#1172), Тоолуурын бүртгэл (UtilityMeter.cs:13) / Гэрээний тоолуур (ContractUtilityMeter.cs:19). Хяналт: Dev_Research research/help_review_glossary.md (❌ 3 + 1 санал) → бүгдийг засав.
-Нотолгоо (Spacehub23 origin/master c68c602) — аппад харагдах нэр (XafDisplayName):
-- Contract.cs «Гэрээ»; Property.cs:30 «Объект»; Room.cs:25 «Өрөө/Талбай»; ContractRoom.cs:28 «Гэрээ өрөө/талбай»; Customer.cs:29 «Харилцагч»;
-  PropertyOwner.cs «Байгууллага»; ContractPaymentChart.cs:35 «Төлбөрийн хуваарь»; Bill.cs «Төлбөр»; InvoiceBill.cs:26 «Нэхэмжлэх»;
-  Sale.cs:25 «Төлөлт»; Statement.cs:25 «Дансны хуулга»; BillPayment.cs:15 «Хуваарилалт»; LateFeeItem.cs:24 «Алданги задаргаа»;
-  Discount.cs:26 «Хөнгөлөлт»; BeginBalance.cs:14 «Эхний үлдэгдэл»; ContractUtility.cs:18 «Тоолуур ашиглалт»; UtilitySheet.cs:17 «Тоолуур татах»;
-  SaleEbarimt.cs:18 «И-Баримт»; AutoJob.cs:27 «Авто ажил»; Item.cs:17 «Бүтээгдэхүүн/Үйлчилгээ»; ContractItem.cs:24 «Гэрээ бүтээгдэхүүн/үйлчилгээ»
-- Bill.cs:680 «Гараар засагдсан», :48 шүүлт; ContractBillType: Үндсэн / Эхлэл / Хаалтын / Эхний үлдэгдэл / Нэмэлт / Алданги төлбөр
-- Цэс: mn.xafml — Менежмент · Тооцоо · Автоматжуулалт · Тайлан · Тусламж · Хэрэглэгч эрх; Эхний үлдэгдэл → «Дутуу» (Bill_ListView_Begin) / «Илүү» (Sale_ListView_Begin)
-- Цуцлах ≠ Устгах: Bill/InvoiceBill/Sale ListView AllowDelete=False (xafml:560, InvoiceBill_ListView, :6875); Statement AllowDelete=True (:7271)
-- Хуваарилах: Sale.cs:1101-1205; Алданги цуцлах: InvoiceBillController.cs:99-116
--->
 
 > 📖 Нэр томьёо · 🏢 Эзэмшигч, менежер, нягтлан · Вэб (app.spacehub.mn)
 
@@ -156,14 +140,13 @@ Spacehub-д шилжихээс өмнөх өр эсвэл илүү төлөлт.
 
 ## Апп дээрх англи үгс {#angli-ug}
 Програмын зарим товч, бичиг англиар харагддаг. Утга нь:
-<!-- Нотолгоо: app.spacehub.mn дэлгэцийн зураг 10-27 (Авто ажил, Авто eBarimt, Дансны хуулга); Job* = AutoJob.cs (autojob.md нотолгоо :26-30); Gateway/Excel = Spacehub23 12469b2 StatementImportType.cs:7-10 -->
 - **Filter…** — цэсний дээд талын хайлт. Цэсний нэр бичиж хурдан олно.
 - **No data to display** — «харуулах мөр алга». Ихэвчлэн огнооны шүүлтээс болдог → [Жагсаалт хоосон](/owner/jagsaalt-hooson-shuult)
 - **Page Size** — нэг хуудсанд харагдах мөрийн тоо (20, 50 …).
 - **Job Create** — авто ажлыг серверт бүртгэх (эхлүүлэх). → **Авто ажил** жагсаалт
 - **Job start** / **Job Start** — зогссон авто ажлыг дахин эхлүүлэх.
 - **Job stop** (**Авто ажил** жагсаалтад) — авто ажлыг зогсоох. Тухайн сарын авто тооцоо, нэхэмжлэх, SMS явахгүй болно.
-- **Job Stop** (**Авто eBarimt** жагсаалтад) — е-баримт автоматаар гарахаа болино. <!-- EbarimtRecord.cs:319 (Dev_Research 10-27) -->
+- **Job Stop** (**Авто eBarimt** жагсаалтад) — е-баримт автоматаар гарахаа болино.
 - **Job Delete** — авто ажлыг серверээс устгах. Жагсаалтын мөр үлдэнэ.
 - **Next Auto Job +** — дараа сарын ижил тохиргоотой авто ажил нэмэх.
 - **eBarimt** — Е-баримт (НӨАТ-ын баримт). «Авто eBarimt» = е-баримтыг автоматаар гаргах ажил.

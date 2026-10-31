@@ -1,13 +1,10 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Нийтлээгүй, help repo-д ороогүй. Загвар: list-Bill_ListView.md
-# Байрлах газар: docs/owner/list/contractpaymentchart.md
-# Линкийн дүрэм: onBrokenLinks "throw" — зөвхөн help main (9a388a4) дээр байгаа 8 хуудас руу линк, бусад нь тод текст.
 slug: /owner/list/ContractPaymentChart_ListView
 sidebar_label: Төлбөрийн хуваарь
 type: lavlah
 roles: [owner, nyagtlan]
-updated: 2026-10-26
-verified_commit: c68c602
+updated: 2026-10-29
+verified_commit: 84985f8
 keywords:
   - "Төлбөрийн хуваарь"
   - "тоолуур оруулах"
@@ -16,23 +13,6 @@ keywords:
   - "алданги тооцохгүй"
 ---
 # Төлбөрийн хуваарь (жагсаалт)
-
-<!--
-Хяналт: Dev_Research research/help_review_contractpaymentchart.md (❌ 3 жижиг) → бүгдийг засав.
-Нотолгоо (Spacehub23 origin/master c68c602):
-- ContractPaymentChart.cs:35 XafDisplayName «Төлбөрийн хуваарь»
-- Жагсаалт: Model.DesignedDiffs.xafml:2489 AllowNew/AllowEdit/AllowDelete = False, ShowAutoFilterRow=False; багана ContractId, ContractType, Name «Сар», StartDate, EndDate, ChartStatus «Хуваарийн төлөв», DontCalculateLateFee «Алданги тооцохгүй», DontUseDiscountConfig «Хөнгөлөлт тооцохгүй»; Filters анхдагч «Энэ сар» (StartDate), бүгд хаагдаагүй гэрээ ([ContractId.IsClosed] = False)
-- Өнгө: ContractPaymentChart.cs:26 (Сар улаан тод — өнгөрсөн сар, объектын эхлэх огнооноос хойш), :27 (ногоон тод — өнгөрсөн, PayChartStatus = Төлбөр төлөгдсөн)
-- Enum: ChartStatusType 0/10/20/30/31/32/40/50
-- Товчнууд:
-  - «Тоолуур [» / «Тоолуур +» / «Тоолуур ]»: MainController.cs:86-98 (1 мөр, ContractType 1 эсвэл 2), 2984-3110 (ContractUtility_CreateView; мессежүүд)
-  - «Төлбөр +»: :101-102, 2394-2403 → CreateBillOnChart :2530-2660 (тэг хэрэглээний асуулт MeterlessBillRules.cs:12-20; Bill картыг popup-оор, OK дээр commit)
-  - «Төлбөр ]»: :114-115, 2405-2414 (EndBill, хаалтын заалт шаардана :2594-2606 #1025)
-  - «Төл & Нэх +»: :130-131, 2296-2381 (Bill + InvoiceBill → InvoiceBill_DetailView)
-  - «Төлбөр загвар»: ContractPaymentChart.cs:964-982 (BillTemplatePopup; хоосон бол цуцална #833; BillTemplateGuardController.cs)
-  - «Алданги өөрчил»: :954-962 (DontCalculateLateFee эсрэг болгоно, олон мөр, баталгаажуулалтгүй)
-  - «Цах Тоолуур ...»: :984-989 — нэг тоолуурын дугаар хатуу бичигдсэн, үр дүнг ашигладаггүй (Dev_Research батлав)
--->
 
 > 🏢 Эзэмшигч, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Тооцоо → Төлбөрийн хуваарь**
 
@@ -60,13 +40,11 @@ keywords:
 - Хаагдсан гэрээний хуваарь энэ жагсаалтад харагдахгүй.
 
 ## Шүүлт
-- Сарын шүүлтийг товчны мөр-ын баруун талын сонголтоос солино: **Энэ сар** · **Өмнөх сар** · **Дараа сар** · **Бүгд** (эхлэх огноогоор). <!-- ❔ анхдагч «Энэ сар» гэж кодоор бичсэн ч зураг дээр «Бүгд» сонгогдсон (Dev_Research ⚪) — UI-аар шалгах -->
+- Сарын шүүлтийг товчны мөр-ын баруун талын сонголтоос солино: **Энэ сар** · **Өмнөх сар** · **Дараа сар** · **Бүгд** (эхлэх огноогоор).
 - Энэ жагсаалтад баганын шүүлтийн мөр байхгүй. Хайлтын нүдийг ашигла.
 - Жагсаалт хоосон харагдвал → [Жагсаалт хоосон](/owner/jagsaalt-hooson-shuult)
 
 ## Товчнууд
-
-<!-- Зургийг scripts/shots/shoot.cjs автоматаар авсан (прод, туршилтын owner Рентхаб, PII blur). Дугаар = shots.json «n» = доорх дугаар. Гараар засахгүй. -->
 
 Товчны нэр апп дээр яг ингэж харагдана. Ихэнх нь **1 мөр** сонгоход ажиллана.
 

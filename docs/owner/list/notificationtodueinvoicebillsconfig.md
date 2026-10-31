@@ -1,28 +1,16 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Нийтлээгүй, help repo-д ороогүй. Загвар: list-Bill_ListView.md
-# Байрлах газар: docs/owner/list/notificationtodueinvoicebillsconfig.md
 slug: /owner/list/NotificationToDueInvoiceBillsConfig_ListView
 sidebar_label: Нэхэмжлэх дахиж явуулах
 type: lavlah
 roles: [owner, nyagtlan]
 updated: 2026-10-26
-verified_commit: c68c602
+verified_commit: 84985f8
 keywords:
   - "Нэхэмжлэх дахиж явуулах"
   - "төлөөгүй айлд сануулах"
   - "хүлээх хоног"
 ---
 # Нэхэмжлэх дахиж явуулах тохиргоо (жагсаалт)
-
-<!--
-Хяналт: research/help_review_notificationtodue.md (❌ 2) → засав. 🔴 getJobUrl-д «/Automation» дутуу → 404 (blueprint 07-06, ⚪); RuleUniqueValue → объект бүрд 1.
-Нотолгоо (Spacehub23 origin/master c68c602):
-- NotificationToDueInvoiceBillsConfig.cs:15 «Нэхэмжлэх дахиж явуулах тохиргоо»; цэс Тооцоо → Нэхэмжлэх-ийн дэд цэс (help_review_navigation)
-- Талбар: :38 Код, :47 Үл хөдлөх, :58 Хүлээх хоног (:18 > 0), :66 Мэдэгдэл явуулах төрөл (:157 Апп, :159 Утас, :161 Бүгд), :74 Ажлын төлөв
-- Товч: :100-101 «Ажил үүсгэх» («Ажлыг үүсгэх гэж байна. Үргэлжлүүлэх үү?», CronJobData хоосон), :108-109 «Ажил эхлүүлэх» («Ажлыг эхлүүлэх»), :115-116 «Ажил зогсоох» («Ажлыг зогсоох»), :122-123 «Ажил устгах» («Ажлыг устгах», CronJobData байгаа); бүгд 1 мөр
-- Хуваарь: :134-137 өдөр бүр 12:00, 16:00
-- Ажил: Spacehub.Automation/Controllers/AutomationController.cs:179-218 — объектын тохиргооны ЭХНИЙХ (FirstOrDefault); нэхэмжлэхийн огноо = өнөөдөр − Хүлээх хоног (яг тэр өдөр), Илгээлт = Илгээсэн эсвэл Хүлээн авсан, төлбөр төлөгдөөгүй; Апп → push, Утас → SMS, Бүгд → хоёулаа; дараа нь Илгээлт = «Дахин илгээсэн»
--->
 
 > 🏢 Эзэмшигч, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Тооцоо → Нэхэмжлэх → Нэхэмжлэх дахиж явуулах тохиргоо**
 
@@ -57,8 +45,6 @@ keywords:
 
 ## Товчнууд
 Бүгд **1 мөр** сонгоход л идэвхжинэ. Мөр сонгоогүй үед саарал байна.
-
-<!-- Зургийг scripts/shots/shoot.cjs автоматаар авсан (прод, туршилтын owner Рентхаб, PII blur). Дугаар = shots.json «n» = доорх дугаар. Гараар засахгүй. -->
 
 ![Нэхэмжлэх дахиж явуулах тохиргооны товч 1–4](/img/owner/list/notifconfig-1.webp)
 

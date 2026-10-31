@@ -8,22 +8,6 @@ verified_repo: spacehub
 ---
 # Төлбөр төлөх заавар
 
-<!--
-Шинэ бүтэц рүү шилжүүлэв (Help_Spacehub 10-27). Нотолгоо (spacehub-mn/spacehub origin/master 03de3014):
-- Нүүрний карт «Төлбөр төлөх» (mn_MN.json:606): PaymentCard.dart:15-23 → PayBillPage (гарчиг :29); зөвхөн төлөгдөөгүй нэхэмжлэл (filter isPayed != True && status != paid, PayBillPage.dart:36-37); хоосон бол noActiveInvoice (:50, mn_MN.json:604)
-- «Төлөх» товч (mn_MN.json:804): PaymentChartInfo.Invoice.dart:70-77, зөвхөн Үүссэн/Дутуу төлсөн төлөвт, isPayable үед; PayBillPage.dart:66-68 (харилцагч төрлийн бүртгэлд)
-- Төлбөрийн хэлбэр: InvoicePaymentSheet.dart:128-147 — QPay/SocialPay зөвхөн байгууллага тохируулсан үед; «Дансаар төлөх» (mn_MN.json:181) үргэлж
-- QPay: «Аппаар» / «QR код» (mn_MN.json:805-806; InvoicePaymentSheet.dart:163-188); «Банк» :180, «Дансны дугаар» :179; «Төлсний дараа үргэлжлүүлэх товчийг дараарай» (mn_MN.json:186), «Үргэлжлүүлэх» (:152)
-- Дансаар: банк, «Хүлээн авагч» (:187), данс, «Гүйлгээний утга» (:188) = contractId.code (InvoicePaymentSheet.dart:256-286) ↔ Spacehub23 Statement.cs:694 гэрээний дугаараар тааруулна; delayWarning 30 минут (mn_MN.json:189)
-- Шалгалт: «Амжилттай төлөгдлөө» (mn_MN.json:184) InvoicePaymentSheet.dart:203-222; баталгаажаагүй үед notYetConfirmed (:185) дарагдаж «Түр хүлээнэ үү...» (general.wait mn_MN.json:222) гарна InvoicePaymentSheet.dart:223-227 — «Хараахан баталгаажаагүй байна» дэлгэцэнд гардаггүй (Dev_Research 10-27); checkQpayPaymentState :439-449
-- Төлөхийн өмнө «ebarimt шалгах» (mn_MN.json:163) цонх анхдагчаар гарна InvoicePaymentSheet.dart:48-53 (LocalSettings.dart:115-121 хоосон → true); товч «Үргэлжлүүлэх» EBarimtConfirmationSheet.dart:99-103
-- «Аппаар»: банк сонгоод «Үргэлжлүүлэх» (CheckoutButton.dart:56-58 general.continue) → checkout() банкны аппыг нээнэ InvoicePaymentSheet.dart:451-490, дараа нь шалгах төлөв; «QR код» табд «Төлсний дараа үргэлжлүүлэх товчийг дараарай» QRCode.dart:34 (банк сонгоогүй → шууд шалгах :474-479)
-- CheckPay серверт 500 буцаадаг байсан (492e8cd), засвар #1181 (2dc9301) — deploy болсон эсэх ❔. Апп ≤1.35.7 → api.dev (lib/APIs/api.dart:19). Дутуу төлсөн нэхэмжлэх «баталгаажаагүй» хэвээр (InvoiceBillStatus == Paid нөхцөл).
-- Төлөгдсөн нэхэмжлэл: шошго «Төлөгдсөн» (enum.InvoiceBillStatus_.paid, mn_MN.json:49; PaymentChartInfo.Invoice.dart:35-44). «Төлсөн» түлхүүр (mn_MN.json:803) кодод ашиглагддаггүй → хуучин «Төлөх товч Төлсөн болно» гэснийг засав.
-- «Гэрээ харах → Нэхэмжлэл» таб, шүүлт: InvoicesTab.dart:88-98, mn_MN.json:816-818; шүүлтийн жагсаалтад «Бүгд» сонголт байхгүй: null мөр «Төлөгдсөн эсэх» (pages.rentor.invoices.isPayed#null mn_MN.json:817) гэж гарна InvoicesTab.dart:99-105; «Бүгд» (enum.all :19) зөвхөн сонгосны дараа шүүлтүүрийн товчин дээр (itemName InvoicesTab.dart:92-97) — Dev_Research 10-27
-- Хассан (харагдах бичвэрээс): дотоод засварын дугаар (#1181), серверийн тайлбар
--->
-
 > 🏠 Түрээслэгч, оршин суугч · Гар утасны апп
 
 :::caution

@@ -7,22 +7,6 @@ verified_repo: spacehub
 ---
 # Бүртгэлтэй утасны дугаар солих
 
-<!--
-Шинэ бүтэц рүү шилжүүлэв (Help_Spacehub 10-27). Нотолгоо (spacehub 03de3014):
-- Доод цэс «Бүртгэл»: TenantPage.dart:78-81 (pages.rentor.account, mn_MN.json:761)
-- «Хувийн мэдээлэл»: UserScreen.dart:175-180 (mn_MN.json:791) → UserProfilePage UserScreen.dart:81-85
-- Дэлгэцийн гарчиг «Засварлах»: UserProfileScreen.dart:68 (general.edit, mn_MN.json:169)
-- Мөр «Утас»: UserProfileScreen.dart:115-138 (pages.userProfile.phone, mn_MN.json:887); дарахад засах дэлгэц FieldEditWidget.odata.dart:43-57
-- «Хадгалах» товч: FieldEditScreen.dart:195-198 (general.save, mn_MN.json:209); амжилт «Амжилттай!» UserProfileScreen.dart:221-223 (mn_MN.json:779)
-- Баталгаажаагүй бол «Баталгаажуулах» (pages.userProfile.verifyHandle, mn_MN.json:891): UserProfileScreen.dart:124-136; засах дэлгэцэд утга өөрчлөгдөөгүй үед л харагдана FieldEditScreen.dart:191 (`if (!hasChanged)`)
-- Баталгаажуулах дэлгэц (гарчиг «Баталгаажуулах» pages.forgotPwd.otp.title mn_MN.json:418, VerifyPage.dart:189): нээгдэнгүүт код илгээх хүсэлт VerifyPage.dart:60-81; заавар «Таны % дугаарлуу илгээсэн 6 оронтой нууц үгийг оруулна уу» mn_MN.json:412 (VerifyPage.dart:197-202); 6 оронтой нүд :218; 6 орон бөглөгдмөгц автоматаар илгээнэ onOtpChanged → next() VerifyPage.dart:100-110
-- Амжилт «Утасыг амжилттай баталгаажууллаа» (mn_MN.json:889) VerifyPage.dart:163-167; буруу код → алдааны бичвэр + нүд чичрэх VerifyPage.dart:141-145, :239-244
-- Хассан: «Бүртгэлтэй дугаар оруулах» → шинэ дугаараа бичнэ (талбарт одоогийн дугаар бөглөгдсөн байна, FieldEditWidget.odata.dart:51)
-- «Хадгалах»-ын дараа дэлгэц 2 удаа хаагдаж магадгүй (UserProfileScreen.dart:219 + FieldEditScreen.dart:109) ❔ — тиймээс хаашаа буцахыг бичээгүй
-- Шинэ дугаараар нэвтрэх эсэх (сервер тал) ❔ — шалгаагүй, тиймээс бичээгүй
-- Dev_Research 10-27 залруулга: баталгаажуулах урсгалыг алхамд бүрэн оруулав
--->
-
 > 🏠 Түрээслэгч, оршин суугч · Гар утасны апп
 
 :::caution

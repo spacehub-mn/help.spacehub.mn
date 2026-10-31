@@ -1,13 +1,10 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Нийтлээгүй, help repo-д ороогүй. Загвар: list-Bill_ListView.md
-# Байрлах газар: docs/owner/list/contractutility.md
-# Линкийн дүрэм: onBrokenLinks "throw" — зөвхөн help main (9a388a4) дээр байгаа 8 хуудас руу линк, бусад нь тод текст.
 slug: /owner/list/ContractUtility_ListView
 sidebar_label: Тоолуур ашиглалт
 type: lavlah
 roles: [owner, nyagtlan, menejer]
 updated: 2026-10-27
-verified_commit: c68c602
+verified_commit: 84985f8
 keywords:
   - "Тоолуур ашиглалт"
   - "тоолуурын заалт"
@@ -15,21 +12,6 @@ keywords:
   - "өмнөх сарын заалтаас их"
 ---
 # Тоолуур ашиглалт (жагсаалт)
-
-<!--
-Хяналт: Dev_Research research/help_review_contractutility.md (❌ 4 + 1) → бүгдийг засав. Дахин хяналт ✅; ContractUtilityChange цэсэнд нуугдсан (NavigationItem Hidden), UtilityChangeId Aggregated + ExpandObjectMembers.Never (ContractUtility.cs:405-413, Qa) → карт дээр шууд бөглөнө; прод 148 бичлэг.
-Нотолгоо (Spacehub23 origin/master c68c602):
-- Оруулах зам: MainController.cs:86-98, 2984-, 3025-3028 (Тоолуур [ / + / ]); xafml:104, UtilitySheetController.cs:26; ContractUtilityMeterValue.cs:396
-- Хэрэглээ тухай бүр бодогдоно: ContractUtility.cs:333-362; PrevValue + солилт :266-313; BillItem.cs:406 (UtilityId нэг мөр)
-- Цэс: Model.DesignedDiffs.xafml:71 (Тооцоо → ContractUtility_ListView, Index 2); ContractUtility.cs:18 XafDisplayName «Тоолуур ашиглалт»
-- Жагсаалт: xafml:2851 AllowNew/AllowDelete/AllowEdit = False; багана :2852-2865 (Code тоо, PaymentChartId, Value×3, Qty×3); Filters :2866-2871 (анхдагч «Энэ сар», MeterDate). Прод 10-27 туршилтын owner-оор нээхэд сонголт хоосон, бүх сар харагдсан — хэрэглэгчийн хадгалсан төлөв байж магадгүй ❔ → «анх Энэ сар» гэж бичээгүй
-- Карт: xafml:2783 ContractUtility_DetailView AllowNew/AllowDelete = False
-- Өнгө: ContractUtility.cs:27 (#ffeaca — тоолуур солилттой), :28-34 (халуун ус улаан, хүйтэн ус цэнхэр, цахилгаан ногоон)
-- Шалгалт: ContractUtility.cs:23-25 (энэ сарын заалт ≥ өмнөх сарын)
-- Сар түгжих: :22 (байгууллагын тохиргоо IsAllowEdit = false бол «Сар» засагдахгүй)
-- Хадгалах үед: :430-457 (дугаар «<гэрээ>-NN», сарын төлөв UtilityCreated, «Нэхэмжлэх үүсгэх» чагттай бол Bill + хөнгөлөлт + нэхэмжлэх; эхлэл заалт бол үүсгэхгүй #897)
-- Товч: ContractUtility-д чиглэсэн toolbar action алга (MainController.cs:138, 213, 217 коммент; BlazorEditorController.cs:8 зөвхөн DetailView-ийн доод хязгаар)
--->
 
 > 🏢 Эзэмшигч, менежер, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Тооцоо → Тоолуур ашиглалт**
 

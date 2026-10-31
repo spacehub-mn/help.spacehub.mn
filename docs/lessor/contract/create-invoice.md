@@ -1,31 +1,15 @@
 ---
 type: zaavar
 roles: [owner, menejer]
-updated: 2026-10-27
+updated: 2026-10-28
 verified_commit: 03de3014
 verified_repo: spacehub
+imgmap_skip: "1.6 задаргааг нээхэд нэхэмжлэх үүсдэг — продод нээхгүй · 1.7 задаргааг нээхэд нэхэмжлэх үүсдэг — продод нээхгүй · 1.8 илгээх · 1.9 илгээсний дараа"
 ---
 
 # Нэхэмжлэл үүсгэж илгээх
 
-<!-- Кодын тулгалт spacehub 03de3014 (Help_Spacehub 10-26, Dev_Research; 10-27 дахин шалгав):
-- доод цэс «Гэрээ» pages.landlord.contracts mn_MN.json:480; LessorPage.dart:102-107 (зөвхөн userPosition.showContractsTab үед — routes.dart:38-39)
-- гэрээн дээр дарахад ContractPage CustomerListTile.dart:69-76
-- таб «Хуваарь» general.paymentInfo.paymentHistory mn_MN.json:198; ContractPage.dart:155, :186
-- сарын мөрийн баруун талын 3 цэгтэй цэс: зөвхөн төлөгдөөгүй сард Chart.dart:137; «Нэхэмжлэх» general.paymentInfo.paymentHistory.invoice :201; Chart.dart:161-170 → PreInvoiceDataPage Chart.dart:42-49
-- «Та нэхэмжлэлийн урьдчилсан задаргааг харж байна» pages.preinvoice.caution :732; PreInvoiceDataPage.dart:140
-- «Утасруу илгээх» :738, «Мэйлрүү илгээх» :737 анхдагчаар тэмдэглэгдсэн PreInvoiceDataPage.dart:36-37, :207-225
-- «Нэхэмжлэх» товч PreInvoiceDataPage.dart:227-232; баталгаажуулах асуултгүй, шууд илгээнэ :42-56 (confirmMessage :202 ашиглагдаагүй)
-- хоёр чагт хоёулаа авсан үед: апп sendSms=false, sendEmail=false-ээр v1InvoiceBillCreateBillandInvoicePost дуудна PreInvoiceDataPage.dart:42-56 — нэхэмжлэл үүсээд илгээгдэхгүй эсэх нь сервер тал ❔ (аппын кодоор батлагдаагүй тул харагдах бичвэрт оруулаагүй, Dev_Research 10-27 санал)
-- амжилт «%-д нэхэмжлэлийг амжилттай илгээлээ» :203; PreInvoiceDataPage.dart:60-67
-- задаргаа үүсэхгүй үед: Invoice.ChartMissing :127, Invoice.UtilityMissing :128 — задаргааг FetchPageBuilder-ээр татдаг (PreInvoiceDataPage.dart:95), алдааг getSpacehubError харуулна (FetchBuilder.dart:120); сервер яг энэ кодыг буцаадаг эсэх ❔
--->
-
 > 🏢 Эзэмшигч, менежер · Гар утасны апп
-
-:::caution 2023 оны заавар
-Спейсхаб аппын (ҮХХ эзэмшигч) 2023 оны хувилбарын заавар. Дэлгэц өөрчлөгдсөн байж болно — зураг/видеог шинэчилж байна.
-:::
 
 ## Энэ юу вэ
 Гэрээний төлбөрийн хуваариас тухайн сарын нэхэмжлэлийг үүсгээд харилцагч руу илгээх заавар.
@@ -35,8 +19,16 @@ verified_repo: spacehub
 - Нэхэмжлэлийн задаргааг илгээхээс өмнө шалгах үед.
 
 ## Алхам
+![Гэрээ цэс, гэрээний мөр](/img/lessor/create-invoice-1.webp)
+
+*Зураг 1. Гэрээ цэс, гэрээний мөр. Улаан дугаар = алхмын дугаар.*
+
 1. Доод цэсний **Гэрээ** хэсгийг сонго.
 2. Нэхэмжлэл илгээх гэрээн дээр дар.
+![Хуваарь таб, сарын 3 цэг, Нэхэмжлэх](/img/lessor/create-invoice-2.webp)
+
+*Зураг 2. Хуваарь таб, сарын 3 цэг, Нэхэмжлэх. Улаан дугаар = алхмын дугаар.*
+
 3. **Хуваарь** табыг сонго.
 4. Нэхэмжлэх сарын баруун талын 3 цэг дээр дар.
 5. **Нэхэмжлэх** гэснийг сонго.

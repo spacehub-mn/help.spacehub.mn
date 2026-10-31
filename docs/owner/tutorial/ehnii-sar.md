@@ -1,12 +1,10 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Байрлах газар: docs/owner/tutorial/ehnii-sar.md. Diátaxis «📘 Сургалт» (CEO 16:4x).
-# Эх: research/ux/08_onboarding.md (400 хоногт 6 шинэ байгууллага; эхний тооцоо 12–17 хоног), memory project_owner60_first_billing_defects (9 доголдол, 10-14).
 slug: /owner/tutorial/ehnii-sar
 sidebar_label: Эхний сар — шинэ байгууллага
 type: surgalt
 roles: [owner, nyagtlan]
 updated: 2026-10-27
-verified_commit: c68c602
+verified_commit: 84985f8
 keywords:
   - "шинэ байгууллага"
   - "анх тохируулах"
@@ -14,15 +12,6 @@ keywords:
   - "onboarding"
 ---
 # Эхний сар: шинэ байгууллага
-
-<!--
-Нотолгоо:
-- Урсгал, гацаа: research/ux/08_onboarding.md §2 (owner 60: импорт Room↔PropertyItem холбоогүй, үнэ BasePrice → Price=0, ContractItem.IsUse=false, ContractItemPrice.Date NULL; Ebarimt үйлчилгээ хоосон, PropertyBillTemplate 0, SMS key хоосон; Sheet хоосон «Өндөр»/«Х1»; StoredPassword NULL)
-- memory project_owner60_first_billing_defects №1–9; 10-15: 47 гэрээний тооцоо 0 зөрүүтэй болсон (засварын дараа)
-- Товчнууд: list-Contract «Үйлчилгээ татах», ContractItem «Ашиглах» (ContractItem.cs:83), ContractPaymentChart «Төлбөр +» / «Тоолуур [», Bill «Төлбөр шинэчлэх», InvoiceBill «SMS илгээх», Statement «ХУРДАН ТӨЛӨХ», Sale «И-Баримт» (бүгд Dev_Research ✅ хуудсууд)
-- Room.cs:176 «Түрээсийн үйлчилгээ»; огноогүй үнэ = хуваарийн огнооны дотор хайдаг; «Үйлчилгээ татах» өнөөдрөөс өмнөх огноотой үнийг л (Dev_Research help_review_tutorials_settings.md)
-- Тохиргоог Spacehub баг хийдэг (wizard алга — memory project_owner_onboarding); объект/өрөөний картын яг замууд ❔
--->
 
 > 📘 Сургалт · 🏢 Эзэмшигч, нягтлан · Вэб (app.spacehub.mn) · ⏱ эхний тооцоо хүртэл 1–2 өдөр (шалгалттай)
 
@@ -67,7 +56,7 @@ keywords:
 1. **Тооцоо → Нэхэмжлэх** — нэхэмжлэх бүх гэрээнд үүссэн эсэхийг шалга.
 2. Эхлээд **«Өөр дугаар руу илгээх»**-ээр өөрийн утсанд нэг нэхэмжлэх туршиж үз.
 3. Зөв бол **«SMS илгээх»** эсвэл **«Имэйл илгээх»**. → [Нэхэмжлэх илгээх](/owner/nehemjleh-ilgeeh)
-- ⚠️ **Анхаар:** байгууллагын **SMS key** ([Байгууллагын тохиргоо](/owner/tohirgoo#үндсэн-тохиргоо)) хоосон бол SMS явахгүй. Нэхэмжлэх дээр банкны данс, тамга гарч байгаа эсэхийг шалга. → [Түгээмэл асуулт](/owner/tugeemel-asuult)
+- ⚠️ **Анхаар:** байгууллагын **SMS key** хоосон бол SMS явахгүй. Энэ түлхүүрийг Spacehub баг тохируулна ([Байгууллагын тохиргоо](/owner/tohirgoo#үндсэн-тохиргоо)). Нэхэмжлэх дээр банкны данс, тамга гарч байгаа эсэхийг шалга. → [Түгээмэл асуулт](/owner/tugeemel-asuult)
 
 ## Алхам 6 — Төлөлт ба хуулга тулгах
 1. **Автоматжуулалт → Дансны хуулга** — банкны гүйлгээ орж ирж байгаа эсэхийг шалга. → [Дансны хуулга](/owner/list/Statement_ListView)

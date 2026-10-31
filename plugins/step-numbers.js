@@ -1,4 +1,4 @@
-// Алхмын нэг мөрийн дугаарлалт (эзэн 10-27 «дугаарлалт болж байна, дэд дугаарууд бас ашиглах»):
+// Алхмын нэг мөрийн дугаарлалт (10-27 «дугаарлалт болж байна, дэд дугаарууд бас ашиглах»):
 //   алхмын хэсэг (## …)          → «1. …», «2. …»
 //   «## Товчнууд» доторх ### товч → «1. «Товч»», «2. …»
 //   алхмын доорх дугаартай жагсаалт → 1.1, 1.2 … (CSS: ol.substeps, src/css/custom.css)
@@ -27,7 +27,7 @@ const textOf = (n) => (n.type === "text" || n.type === "inlineCode" ? n.value : 
 function renumber(heading, label) {
   const first = heading.children.find((c) => c.type === "text");
   if (first) first.value = first.value.replace(PREFIX, "");
-  // Дугаарыг зураг дээрх улаан тэмдэгтэй ижил хэлбэрээр (span.step-badge) — зураг ↔ текст 1:1 (эзэн 10-27).
+  // Дугаарыг зураг дээрх улаан тэмдэгтэй ижил хэлбэрээр (span.step-badge) — зураг ↔ текст 1:1 (10-27).
   // Текст нь TOC, хайлтад «1.1» хэвээр орно.
   heading.children.unshift(
     { type: "emphasis", data: { hName: "span", hProperties: { className: ["step-badge"] } }, children: [{ type: "text", value: label }] },

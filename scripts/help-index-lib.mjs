@@ -22,6 +22,9 @@ export function frontMatter(src) {
   return { data, body: src.slice(m[0].length) };
 }
 
+/** Ноорог (draft: true) — прод build-д гарахгүй тул хайлт, docs хуулбарт ч оруулахгүй. */
+export const isDraft = (src) => /^(true|'true'|"true")$/.test(String(frontMatter(src).data.draft ?? ''));
+
 /** Нэг md файл → индексийн мөр. rel = docs/-оос харьцангуй зам. */
 export function pageOf(rel, src) {
   const { data, body } = frontMatter(src);

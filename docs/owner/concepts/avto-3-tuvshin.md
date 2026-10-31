@@ -1,29 +1,19 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Байрлах газар: docs/owner/concepts/avto-3-tuvshin.md
 slug: /owner/concepts/avto-3-tuvshin
 sidebar_label: Авто тооцоо — 3 түвшин
 type: oilgolt
 roles: [owner, nyagtlan]
-updated: 2026-10-26
-verified_commit: c68c602
+updated: 2026-10-29
+verified_commit: 84985f8
 keywords:
   - "авто тооцоо гарахгүй"
   - "Авто гэрээ"
 ---
 # Авто тооцоо: 3 түвшин
 
-<!--
-Нотолгоо (Spacehub23 origin/master c68c602):
-- AutoJob.cs:289-292 GetSpacehubCriteriaForChart: [ContractId.IsClosed] != true And [PropertyOwnerId.IsAuto] And [ContractId.IsAuto] And [ContractId.PropertyId.IsAuto]
-- BillRecord.cs:373-376 — ижил 3 нөхцөл
-- Апп дээрх нэр 3 түвшинд «Автомат ажил»: PropertyOwner.cs:108, Property.cs:360, Contract.cs:606 (help_review_concepts.md)
-- ContractClose.cs:189 хаахад IsAuto унтарна; сэргээхэд буцаж асахгүй (help_review_contractsub.md)
-- Гэрээний «Авто» сэлгэх товч: list-Contract_ListView.md :125-130
--->
-
 > 💡 Ойлголт · 🏢 Эзэмшигч, менежер, нягтлан · Вэб (app.spacehub.mn)
 
-Сар бүрийн **автомат тооцоо, нэхэмжлэх** (Авто ажил) нэг гэрээнд ажиллахын тулд **3 түвшинд бүгд «Автомат ажил» чагт тэмдэглэгдсэн** байх ёстой:
+**Авто нэхэмжлэх** (эсвэл Авто ажил) сар бүрийн тооцоо, нэхэмжлэхийг өөрөө гаргана. Нэг гэрээнд ажиллахын тулд **3 түвшинд бүгд «Автомат ажил» чагт тэмдэглэгдсэн** байх ёстой:
 
 ```
 Байгууллага  ×  Объект  ×  Гэрээ  (гурвуулаа «Автомат ажил» ✓)  ×  гэрээ хаагдаагүй
@@ -39,8 +29,8 @@ keywords:
 1. **Гэрээ** — «Автомат ажил» тэмдэглэгдсэн эсэх, гэрээ хаагдаагүй эсэх.
 2. **Объект** — объектын картын «Автомат ажил».
 3. **Байгууллага** — байгууллагын картын «Автомат ажил».
-4. **Авто ажил** — тухайн сарын ажил «Ажиллаж байна» статустай эсэх.
+4. **Авто нэхэмжлэх** — тухайн сарын мөр «Ажиллаж байна» статустай эсэх. «Авто ажил» ашигладаг бол мөн адил.
 
 ## 🔗 Холбоотой
-- [Авто ажил](/owner/list/AutoJob_ListView) · [Гэрээ](/owner/list/Contract_ListView) · [Байгууллага](/owner/list/PropertyOwner_ListView)
+- [Авто нэхэмжлэх](/owner/list/BillRecord_ListView) · [Авто ажил](/owner/list/AutoJob_ListView) · [Гэрээ](/owner/list/Contract_ListView) · [Байгууллага](/owner/list/PropertyOwner_ListView)
 - [Сарын тооцоо гаргах](/owner/sar-tootsoo)

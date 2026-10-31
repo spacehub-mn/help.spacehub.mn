@@ -1,27 +1,16 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Байрлах газар: docs/owner/concepts/dulaan.md. Орлох: help-drafts/11-dulaan.md (Crm_Viber 10-24, «10/1–5/1 тогтмол» гэсэн нь тохиргоо болохыг кодоор засав).
 slug: /owner/concepts/dulaan
 sidebar_label: Дулааны төлбөр
 type: oilgolt
 roles: [owner, nyagtlan]
 updated: 2026-10-26
-verified_commit: c68c602
+verified_commit: 84985f8
 keywords:
   - "дулаан бодогдоогүй"
   - "дулааны улирал"
   - "халаалт эхлэх огноо"
 ---
 # Дулааны төлбөр
-
-<!--
-Хяналт: research/help_review_dulaan_gatsah.md (❌ 2) → засав. Хоногоор: BillItem.cs:583-587, 692-695; хоногийн тооллого ContractPaymentChart.cs:525-558.
-Нотолгоо (Spacehub23 origin/master c68c602):
-- Улирал: PropertyOwnerMore.cs:424-438 «Халаалт зогсох огноо» (EnergyFrom), «Халаалт эхлэх огноо» (EnergyTo) — байгууллагын Нэмэлт тохиргоо
-- Хоног: ContractPaymentChart.cs:507-540 getEnergyDays() — зөвхөн ашиглалттай гэрээ (ContractRentUtility / ContractUtility); зогсох–эхлэх хооронд бодогдохгүй; бүтэн улирлын сар = бүтэн хоног (өдрийн гэрээнд 30); хэсэгчилсэн сар ❔
-- Бодох эсэх: ContractItem.cs:689-722, 756-770 IsEnergyUsage (хоног > 0); «Урьдчилж нэхэмжлэх» (PreBill) = тухайн сар, «Дараа нэхэмжлэх» (AfterBill) = өмнөх сарын хоног (BillPeriod enum)
-- Үйлчилгээний төрөл: ItemPriceType.cs — «Дулааны суурь үнэ» (12), «Дулааны үнэ» (13, хоногоор), «Дулааны тоолуур» (19)
-- Viber эх: viber_tasks.md T63 (11-dulaan.md)
--->
 
 > 💡 Ойлголт · 🏢 Эзэмшигч, менежер, нягтлан · Вэб (app.spacehub.mn)
 

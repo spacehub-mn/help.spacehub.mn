@@ -7,16 +7,6 @@ verified_repo: spacehub
 ---
 # Гэрээ сонгох
 
-<!--
-Шинэ бүтэц рүү шилжүүлэв (Help_Spacehub 10-27). Нотолгоо (spacehub 03de3014):
-- Нүүр таб «Dashboard»: TenantPage.dart:66-69 (pages.rentor.panel, mn_MN.json:832)
-- Гэрээний карт дээрх ⇄ дүрс (Symbols.swap_horiz_rounded): ActiveContractCard.dart:75-82
-- Дүрс зөвхөн 2+ гэрээтэй үед: DashboardTab.dart:204-206 (contracts.length == 1 → null)
-- Цонх «Гэрээ сонгох»: ContractChooser.dart:22-24 (mn_MN.json:594); мөр бүр «#гэрээний дугаар» + объект, өрөө :29-44; идэвхтэй нь тод :32-34
-- Сонгосны дараа нүүр тухайн гэрээгээр шинэчлэгдэнэ: DashboardTab.dart:498-512
-- Хассан: «баруун дээд буланд байгаа сум» → гэрээний картын баруун талд ⇄ дүрс
--->
-
 > 🏠 Түрээслэгч, оршин суугч · Гар утасны апп
 
 :::caution

@@ -7,18 +7,6 @@ verified_repo: spacehub
 ---
 # Бизнес зар оруулах
 
-<!--
-Шинэ бүтэц рүү шилжүүлэв (Help_Spacehub 10-27). Нотолгоо (spacehub 03de3014):
-- Доод цэсний 2-р таб: TenantPage.dart:71-77 pages.rentor.blogposts#<төрөл> → «Бизнес зар» (company/selfEmployed, mn_MN.json:794, :796), орон сууцанд «Мэдээ» (homeOwner, :795)
-- «+» товч доод баруун буланд (Positioned bottom/right 20, Symbols.add_rounded): UserPostsPage.dart:279-296 → CreateUserPostPage :331-343
-- Цонх «Шинэ зар» (mn_MN.json:372): CreateUserPostPage.dart:121
-- Текст «Та юу бодож байна?» (mn_MN.json:362), ихдээ 300 тэмдэгт: CreateUserPostPage.dart:154-159
-- «Ангилал нэмэх» (mn_MN.json:368) :188; зураг :213-223 (ImageSelectorGallery ихдээ 5, ImageSelectorGallery.dart:21); «Хавсралтууд» (mn_MN.json:346) :233-237
-- Товч «Нийтлэх» (mn_MN.json:718): CreateUserPostPage.dart:255-257 (өөрчлөлтгүй бол идэвхгүй, :485-486)
-- Олон объекттой бол «Объект сонгох» (mn_MN.json:365) + «Таны зар тухайн объектийн оршин суугчид болон эзэмшигчид харагдана» (:366): CreateUserPostPage.dart:423-434, PickPropertySheet.dart:23, :43
-- Засвар: «баруун дээд буланд» → доод баруун буланд; «Хадгалах» → «Нийтлэх»; «Зар мэдээ хэсэг» → «Бизнес зар» / «Мэдээ»
--->
-
 > 🏠 Түрээслэгч, оршин суугч · Гар утасны апп
 
 :::caution

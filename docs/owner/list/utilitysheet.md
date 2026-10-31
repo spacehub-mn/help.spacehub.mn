@@ -1,33 +1,16 @@
 ---
-# НООРОГ (Help_Spacehub 10-26). Нийтлээгүй, help repo-д ороогүй. Загвар: list-Bill_ListView.md
-# Байрлах газар: docs/owner/list/utilitysheet.md
-# Линкийн дүрэм: onBrokenLinks "throw" — зөвхөн help main (9a388a4) дээр байгаа 8 хуудас руу линк, бусад нь тод текст.
 slug: /owner/list/UtilitySheet_ListView
 sidebar_label: Тоолуур татах
 type: lavlah
 roles: [owner, nyagtlan]
 updated: 2026-10-27
-verified_commit: c68c602
+verified_commit: 84985f8
 keywords:
   - "Тоолуур татах"
   - "Google Sheet тоолуур"
   - "олон айлын заалт нэг дор"
 ---
 # Тоолуур татах (жагсаалт)
-
-<!--
-Хяналт: Dev_Research research/help_review_utilitysheet.md (❌ 3) → засав.
-Нотолгоо (Spacehub23 origin/master c68c602):
-- UtilitySheet.cs:15 «Тоолуур татах» (Автоматжуулалт); талбар :27 Нэр, :38 Мөр дугаар, :47/:57 Эзэмшигч, :66 Объект, :77 «Нэхэмжлэх үүсгэх» (Тооцоо, Хөнгөлөлт, Нэхэмжлэх автоматаар үүсгэх), :88 Тоолуурын сар, :100 Тоолуур (Aggregated)
-- Жагсаалт: xafml UtilitySheet_ListView (Code, Name, CreatedDate, CreatedBy); карт доторх UtilitySheet_UtilityCharts_ListView AllowNew/Delete False, AllowEdit True
-- «Тоолуур татах»: UtilitySheetController.cs:21-30 (зөвхөн карт), :45-118
-  - Эзэн/объект сонгоогүй → «Эзэн болон объектоо эхлээд сонгоно уу!» (:56)
-  - Өмнөх татсан мөрүүдийг жагсаалтаас хасаад дахин татна (:63-66)
-  - Гэрээг Эзэмшигчийн ашиглалттай (ContractRentUtility/ContractUtility) гэрээнүүдээс Code-оор (:72); хуваарь = огноо орох сар (:75); «Идэвхгүй» хуваарийг алгасна (:78)
-  - Тухайн сард заалт байвал ДАРЖ бичнэ (:83-88), үгүй бол шинээр (:91-97)
-- Sheet: GoogleSheetUtility.cs:13 «Google Sheet - ээс тоолуур татах», :25 SheetRange «Тоолуур таталт!A2:E», :41 «Татагдах тоолуурын сар», :59 Sheet Id, :75 Sheet range, :91 Татсан тоолуур; багана GoogleSheetsHelper.cs:371-376 (A гэрээ, B огноо, C цахилгаан, D халуун ус, E хүйтэн ус); хоосон нүд → «…'n/a' гэж тэмдэглэ…» (:383)
-- Хадгалах: ContractUtility.cs:430-457 — ШИНЭ мөр «Нэхэмжлэх үүсгэх» чагттай бол төлбөр + хөнгөлөлт + нэхэмжлэх
--->
 
 > 🏢 Эзэмшигч, нягтлан · Вэб (app.spacehub.mn) · Цэс: **Автоматжуулалт → Тоолуур татах**
 

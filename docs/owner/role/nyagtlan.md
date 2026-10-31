@@ -3,7 +3,6 @@ type: hab
 roles: [nyagtlan]
 updated: 2026-10-27
 verified_commit: 5fa824f
-# НООРОГ (Help_Spacehub 10-26). docs/owner/role/nyagtlan.md — дүр × хуудас хаб (CEO 16:5x).
 slug: /owner/role/nyagtlan
 sidebar_label: 🧮 Нягтлан
 sidebar_position: 2
