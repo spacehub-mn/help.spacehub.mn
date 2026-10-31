@@ -140,6 +140,14 @@ const idle = (page) => page.locator("#xaf-loading.show").waitFor({ state: "hidde
       cuts.push([c, now()]);
       await page.waitForTimeout(800);
     }
+    // click: зөвхөн жагсаалтын огнооны шүүлтийг арилгах «✕» (өгөгдөл өөрчлөхгүй; хэрэглэгчийн сүүлийн мужийг санана — эзэн 10-31 зөвшөөрсөн)
+    if (s.click) {
+      const t = s.click.btn || s.click.text || "";
+      if (t !== "✕") throw new Error(`click «${t}» зөвшөөрөгдөөгүй — зогсов`);
+      const o = page.locator('button:visible[title^="Огнооны шүүлтийг арилгах"]').first();
+      if (!(await o.isVisible().catch(() => false))) throw new Error("«✕» (огнооны шүүлт арилгах) олдсонгүй — зогсов");
+      await moveTo(o); await o.click(); await idle(page); await page.waitForTimeout(s.clickWait || 2500);
+    }
     if (s.scrollTh) { await loc({ th: s.scrollTh }).evaluate((e) => e.scrollIntoView({ block: "nearest", inline: "center" })); await page.waitForTimeout(500); }
     if (s.open) {
       const t = s.open.btn || s.open.text || "";
