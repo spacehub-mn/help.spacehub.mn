@@ -3,13 +3,14 @@ slug: /owner/nevtruulelt/aldaa
 sidebar_label: Нэвтрүүлэлтийн түгээмэл алдаа
 type: asuudal
 roles: [owner, nyagtlan]
-updated: 2026-10-27
+updated: 2026-11-01
 verified_commit: 12469b2
 keywords:
   - "эхний тооцоо буруу"
   - "тооцоо хоосон"
   - "үнэ 0"
   - "нэвтэрч чадахгүй"
+imgmap_skip: "2.3 огноо нь үнийн түүхийн мөрөнд — энэ таб дээр харагдахгүй"
 ---
 # Нэвтрүүлэлтийн түгээмэл алдаа
 

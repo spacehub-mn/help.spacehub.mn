@@ -3,8 +3,9 @@ slug: /owner/list/Customer_ListView
 sidebar_label: Харилцагч
 type: lavlah
 roles: [owner, menejer]
-updated: 2026-10-26
+updated: 2026-11-01
 verified_commit: 84985f8
+imgmap_skip: "4 админы товч — байгууллагын товчны мөрөнд алга"
 keywords:
   - "Харилцагч жагсаалт"
   - "е-баримтын тохиргоо харилцагч"

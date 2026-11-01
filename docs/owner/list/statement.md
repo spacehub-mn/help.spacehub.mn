@@ -3,8 +3,9 @@ slug: /owner/list/Statement_ListView
 sidebar_label: Дансны хуулга
 type: lavlah
 roles: [owner, nyagtlan]
-updated: 2026-10-29
+updated: 2026-11-01
 verified_commit: 84985f8
+imgmap_skip: "8 «Устгах» туршилтын эзэмшигчийн эрхэд товчны мөрөнд харагдаагүй (эрхээс хамаарна)"
 keywords:
   - "Дансны хуулга"
   - "хуулга татах"
