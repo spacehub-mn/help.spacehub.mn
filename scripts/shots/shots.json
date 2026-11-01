@@ -2995,7 +2995,8 @@
         "n": "1.8",
         "text": "Юу хийх:",
         "label": "Юу хийх",
-        "first": true
+        "first": true,
+        "below": true
       },
       {
         "n": "1.10",

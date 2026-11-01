@@ -23,6 +23,10 @@ const QUALITY = 0.8;
 const PII_TH = ["Харилцагч", "Түрээслэгч", "Бизнес нэр", "Регистр", "Регистер", "Утас", "Имэйл", "Данс", "Нэр"];
 const SHOTS = JSON.parse(fs.readFileSync(path.join(__dirname, "shots.json"), "utf8"));
 const only = process.argv.slice(2);
+// Дарахыг хориглосон товч (preClick, open): хадгалах/илгээх/төлөх/батлах, «Код авах» (SMS илгээнэ — QA 11-01)
+const FORBID = /хадгал|илгээ|төлө|тийм|^за$|ok|устга|нийтлэ|блок|шийдсэн|авах|код|save|send|delete/i;
+// open: цонх нээх товч («ХУРДАН ТӨЛӨХ» г.м. нь зөвхөн цонх нээдэг тул илгээ/төлө-г зөвшөөрнө), шууд үйлдэлтэйг хориглоно
+const OPEN_FORBID = /хадгал|тийм|^за$|^ok$|устга|нийтлэ|блок|шийдсэн|авах|код|save|delete/i;
 
 const idle = (page) => page.locator("#xaf-loading.show").waitFor({ state: "hidden", timeout: 30000 }).catch(() => {});
 
@@ -259,7 +263,7 @@ async function toWebp(page, png) {
     // Хадгалах/илгээх/төлөх/баталгаажуулах нэртэй товчийг хориглоно.
     for (const m of s.preClick || []) {
       const t = m.btn || m.text || m.sel || "";
-      if (/хадгал|илгээ|төлө|тийм|^за$|ok|устга|нийтлэ|блок|шийдсэн|save|send|delete/i.test(t)) throw new Error(`${s.id}: preClick «${t}» зөвшөөрөгдөөгүй — зогсов`);
+      if (FORBID.test(t)) throw new Error(`${s.id}: preClick «${t}» зөвшөөрөгдөөгүй — зогсов`);
       const pb = await box(page, m);
       if (!pb) throw new Error(`${s.id}: preClick «${t}» олдсонгүй — зогсов`);
       await page.mouse.click(pb.x + pb.width / 2, pb.y + pb.height / 2); await idle(page); await page.waitForTimeout(m.wait || 2500);
@@ -275,6 +279,8 @@ async function toWebp(page, png) {
       // Мөр бүрд input ба .dxbl-checkbox хоёулаа таардаг — мөрөөр нь авч эхнийг нь дарна (давхар дарж сонголт арилгахгүй)
       for (let i = 0; i < nSel; i++) { await page.locator("tbody tr:visible").nth(i).locator("td:first-child input[type=checkbox], td:first-child .dxbl-checkbox").first().click(); await page.waitForTimeout(500); }
       await page.waitForTimeout(800);
+      const ot = s.open.btn || s.open.text || s.open.sel || "";
+      if (OPEN_FORBID.test(ot)) throw new Error(`${s.id}: open «${ot}» зөвшөөрөгдөөгүй — зогсов`);
       const ob = await box(page, s.open);
       if (!ob) throw new Error(`${s.id}: нээх товч олдсонгүй — зогсов`);
       await page.mouse.click(ob.x + ob.width / 2, ob.y + ob.height / 2);
