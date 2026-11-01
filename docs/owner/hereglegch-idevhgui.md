@@ -3,7 +3,7 @@ slug: /owner/hereglegch-idevhgui
 sidebar_label: Хэрэглэгчийг идэвхгүй болгох
 type: zaavar
 roles: [owner, menejer]
-updated: 2026-10-29
+updated: 2026-11-01
 verified_commit: 84985f8
 keywords:
   - "идэвхгүй болгох"
@@ -11,6 +11,7 @@ keywords:
   - "ажилтан гарсан"
   - "нэвтрэх эрх хаах"
   - "Эрх хаах"
+imgmap_skip: "1.4 асуулт товч дарсны дараа гарна"
 ---
 # Хэрэглэгчийг идэвхгүй болгох
 
