@@ -4,7 +4,7 @@ sidebar_label: Тоолуур нэмэх, солих, цуцлах
 type: zaavar
 roles: [owner, nyagtlan]
 updated: 2026-10-26
-verified_commit: 84985f8
+verified_commit: 235fca3
 keywords:
   - "шинэ тоолуур нэмэх"
   - "тоолуур солих"

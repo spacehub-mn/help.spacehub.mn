@@ -4,7 +4,7 @@ sidebar_label: Нэхэмжлэхийн дүн зөрж байна
 type: asuudal
 roles: [owner, nyagtlan]
 updated: 2026-10-27
-verified_commit: 84985f8
+verified_commit: 235fca3
 keywords:
   - "SMS-ийн дүн буруу"
   - "нэхэмжлэхийн дүн төлбөрөөс зөрөх"

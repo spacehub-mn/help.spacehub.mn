@@ -4,7 +4,7 @@ sidebar_label: Төлбөр → Нэхэмжлэх → Төлөлт
 type: oilgolt
 roles: [owner, nyagtlan, menejer]
 updated: 2026-10-26
-verified_commit: 84985f8
+verified_commit: 235fca3
 keywords:
   - "төлсөн боловч төлөөгүй"
   - "хуваарилалт"

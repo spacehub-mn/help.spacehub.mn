@@ -4,7 +4,7 @@ sidebar_label: Үнэ өөрчлөх
 type: zaavar
 roles: [owner, nyagtlan]
 updated: 2026-10-29
-verified_commit: 84985f8
+verified_commit: 235fca3
 keywords:
   - "үнэ өөрчлөх"
   - "тариф өөрчлөх"

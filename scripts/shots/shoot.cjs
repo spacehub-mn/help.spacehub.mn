@@ -195,20 +195,25 @@ async function toWebp(page, png) {
   const browser = await chromium.launch();
   // 2× нягтрал: зураг дээр дарж томруулахад дугаар тод (10-27)
   const context = await browser.newContext({ viewport: VIEWPORT, deviceScaleFactor: 2 });
-  const page = await context.newPage();
-  await page.goto(APP);
-  await page.getByLabel(/user\s*name|нэр/i).fill(process.env.TEST_USER);
-  await page.getByLabel(/password|нууц/i).fill(process.env.TEST_PASS);
-  await page.getByRole("button", { name: /log\s*in|нэвтр/i }).click();
-  await page.getByRole("treeitem").first().waitFor({ timeout: 60000 });
-  await idle(page);
+  const mainPage = await context.newPage();
+  await mainPage.goto(APP);
+  await mainPage.getByLabel(/user\s*name|нэр/i).fill(process.env.TEST_USER);
+  await mainPage.getByLabel(/password|нууц/i).fill(process.env.TEST_PASS);
+  await mainPage.getByRole("button", { name: /log\s*in|нэвтр/i }).click();
+  await mainPage.getByRole("treeitem").first().waitFor({ timeout: 60000 });
+  await idle(mainPage);
 
   const report = [];
   for (const s of todo) {
+    // anon: нэвтрээгүй шинэ контекст — нэвтрэх хуудасны цонх («Нууц үгээ мартсан уу?» г.м.). Зөвхөн нээж, Esc/«Хаах»-аар хаана.
+    const anonCtx = s.anon ? await browser.newContext({ viewport: VIEWPORT, deviceScaleFactor: 2 }) : null;
+    const page = anonCtx ? await anonCtx.newPage() : mainPage;
+    if (anonCtx) { await page.goto(APP); await page.getByRole("button", { name: /log\s*in|нэвтр/i }).first().waitFor({ timeout: 60000 }); }
     // Өргөн хүснэгтэд хуудас тус бүрийн өргөн (гүйлгэвэл сонгох нүд, Код харагдахгүй болдог — хяналт 10-26)
     const vw = { width: s.width || VIEWPORT.width, height: s.height || VIEWPORT.height };
     await page.setViewportSize(vw);
     // urlOnly: утасны өргөнд (375px) цэс нуугдсан байдаг — цэсгүйгээр шууд url-аар нээнэ (зөвхөн харах)
+    if (!s.anon) {
     if (s.urlOnly) { await page.goto(APP + s.url); await idle(page); }
     const [group, item] = s.nav || [];
     const leaf = page.getByRole("treeitem", { name: item, exact: true }).first();
@@ -225,6 +230,7 @@ async function toWebp(page, png) {
       if (tree && (await page.getByRole("treeitem").getByText(tree.tree, { exact: true }).first().isVisible().catch(() => false))) break;
       const bb = await page.getByRole("treeitem").getByText(g, { exact: true }).first().boundingBox();
       if (bb) { await page.mouse.click(bb.x - 44, bb.y + bb.height / 2); await page.waitForTimeout(1200); }
+    }
     }
     // navBtn: зөвхөн харагдац солих товч (сар/жил/хуудас/хугацаа) — өөр товчийг ЭНД дарахгүй
     for (const t of s.navBtn || []) {
@@ -292,6 +298,15 @@ async function toWebp(page, png) {
     // Хувийн мэдээлэл гарахгүйн тулд мөрийн аль ч утга бүдгэрнэ
     if (s.blurCells) await page.evaluate(() => document.querySelectorAll("tbody td:not(:first-child), tfoot, .dxbl-grid-footer").forEach((e) => e.classList.add("hs-pii")));
     if (s.blurSel) await page.evaluate((sel) => document.querySelectorAll(sel.join(",")).forEach((e) => e.classList.add("hs-pii")), s.blurSel);
+    // blurText: текстэд нь тохирох хамгийн доод элемент (гэрээний дугаар г.м.) — цонх доторх олдворын мөр
+    if (s.blurText) await page.evaluate((re) => {
+      const rx = new RegExp(re);
+      document.querySelectorAll("body *").forEach((e) => {
+        if (!e.offsetParent || !rx.test(e.textContent || "")) return;
+        if ([...e.children].some((c) => rx.test(c.textContent || ""))) return;
+        e.classList.add("hs-pii");
+      });
+    }, s.blurText);
     const blurred = await blur(page, s.blurTh || [], !!s.blurAccount);
     const boxes = [];
     const missing = [];
@@ -345,12 +360,13 @@ async function toWebp(page, png) {
       const still = await page.getByText(s.mustSee).first().isVisible().catch(() => false);
       console.log(`   ↳ цонх хаагдсан: ${still ? "❌ ҮГҮЙ — гараар шалга" : "✅"}`);
       if (still) throw new Error(`${s.id}: цонх хаагдсангүй — зогсов`);
-      await page.reload(); await idle(page); await page.getByRole("treeitem").first().waitFor({ timeout: 60000 });
+      if (!anonCtx) { await page.reload(); await idle(page); await page.getByRole("treeitem").first().waitFor({ timeout: 60000 }); }
     }
     // Сонголтыг дараагийн зурагт үлдээхгүй (давхар дарвал арилдаг) — хуудсыг дахин ачаална
     if (!s.open && s.selectRows) { await page.reload(); await idle(page); await page.getByRole("treeitem").first().waitFor({ timeout: 60000 }); }
     const view = page.url().replace(APP, "");
     report.push({ id: s.id, page: s.page, view, kb: Math.round(webp.length / 1024), legend: boxes.map((b) => b.label), missing, blurred, changed: !same });
+    if (anonCtx) await anonCtx.close();
     console.log(`${missing.length ? "⚠️" : "✅"} ${s.id} ${view} ${Math.round(webp.length / 1024)}KB тэмдэг ${boxes.length}/${s.marks.length} blur ${blurred}${missing.length ? " олдоогүй: " + missing.join(", ") : ""}`);
   }
   await browser.close();

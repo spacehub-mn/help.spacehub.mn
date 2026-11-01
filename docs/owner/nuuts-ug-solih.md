@@ -4,7 +4,7 @@ sidebar_label: Нууц үг солих
 type: zaavar
 roles: [owner, nyagtlan, menejer, resident]
 updated: 2026-10-30
-verified_commit: 84985f8
+verified_commit: 235fca3
 keywords:
   - "нууц үг солих"
   - "нууц үгээ яаж солих вэ"

@@ -4,7 +4,7 @@ sidebar_label: Авто тооцоо — 3 түвшин
 type: oilgolt
 roles: [owner, nyagtlan]
 updated: 2026-10-29
-verified_commit: 84985f8
+verified_commit: 235fca3
 keywords:
   - "авто тооцоо гарахгүй"
   - "Авто гэрээ"

@@ -4,7 +4,7 @@ sidebar_label: Байгууллага
 type: lavlah
 roles: [owner]
 updated: 2026-10-30
-verified_commit: 84985f8
+verified_commit: 235fca3
 keywords:
   - "Байгууллага тохиргоо"
   - "гэрээний драфт"

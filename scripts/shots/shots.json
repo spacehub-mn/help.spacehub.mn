@@ -2903,5 +2903,110 @@
         "label": "1"
       }
     ]
+  },
+  {
+    "id": "owner/nuuts-ug-sergeeh-1",
+    "page": "docs/owner/nuuts-ug-sergeeh.md",
+    "anon": true,
+    "noTable": true,
+    "alt": "Нэвтрэх хуудас: Нууц үгээ мартсан уу? холбоос",
+    "marks": [
+      {
+        "n": "1.1",
+        "btn": "Нууц үгээ мартсан уу?",
+        "exact": true,
+        "label": "Нууц үгээ мартсан уу?"
+      }
+    ],
+    "clip": {
+      "x": 560,
+      "y": 270,
+      "width": 480,
+      "height": 470
+    }
+  },
+  {
+    "id": "owner/nuuts-ug-sergeeh-2",
+    "page": "docs/owner/nuuts-ug-sergeeh.md",
+    "anon": true,
+    "noTable": true,
+    "clip": "dialog",
+    "open": {
+      "btn": "Нууц үгээ мартсан уу?",
+      "exact": true
+    },
+    "mustSee": "Нэвтрэх нэр эсвэл утас",
+    "alt": "Нууц үг сэргээх цонх: Нэвтрэх нэр эсвэл утас, Код авах",
+    "marks": [
+      {
+        "n": "1.2",
+        "field": "Нэвтрэх нэр эсвэл утас",
+        "label": "Нэвтрэх нэр эсвэл утас"
+      },
+      {
+        "n": "1.2",
+        "btn": "Код авах",
+        "exact": true,
+        "label": "Код авах"
+      }
+    ]
+  },
+  {
+    "id": "owner/geree-shalgah-1",
+    "page": "docs/owner/geree-shalgah.md",
+    "nav": [
+      "Менежмент",
+      "Гэрээ"
+    ],
+    "selectRow": true,
+    "open": {
+      "sel": "button[title^=\"Үнэ, тоолуур\"]"
+    },
+    "mustSee": "ДҮГНЭЛТ",
+    "clip": "dialog",
+    "blurSel": [
+      ".ca-title"
+    ],
+    "blurText": "(?<![0-9])[0-9]{6}(?![0-9])",
+    "alt": "Гэрээ шалгах цонх: дүгнэлт, сүүлийн 13 сар, олдвор, Юу хийх, Хаах",
+    "marks": [
+      {
+        "n": "1.5",
+        "text": "ДҮГНЭЛТ",
+        "label": "ДҮГНЭЛТ",
+        "first": true,
+        "left": true
+      },
+      {
+        "n": "1.6",
+        "text": "Сүүлийн 13 сар",
+        "label": "Сүүлийн 13 сар",
+        "first": true,
+        "right": true
+      },
+      {
+        "n": "1.7",
+        "text": "ОЛДВОР",
+        "label": "ОЛДВОР",
+        "first": true,
+        "left": true
+      },
+      {
+        "n": "1.8",
+        "text": "Юу хийх:",
+        "label": "Юу хийх",
+        "first": true
+      },
+      {
+        "n": "1.10",
+        "btn": "Хаах",
+        "exact": true,
+        "label": "Хаах"
+      }
+    ],
+    "width": 1600,
+    "height": 900,
+    "url": "Contract_ListView",
+    "dialogPadX": 64
   }
 ]

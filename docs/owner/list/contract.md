@@ -4,7 +4,7 @@ sidebar_label: Гэрээ
 type: lavlah
 roles: [owner, menejer]
 updated: 2026-10-29
-verified_commit: 84985f8
+verified_commit: 235fca3
 keywords:
   - "гэрээ сунгах"
   - "гэрээ хаах"

@@ -4,7 +4,7 @@ sidebar_label: Шинэ гэрээ, харилцагч бүртгэхэд алд
 type: asuudal
 roles: [owner, menejer]
 updated: 2026-10-30
-verified_commit: 84985f8
+verified_commit: 235fca3
 keywords:
   - "давхцаж байна"
   - "харилцагч бүртгэх алдаа"

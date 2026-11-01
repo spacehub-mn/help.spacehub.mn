@@ -4,7 +4,7 @@ sidebar_label: Эрхгүй, нэвтэрч чадахгүй
 type: asuudal
 roles: [owner, nyagtlan, menejer]
 updated: 2026-10-30
-verified_commit: 84985f8
+verified_commit: 235fca3
 keywords:
   - "Миний спэйсхаб ордоггүй"
   - "Миний нэвтрэх эрх юу болсон бол"

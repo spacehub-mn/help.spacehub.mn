@@ -2,7 +2,7 @@
 type: zaavar
 roles: [owner, nyagtlan, menejer]
 updated: 2026-10-27
-verified_commit: 84985f8
+verified_commit: 235fca3
 sidebar_position: 7
 sidebar_label: Нэхэмжлэх илгээх
 keywords:
