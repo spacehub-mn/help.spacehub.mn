@@ -3009,5 +3009,70 @@
     "height": 900,
     "url": "Contract_ListView",
     "dialogPadX": 64
+  },
+  {
+    "id": "owner/shine-geree-1",
+    "page": "docs/owner/shine-geree.md",
+    "nav": [
+      "Менежмент",
+      "Гэрээ"
+    ],
+    "url": "Contract_ListView",
+    "open": {
+      "btn": "Шинэ Гэрээ",
+      "exact": true
+    },
+    "mustSee": "Үндсэн мэдээлэл",
+    "width": 1600,
+    "height": 900,
+    "alt": "Шинэ гэрээний карт: объект, гэрээний төрөл, харилцагч, эхлэх огноо, Үйлчилгээ/Үнэ (Багц нэмэх), Хадгал",
+    "marks": [
+      {
+        "n": "1.2",
+        "field": "Объект",
+        "whole": true,
+        "left": true,
+        "label": "Объект"
+      },
+      {
+        "n": "1.3",
+        "field": "Гэрээний төрөл",
+        "whole": true,
+        "left": true,
+        "label": "Гэрээний төрөл"
+      },
+      {
+        "n": "1.4",
+        "field": "Харилцагч",
+        "whole": true,
+        "left": true,
+        "label": "Харилцагч"
+      },
+      {
+        "n": "1.5",
+        "field": "Эхлэх огноо",
+        "whole": true,
+        "left": true,
+        "label": "Эхлэх огноо"
+      },
+      {
+        "n": "1.6",
+        "btn": "Үйлчилгээ/Үнэ",
+        "label": "⚙️ Үйлчилгээ/Үнэ → Багц нэмэх"
+      },
+      {
+        "n": "1.7",
+        "btn": "Хадгал",
+        "exact": true,
+        "label": "Хадгал"
+      }
+    ],
+    "wait": 2500,
+    "openTabs": [
+      "Үндсэн мэдээлэл"
+    ],
+    "blurField": [
+      "Эзэмшигч"
+    ]
   }
 ]

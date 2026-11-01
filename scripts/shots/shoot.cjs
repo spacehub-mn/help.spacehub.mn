@@ -91,12 +91,13 @@ async function box(page, m) {
   }
   if (m.field) {
     // Картын талбар шошгоор: холбоос (lookup) байвал түүнийг, үгүй бол удирдлагыг бүхэлд нь
-    return page.evaluate((t) => {
+    // whole: холбоос биш бүтэн нүд (шинэ картын «Объект» — холбоос нь ✏️ дүрс)
+    return page.evaluate(({ t, whole }) => {
       const item = [...document.querySelectorAll("dxbl-form-layout-item")].find((e) => { const l = e.querySelector("label"); return l && l.offsetParent && l.innerText.trim().replace(/\*$/, "") === t; });
-      const el = item && (item.querySelector(".dxbl-fl-ctrl a") || item.querySelector(".dxbl-fl-ctrl"));
+      const el = item && ((!whole && item.querySelector(".dxbl-fl-ctrl a")) || item.querySelector(".dxbl-fl-ctrl"));
       const r = el && el.getBoundingClientRect();
       return r ? { x: r.x, y: r.y, width: r.width, height: r.height } : null;
-    }, m.field);
+    }, { t: m.field, whole: !!m.whole });
   }
   if (m.select) {
     // Дашбордын энгийн <select> — одоо сонгогдсон сонголтын бичгээр
@@ -288,6 +289,24 @@ async function toWebp(page, png) {
       catch { throw new Error(`${s.id}: «${s.mustSee}» цонх гарсангүй — АЮУЛГҮЙН ҮҮДНЭЭС ЗОГСОВ`); }
       await idle(page);
       await page.waitForTimeout(800);
+      // openTabs: нээсэн картын таб/дэд таб («Үндсэн мэдээлэл», «Талбай» г.м.) — зөвхөн харах шилжилт.
+      // Ижил бичигтэй шошго байж болно — [role=tab] доторхыг түрүүлж сонгоно
+      for (const t of s.openTabs || []) {
+        // Табын бичиг дүрстэй хамт байж болно — элементийн өөрийн текстээр (≤10 сек хүлээнэ)
+        let tb = null;
+        for (let i = 0; i < 20 && !tb; i++) {
+          tb = await page.evaluate((t) => {
+            const own = (e) => [...e.childNodes].filter((c) => c.nodeType === 3).map((c) => c.textContent).join("").trim();
+            const els = [...document.querySelectorAll("body *")].filter((e) => e.offsetParent && own(e) === t && e.getBoundingClientRect().x >= 0);
+            const el = els.find((e) => e.closest("[role=tab]")) || els[0];
+            const r = el && el.getBoundingClientRect();
+            return r ? { x: r.x, y: r.y, width: r.width, height: r.height } : null;
+          }, t);
+          if (!tb) await page.waitForTimeout(500);
+        }
+        if (!tb) throw new Error(`${s.id}: таб «${t}» олдсонгүй — зогсов`);
+        await page.mouse.click(tb.x + tb.width / 2, tb.y + tb.height / 2); await idle(page); await page.waitForTimeout(1500);
+      }
       await page.mouse.move(vw.width - 5, vw.height - 5);
     }
     // Цонх доторх хувийн мэдээлэл: «Хайлт түргэвчлэгч»-ийн үгс (гүйлгээний утгаас — компани/хүний нэр), гарчгийн 2-р мөр, хайлтын утга
@@ -304,6 +323,11 @@ async function toWebp(page, png) {
     // Хувийн мэдээлэл гарахгүйн тулд мөрийн аль ч утга бүдгэрнэ
     if (s.blurCells) await page.evaluate(() => document.querySelectorAll("tbody td:not(:first-child), tfoot, .dxbl-grid-footer").forEach((e) => e.classList.add("hs-pii")));
     if (s.blurSel) await page.evaluate((sel) => document.querySelectorAll(sel.join(",")).forEach((e) => e.classList.add("hs-pii")), s.blurSel);
+    // blurField: картын талбарын утга шошгоор (байгууллагын нэр г.м.) — нүдний удирдлага бүхэлдээ бүдгэрнэ
+    if (s.blurField) await page.evaluate((labels) => document.querySelectorAll("dxbl-form-layout-item").forEach((e) => {
+      const l = e.querySelector("label");
+      if (l && l.offsetParent && labels.includes(l.innerText.trim().replace(/\*$/, ""))) e.querySelector(".dxbl-fl-ctrl")?.classList.add("hs-pii");
+    }), s.blurField);
     // blurText: текстэд нь тохирох хамгийн доод элемент (гэрээний дугаар г.м.) — цонх доторх олдворын мөр
     if (s.blurText) await page.evaluate((re) => {
       const rx = new RegExp(re);
@@ -354,10 +378,13 @@ async function toWebp(page, png) {
     const same = fs.existsSync(out) && fs.readFileSync(out).equals(webp);
     if (!same) fs.writeFileSync(out, webp);
     if (s.open) {
-      // Хаах: Esc → үлдвэл зөвхөн «Үгүй / Болих / Хаах / Cancel / No» товч. Дараа нь хуудсыг дахин ачаална.
+      // Хаах: Esc → «Discard changes» → үлдвэл зөвхөн «Үгүй / Болих / Хаах / Cancel / No» товч. Дараа нь хуудсыг дахин ачаална.
       await page.evaluate(() => document.querySelectorAll(".hs-mark").forEach((e) => e.remove()));
       await page.keyboard.press("Escape");
       await page.waitForTimeout(800);
+      // Шинэ/засварласан карт: «Unsaved changes» асуултад зөвхөн «Discard changes» (хадгалахгүй)
+      const discard = page.getByRole("button", { name: /^Discard changes$/ }).last();
+      if (await discard.isVisible().catch(() => false)) { await discard.click(); await page.waitForTimeout(1200); }
       if (await page.getByText(s.mustSee).first().isVisible().catch(() => false)) {
         const cancel = page.getByRole("button", { name: /^(Үгүй|Болих|Хаах|Cancel|No|Close)$/ }).last();
         if (await cancel.isVisible().catch(() => false)) await cancel.click();
