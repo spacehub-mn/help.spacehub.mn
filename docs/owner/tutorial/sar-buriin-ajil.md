@@ -5,6 +5,7 @@ type: surgalt
 roles: [owner, nyagtlan]
 updated: 2026-11-01
 verified_commit: 235fca3
+imgmap_skip: "1.5 өөр дэлгэц — Дашборд → Сарын тооцоо"
 keywords:
   - "сар бүр"
   - "сарын ажил"
