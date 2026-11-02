@@ -273,6 +273,20 @@ test("imgmap_skip: текстэд алга алхам → W-imgskip (хуучи�
   assert.ok(rules(run(docs, "--shots", shots).out, "v.md").includes("W-imgskip"));
 });
 
+test("I-tur: «ТҮР …» шалтгаантай алгасалт тоологдоно (exit 0); энгийн шалтгаан тоологдохгүй", () => {
+  const page = (skip) => `${fm(skip)}# Гарчиг\n\n> 🏢 Байгууллага · Вэб\n\n## Алхам\n\n![x](/img/x.webp)\n\n*Зураг 1. Хуулга.*\n\n1. Цэс.\n2. Дэлгэц.\n3. Хадгал.\n\n## 🔗 Холбоотой\n- [x](/x)\n`;
+  const docs = fixture({ "w.md": page('imgmap_skip: "1.2 ТҮР эмулятор алга · 1.3 ТҮР эмулятор алга"\n'), "y.md": page('imgmap_skip: "1.2 хадгалсны дараа · 1.3 хадгалсны дараа"\n') });
+  const shots = join(docs, "..", "shots.json");
+  writeFileSync(shots, JSON.stringify([{ id: "x", marks: [{ n: "1.1", btn: "x" }] }]));
+  const { code, out } = run(docs, "--shots", shots);
+  assert.equal(code, 0);
+  const w = out.results.find((r) => r.file.endsWith("w.md")).issues.find((i) => i.rule === "I-tur");
+  assert.ok(w && w.level === "I" && /^түр алгассан алхам 2: 1\.2, 1\.3/.test(w.msg));
+  assert.ok(!rules(out, "y.md").includes("I-tur") && !rules(out, "w.md").includes("W-imgmap"));
+  const text = execFileSync("node", ["scripts/help-lint.mjs", "--no-git", "--docs", docs, "--shots", shots], { encoding: "utf8" });
+  assert.match(text, /ТҮР алгассан 2 алхам \/ 1 хуудас/);
+});
+
 test("жагсаалтын дугаар plugin-тэй ижил: 1-ээс дахин эхэлсэн жагсаалтад 1.7 тэмдэг → E-imgmap", () => {
   const page = `${fm()}# Гарчиг\n\n> 🏢 Байгууллага · Вэб\n\n## Алхам\n\n![x](/img/x.webp)\n\n*Зураг 1. Х.*\n\n1. А.\n2. Б.\n\nДахин нээх бол:\n1. В.\n2. Г.\n\n## 🔗 Холбоотой\n- [x](/x)\n`;
   const ok6 = page.replace("Дахин нээх бол:\n1. В.\n2. Г.", "Дахин нээх бол:\n\n3. В.\n4. Г.");
