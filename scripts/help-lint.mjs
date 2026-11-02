@@ -27,7 +27,7 @@
 //   W-group   гэрээний бүлгийн ▼ цэсэнд орсон товчийг тэр хэсэгт бүлгийн нэргүй бичсэн (кодын репо хэрэгтэй)
 //   I-legacy  2023 оны загваргүй хуудас (frontmatter-гүй) — тоолно, алдаа биш
 //   I-draft   ноорог хуудсыг REF-д ороогүй commit-оор тулгасан — W-stale-ийн оронд, алдаа биш
-//   I-tur     imgmap_skip-ийн «ТҮР …» шалтгаантай алхам (түр алгасалт) — хуудас, алхмын тоог хураангуйд харуулна
+//   I-tur     imgmap_skip-ийн «ТҮР …» (том/жижиг үсэг хамаагүй) шалтгаантай алхам (түр алгасалт) — хуудас, алхмын тоог хураангуйд харуулна
 //   E-internal нийтийн репод гарах ёсгүй: нууц, холболтын мөр, дотоод IP, кодын файл:мөр, дотоод зам, локал жагсаалтын нэр (тайлбар, changelog-д ч)
 //   W-fmcomment frontmatter-ийн «# …» мөр (GitHub дээр уншигдана)
 //   W-comment1 H1-ийн дараах эхний блок <!-- --> (meta description болно); W-comment бусад тайлбар — нотолгоо = --evidence локал хавтас
@@ -227,7 +227,7 @@ for (const file of walk(DOCS)) {
   const rel = relative(join(DOCS, ".."), file).replace(/\\/g, "/");
   const raw = readFileSync(file, "utf8").replace(/\r\n/g, "\n");
   const issues = [];
-  const add = (level, rule, msg) => issues.push({ level, rule, msg });
+  const add = (level, rule, msg, extra) => issues.push({ level, rule, msg, ...extra });
 
   const fmMatch = raw.match(/^---\n([\s\S]*?)\n---/);
   const fm = {};
@@ -347,8 +347,9 @@ for (const file of walk(DOCS)) {
   const unused = [...skip.keys()].filter((n) => !seenLabels.has(n));
   if (unused.length) add("W", "W-imgskip", `imgmap_skip ${unused.join(", ")} — текстэд ийм алхам алга (хуучирсан тэмдэглэгээ)`);
   // I-tur (11-02): «ТҮР …» шалтгаантай алгасалт = зураг авах боломжгүй байсан түр үе (эмулятор алга г.м.) — мартагдахгүйн тулд тоолно
-  const tur = [...skip].filter(([, why]) => /^ТҮР(\s|$)/.test(why)).map(([n]) => n);
-  if (tur.length) add("I", "I-tur", `түр алгассан алхам ${tur.length}: ${tur.join(", ")} — шалтгаан арилмагц зураг авч imgmap_skip-ээс хас`);
+  // «түр»/«Түр» ч мөн түр (QA 🟡 11-02); алхмын тоо = steps талбар (мессежээс уншихгүй)
+  const tur = [...skip].filter(([, why]) => /^түр(\s|$)/i.test(why)).map(([n]) => n);
+  if (tur.length) add("I", "I-tur", `түр алгассан алхам ${tur.length}: ${tur.join(", ")} — шалтгаан арилмагц зураг авч imgmap_skip-ээс хас`, { steps: tur.length });
 
   // W-group: товчийг дурдсан хэсэгт (гарчиг + дээд гарчгууд) бүлгийн дүрс огт алга.
   // «Хуучин нэр» мөр, бүтэн тод асуултын мөр (**«Сунгах» дарсан ч …**), зургийн тэмдгийн дугаараар заасан мөр (- **2.3** «…»),
@@ -441,7 +442,7 @@ const E = count("E"), W = count("W"), I = count("I");
 const countRule = (rule) => results.reduce((n, r) => n + r.issues.filter((i) => i.rule === rule).length, 0);
 const LEG = countRule("I-legacy"), DRAFT = countRule("I-draft");
 const TUR = results.filter((r) => r.issues.some((i) => i.rule === "I-tur"));
-const TUR_STEPS = TUR.reduce((n, r) => n + r.issues.filter((i) => i.rule === "I-tur").reduce((k, i) => k + Number(i.msg.match(/\d+/)[0]), 0), 0);
+const TUR_STEPS = TUR.reduce((n, r) => n + r.issues.filter((i) => i.rule === "I-tur").reduce((k, i) => k + i.steps, 0), 0);
 if (AS_JSON) {
   console.log(JSON.stringify({ ref: gitOk ? REF : null, errors: E, warnings: W, info: I, results }, null, 2));
 } else {

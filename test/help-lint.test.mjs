@@ -287,6 +287,19 @@ test("I-tur: «ТҮР …» шалтгаантай алгасалт тоолог
   assert.match(text, /ТҮР алгассан 2 алхам \/ 1 хуудас/);
 });
 
+test("I-tur: жижиг «түр» ч тоологдоно; алхмын тоо = steps талбар; «түргэн» г.м. үг тоологдохгүй", () => {
+  const page = (skip) => `${fm(skip)}# Гарчиг\n\n> 🏢 Байгууллага · Вэб\n\n## Алхам\n\n![x](/img/x.webp)\n\n*Зураг 1. Хуулга.*\n\n1. Цэс.\n2. Дэлгэц.\n3. Хадгал.\n\n## 🔗 Холбоотой\n- [x](/x)\n`;
+  const docs = fixture({ "a.md": page('imgmap_skip: "1.2 түр эмулятор алга · 1.3 Түр эмулятор алга"\n'), "b.md": page('imgmap_skip: "1.2 ТҮР эмулятор алга · 1.3 түргэн хаагдана"\n') });
+  const shots = join(docs, "..", "shots.json");
+  writeFileSync(shots, JSON.stringify([{ id: "x", marks: [{ n: "1.1", btn: "x" }] }]));
+  const out = run(docs, "--shots", shots).out;
+  const tur = (f) => out.results.find((r) => r.file.endsWith(f)).issues.find((i) => i.rule === "I-tur");
+  assert.equal(tur("a.md").steps, 2);
+  assert.equal(tur("b.md").steps, 1);
+  const text = execFileSync("node", ["scripts/help-lint.mjs", "--no-git", "--docs", docs, "--shots", shots], { encoding: "utf8" });
+  assert.match(text, /ТҮР алгассан 3 алхам \/ 2 хуудас/);
+});
+
 test("жагсаалтын дугаар plugin-тэй ижил: 1-ээс дахин эхэлсэн жагсаалтад 1.7 тэмдэг → E-imgmap", () => {
   const page = `${fm()}# Гарчиг\n\n> 🏢 Байгууллага · Вэб\n\n## Алхам\n\n![x](/img/x.webp)\n\n*Зураг 1. Х.*\n\n1. А.\n2. Б.\n\nДахин нээх бол:\n1. В.\n2. Г.\n\n## 🔗 Холбоотой\n- [x](/x)\n`;
   const ok6 = page.replace("Дахин нээх бол:\n1. В.\n2. Г.", "Дахин нээх бол:\n\n3. В.\n4. Г.");
