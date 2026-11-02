@@ -306,3 +306,28 @@ test("анхдагч --ref = deploy-log-ийн сүүлийн амжилттай
   catch (e) { out = JSON.parse(e.stdout); }
   assert.equal(out.ref, sha);
 });
+
+test("W-group: бүлгийн ▼ цэсэнд орсон товчийг бүлэггүй бичвэл ⚠️; бүлгийн гарчиг доор, «Хуучин нэр», «… цонх» бол үгүй", () => {
+  const repo = mkdtempSync(join(tmpdir(), "help-lint-grp-"));
+  const g = (...a) => execFileSync("git", ["-C", repo, ...a], { encoding: "utf8" }).trim();
+  g("init", "-q");
+  mkdirSync(join(repo, "Spacehub.Module", "Helper"), { recursive: true });
+  writeFileSync(join(repo, "Spacehub.Module", "Helper", "ContractActionGroups.cs"),
+    'new("ContractGroup_Contract", "🗂 Гэрээ", "BO", new[] { "ExtendOnContract", "Contract.RematchSales" }),\n' +
+    'new("ContractGroup_Service", "⚙️ Үйлчилгээ/Үнэ", "U", new[] { "ContractRentToUnit" }),\n' +
+    '["Contract.RematchSales"] = new("Дахин хуваарилах", "t"),\n');
+  writeFileSync(join(repo, "C.cs"),
+    'class X { void A() { var a = new SimpleAction(this, "ExtendOnContract") { Caption = "Сунгах" }; var b = new SimpleAction(this, "ContractRentToUnit") { Caption = "Нэгж болгох" }; } }\n');
+  g("add", "-A"); g("-c", "user.name=t", "-c", "user.email=t@t", "commit", "-q", "-m", "a");
+  const sha = g("rev-parse", "--short=8", "HEAD");
+  const page = (txt) => good.replace("verified_commit: c68c602", `verified_commit: ${sha}`).replace("Бичвэр.", txt);
+  const d = fixture({
+    "owner/bad.md": page("**«Сунгах»** товчийг дар. Дараа нь «Дахин хуваарилах»."),
+    "owner/ok.md": page("### 🗂 Гэрээ\n\n#### «Сунгах»\n\n**«Сунгах»** дар. «Дахин хуваарилах» (Хуучин нэр нь «Хуваарилах»).\n\n### Бусад\n\n**⚙ Үйлчилгээ/Үнэ** ▼ → «Нэгж болгох». «Сунгах» цонхны огноо."),
+  });
+  const out = (() => { try { return JSON.parse(execFileSync("node", ["scripts/help-lint.mjs", "--json", "--docs", d, "--repo", repo, "--ref", "HEAD", "--evidence", join(d, "..", "none")], { encoding: "utf8" })); } catch (e) { return JSON.parse(e.stdout); } })();
+  const bad = out.results.find((r) => r.file.endsWith("bad.md")).issues.find((i) => i.rule === "W-group");
+  assert.ok(bad && bad.msg.includes("«Сунгах» → 🗂 Гэрээ") && bad.msg.includes("«Дахин хуваарилах»"));
+  assert.ok(!rules(out, "ok.md").includes("W-group"));
+  assert.ok(!rules(run(fixture({ "owner/n.md": page("**«Сунгах»** дар.") })).out, "n.md").includes("W-group")); // --no-git
+});
