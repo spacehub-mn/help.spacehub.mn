@@ -24,6 +24,7 @@
 //   E-spell   ө/ү-г о/у болгож бичсэн үг («оорчлох», «толбор») — хэрэглэгчид харагдах бичвэрт
 //   W-tech    өгүүлбэр доторх кодын/дотоод нэр томьёо (ListView, ObjectSpace, deploy…); W-long 20-оос урт өгүүлбэр
 //   W-stale   verified_commit-оос хойш хуудасны иш татсан кодын файл өөрчлөгдсөн
+//   W-group   гэрээний бүлгийн ▼ цэсэнд орсон товчийг тэр хэсэгт бүлгийн нэргүй бичсэн (кодын репо хэрэгтэй)
 //   I-legacy  2023 оны загваргүй хуудас (frontmatter-гүй) — тоолно, алдаа биш
 //   I-draft   ноорог хуудсыг REF-д ороогүй commit-оор тулгасан — W-stale-ийн оронд, алдаа биш
 //   E-internal нийтийн репод гарах ёсгүй: нууц, холболтын мөр, дотоод IP, кодын файл:мөр, дотоод зам, локал жагсаалтын нэр (тайлбар, changelog-д ч)
@@ -95,6 +96,41 @@ const changedSince = (sha) => {
   }
   return changedCache.get(sha);
 };
+
+// W-group (11-02): гэрээний ихэнх товч 10-31-нээс 5 бүлгийн ▼ цэсэнд орсон — бүлэггүй бичвэл уншигч toolbar-аас олохгүй.
+// Бүлэг, шинэ нэрийг кодын ContractActionGroups.cs-ээс, нэр солигдоогүй товчны нэрийг action-ы Caption-аас уншина.
+// Прод дээр бүлэггүй харагдсан (11-01 дэлгэц) параметртэй товч — шалтгаан тодрох хүртэл алгасна.
+// «Хаах» нь ихэвчлэн цонхны хаах товч тул нэрээр нь алгасна.
+const GROUP_SKIP = new Set(["Contract.AddBeginBalance", "Contract.CollBeginBalanceManual", "Contract.ContactCodeChange"]);
+const GROUP_SKIP_NAMES = new Set(["Хаах"]);
+const groupedActions = (() => {
+  if (!gitOk) return [];
+  let src;
+  try { src = git("show", `${REF}:Spacehub.Module/Helper/ContractActionGroups.cs`); } catch { return []; }
+  const renames = new Map([...src.matchAll(/\["([^"]+)"\]\s*=\s*new\("([^"]+)"/g)].map((m) => [m[1], m[2]]));
+  const groups = [...src.matchAll(/new\("\w+",\s*"([^"]+)",\s*"[^"]*",\s*new\[\]\s*\{([^}]*)\}/g)]
+    .map((m) => ({ caption: m[1], ids: [...m[2].matchAll(/"([^"]+)"/g)].map((x) => x[1]).filter((id) => !GROUP_SKIP.has(id)) }));
+  const need = groups.flatMap((g) => g.ids).filter((id) => !renames.has(id));
+  const captions = new Map();
+  let files = [];
+  try { files = git("grep", "-l", "-F", ...need.flatMap((id) => ["-e", `"${id}"`, "-e", ` ${id.split(".").pop()}(`]), REF, "--", "*.cs").split("\n").filter(Boolean); } catch { /* олдоогүй */ }
+  for (const f of files) {
+    const t = git("show", f); // «REF:зам»
+    for (const m of t.matchAll(/new\s+\w*Action\s*\(\s*this\s*,\s*"([^"]+)"/g)) {
+      const c = t.slice(m.index, m.index + 900).match(/Caption\s*=\s*"([^"]+)"/);
+      if (c && !captions.has(m[1])) captions.set(m[1], c[1]);
+    }
+    for (const m of t.matchAll(/this\.(\w+)\.Id\s*=\s*"([^"]+)"/g)) {
+      const c = t.match(new RegExp(`this\\.${m[1]}\\.Caption\\s*=\\s*"([^"]+)"`));
+      if (c && !captions.has(m[2])) captions.set(m[2], c[1]);
+    }
+    for (const m of t.matchAll(/^[ \t]*\[Action\(([\s\S]*?)\)\]\s*public\s+[\w<>]+\s+(\w+)\s*\(/gm)) {
+      const c = m[1].match(/Caption\s*=\s*"([^"]+)"/), cls = [...t.slice(0, m.index).matchAll(/class\s+(\w+)/g)].pop();
+      if (c && cls && !captions.has(`${cls[1]}.${m[2]}`)) captions.set(`${cls[1]}.${m[2]}`, c[1]);
+    }
+  }
+  return groups.flatMap((g) => g.ids.map((id) => ({ name: renames.get(id) ?? captions.get(id), group: g.caption })).filter((a) => a.name && !GROUP_SKIP_NAMES.has(a.name)));
+})();
 
 // shots.json: зургийн id → тэмдгүүд (n = доорх текстийн дугаар)
 const shotsFile = opt("--shots", join(ROOT, "scripts", "shots", "shots.json"));
@@ -309,6 +345,30 @@ for (const file of walk(DOCS)) {
   }
   const unused = [...skip.keys()].filter((n) => !seenLabels.has(n));
   if (unused.length) add("W", "W-imgskip", `imgmap_skip ${unused.join(", ")} — текстэд ийм алхам алга (хуучирсан тэмдэглэгээ)`);
+
+  // W-group: товчийг дурдсан хэсэгт (гарчиг + дээд гарчгууд) бүлгийн дүрс огт алга.
+  // «Хуучин нэр» мөр, бүтэн тод асуултын мөр (**«Сунгах» дарсан ч …**), зургийн тэмдгийн дугаараар заасан мөр (- **2.3** «…»),
+  // «X» цонх (товчийг биш, нээгдсэн цонхыг заасан) алгасна.
+  if (groupedActions.length && rel.startsWith("docs/owner/")) {
+    const noGroup = [], heads = [];
+    const vs = (s) => s.replace(/️/g, "");
+    const secs = [];
+    for (const l of prose.split("\n")) {
+      const h = l.match(/^(#{1,6}) /);
+      if (h) { heads.splice(h[1].length - 1); heads[h[1].length - 1] = l; secs.push({ ctx: heads.filter(Boolean).join("\n"), lines: [] }); }
+      else (secs.at(-1) ?? secs[secs.push({ ctx: "", lines: [] }) - 1]).lines.push(l);
+    }
+    for (const s of secs) {
+      const text = vs(s.ctx + "\n" + s.lines.join("\n"));
+      for (const { name, group } of groupedActions) {
+        if (!text.includes(`«${name}»`) || text.includes(vs(group.split(" ")[0]))) continue;
+        const bare = (l) => l.includes(`«${name}»`) && !l.includes(`«${name}» цонх`) && !/[Хх]уучин нэр/.test(l)
+          && !/^\*\*[^*].*\*\*$/.test(l.trim()) && !/^[-*] \*\*\d+\.\d+\*\*/.test(l.trim());
+        if (s.lines.some(bare)) noGroup.push(`«${name}» → ${group} ▼`);
+      }
+    }
+    if (noGroup.length) add("W", "W-group", `бүлгийн ▼ цэсэнд орсон товчийг бүлэггүй бичсэн ${noGroup.length}: ${[...new Set(noGroup)].slice(0, 3).join("; ")} — «${noGroup[0].split(" → ")[1]} → ${noGroup[0].split(" → ")[0]}» гэж бич`);
+  }
 
   const q = (prose.match(/❔/g) ?? []).length;
   if (q > MAX_Q) add("W", "W-q", `❔ ${q} (>${MAX_Q}) — батлах эсвэл хасах`);
