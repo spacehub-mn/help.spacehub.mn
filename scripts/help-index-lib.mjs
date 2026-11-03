@@ -17,6 +17,10 @@ export function frontMatter(src) {
       const list = [];
       while (i + 1 < lines.length && /^\s+-\s/.test(lines[i + 1])) list.push(lines[++i].replace(/^\s+-\s*/, '').replace(/^["']|["']$/g, ''));
       data[kv[1]] = list;
+    } else if (/^\[.*\]$/.test(kv[2].trim())) {
+      // YAML flow жагсаалт: keywords: ["a", "b"] → массив (апп HelpSearchService string[] гэж уншина)
+      const inner = kv[2].trim().slice(1, -1).trim();
+      data[kv[1]] = inner === '' ? [] : inner.split(',').map((s) => s.trim().replace(/^["']|["']$/g, '')).filter(Boolean);
     } else data[kv[1]] = kv[2].replace(/^["']|["']$/g, '');
   }
   return { data, body: src.slice(m[0].length) };
@@ -42,6 +46,6 @@ export function pageOf(rel, src) {
     .replace(/\s*\{#[\w-]+\}/g, '')                  // {#id} anchor
     .replace(/^#{1,6}\s+/gm, '').replace(/[*_`>|]/g, ' ')
     .replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-  return { title: data.title ?? h1?.[1].trim() ?? rel, url: encodeURI(route), headings, text, keywords: data.keywords ?? [] };
+  return { title: data.title ?? h1?.[1].trim() ?? rel, url: encodeURI(route), headings, text, keywords: [data.keywords ?? []].flat() };
 }
 

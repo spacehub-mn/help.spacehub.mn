@@ -40,3 +40,11 @@ test('isDraft: «draft: true» ноорог — хайлт, docs хуулбар�
   assert.equal(isDraft('---\ntype: zaavar\n---\n# A\n'), false);
   assert.equal(isDraft('# frontmatter-гүй\n'), false);
 });
+
+test('pageOf: keywords flow жагсаалт ["a", "b"] → массив; ганц утга → массив (апп string[] JsonException, $[76])', () => {
+  const flow = pageOf('owner/role/menejer.md', '---\r\nroles: [menejer]\r\nkeywords: ["менежер", "гэрээ", \'тоолуур\']\r\n---\r\n\r\n# Менежер\r\n');
+  assert.deepEqual(flow.keywords, ['менежер', 'гэрээ', 'тоолуур']);
+  assert.deepEqual(pageOf('a.md', '---\nkeywords: []\n---\n# A\n').keywords, []);
+  assert.deepEqual(pageOf('b.md', '---\nkeywords: ганц\n---\n# B\n').keywords, ['ганц']);
+  assert.deepEqual(pageOf('c.md', '# C\n').keywords, []);
+});
