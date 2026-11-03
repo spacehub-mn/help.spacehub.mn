@@ -101,6 +101,17 @@ test("зураг ↔ текст 1:1: илүү тэмдэг E-imgmap, дутуу 
   assert.ok(y.includes("W-imgcap"));
 });
 
+test("бүлгийн дундах зураг (өмнөх гарчиг 1.2) — дараагийн бүлгийн гарчиг (2) тэр зурагт тоологдохгүй", () => {
+  const f = "---\ntype: lavlah\nroles: [owner]\nupdated: 2026-11-03\nverified_commit: c68c602\n---\n";
+  const docs = fixture({
+    "list/g.md": `${f}# Жагсаалт\n\n> 🏢 Байгууллага · Вэб\n\n## Товчнууд\n\n### Товчны мөр\n\n![a](/img/a.webp)\n\n*Зураг 1. Мөр.*\n\n#### «А»\nа.\n\n#### «Б»\nб.\n\n![b](/img/b.webp)\n\n*Зураг 1. Үргэлжлэл: В.*\n\n#### «В»\nв.\n\n### 🗂 Бүлэг\n\n![c](/img/c.webp)\n\n*Зураг 2. Бүлэг.*\n\n#### «Г»\nг.\n\n## 🔗 Холбоотой\n- [x](/x)\n`,
+  });
+  const shots = join(docs, "..", "shots.json");
+  writeFileSync(shots, JSON.stringify([{ id: "a", marks: [{ n: "1.1" }, { n: "1.2" }] }, { id: "b", marks: [{ n: "1.3" }] }, { id: "c", marks: [{ n: "2.1" }] }]));
+  const r = rules(run(docs, "--shots", shots).out, "g.md");
+  assert.ok(!r.includes("E-imgmap") && !r.includes("W-imgmap"), r.join(","));
+});
+
 test("W-gray: жагсаалтын «Товчнууд»-д «… дээр л харагдана» → анхааруулга; «Товчны нэр … харагдана» биш", () => {
   const body = (line) => `${fm()}# Гарчиг\n\n> 🏢 Байгууллага · Вэб\n\n## Товчнууд\nТовчны нэр апп дээр яг ингэж харагдана.\n\n### «Цуцлах»\n- **Сонголт:** ${line}\n\n## 🔗 Холбоотой\n- [x](/x)\n`;
   const docs = fixture({ "list/a.md": body("цуцлаагүй төлбөр дээр л харагдана."), "list/b.md": body("цуцлаагүй үед идэвхтэй, бусад үед **саарал**.") });

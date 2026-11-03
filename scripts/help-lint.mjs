@@ -179,8 +179,10 @@ function imageSections(body, type) {
     const span = end < 0 ? next : next.slice(0, end);
     const want = span.some((x) => x.kind === "h") ? "h" : "li";
     // Бүлгийн гарчгийн (### 2.) доорх зураг = зөвхөн тэр бүлгийн товч (2.1, 2.2 …)
+    // Бүлгийн дундах зураг (өмнөх нь 1.8) ч мөн тэр бүлэг (1.) — дараагийн бүлгийн гарчиг (2) орохгүй
     const prev = items[k - 1];
-    const group = prev && prev.kind === "h" && !prev.label.includes(".") && span.some((x) => x.label.startsWith(prev.label + ".")) ? prev.label + "." : "";
+    const base = prev && prev.kind === "h" ? prev.label.split(".")[0] + "." : "";
+    const group = base && span.some((x) => x.label.startsWith(base)) ? base : "";
     const caption = lines.slice(img.line + 1).find((l) => l.trim()) ?? "";
     // Тойм зураг: эхний ## бүлгээс өмнө, доор нь алхамгүй → тэмдэг = бүлгийн дугаар (1, 2 …)
     if (!span.length && !items.slice(0, k).some((x) => x.kind === "h2")) return { id: img.id, caption, labels: next.filter((x) => x.kind === "h2").map((x) => x.label) };
