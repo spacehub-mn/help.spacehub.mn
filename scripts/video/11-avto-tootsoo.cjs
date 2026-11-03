@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // 11 — «Авто тооцоо гараагүй» видео («Авто нэхэмжлэх» = BillRecord, QA/10-29) (SCRIPTS.md 11, HELP_PLAN §11). Прод app.spacehub.mn, тест эрх, туршилтын owner.
-// ЗӨВХӨН УНШИНА: зөвхөн цэс нээж, хүснэгтийг гүйлгэнэ. «Next Auto Bill +», «Job Create» зэрэг товчийг хулганаар
+// ЗӨВХӨН УНШИНА: зөвхөн цэс нээж, хүснэгтийг гүйлгэнэ. «Дараа сарын авто нэхэмжлэх үүсгэх», «Автомат ажил үүсгэх» зэрэг товчийг хулганаар
 // ЗААНА, ДАРАХГҮЙ. Хувийн мэдээллийн багана бүдгэрнэ. Нэвтрэлт бичлэгт орохгүй.
 //
 //   node scripts/video/11-avto-tootsoo.cjs <гаралтын хавтас>   → raw .webm + timing.json; дараа нь build.py
@@ -131,15 +131,15 @@ const idle = (page) => page.locator("#xaf-loading.show").waitFor({ state: "hidde
   await moveTo(th("Авто ажил статус"));
   await page.waitForTimeout(3500);
 
-  await cap("3. Мөр алга бол өмнөх сарын мөрийг сонгоод (1) «Next Auto Bill +», дараа нь (2) «Job Create»");
+  await cap("3. Мөр алга бол өмнөх сарын мөрийг сонгоод (1) «Дараа сарын авто нэхэмжлэх үүсгэх», дараа нь (2) «Автомат ажил үүсгэх»");
   // Сонгох нүд, Код харагдахаар буцааж зүүн тийш гүйлгэнэ
   await boxes([]);
   await th("Код").evaluate((e) => e.scrollIntoView({ block: "nearest", inline: "start" }));
   await page.waitForTimeout(500);
-  await boxes([btn("Next Auto Bill"), btn("Job Create")]);
-  await moveTo(btn("Next Auto Bill"));
+  await boxes([btn("Дараа сарын авто нэхэмжлэх"), btn("Автомат ажил үүсгэх")]);
+  await moveTo(btn("Дараа сарын авто нэхэмжлэх"));
   await page.waitForTimeout(2200);
-  await moveTo(btn("Job Create"));
+  await moveTo(btn("Автомат ажил үүсгэх"));
   await page.waitForTimeout(2200);
   await boxes([]);
 

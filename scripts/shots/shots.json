@@ -1004,7 +1004,7 @@
     ],
     "width": 1920,
     "clip": "auto",
-    "alt": "Авто нэхэмжлэх: статус, Next Auto Bill +, Job Create, Job start · Авто ажил төрөл",
+    "alt": "Авто нэхэмжлэх: статус, Дараа сарын авто нэхэмжлэх үүсгэх, Автомат ажил үүсгэх, Автомат ажлыг асаах · Авто ажил төрөл",
     "marks": [
       {
         "n": "1.1",
@@ -1013,18 +1013,18 @@
       },
       {
         "n": "1.2",
-        "btn": "Next Auto Bill",
-        "label": "Next Auto Bill +"
+        "btn": "Дараа сарын авто нэхэмжлэх",
+        "label": "Дараа сарын авто нэхэмжлэх үүсгэх"
       },
       {
         "n": "1.3",
-        "btn": "Job Create",
-        "label": "Job Create"
+        "btn": "Автомат ажил үүсгэх",
+        "label": "Автомат ажил үүсгэх"
       },
       {
         "n": "1.4",
-        "btn": "Job start",
-        "label": "Job start"
+        "btn": "Автомат ажлыг асаах",
+        "label": "Автомат ажлыг асаах"
       },
       {
         "n": "1.5",
@@ -1389,32 +1389,32 @@
     "marks": [
       {
         "n": "1",
-        "btn": "Job Create",
-        "label": "Job Create",
+        "btn": "Автомат ажил үүсгэх",
+        "label": "Автомат ажил үүсгэх",
         "exact": true
       },
       {
         "n": "2",
-        "btn": "Job start",
-        "label": "Job start",
+        "btn": "Автомат ажлыг асаах",
+        "label": "Автомат ажлыг асаах",
         "exact": true
       },
       {
         "n": "2",
-        "btn": "Job stop",
-        "label": "Job stop",
+        "btn": "Автомат ажлыг зогсоох",
+        "label": "Автомат ажлыг зогсоох",
         "exact": true
       },
       {
         "n": "3",
-        "btn": "Job Delete",
-        "label": "Job Delete",
+        "btn": "Автомат ажлыг устгах",
+        "label": "Автомат ажлыг устгах",
         "exact": true
       },
       {
         "n": "4",
-        "btn": "Next Auto Job",
-        "label": "Next Auto Job +"
+        "btn": "Дараа сарын авто ажил",
+        "label": "Дараа сарын авто ажил үүсгэх"
       }
     ]
   },
@@ -1434,32 +1434,32 @@
     "marks": [
       {
         "n": "1",
-        "btn": "Job Create",
-        "label": "Job Create",
+        "btn": "Автомат ажил үүсгэх",
+        "label": "Автомат ажил үүсгэх",
         "exact": true
       },
       {
         "n": "2",
-        "btn": "Job start",
-        "label": "Job start",
+        "btn": "Автомат ажлыг асаах",
+        "label": "Автомат ажлыг асаах",
         "exact": true
       },
       {
         "n": "2",
-        "btn": "Job stop",
-        "label": "Job stop",
+        "btn": "Автомат ажлыг зогсоох",
+        "label": "Автомат ажлыг зогсоох",
         "exact": true
       },
       {
         "n": "3",
-        "btn": "Job Delete",
-        "label": "Job Delete",
+        "btn": "Автомат ажлыг устгах",
+        "label": "Автомат ажлыг устгах",
         "exact": true
       },
       {
         "n": "4",
-        "btn": "Next Auto Bill",
-        "label": "Next Auto Bill +"
+        "btn": "Дараа сарын авто нэхэмжлэх",
+        "label": "Дараа сарын авто нэхэмжлэх үүсгэх"
       }
     ]
   },
@@ -1479,26 +1479,26 @@
     "marks": [
       {
         "n": "1",
-        "btn": "Job Create",
-        "label": "Job Create",
+        "btn": "Автомат ажил үүсгэх",
+        "label": "Автомат ажил үүсгэх",
         "exact": true
       },
       {
         "n": "2",
-        "btn": "Job Start",
-        "label": "Job Start",
+        "btn": "Автомат ажлыг асаах",
+        "label": "Автомат ажлыг асаах",
         "exact": true
       },
       {
         "n": "2",
-        "btn": "Job Stop",
-        "label": "Job Stop",
+        "btn": "Автомат ажлыг зогсоох",
+        "label": "Автомат ажлыг зогсоох",
         "exact": true
       },
       {
         "n": "3",
-        "btn": "Job Delete",
-        "label": "Job Delete",
+        "btn": "Автомат ажлыг устгах",
+        "label": "Автомат ажлыг устгах",
         "exact": true
       }
     ]
@@ -1524,26 +1524,26 @@
       },
       {
         "n": "2",
-        "btn": "Job Create",
-        "label": "Job Create",
+        "btn": "Автомат ажил үүсгэх",
+        "label": "Автомат ажил үүсгэх",
         "exact": true
       },
       {
         "n": "2",
-        "btn": "Job start",
-        "label": "Job start",
+        "btn": "Автомат ажлыг асаах",
+        "label": "Автомат ажлыг асаах",
         "exact": true
       },
       {
         "n": "2",
-        "btn": "Job stop",
-        "label": "Job stop",
+        "btn": "Автомат ажлыг зогсоох",
+        "label": "Автомат ажлыг зогсоох",
         "exact": true
       },
       {
         "n": "2",
-        "btn": "Job Delete",
-        "label": "Job Delete",
+        "btn": "Автомат ажлыг устгах",
+        "label": "Автомат ажлыг устгах",
         "exact": true
       }
     ]
@@ -2213,7 +2213,7 @@
     "padLeft": 40,
     "padRight": 60,
     "padBottom": 120,
-    "alt": "Авто нэхэмжлэх жагсаалт: цэс, Авто ажил статус, Next Auto Bill +, Job Create",
+    "alt": "Авто нэхэмжлэх жагсаалт: цэс, Авто ажил статус, Дараа сарын авто нэхэмжлэх үүсгэх, Автомат ажил үүсгэх",
     "marks": [
       {
         "n": "1.1",
@@ -2227,14 +2227,14 @@
       },
       {
         "n": "1.3",
-        "btn": "Next Auto Bill",
-        "label": "Next Auto Bill +"
+        "btn": "Дараа сарын авто нэхэмжлэх",
+        "label": "Дараа сарын авто нэхэмжлэх үүсгэх"
       },
       {
         "n": "1.4",
-        "btn": "Job Create",
+        "btn": "Автомат ажил үүсгэх",
         "exact": true,
-        "label": "Job Create"
+        "label": "Автомат ажил үүсгэх"
       }
     ]
   },
