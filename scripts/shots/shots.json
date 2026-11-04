@@ -3336,5 +3336,42 @@
         "label": "Хасах"
       }
     ]
+  },
+  {
+    "id": "owner/aldangi-tohirgoo-1",
+    "page": "docs/owner/aldangi-tohirgoo.md",
+    "nav": ["Менежмент", "Байгууллага"],
+    "url": "PropertyOwner_ListView",
+    "width": 1920,
+    "rowOpen": 2,
+    "rowHas": "^\\s*10\\s+Рентхаб",
+    "open": { "field": "Нэмэлт тохиргоо" },
+    "mustSee": "Алданги тооцно",
+    "clip": "dialog",
+    "dialogPadX": 0,
+    "alt": "Байгууллагын Нэмэлт тохиргоо: Алданги тохиргоо хэсэг",
+    "marks": [
+      { "text": "Алданги тооцно", "exact": true, "n": "1.1", "label": "1.1" },
+      { "text": "Алданги тооцох арга", "exact": true, "n": "1.2", "label": "1.2" },
+      { "text": "Алданги хүү", "exact": true, "n": "1.3", "label": "1.3" }
+    ]
+  },
+  {
+    "id": "owner/aldangi-tohirgoo-2",
+    "page": "docs/owner/aldangi-tohirgoo.md",
+    "nav": ["Менежмент", "Гэрээ"],
+    "url": "Contract_ListView",
+    "width": 1600,
+    "height": 1000,
+    "rowOpen": 4,
+    "rowHas": "101296",
+    "open": { "field": "Нэмэлт тохиргоо" },
+    "mustSee": "Алданги тохиргоог энэ гэрээнд өөрчлөх",
+    "clip": "dialog",
+    "dialogPadX": 0,
+    "alt": "Гэрээний Нэмэлт тохиргоо: Алданги тохиргоог энэ гэрээнд өөрчлөх",
+    "marks": [
+      { "text": "Алданги тохиргоог энэ гэрээнд өөрчлөх", "exact": true, "n": "2.3", "label": "2.3" }
+    ]
   }
 ]

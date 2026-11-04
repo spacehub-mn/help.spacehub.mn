@@ -56,7 +56,7 @@ const sidebars = {
       ]),
       group("Тайлан", ["owner/list/reports"]),
     ]),
-    group("6. ⚙️ Тохиргоо, өөрчлөлт", ["owner/shine-geree", "owner/geree-shalgah", "owner/tohirgoo", "owner/une-oorchloh", "owner/geree-buunuur-sungah", "owner/geree-talbai", "owner/hereglegch-idevhgui", "owner/tooluur", "owner/tureesiin-negj-m2"]),
+    group("6. ⚙️ Тохиргоо, өөрчлөлт", ["owner/shine-geree", "owner/geree-shalgah", "owner/tohirgoo", "owner/aldangi-tohirgoo", "owner/une-oorchloh", "owner/geree-buunuur-sungah", "owner/geree-talbai", "owner/hereglegch-idevhgui", "owner/tooluur", "owner/tureesiin-negj-m2"]),
     group("7. 🆘 Асуудал гарвал", [
       "owner/tugeemel-asuult",
       group("❓ Сэдвээр", [
