@@ -177,11 +177,11 @@ async function mark(page, boxes) {
       // right: цэсний мөр — дээр/доорх мөрийг дарахгүй; left: талбарын шошго — баруун талын утга/чагтыг дарахгүй
       // col: цэсний мөрүүдийн дугаарыг нэг босоо баганад (хамгийн урт мөрийн баруун талд) — мөр бүрийн дугаар мөргөлдөхгүй
       const colX = Math.max(...boxes.filter((q) => q.col).map((q) => q.x + q.width));
-      const left = b.col ? colX + 6 : b.right ? b.x + b.width + 6 : b.left ? Math.max(0, b.x - w - 8) : Math.max(0, b.x + b.width / 2 - w / 2);
+      const left = b.col ? colX + 6 : b.inside ? b.x + b.width - w - 6 : b.right ? b.x + b.width + 6 : b.left ? Math.max(0, b.x - w - 8) : Math.max(0, b.x + b.width / 2 - w / 2);
       let top = b.below ? b.y + b.height + 6 : Math.max(0, b.y - BADGE - 6);
-      if (b.right || b.left) { top = b.y + (b.height - BADGE) / 2; } // below: дээр нь чухал бичиг байвал (гарчиг г.м.)
+      if (b.right || b.left || b.inside) { top = b.y + (b.height - BADGE) / 2; } // inside: хүрээний дотор баруун захад (баганы шүүлтүүрийн дүрсийг л дарна — хөрш багана/toolbar-т давхцахгүй) // below: дээр нь чухал бичиг байвал (гарчиг г.м.)
       const hit = (t) => placed.some((p) => left < p.left + p.w + 2 && p.left < left + w + 2 && Math.abs(p.top - t) < BADGE);
-      if (!b.col && hit(top)) top = b.y + b.height + 6; // col: мөр бүр өөрийн дугаартай — шилжүүлэхгүй
+      if (!b.col && !b.inside && hit(top)) top = b.y + b.height + 6; // col: мөр бүр өөрийн дугаартай — шилжүүлэхгүй
       Object.assign(n.style, { left: left + "px", top: top + "px" });
       placed.push({ left, top, w });
       out.push({ x: left, y: top, width: w, height: BADGE });
@@ -379,7 +379,7 @@ async function toWebp(page, png) {
     for (const m of s.marks) {
       const b = await box(page, m);
       // Дэлгэцээс гадуур (баруун тийш гүйлгэх шаардлагатай) багана = олдоогүй гэж тооцно
-      if (b && b.x + b.width <= vw.width && b.y + b.height <= vw.height) boxes.push({ ...b, label: m.label, n: m.n, below: !!m.below, right: m.right ?? !!m.tree, left: !!m.left, col: !!m.col });
+      if (b && b.x + b.width <= vw.width && b.y + b.height <= vw.height) boxes.push({ ...b, label: m.label, n: m.n, below: !!m.below, right: m.right ?? !!m.tree, left: !!m.left, col: !!m.col, inside: !!m.inside });
       else missing.push(m.label || m.btn || m.th);
     }
     // Дугаарыг уншигдах дарааллаар (мөр, дараа нь зүүнээс баруун) — хуудасны тайлбар энэ дарааллаар
