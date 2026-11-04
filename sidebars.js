@@ -13,7 +13,7 @@ const sidebars = {
     { type: "doc", id: "owner/index", label: "🏠 Нүүр" },
     // Систем нэвтрүүлэлт (10-27): шинэ байгууллага эхнээс нь дарааллаар
     group("1. 🚀 Систем нэвтрүүлэлт", ["owner/nevtruulelt/index", "owner/nevtruulelt/material", "owner/tutorial/ehnii-sar", "owner/nevtruulelt/aldaa"], false),
-    group("2. 🧭 Эхлэх", ["owner/start", "owner/navigation", "owner/utas-veb", "owner/nuuts-ug-solih", "owner/nuuts-ug-sergeeh"]),
+    group("2. 🧭 Эхлэх", ["owner/start", "owner/navigation", "owner/utas-veb", "owner/nuuts-ug-solih", "owner/nuuts-ug-sergeeh", "owner/ai-tuslah"]),
     group("3. 👥 Миний үүрэг", ["owner/role/zahiral", "owner/role/nyagtlan", "owner/role/menejer"]),
     group("4. 📅 Сар бүрийн ажил", [
       "owner/tutorial/sar-buriin-ajil",

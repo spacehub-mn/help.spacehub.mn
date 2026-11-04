@@ -110,7 +110,13 @@ async function box(page, m) {
   if (m.sel) {
     // CSS сонгогчоор бүтэн хэсэг (самбарын KPI мөр г.м.) — бичиг дундуур зурахгүй
     const loc = page.locator(m.sel).locator("visible=true").first();
-    return (await loc.isVisible().catch(() => false)) ? loc.boundingBox() : null;
+    if (await loc.isVisible().catch(() => false)) return loc.boundingBox();
+    // DevExpress adaptive toolbar: зөвхөн дүрстэй товчийг Playwright «харагдахгүй» гэж үздэг — хэмжээтэй, дэлгэц доторхыг нь авна
+    return page.evaluate((sel) => {
+      const r = [...document.querySelectorAll(sel)].map((e) => e.getBoundingClientRect())
+        .find((b) => b.width > 4 && b.height > 4 && b.x >= 0 && b.y >= 0 && b.right <= innerWidth && b.bottom <= innerHeight);
+      return r ? { x: r.x, y: r.y, width: r.width, height: r.height } : null;
+    }, m.sel);
   }
   if (m.input) {
     // Хайлтын нүд г.м. — placeholder-оор (утга нь бүдгэрсэн хэвээр)
@@ -284,8 +290,20 @@ async function toWebp(page, png) {
       await page.waitForTimeout(800);
       const ot = s.open.btn || s.open.text || s.open.sel || "";
       if (OPEN_FORBID.test(ot)) throw new Error(`${s.id}: open «${ot}» зөвшөөрөгдөөгүй — зогсов`);
-      const ob = await box(page, s.open);
-      if (!ob) throw new Error(`${s.id}: нээх товч олдсонгүй — зогсов`);
+      // via: товч toolbar-ын «More items...» дотор нуугдсан үед — мөр сонгосны ДАРАА эхлээд энэ цэсийг нээнэ (зөвхөн цэс нээх)
+      if (s.open.via) {
+        if (OPEN_FORBID.test(s.open.via)) throw new Error(`${s.id}: via «${s.open.via}» зөвшөөрөгдөөгүй — зогсов`);
+        const vb = await box(page, { sel: s.open.via });
+        if (!vb) throw new Error(`${s.id}: via «${s.open.via}» олдсонгүй — зогсов`);
+        await page.mouse.click(vb.x + vb.width / 2, vb.y + vb.height / 2); await page.waitForTimeout(1500);
+      }
+      // Мөр сонгосны дараа toolbar дахин зурагддаг — 5 хүртэл удаа 1с зайтай дахин хайна (geree-shalgah-1, 11-04)
+      let ob = null;
+      for (let k = 0; k < 5 && !ob; k++) { ob = await box(page, s.open); if (!ob) await page.waitForTimeout(1000); }
+      if (!ob) {
+        const n = s.open.sel ? await page.locator(s.open.sel).count().catch(() => -1) : -1;
+        throw new Error(`${s.id}: нээх товч олдсонгүй — зогсов (url ${page.url()}, sel тоо ${n})`);
+      }
       await page.mouse.click(ob.x + ob.width / 2, ob.y + ob.height / 2);
       try { await page.getByText(s.mustSee).first().waitFor({ timeout: 10000 }); }
       catch { throw new Error(`${s.id}: «${s.mustSee}» цонх гарсангүй — АЮУЛГҮЙН ҮҮДНЭЭС ЗОГСОВ`); }

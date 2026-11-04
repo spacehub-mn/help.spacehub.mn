@@ -3,8 +3,8 @@ slug: /owner/geree-shalgah
 sidebar_label: Гэрээ шалгах
 type: zaavar
 roles: [owner, nyagtlan, menejer]
-updated: 2026-11-01
-verified_commit: 235fca3
+updated: 2026-11-04
+verified_commit: 527e5b2
 imgmap_skip: "1.4 олон гэрээ сонгоход л таб гарна · 1.9 цонхыг доош гүйлгэхэд"
 keywords:
   - "Гэрээ шалгах"

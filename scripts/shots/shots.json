@@ -1023,7 +1023,8 @@
       {
         "n": "1.1",
         "th": "Авто ажил статус",
-        "label": "Статус"
+        "label": "Статус",
+        "below": true
       },
       {
         "n": "1.2",
@@ -2237,7 +2238,8 @@
       {
         "n": "1.2",
         "th": "Авто ажил статус",
-        "label": "Авто ажил статус"
+        "label": "Авто ажил статус",
+        "below": true
       },
       {
         "n": "1.3",
@@ -3147,14 +3149,13 @@
   {
     "id": "owner/geree-shalgah-1",
     "page": "docs/owner/geree-shalgah.md",
+    "width": 1920,
     "nav": [
       "Менежмент",
       "Гэрээ"
     ],
     "selectRow": true,
-    "open": {
-      "sel": "button[title^=\"Үнэ, тоолуур\"]"
-    },
+    "open": { "via": "button[title=\"More items...\"]", "text": "Гэрээ шалгах", "exact": true },
     "mustSee": "ДҮГНЭЛТ",
     "clip": "dialog",
     "blurSel": [
@@ -3175,7 +3176,7 @@
         "text": "Сүүлийн 13 сар",
         "label": "Сүүлийн 13 сар",
         "first": true,
-        "right": true
+        "left": true
       },
       {
         "n": "1.7",
@@ -3327,12 +3328,14 @@
         "n": "2.1",
         "btn": "Нэмэх",
         "exact": true,
+        "below": true,
         "label": "Нэмэх"
       },
       {
         "n": "2.2",
         "btn": "Хасах",
         "exact": true,
+        "below": true,
         "label": "Хасах"
       }
     ]
@@ -3372,6 +3375,23 @@
     "alt": "Гэрээний Нэмэлт тохиргоо: Алданги тохиргоог энэ гэрээнд өөрчлөх",
     "marks": [
       { "text": "Алданги тохиргоог энэ гэрээнд өөрчлөх", "exact": true, "n": "2.3", "label": "2.3" }
+    ]
+  },
+  {
+    "id": "owner/ai-tuslah-1",
+    "page": "docs/owner/ai-tuslah.md",
+    "nav": ["Менежмент", "Гэрээ"],
+    "url": "Contract_ListView",
+    "width": 1600,
+    "height": 1000,
+    "wait": 5000,
+    "open": { "sel": ".chatbot-fab" },
+    "mustSee": "Spacehub AI Туслах",
+    "noTable": true,
+    "clip": { "x": 1100, "y": 250, "width": 500, "height": 750 },
+    "alt": "Spacehub AI Туслах цонх: санал болгосон асуултууд, Мессеж бичих талбар",
+    "marks": [
+      { "input": "Мессеж бичих", "n": "1.2", "label": "1.2" }
     ]
   }
 ]
