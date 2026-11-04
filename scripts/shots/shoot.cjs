@@ -329,6 +329,22 @@ async function toWebp(page, png) {
       }
       await page.mouse.move(vw.width - 5, vw.height - 5);
     }
+    // ask: AI Туслахад нэг асуулт бичиж Enter (зөвхөн уншдаг бот; CEO 11-04 «А», Рентхаб = туршилтын owner У11).
+    // Хамгаалалт: асуулт нь ЗӨВХӨН ASK_ALLOW-д бүртгэсэн Рентхабын гэрээний дугаартай байна — өөр owner-ийн дугаар хориотой.
+    if (s.ask) {
+      const ASK_ALLOW = ["101296"];
+      const num = (s.ask.text.match(/\d{5,}/) || [])[0];
+      if (!num || !ASK_ALLOW.includes(num)) throw new Error(`${s.id}: ask «${s.ask.text}» — зөвшөөрөгдөөгүй гэрээний дугаар, зогсов`);
+      const inp = page.locator(`input[placeholder*="${s.ask.input}"]:visible`).first();
+      await inp.fill(s.ask.text);
+      await inp.press("Enter");
+      // Хариу: «… хайж байна» төлөв алга болж, сүүлийн model мессеж тексттэй болох хүртэл (≤90с)
+      await page.waitForFunction(() => {
+        const m = [...document.querySelectorAll(".chatbot-msg-model")].filter((e) => (e.innerText || "").trim().length > 20);
+        return m.length > 0 && !document.querySelector(".chatbot-typing, .chatbot-tool-status");
+      }, null, { timeout: 90000 }).catch(() => { throw new Error(`${s.id}: AI хариу ирсэнгүй — зогсов`); });
+      await page.waitForTimeout(1500);
+    }
     // Цонх доторх хувийн мэдээлэл: «Хайлт түргэвчлэгч»-ийн үгс (гүйлгээний утгаас — компани/хүний нэр), гарчгийн 2-р мөр, хайлтын утга
     if (s.blurDialog) await page.evaluate(() => {
       const pii = (el) => el && el.classList.add("hs-pii");
@@ -409,6 +425,11 @@ async function toWebp(page, png) {
         const cancel = page.getByRole("button", { name: /^(Үгүй|Болих|Хаах|Cancel|No|Close)$/ }).last();
         if (await cancel.isVisible().catch(() => false)) await cancel.click();
         await page.waitForTimeout(800);
+      }
+      // closeSel: Esc-ээр хаагддаггүй самбар (AI Туслах «×») — зөвхөн хаах товч
+      if (s.closeSel && await page.getByText(s.mustSee).first().isVisible().catch(() => false)) {
+        const cb = page.locator(s.closeSel).first();
+        if (await cb.isVisible().catch(() => false)) { await cb.click(); await page.waitForTimeout(800); }
       }
       const still = await page.getByText(s.mustSee).first().isVisible().catch(() => false);
       console.log(`   ↳ цонх хаагдсан: ${still ? "❌ ҮГҮЙ — гараар шалга" : "✅"}`);
