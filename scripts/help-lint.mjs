@@ -212,17 +212,40 @@ const INTERNAL = [
   [/\.(cs|razor|dart):\d+|xafml:\d+/, "кодын файл:мөр"],
   [/agent-ops|\bresearch\/|\bmemory\/|claude\.ai\/code\/session/, "дотоод зам"],
   [/[CE]:[\\/](Users|Projects)/, "локал зам"],
+  // «Дотоод 0» (11-07): ажлын session-ий нэр, дотоод даалгаврын код (T95), дотоод нотолгооны мөр
+  [/\b(?:CEO|COACH|QA_Manager|Help_Spacehub|(?:Aud|Srv|Crm|Fix|Dev|Sh|NZ|Ks)_[A-Za-z]\w*)\b/, "session нэр"],
+  [/\bT\d{2,3}\b/, "дотоод даалгаврын код"],
+  [/Нотолгоо:|\baudit\//, "дотоод нотолгоо"],
 ];
+// commit SHA (богино 7–12 эсвэл бүтэн 40 hex, үсэг ба цифр хоёулаа) — frontmatter verified_commit, UUID (Netlify сайтын id),
+// 32 hex (Algolia-гийн нийтийн хайлтын түлхүүр, App Store badge hash) хамаарахгүй
+const SHA_RE = /(?<![\w#/.-])(?=[0-9a-f]*[a-f])(?=[0-9a-f]*\d)(?:[0-9a-f]{40}|[0-9a-f]{7,12})(?![\w-])/;
+const internalHits = (text) => {
+  const t = text.replace(/^verified_commit:.*$/gm, "").replace(/\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b/gi, "");
+  return [...INTERNAL, [SHA_RE, "commit SHA"]].filter(([re]) => re.test(t)).map(([re, what]) => `${what}: «${t.match(re)[0].slice(0, 24)}»`);
+};
 const firstBlock = (b) => (b.split(/\n\s*\n/).map((p) => p.trim()).filter((p) => p && !/^# \S[^\n]*$/.test(p))[0] ?? "");
 // --check-text <файл|->: commit мессеж, PR тайлбарыг E-internal-аар шалгана (commit-msg hook, PR үүсгэхийн өмнө)
 if (args.includes("--check-text")) {
   const src = opt("--check-text", "-") || "-"; // сүүлийн аргумент бол stdin
   const text = readFileSync(src === "-" ? 0 : src, "utf8");
-  const hits = [...INTERNAL.filter(([re]) => re.test(text)).map(([re, what]) => `${what}: «${text.match(re)[0].slice(0, 24)}»`),
-    ...PRIVATE_TERMS.filter((t) => text.includes(t)).map((t) => `дотоод нэр «${t}»`)];
+  const hits = [...internalHits(text), ...PRIVATE_TERMS.filter((t) => text.includes(t)).map((t) => `дотоод нэр «${t}»`)];
   for (const h of hits) console.log(`  ❌ E-internal: ${h} — нийтийн репод бүү бич`);
   console.log(hits.length ? `❌ ${hits.length}` : "✅ 0");
   process.exit(hits.length ? 1 : 0);
+}
+// --check-commits <range>: push/QA-аас өмнө шинэ commit мессеж бүрийг шалгана (жнь origin/main..HEAD). Түүхэн commit-ийг хөндөхгүй.
+if (args.includes("--check-commits")) {
+  const range = opt("--check-commits", "origin/main..HEAD") || "origin/main..HEAD";
+  const log = execFileSync("git", ["-C", ROOT, "log", "--format=%h%x00%B%x01", range], { encoding: "utf8" }); // help репо өөрөө
+  let bad = 0;
+  for (const rec of log.split("\x01").map((s) => s.trim()).filter(Boolean)) {
+    const [h, msg = ""] = rec.split("\x00");
+    const hits = [...internalHits(msg), ...PRIVATE_TERMS.filter((t) => msg.includes(t)).map((t) => `дотоод нэр «${t}»`)];
+    if (hits.length) { bad++; console.log(h); for (const x of hits) console.log(`  ❌ E-internal: ${x} — commit мессежид бүү бич`); }
+  }
+  console.log(bad ? `❌ ${bad} commit` : "✅ 0");
+  process.exit(bad ? 1 : 0);
 }
 const results = [];
 for (const file of walk(DOCS)) {
@@ -295,7 +318,7 @@ for (const file of walk(DOCS)) {
   // Нууцлал (хяналт 10-27: help репо PUBLIC — <!-- --> тайлбар ч GitHub дээр уншигдана): харилцагчийн нэр, гэрээний дугаар
   for (const n of PII_NAMES) if (raw.includes(n)) add("E", "E-pii", `харилцагчийн нэр «${n}» (тайлбарт ч бүү бич — «owner N» гэж бич)`);
   // тайлбар (<!-- -->) GitHub дээр уншигдана, эхний блок бол meta description болно → нотолгоог локал хавтаст бич
-  for (const [re, what] of INTERNAL) if (re.test(raw)) add("E", "E-internal", `${what}: «${raw.match(re)[0].slice(0, 24)}» — нийтийн репод бүү бич`);
+  for (const h of internalHits(raw)) add("E", "E-internal", `${h} — нийтийн репод бүү бич`);
   for (const t of PRIVATE_TERMS) if (raw.includes(t)) add("E", "E-internal", `дотоод нэр «${t}» — нийтийн репод бүү бич`);
   if (fmMatch && /^\s*#/m.test(fmMatch[1])) add("W", "W-fmcomment", "frontmatter-ийн # тайлбар GitHub дээр уншигдана — нотолгоог локал хавтаст (--evidence) бич");
   if (/^<!--/.test(firstBlock(body))) add("W", "W-comment1", "H1-ийн дараах эхний блок тайлбар — хуудасны тайлбар (meta description) болж гарна");
@@ -424,10 +447,25 @@ for (const file of existsSync(CHANGELOG) ? walk(CHANGELOG) : []) {
   const tech = techOf(`${title} ${body}`);
   const issues = tech.length ? [{ level: "W", rule: "W-tech", msg: `дотоод/кодын нэр томьёо: ${tech.join(", ")} — дэлгэц дээрх нэрээр эсвэл энгийн үгээр бич` }] : [];
   // ноорог (draft) ч нийтийн репод уншигдана — тайлбар доторх дотоод мэдээлэл мөн адил хориотой
-  for (const [re, what] of INTERNAL) if (re.test(src)) issues.push({ level: "E", rule: "E-internal", msg: `${what}: «${src.match(re)[0].slice(0, 24)}» — нийтийн репод бүү бич` });
+  for (const h of internalHits(src)) issues.push({ level: "E", rule: "E-internal", msg: `${h} — нийтийн репод бүү бич` });
   for (const t of PRIVATE_TERMS) if (src.includes(t)) issues.push({ level: "E", rule: "E-internal", msg: `дотоод нэр «${t}» — нийтийн репод бүү бич` });
   if (/<!--(?!\s*truncate\s*-->)/.test(src)) issues.push({ level: "W", rule: "W-comment", msg: "HTML тайлбар GitHub дээр уншигдана — локал хавтаст бич" });
   if (issues.length) results.push({ file: relative(join(DOCS, ".."), file).replace(/\\/g, "/"), type: "changelog", questions: 0, issues });
+}
+
+// E-internal: скрипт, src (нийтийн репод уншигдана) — «дотоод 0» (11-07). test/ хасна (санаатай тест өгөгдөл);
+// help-lint.mjs (дүрмүүд өөрөө) ба local-paths.cjs (локал тохиргооны зам, CEO 11-07 «үлдээ») хасна.
+const CODE_SKIP = /(?:^|[\\/])(?:help-lint\.mjs|local-paths\.cjs|node_modules)(?:$|[\\/])/;
+const walkCode = (d) => (existsSync(d) ? readdirSync(d).flatMap((n) => {
+  const p = join(d, n);
+  if (CODE_SKIP.test(p)) return [];
+  return statSync(p).isDirectory() ? walkCode(p) : /\.(m?js|cjs|jsx?|tsx?|json|css)$/.test(n) ? [p] : [];
+}) : []);
+for (const file of ["scripts", "src"].flatMap((d) => walkCode(join(DOCS, "..", d)))) {
+  const src = readFileSync(file, "utf8");
+  const issues = [...internalHits(src).map((h) => ({ level: "E", rule: "E-internal", msg: `${h} — нийтийн репод бүү бич` })),
+    ...PRIVATE_TERMS.filter((t) => src.includes(t)).map((t) => ({ level: "E", rule: "E-internal", msg: `дотоод нэр «${t}» — нийтийн репод бүү бич` }))];
+  if (issues.length) results.push({ file: relative(join(DOCS, ".."), file).replace(/\\/g, "/"), type: "code", questions: 0, issues });
 }
 
 // Хуучин аппын «?» хуулбар (static/docs/<id>.md) эх хуудастайгаа ижил эсэх (QA 10-28) — засах: node scripts/app-md.mjs

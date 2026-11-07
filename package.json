@@ -9,6 +9,7 @@
     "build": "node scripts/help-lint.mjs --no-git && docusaurus build && node scripts/copy-docs.mjs && node scripts/help-index.mjs",
     "test:search": "node scripts/search-test.mjs",
     "lint": "node scripts/help-lint.mjs",
+    "check-commits": "node scripts/help-lint.mjs --check-commits origin/main..HEAD",
     "test": "node --test \"test/*.test.*\"",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",

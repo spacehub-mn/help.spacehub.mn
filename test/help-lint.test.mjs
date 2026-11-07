@@ -259,6 +259,30 @@ test("--check-text: commit мессеж/PR тайлбарт session холбоо
   assert.equal(chk("help: нууц үгийн хуудас шинэчлэв"), 0);
 });
 
+test("«дотоод 0»: session нэр, T## код, SHA, «Нотолгоо:» → exit 1; verified_commit, UUID, 32 hex түлхүүр → 0", () => {
+  const d = mkdtempSync(join(tmpdir(), "help-msg0-"));
+  const chk = (t) => { writeFileSync(join(d, "m.txt"), t); try { execFileSync("node", ["scripts/help-lint.mjs", "--check-text", join(d, "m.txt")], { encoding: "utf8" }); return 0; } catch (e) { return e.status; } };
+  assert.equal(chk("docs: тамганы хуудас (CEO «А»)"), 1);
+  assert.equal(chk("docs: Fix_Spacehub2-ийн онош"), 1);
+  assert.equal(chk("docs: T95 нэхэмжлэхийн огноо"), 1);
+  assert.equal(chk("docs: 14829ae-ийн дагуу"), 1);
+  assert.equal(chk("docs: засвар\n\nНотолгоо: q09b"), 1);
+  assert.equal(chk("verified_commit: 3bcd2e1\nnetlify_f748018c-10b7-485c-a27c-3fe997fb2032_main\nKEY 154dfc27f26a114116e6c31d66b4218c"), 0);
+  assert.equal(chk("docs: нэхэмжлэхийн огноо солих заавар, 2026 оны 11-р сар"), 0);
+});
+
+test("«дотоод 0»: scripts/ дахь session нэр → E-internal; test/ хасагдана", () => {
+  const docs = fixture({ "a.md": good });
+  mkdirSync(join(docs, "..", "scripts"), { recursive: true });
+  writeFileSync(join(docs, "..", "scripts", "x.cjs"), "// Aud_Monitor-ын шаардлага\n");
+  mkdirSync(join(docs, "..", "test"), { recursive: true });
+  writeFileSync(join(docs, "..", "test", "y.mjs"), "// QA_Manager fixture 14829ae\n");
+  const { code, out } = run(docs);
+  assert.equal(code, 1);
+  assert.ok(rules(out, "scripts/x.cjs").includes("E-internal"));
+  assert.ok(!out.results.some((r) => r.file.includes("test/y.mjs")));
+});
+
 test("--check-text сүүлийн аргумент бол stdin уншина (унахгүй)", () => {
   let code = 0;
   try { execFileSync("node", ["scripts/help-lint.mjs", "--check-text"], { input: "help: Bill.cs:3", encoding: "utf8" }); } catch (e) { code = e.status; }
