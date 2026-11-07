@@ -3378,6 +3378,24 @@
     ]
   },
   {
+    "id": "owner/nehemjleh-dun-3",
+    "page": "docs/owner/nehemjleh-dun-zoroh.md",
+    "nav": ["Тооцоо", "Нэхэмжлэх"],
+    "url": "InvoiceBill_ListView",
+    "width": 1920,
+    "rowOpen": 3,
+    "rowHas": "Spacehub Tower",
+    "tab": "Нэхэмжлэхийн задаргаа",
+    "mustSee": "Өмнөх үлдэгдэл",
+    "clip": { "x": 285, "y": 52, "width": 1625, "height": 363 },
+    "alt": "Нэхэмжлэхийн задаргаа таб: Огноо, Өмнөх үлдэгдэл, Хадгал",
+    "marks": [
+      { "text": "Нэхэмжлэхийн задаргаа", "exact": true, "n": "4.2", "label": "4.2" },
+      { "field": "Огноо", "whole": true, "n": "4.3", "label": "4.3" },
+      { "btn": "Хадгал", "exact": true, "n": "4.4", "label": "4.4" }
+    ]
+  },
+  {
     "id": "owner/ai-tuslah-1",
     "page": "docs/owner/ai-tuslah.md",
     "nav": ["Менежмент", "Гэрээ"],
