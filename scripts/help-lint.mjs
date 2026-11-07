@@ -219,7 +219,7 @@ const INTERNAL = [
 ];
 // commit SHA (богино 7–12 эсвэл бүтэн 40 hex, үсэг ба цифр хоёулаа) — frontmatter verified_commit, UUID (Netlify сайтын id),
 // 32 hex (Algolia-гийн нийтийн хайлтын түлхүүр, App Store badge hash) хамаарахгүй
-const SHA_RE = /(?<![\w#/.-])(?=[0-9a-f]*[a-f])(?=[0-9a-f]*\d)(?:[0-9a-f]{40}|[0-9a-f]{7,12})(?![\w-])/;
+const SHA_RE = /(?<![\w#/.-])(?=[0-9a-f]*[a-f])(?=[0-9a-f]*\d)(?:[0-9a-f]{40}|[0-9a-f]{7,12})(?!\w|-[0-9a-f])/; // «14829ae-ийн» (монгол нөхцөл) ч барина
 const internalHits = (text) => {
   const t = text.replace(/^verified_commit:.*$/gm, "").replace(/\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b/gi, "");
   return [...INTERNAL, [SHA_RE, "commit SHA"]].filter(([re]) => re.test(t)).map(([re, what]) => `${what}: «${t.match(re)[0].slice(0, 24)}»`);
