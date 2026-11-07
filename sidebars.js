@@ -71,6 +71,7 @@ const sidebars = {
       "owner/erhgui-nevtreh",
       "owner/avto-tootsoo-garaagui",
       "owner/nehemjleh-dun-zoroh",
+      "owner/nehemjleh-tamga",
       "owner/shine-geree-aldaa",
       "owner/gatsah-udaan",
     ]),
