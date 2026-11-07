@@ -93,15 +93,16 @@ async function box(page, m) {
     // Картын талбар шошгоор: холбоос (lookup) байвал түүнийг, үгүй бол удирдлагыг бүхэлд нь
     // whole: холбоос биш бүтэн нүд (шинэ картын «Объект» — холбоос нь ✏️ дүрс)
     // link: холбоос (a) хараахан зурагдаагүй бол null — хоосон нүдийг дарахгүй (гэрээний «Нэмэлт тохиргоо» удаан зурагдана)
-    return page.evaluate(({ t, whole, link }) => {
+    return page.evaluate(({ t, whole, link, itemBox }) => {
       const item = [...document.querySelectorAll("dxbl-form-layout-item")].find((e) => { const l = e.querySelector("label"); return l && l.offsetParent && l.innerText.trim().replace(/\*$/, "") === t; });
       // Нүдэнд далд (хэмжээгүй) <a> байж болно — зөвхөн харагдах холбоосыг дарна (aldangi-tohirgoo-2, 11-08)
       const a = item && [...item.querySelectorAll(".dxbl-fl-ctrl a")].find((x) => x.offsetParent && x.getBoundingClientRect().width > 0);
       if (link && !a) return null;
-      const el = item && ((!whole && a) || item.querySelector(".dxbl-fl-ctrl"));
+      // item: шошго + удирдлага хамт (checkbox талбар — хэрэглэгч юуг дарахыг харна, QA 11-08)
+      const el = item && (itemBox ? item : (!whole && a) || item.querySelector(".dxbl-fl-ctrl"));
       const r = el && el.getBoundingClientRect();
       return r ? { x: r.x, y: r.y, width: r.width, height: r.height } : null;
-    }, { t: m.field, whole: !!m.whole, link: !!m.link });
+    }, { t: m.field, whole: !!m.whole, link: !!m.link, itemBox: !!m.item });
   }
   if (m.select) {
     // Дашбордын энгийн <select> — одоо сонгогдсон сонголтын бичгээр
