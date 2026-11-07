@@ -237,7 +237,8 @@ if (args.includes("--check-text")) {
 // --check-commits <range>: push/QA-аас өмнө шинэ commit мессеж бүрийг шалгана (жнь origin/main..HEAD). Түүхэн commit-ийг хөндөхгүй.
 if (args.includes("--check-commits")) {
   const range = opt("--check-commits", "origin/main..HEAD") || "origin/main..HEAD";
-  const log = execFileSync("git", ["-C", ROOT, "log", "--format=%h%x00%B%x01", range], { encoding: "utf8" }); // help репо өөрөө
+  const gitRoot = opt("--git-root", ROOT); // анхдагч: help репо өөрөө; тестэд түр репо
+  const log = execFileSync("git", ["-C", gitRoot, "log", "--format=%h%x00%B%x01", range], { encoding: "utf8" });
   let bad = 0;
   for (const rec of log.split("\x01").map((s) => s.trim()).filter(Boolean)) {
     const [h, msg = ""] = rec.split("\x00");

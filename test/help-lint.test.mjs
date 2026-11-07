@@ -283,6 +283,18 @@ test("«дотоод 0»: scripts/ дахь session нэр → E-internal; test/
   assert.ok(!out.results.some((r) => r.file.includes("test/y.mjs")));
 });
 
+test("--check-commits: түр репод цэвэр commit → 0; session нэртэй commit нэмбэл → 1", () => {
+  const r = mkdtempSync(join(tmpdir(), "help-git-"));
+  const g = (...a) => execFileSync("git", ["-C", r, "-c", "user.name=t", "-c", "user.email=t@t", "-c", "commit.gpgsign=false", ...a], { encoding: "utf8" });
+  g("init", "-q");
+  g("commit", "-q", "--allow-empty", "-m", "base");
+  g("commit", "-q", "--allow-empty", "-m", "docs: нэхэмжлэхийн огноо солих заавар");
+  const chk = () => { try { execFileSync("node", ["scripts/help-lint.mjs", "--check-commits", "HEAD~1..HEAD", "--git-root", r], { encoding: "utf8" }); return 0; } catch (e) { return e.status; } };
+  assert.equal(chk(), 0);
+  g("commit", "-q", "--allow-empty", "-m", "docs: тамга (CEO «А»)");
+  assert.equal(chk(), 1);
+});
+
 test("--check-text сүүлийн аргумент бол stdin уншина (унахгүй)", () => {
   let code = 0;
   try { execFileSync("node", ["scripts/help-lint.mjs", "--check-text"], { input: "help: Bill.cs:3", encoding: "utf8" }); } catch (e) { code = e.status; }
