@@ -92,12 +92,14 @@ async function box(page, m) {
   if (m.field) {
     // Картын талбар шошгоор: холбоос (lookup) байвал түүнийг, үгүй бол удирдлагыг бүхэлд нь
     // whole: холбоос биш бүтэн нүд (шинэ картын «Объект» — холбоос нь ✏️ дүрс)
-    return page.evaluate(({ t, whole }) => {
+    // link: холбоос (a) хараахан зурагдаагүй бол null — хоосон нүдийг дарахгүй (гэрээний «Нэмэлт тохиргоо» удаан зурагдана)
+    return page.evaluate(({ t, whole, link }) => {
       const item = [...document.querySelectorAll("dxbl-form-layout-item")].find((e) => { const l = e.querySelector("label"); return l && l.offsetParent && l.innerText.trim().replace(/\*$/, "") === t; });
+      if (link && !(item && item.querySelector(".dxbl-fl-ctrl a"))) return null;
       const el = item && ((!whole && item.querySelector(".dxbl-fl-ctrl a")) || item.querySelector(".dxbl-fl-ctrl"));
       const r = el && el.getBoundingClientRect();
       return r ? { x: r.x, y: r.y, width: r.width, height: r.height } : null;
-    }, { t: m.field, whole: !!m.whole });
+    }, { t: m.field, whole: !!m.whole, link: !!m.link });
   }
   if (m.select) {
     // Дашбордын энгийн <select> — одоо сонгогдсон сонголтын бичгээр
@@ -299,7 +301,7 @@ async function toWebp(page, png) {
       }
       // Мөр сонгосны дараа toolbar дахин зурагддаг — 5 хүртэл удаа 1с зайтай дахин хайна (geree-shalgah-1, 11-04)
       let ob = null;
-      for (let k = 0; k < 5 && !ob; k++) { ob = await box(page, s.open); if (!ob) await page.waitForTimeout(1000); }
+      for (let k = 0; k < (s.open.tries || 5) && !ob; k++) { ob = await box(page, s.open); if (!ob) await page.waitForTimeout(1000); }
       if (!ob) {
         const n = s.open.sel ? await page.locator(s.open.sel).count().catch(() => -1) : -1;
         throw new Error(`${s.id}: нээх товч олдсонгүй — зогсов (url ${page.url()}, sel тоо ${n})`);
