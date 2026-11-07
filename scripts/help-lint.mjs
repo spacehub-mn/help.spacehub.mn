@@ -20,6 +20,7 @@
 //   W-gray    товчны хэсэгт «харагдана/харагдахгүй» — код нь ихэвчлэн саарал болгодог
 //   W-order   жагсаалтын хуудас: Энэ юу вэ → Хэзээ хэрэглэх → Товчнууд → Түгээмэл асуулт
 //   E-imgmap  зураг дээрх тэмдэг доорх текстэд алга (W-imgmap: текстийн дугаар зураг дээр алга); E-img8 > 8 тэмдэг; W-imgcap «Зураг N.» алга
+//   E-imgstep нэг хэсэгт жагсаалт дахин 1-ээс эхэлж ижил дугаар 2 удаа гарсан, зураг дээр тэр дугаар тэмдэгтэй (тэмдэггүй бол W-imgstep)
 //   E-img     ![…](/img/…) файл static/-д алга (build-д мөн унана); W-img: alt хоосон, эсвэл заавар/асуудал/сургалт хуудсанд зураг огт алга (HELP_PLAN §11)
 //   E-spell   ө/ү-г о/у болгож бичсэн үг («оорчлох», «толбор») — хэрэглэгчид харагдах бичвэрт
 //   W-tech    өгүүлбэр доторх кодын/дотоод нэр томьёо (ListView, ObjectSpace, deploy…); W-long 20-оос урт өгүүлбэр
@@ -369,6 +370,12 @@ for (const file of walk(DOCS)) {
     const missing = sec.labels.filter((n) => !marks.includes(n) && !skip.has(n));
     if (extra.length) add("E", "E-imgmap", `${sec.id}: зураг дээр ${extra.join(", ")} байгаа ч доорх текстэд алга`);
     if (missing.length) add("W", "W-imgmap", `${sec.id}: текстийн ${missing.join(", ")} зураг дээр тэмдэггүй (цонх доторх алхам бол тусдаа зураг)`);
+    // E-imgstep (QA 10-31, batch48 1.7): нэг хэсэгт жагсаалт дахин 1-ээс эхэлбэл хуудсан дээр ижил дугаар 2 удаа гарна —
+    // зураг дээрх тэмдэг аль алхам болох нь тодорхойгүй. Тэмдэгтэй давхардал = E, тэмдэггүй = W.
+    const dup = [...new Set(sec.labels.filter((n, i) => sec.labels.indexOf(n) !== i))];
+    const dupMarked = dup.filter((n) => marks.includes(n));
+    if (dupMarked.length) add("E", "E-imgstep", `${sec.id}: зураг дээрх ${dupMarked.join(", ")} хуудсан дээр 2+ алхамд гарна (жагсаалт дахин 1-ээс эхэлсэн) — нэг жагсаалт болго эсвэл дэд жагсаалтыг «-» болго`);
+    else if (dup.length) add("W", "W-imgstep", `${sec.id}: алхмын дугаар ${dup.join(", ")} давхардсан (жагсаалт дахин 1-ээс эхэлсэн) — нэг жагсаалт болго`);
   }
   const unused = [...skip.keys()].filter((n) => !seenLabels.has(n));
   if (unused.length) add("W", "W-imgskip", `imgmap_skip ${unused.join(", ")} — текстэд ийм алхам алга (хуучирсан тэмдэглэгээ)`);

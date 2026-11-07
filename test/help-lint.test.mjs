@@ -312,6 +312,23 @@ test("imgmap_skip: шалтгаантай алхам W-imgmap-аас хасаг�
   assert.ok(rules(out, "u.md").includes("W-imgskip") && rules(out, "u.md").includes("W-imgmap"));
 });
 
+test("E-imgstep: жагсаалт дахин 1-ээс эхэлж тэмдэгтэй дугаар давхардвал E, тэмдэггүй бол W, нэг жагсаалт бол 0", () => {
+  const page = (mid) => `${fm()}# Гарчиг\n\n> 🏢 Байгууллага · Вэб\n\n## Алхам\n\n![x](/img/x.webp)\n\n*Зураг 1. Хуулга.*\n\n1. Цэс.\n2. Данс.\n\n${mid}\n\n1. Дахин нээх.\n\n## 🔗 Холбоотой\n- [x](/x)\n`;
+  const docs = fixture({ "d.md": page("Дахин нээх бол:"), "e.md": page("Дахин нээх бол:") });
+  const shots = join(docs, "..", "shots.json");
+  writeFileSync(shots, JSON.stringify([{ id: "x", marks: [{ n: "1.1", btn: "x" }, { n: "1.2", btn: "x" }] }]));
+  const out = run(docs, "--shots", shots).out;
+  assert.ok(rules(out, "d.md").includes("E-imgstep"), rules(out, "d.md").join(","));
+  writeFileSync(shots, JSON.stringify([{ id: "x", marks: [{ n: "1.2", btn: "x" }] }]));
+  const w = rules(run(docs, "--shots", shots).out, "e.md");
+  assert.ok(w.includes("W-imgstep") && !w.includes("E-imgstep"), w.join(","));
+  const one = fixture({ "o.md": `${fm()}# Гарчиг\n\n> 🏢 Байгууллага · Вэб\n\n## Алхам\n\n![x](/img/x.webp)\n\n*Зураг 1. Хуулга.*\n\n1. Цэс.\n2. Данс.\n3. Огноо.\n\n## 🔗 Холбоотой\n- [x](/x)\n` });
+  const s2 = join(one, "..", "shots.json");
+  writeFileSync(s2, JSON.stringify([{ id: "x", marks: [{ n: "1.1", btn: "x" }] }]));
+  const r = rules(run(one, "--shots", s2).out, "o.md");
+  assert.ok(!r.includes("E-imgstep") && !r.includes("W-imgstep"), r.join(","));
+});
+
 test("imgmap_skip: текстэд алга алхам → W-imgskip (хуучирсан тэмдэглэгээ)", () => {
   const page = `${fm('imgmap_skip: "1.9 хадгалсны дараа"\n')}# Гарчиг\n\n> 🏢 Байгууллага · Вэб\n\n## Алхам\n\n![x](/img/x.webp)\n\n*Зураг 1. Хуулга.*\n\n1. Цэс.\n\n## 🔗 Холбоотой\n- [x](/x)\n`;
   const docs = fixture({ "v.md": page });
