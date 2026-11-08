@@ -329,6 +329,19 @@ test("E-imgstep: жагсаалт дахин 1-ээс эхэлж тэмдэгт�
   assert.ok(!r.includes("E-imgstep") && !r.includes("W-imgstep"), r.join(","));
 });
 
+test("E-anchor: дугаартай гарчгийн slug руу холбоос → E (бодит id-тай); {#id}, дугааргүй гарчиг, өөр хуудасны зөв анкор → 0", () => {
+  const target = `${fm('slug: /owner/t\n')}# Гарчиг\n\n> 🏢 Байгууллага · Вэб\n\n## Тоолуур хуваах\n\n1. Цэс.\n\n## Тайлан гаргах {#tailan}\n\n1. Цэс.\n\n## Түгээмэл асуулт\n- Асуулт.\n\n## 🔗 Холбоотой\n- [Хуваах](#тоолуур-хуваах) · [Тайлан](#tailan) · [Асуулт](#түгээмэл-асуулт)\n`;
+  const src = `${fm()}# Гарчиг\n\n> 🏢 Байгууллага · Вэб\n\n1. Алхам.\n\n## 🔗 Холбоотой\n- [a](/owner/t#tailan) · [b](/owner/t#тоолуур-хуваах) · [c](/owner/t#baihgui)\n`;
+  const out = run(fixture({ "t.md": target, "s.md": src })).out;
+  const msgs = (f) => out.results.find((r) => r.file.endsWith(f)).issues.filter((i) => i.rule === "E-anchor").map((i) => i.msg);
+  const t = msgs("t.md");
+  assert.equal(t.length, 1, t.join(" | "));
+  assert.match(t[0], /#1-тоолуур-хуваах/);
+  const s = msgs("s.md");
+  assert.equal(s.length, 2, s.join(" | "));
+  assert.ok(s.some((m) => /#1-тоолуур-хуваах/.test(m)) && s.some((m) => /baihgui.*алга/.test(m)), s.join(" | "));
+});
+
 test("imgmap_skip: текстэд алга алхам → W-imgskip (хуучирсан тэмдэглэгээ)", () => {
   const page = `${fm('imgmap_skip: "1.9 хадгалсны дараа"\n')}# Гарчиг\n\n> 🏢 Байгууллага · Вэб\n\n## Алхам\n\n![x](/img/x.webp)\n\n*Зураг 1. Хуулга.*\n\n1. Цэс.\n\n## 🔗 Холбоотой\n- [x](/x)\n`;
   const docs = fixture({ "v.md": page });

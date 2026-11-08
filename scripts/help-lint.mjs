@@ -20,6 +20,7 @@
 //   W-gray    товчны хэсэгт «харагдана/харагдахгүй» — код нь ихэвчлэн саарал болгодог
 //   W-order   жагсаалтын хуудас: Энэ юу вэ → Хэзээ хэрэглэх → Товчнууд → Түгээмэл асуулт
 //   E-imgmap  зураг дээрх тэмдэг доорх текстэд алга (W-imgmap: текстийн дугаар зураг дээр алга); E-img8 > 8 тэмдэг; W-imgcap «Зураг N.» алга
+//   E-anchor  «#анкор» холбоос сайт дээрх гарчгийн id-тай таарахгүй (дугаартай гарчиг → «N-…», {#латин-id} тавь)
 //   E-imgstep нэг хэсэгт жагсаалт дахин 1-ээс эхэлж ижил дугаар 2 удаа гарсан, зураг дээр тэр дугаар тэмдэгтэй (тэмдэггүй бол W-imgstep)
 //   E-img     ![…](/img/…) файл static/-д алга (build-д мөн унана); W-img: alt хоосон, эсвэл заавар/асуудал/сургалт хуудсанд зураг огт алга (HELP_PLAN §11)
 //   E-spell   ө/ү-г о/у болгож бичсэн үг («оорчлох», «толбор») — хэрэглэгчид харагдах бичвэрт
@@ -146,7 +147,7 @@ const { META } = createRequire(import.meta.url)("../plugins/step-numbers.js");
  * «Товчнууд» хэсэгт — дараагийн зураг/H2 хүртэлх товч, дэд товчны гарчиг (1, 1.1 …);
  * алхмын хэсэгт — дараагийн гарчиг хүртэлх дугаартай жагсаалт (1.1, 1.2 …).
  */
-function imageSections(body, type) {
+function imageSections(body, type, rawItems = false) {
   if (!type || ["oilgolt", "nuur", "hab", "ehleh"].includes(type)) return [];
   const lines = body.replace(/```[\s\S]*?```/g, "").replace(/<!--[\s\S]*?-->/g, "").split("\n");
   const items = []; // { line, label, kind: "h" | "li" | "img", id }
@@ -173,6 +174,7 @@ function imageSections(body, type) {
       items.push({ line: i, label: `${step}.${listStart + listIdx}`, kind: "li" });
     } else if (l.trim() && !/^\s/.test(l)) inList = false; // догол мөргүй бичвэр = жагсаалт дууссан
   });
+  if (rawItems) return items;
   return items.filter((x) => x.kind === "img").map((img) => {
     const k = items.indexOf(img);
     const next = items.slice(k + 1);
@@ -189,6 +191,25 @@ function imageSections(body, type) {
     if (!span.length && !items.slice(0, k).some((x) => x.kind === "h2")) return { id: img.id, caption, labels: next.filter((x) => x.kind === "h2").map((x) => x.label) };
     return { id: img.id, caption, labels: span.filter((x) => x.kind === want && x.label.startsWith(group)).map((x) => x.label) };
   });
+}
+
+// Гарчгийн анкор (Docusaurus 2 = github-slugger): жижиг үсэг, үсэг/тоо/_/-/зайнаас бусдыг хасаад зайг «-».
+// step-numbers plugin дугаартай гарчгийн өмнө «N » нэмдэг тул сайт дээрх id = «N-…» (11-09 batch88: 2 холбоос үсэрдэггүй байсан).
+const slugOf = (t) => t.replace(/\[([^\]]*)\]\([^)]*\)/g, "$1").replace(/<[^>]+>/g, "").trim().toLowerCase().replace(/[^\p{L}\p{M}\p{N}_\- ]/gu, "").replace(/ /g, "-");
+function headingAnchors(body, type) {
+  const lines = body.replace(/```[\s\S]*?```/g, "").replace(/<!--[\s\S]*?-->/g, "").split("\n");
+  const num = new Map(imageSections(body, type, true).filter((x) => x.kind === "h2" || x.kind === "h").map((x) => [x.line, x.label]));
+  const ids = new Set([...body.matchAll(/<a[^>]+(?:id|name)="([^"]+)"/g)].map((m) => m[1]));
+  const numbered = new Map(); // дугааргүй slug → сайт дээрх бодит id
+  lines.forEach((l, i) => {
+    const h = /^#{1,6} (.+?)\s*$/.exec(l);
+    if (!h) return;
+    const custom = /\s*\{#([^}]+)\}$/.exec(h[1]);
+    if (custom) return ids.add(custom[1]);
+    const plain = slugOf(h[1]);
+    if (num.has(i)) { const real = slugOf(`${num.get(i)} ${h[1]}`); ids.add(real); numbered.set(plain, real); } else ids.add(plain);
+  });
+  return { ids, numbered };
 }
 
 // Харилцагчийн нэрсийн ЛОКАЛ жагсаалт (репод байхгүй; CI-д файл алга бол шалгахгүй)
@@ -250,6 +271,7 @@ if (args.includes("--check-commits")) {
   process.exit(bad ? 1 : 0);
 }
 const results = [];
+const PAGES = new Map(), LINKS = []; // E-anchor: хуудас бүрийн анкор, «#…» холбоос
 for (const file of walk(DOCS)) {
   const rel = relative(join(DOCS, ".."), file).replace(/\\/g, "/");
   const raw = readFileSync(file, "utf8").replace(/\r\n/g, "\n");
@@ -352,6 +374,9 @@ for (const file of walk(DOCS)) {
 
   // Зураг ↔ текст 1:1 (10-27, чартер «Агуулгын ойлгомж»): тэмдэг бүр доорх дугаартай мөртэй, ≤ 8 тэмдэг, «Зураг N.» тайлбар
   const type = fm.type || (/(^|\/)owner\/[^/]+\.mdx?$/.test(rel) && !/index\.mdx?$/.test(rel) ? "zaavar" : undefined);
+  const url = (fm.slug || "/" + rel.replace(/^docs\//, "").replace(/(\/index)?\.mdx?$/, "")).replace(/^["']|["']$/g, "");
+  PAGES.set(url, { rel, ...headingAnchors(body, type) });
+  for (const m of prose.matchAll(/\]\((\/[^)#\s]*|)#([^)\s]+)\)/g)) LINKS.push({ url: m[1] || url, frag: decodeURIComponent(m[2]), add });
   // imgmap_skip: зурагт гарахгүй алхам (хадгалсны дараах дэлгэц, PII) — «2.5 хадгалсны дараа · 3.5 PII», шалтгаан заавал
   const skip = new Map();
   for (const part of (fm.imgmap_skip ?? "").replace(/^["']|["']$/g, "").split(/\s*·\s*/).filter(Boolean)) {
@@ -436,6 +461,16 @@ for (const file of walk(DOCS)) {
   }
 
   results.push({ file: rel, type: fm.type ?? null, questions: q, issues });
+}
+
+// E-anchor: «#анкор» холбоос сайт дээрх id-тай таарах ёстой (Docusaurus 2.3 анкорыг шалгадаггүй)
+for (const { url, frag, add } of LINKS) {
+  const page = PAGES.get(url);
+  if (!page || page.ids.has(frag)) continue; // хуудас өөрөө алга бол build (onBrokenLinks) барина
+  const real = page.numbered.get(frag);
+  add("E", "E-anchor", real
+    ? `${url}#${frag}: гарчиг дугаартай тул сайт дээр #${real} болно — гарчигт {#латин-id} тавьж холбоосыг түүгээр зас`
+    : `${url}#${frag}: ийм анкор ${page.rel}-д алга`);
 }
 
 // Цэсийн бүлгийн нэр, generated-index тайлбар (_category_.json) мөн хэрэглэгчид харагдана (QA 10-27)
