@@ -52,5 +52,6 @@
 
  {"id":"tutorial/app-nevtreh-1","src":"scripts/shots/app-src/n1.png","page":"docs/tutorial/app-nevtreh.md","crop":{"x":0,"y":0,"w":1080,"h":1400},"marks":[{"x":63,"y":894,"w":954,"h":126,"n":"3.1"},{"x":63,"y":1177,"w":954,"h":126,"n":"3.1","below":true}]},
  {"id":"tutorial/app-nevtreh-2","src":"scripts/shots/app-src/n2.png","page":"docs/tutorial/app-nevtreh.md","crop":{"x":0,"y":0,"w":1080,"h":1560},"blur":[{"x":290,"y":890,"w":500,"h":66}],"marks":[{"x":64,"y":1092,"w":952,"h":122,"n":"4.2"},{"x":64,"y":1375,"w":952,"h":123,"n":"4.2","below":true}]},
- {"id":"app-ajillahgui-1","src":"scripts/shots/app-src/n-upd.png","page":"docs/app-ajillahgui.md","crop":{"x":0,"y":820,"w":1080,"h":840},"marks":[{"x":725,"y":1458,"w":229,"h":126,"n":"1.1","below":true}]}
+ {"id":"app-ajillahgui-1","src":"scripts/shots/app-src/n-upd.png","page":"docs/app-ajillahgui.md","crop":{"x":0,"y":820,"w":1080,"h":840},"marks":[{"x":725,"y":1458,"w":229,"h":126,"n":"1.1","below":true}]},
+ {"id":"owner/tooluur-huvaah","src":"scripts/shots/app-src/tooluur-huvaah.png","page":"docs/owner/tooluur.md","crop":{"x":560,"y":170,"w":800,"h":660},"blur":[{"x":612,"y":190,"w":110,"h":24},{"x":586,"y":313,"w":362,"h":30},{"x":650,"y":647,"w":132,"h":24}],"badge":34,"marks":[{"x":604,"y":647,"w":700,"h":24,"n":"5.3","under":true},{"x":674,"y":553,"w":140,"h":30,"n":"5.4","left":true}]}
 ]
