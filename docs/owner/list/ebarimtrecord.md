@@ -3,8 +3,8 @@ slug: /owner/list/EbarimtRecord_ListView
 sidebar_label: Авто eBarimt
 type: lavlah
 roles: [owner, nyagtlan]
-updated: 2026-11-03
-verified_commit: bf04d5c
+updated: 2026-11-09
+verified_commit: 97dea53
 keywords:
   - "Авто eBarimt"
   - "автомат е-баримт"

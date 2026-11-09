@@ -3,8 +3,8 @@ slug: /owner/concepts/e-barimt-nohtsol
 sidebar_label: Е-баримт гарах нөхцөл
 type: oilgolt
 roles: [owner, nyagtlan]
-updated: 2026-10-26
-verified_commit: 84985f8
+updated: 2026-11-09
+verified_commit: 97dea53
 keywords:
   - "е-баримт гараагүй"
   - "сугалаатай сугалаагүй"
@@ -40,6 +40,7 @@ keywords:
 - Устгадаггүй, **буцаадаг** (татварт хүчингүй болгодог). **Тооцоо → Төлөлт → «И-Баримт → Буцаах»** нь баталгаажуулах асуулттай тул тэндээс хий.
 - Хүчинтэй баримттай төлөлтийг **цуцлахаас өмнө** баримтаа буцаа.
 - Буцаасан төлөлтийг олноор гаргахаар дахин гаргахгүй, **нэг бүрчлэн** гарга.
+- Буцаасан баримттай төлөлтүүдийг **Тооцоо → Төлөлт** цэсний **«Е-баримт буцаасан»** шүүлтээр харна.
 
 ## 🔗 Холбоотой
 - [Төлөлт](/owner/list/Sale_ListView) · [И-Баримт](/owner/list/SaleEbarimt_ListView) · [Авто eBarimt](/owner/list/EbarimtRecord_ListView) · [Харилцагч](/owner/list/Customer_ListView)

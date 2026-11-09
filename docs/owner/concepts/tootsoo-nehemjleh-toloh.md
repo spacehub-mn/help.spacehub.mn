@@ -3,8 +3,8 @@ slug: /owner/concepts/tootsoo-nehemjleh-toloh
 sidebar_label: Төлбөр → Нэхэмжлэх → Төлөлт
 type: oilgolt
 roles: [owner, nyagtlan, menejer]
-updated: 2026-10-26
-verified_commit: 235fca3
+updated: 2026-11-09
+verified_commit: 97dea53
 keywords:
   - "төлсөн боловч төлөөгүй"
   - "хуваарилалт"

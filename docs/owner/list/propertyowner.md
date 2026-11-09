@@ -3,8 +3,8 @@ slug: /owner/list/PropertyOwner_ListView
 sidebar_label: Байгууллага
 type: lavlah
 roles: [owner]
-updated: 2026-10-30
-verified_commit: 235fca3
+updated: 2026-11-09
+verified_commit: 97dea53
 keywords:
   - "Байгууллага тохиргоо"
   - "гэрээний драфт"
