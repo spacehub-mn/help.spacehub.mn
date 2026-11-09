@@ -3,8 +3,8 @@ slug: /owner/list/User_ListView
 sidebar_label: Хэрэглэгч
 type: lavlah
 roles: [owner, menejer]
-updated: 2026-10-29
-verified_commit: 84985f8
+updated: 2026-11-09
+verified_commit: 97dea53
 keywords:
   - "Хэрэглэгч"
   - "нэвтрэх эрх үүсгэх"

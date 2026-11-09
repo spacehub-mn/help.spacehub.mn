@@ -3,8 +3,8 @@ slug: /owner/list/Discount_ListView
 sidebar_label: Хөнгөлөлт
 type: lavlah
 roles: [owner, nyagtlan]
-updated: 2026-10-26
-verified_commit: 84985f8
+updated: 2026-11-09
+verified_commit: 97dea53
 keywords:
   - "Хөнгөлөлт жагсаалт"
   - "хөнгөлөлт цуцлах"

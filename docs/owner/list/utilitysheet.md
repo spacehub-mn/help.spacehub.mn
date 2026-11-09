@@ -3,8 +3,8 @@ slug: /owner/list/UtilitySheet_ListView
 sidebar_label: Тоолуур татах
 type: lavlah
 roles: [owner, nyagtlan]
-updated: 2026-10-27
-verified_commit: 84985f8
+updated: 2026-11-09
+verified_commit: 97dea53
 keywords:
   - "Тоолуур татах"
   - "Google Sheet тоолуур"

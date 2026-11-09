@@ -3,8 +3,8 @@ slug: /owner/list/Reports
 sidebar_label: Тайлан
 type: lavlah
 roles: [owner, nyagtlan]
-updated: 2026-11-01
-verified_commit: 84985f8
+updated: 2026-11-09
+verified_commit: 97dea53
 keywords:
   - "Тайлан"
   - "Нэгтгэл тайлан"
