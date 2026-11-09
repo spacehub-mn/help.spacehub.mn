@@ -3,8 +3,8 @@ slug: /owner/geree-buunuur-sungah
 sidebar_label: Гэрээг бөөнөөр сунгах
 type: zaavar
 roles: [owner, menejer]
-updated: 2026-11-01
-verified_commit: 235fca3
+updated: 2026-11-09
+verified_commit: 97dea53
 keywords:
   - "гэрээ сунгах"
   - "олон гэрээ сунгах"

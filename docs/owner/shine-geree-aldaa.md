@@ -3,8 +3,8 @@ slug: /owner/shine-geree-aldaa
 sidebar_label: Шинэ гэрээ, харилцагч бүртгэхэд алдаа
 type: asuudal
 roles: [owner, menejer]
-updated: 2026-10-30
-verified_commit: 235fca3
+updated: 2026-11-09
+verified_commit: 97dea53
 keywords:
   - "давхцаж байна"
   - "харилцагч бүртгэх алдаа"

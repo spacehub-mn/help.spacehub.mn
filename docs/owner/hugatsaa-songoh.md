@@ -3,8 +3,8 @@ sidebar_position: 2
 sidebar_label: Хугацаа зөв сонгох
 type: zaavar
 roles: [owner, nyagtlan, menejer]
-updated: 2026-11-04
-verified_commit: 235fca3
+updated: 2026-11-09
+verified_commit: 97dea53
 keywords:
   - "Шинэ гэрээг 4-р сарын 1-нээс үүсгэх гэхээр хуваарь нь 6-р сараас үүсээд байна"
   - "5-р сарын 1-нээс гэж хийсэн чинь 7-р сараас хуваарь үүссэн"

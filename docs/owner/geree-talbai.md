@@ -3,8 +3,8 @@ slug: /owner/geree-talbai
 sidebar_label: Гэрээнд талбай нэмэх, хасах
 type: zaavar
 roles: [owner, menejer]
-updated: 2026-11-04
-verified_commit: 527e5b2
+updated: 2026-11-09
+verified_commit: 97dea53
 keywords:
   - "гэрээнд талбай нэмэх"
   - "гэрээнээс талбай хасах"
