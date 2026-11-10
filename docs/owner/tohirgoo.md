@@ -3,8 +3,8 @@ slug: /owner/tohirgoo
 sidebar_label: Байгууллагын тохиргоо
 type: lavlah
 roles: [owner]
-updated: 2026-11-07
-verified_commit: 3bcd2e1
+updated: 2026-11-10
+verified_commit: 7dcd852
 keywords:
   - "нэмэлт тохиргоо"
   - "бусад тохиргоо"

@@ -3,8 +3,8 @@ slug: /owner/une-oorchloh
 sidebar_label: Үнэ өөрчлөх
 type: zaavar
 roles: [owner, nyagtlan]
-updated: 2026-11-02
-verified_commit: 235fca3
+updated: 2026-11-10
+verified_commit: 7dcd852
 keywords:
   - "үнэ өөрчлөх"
   - "тариф өөрчлөх"

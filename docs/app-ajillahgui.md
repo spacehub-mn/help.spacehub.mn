@@ -4,8 +4,8 @@ sidebar_label: Апп ажиллахгүй үед
 sidebar_position: 90
 type: asuudal
 roles: [tureeslegch, owner]
-updated: 2026-10-28
-verified_commit: 84985f8
+updated: 2026-11-10
+verified_commit: 7dcd852
 keywords:
   - "апп ажиллахгүй"
   - "200 Алдаа гарлаа"

@@ -3,8 +3,8 @@ slug: /owner/nehemjleh-dun-zoroh
 sidebar_label: Нэхэмжлэхийн дүн зөрж байна
 type: asuudal
 roles: [owner, nyagtlan]
-updated: 2026-11-08
-verified_commit: 6d9b0f3
+updated: 2026-11-10
+verified_commit: 7dcd852
 imgmap_skip: "4.1 жагсаалтад · 4.5 хадгалсны дараа · 4.6 жагсаалтын товч"
 keywords:
   - "барьцааг орлогод авсан төлөлт тусахгүй"

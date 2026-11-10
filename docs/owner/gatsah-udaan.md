@@ -3,8 +3,8 @@ slug: /owner/gatsah-udaan
 sidebar_label: Удаан, гацсан үед
 type: asuudal
 roles: [owner, nyagtlan, menejer]
-updated: 2026-10-27
-verified_commit: c68c602
+updated: 2026-11-10
+verified_commit: 7dcd852
 keywords:
   - "Spacehub ажиллахгүй байна"
   - "програм гацсан"

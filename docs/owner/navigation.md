@@ -3,8 +3,8 @@ slug: /owner/navigation
 sidebar_label: Програм ашиглах
 type: zaavar
 roles: [owner, nyagtlan, menejer]
-updated: 2026-11-01
-verified_commit: 235fca3
+updated: 2026-11-10
+verified_commit: 7dcd852
 keywords:
   - "цэс"
   - "жагсаалт карт"
