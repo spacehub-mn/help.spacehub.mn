@@ -3,8 +3,8 @@ slug: /owner/concepts/aldangi
 sidebar_label: Алданги
 type: oilgolt
 roles: [owner, nyagtlan]
-updated: 2026-11-09
-verified_commit: 97dea53
+updated: 2026-11-10
+verified_commit: 7dcd852
 keywords:
   - "алданги"
   - "алданги цуцлах"

@@ -1,8 +1,8 @@
 ---
 type: zaavar
 roles: [owner, nyagtlan, menejer]
-updated: 2026-11-09
-verified_commit: 97dea53
+updated: 2026-11-10
+verified_commit: 7dcd852
 sidebar_position: 5
 keywords:
   - "Е-баримт автоматаар үүсдэг тохиргоо яаж хийх вэ"

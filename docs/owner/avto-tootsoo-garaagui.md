@@ -3,8 +3,8 @@ slug: /owner/avto-tootsoo-garaagui
 sidebar_label: Авто тооцоо гараагүй
 type: asuudal
 roles: [owner, nyagtlan]
-updated: 2026-11-09
-verified_commit: 97dea53
+updated: 2026-11-10
+verified_commit: 7dcd852
 keywords:
   - "нэхэмжлэх үүсэхгүй байна"
   - "авто тооцоо гараагүй"
@@ -21,6 +21,8 @@ keywords:
 ## Хэзээ хэрэглэх
 - Сарын эхэнд **Сарын тооцоо** дээр зарим айл «тооцоо гараагүй» харагдвал.
 - Харилцагч «энэ сарын нэхэмжлэх ирээгүй» гэвэл.
+
+💡 **Урьдчилж шалгах:** Гэрээ жагсаалтын **«Сарын өмнөх шалгалт»** товчийг дар. Энэ болон дараа сард нэхэмжлэх, е-баримт автоматаар гарахгүй гэрээг шалтгаантай нь нэг дор жагсаана. → [Сарын өмнөх шалгалт](/owner/list/Contract_ListView#sariin-omnoh-shalgalt)
 
 <video controls preload="metadata" width="100%" src="/video/11-avto-nehemjleh.mp4"></video>
 

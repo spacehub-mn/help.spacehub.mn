@@ -3,8 +3,8 @@ slug: /owner/list/Bill_ListView
 sidebar_label: Төлбөр
 type: lavlah
 roles: [owner, nyagtlan]
-updated: 2026-11-09
-verified_commit: 97dea53
+updated: 2026-11-10
+verified_commit: 7dcd852
 keywords:
   - "Төлбөр жагсаалт"
   - "тооцоо цуцлах"

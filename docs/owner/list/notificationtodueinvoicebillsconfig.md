@@ -3,8 +3,8 @@ slug: /owner/list/NotificationToDueInvoiceBillsConfig_ListView
 sidebar_label: Нэхэмжлэх дахиж явуулах
 type: lavlah
 roles: [owner, nyagtlan]
-updated: 2026-11-09
-verified_commit: 97dea53
+updated: 2026-11-10
+verified_commit: 7dcd852
 keywords:
   - "Нэхэмжлэх дахиж явуулах"
   - "төлөөгүй айлд сануулах"
