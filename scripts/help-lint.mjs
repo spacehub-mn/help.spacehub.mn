@@ -59,6 +59,7 @@ function deployRef() {
 }
 const REF = opt("--ref", "") || deployRef() || "origin/master";
 const APP_REPO = opt("--app-repo", localPath("appRepo"));
+const KIDSPACE_REPO = opt("--kidspace-repo", localPath("kidspaceRepo"));
 const DOCS = opt("--docs", join(ROOT, "docs")); // тестэд өөр хавтас
 
 const TYPES = ["nuur", "ehleh", "surgalt", "zaavar", "asuudal", "oilgolt", "lavlah", "hab"];
@@ -441,6 +442,12 @@ for (const file of walk(DOCS)) {
     if (!NO_GIT && existsSync(APP_REPO) && /^[0-9a-f]{7,40}$/.test(fm.verified_commit ?? "")) {
       try { execFileSync("git", ["-C", APP_REPO, "cat-file", "-e", `${fm.verified_commit}^{commit}`], { stdio: "ignore" }); }
       catch { add("E", "E-fm", `verified_commit ${fm.verified_commit} аппын repo (spacehub)-д олдсонгүй`); }
+    }
+  } else if (fm.verified_repo === "kidspace") {
+    // KidSpace хуудас (docs/kidspace): commit нь kidspace-frontend repo-д байх ёстой; Spacehub кодын репогоор шалгахгүй
+    if (!NO_GIT && existsSync(KIDSPACE_REPO) && /^[0-9a-f]{7,40}$/.test(fm.verified_commit ?? "")) {
+      try { execFileSync("git", ["-C", KIDSPACE_REPO, "cat-file", "-e", `${fm.verified_commit}^{commit}`], { stdio: "ignore" }); }
+      catch { add("E", "E-fm", `verified_commit ${fm.verified_commit} KidSpace repo-д олдсонгүй`); }
     }
   } else if (gitOk && fm.verified_commit && /^[0-9a-f]{7,40}$/.test(fm.verified_commit)) {
     const changed = changedSince(fm.verified_commit);

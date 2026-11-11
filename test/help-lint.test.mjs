@@ -191,6 +191,23 @@ test("verified_repo: spacehub — commit аппын repo-д шалгагдана
   assert.ok(out.results.find((r) => r.file.endsWith("bad.md")).issues.some((i) => i.rule === "E-fm" && /аппын repo/.test(i.msg)));
 });
 
+test("verified_repo: kidspace — commit KidSpace repo-д шалгагдана, Spacehub кодын репогоор биш", () => {
+  const repo = mkdtempSync(join(tmpdir(), "help-lint-ks-"));
+  const g = (...a) => execFileSync("git", ["-C", repo, ...a], { encoding: "utf8" }).trim();
+  g("init", "-q"); writeFileSync(join(repo, "a.txt"), "a"); g("add", "a.txt");
+  g("-c", "user.name=t", "-c", "user.email=t@t", "commit", "-q", "-m", "a");
+  const sha = g("rev-parse", "--short=8", "HEAD");
+  const page = (c) => good.replace("verified_commit: c68c602
+", `verified_commit: ${c}
+verified_repo: kidspace
+`);
+  const docs = fixture({ "ok.md": page(sha), "bad.md": page("deadbeef") });
+  const lint = () => { try { return JSON.parse(execFileSync("node", ["scripts/help-lint.mjs", "--json", "--docs", docs, "--repo", repo, "--ref", "HEAD", "--kidspace-repo", repo], { encoding: "utf8" })); } catch (e) { return JSON.parse(e.stdout); } };
+  const out = lint();
+  assert.ok(!rules(out, "ok.md").includes("E-fm"));
+  assert.ok(out.results.find((r) => r.file.endsWith("bad.md")).issues.some((i) => i.rule === "E-fm" && /KidSpace repo/.test(i.msg)));
+});
+
 test("тайлбар дахь кодын мөр, дотоод зам, нууц, дотоод IP → E-internal", () => {
   const leak = good.replace("Бичвэр.", "Бичвэр.\n\n<!-- Bill.cs:12 · agent-ops/x · token=abcdef123 · 192.168.1.5 · Data Source=x -->");
   const { code, out } = run(fixture({ "c.md": leak }));
