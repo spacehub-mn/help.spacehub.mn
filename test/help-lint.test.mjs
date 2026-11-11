@@ -197,10 +197,7 @@ test("verified_repo: kidspace — commit KidSpace repo-д шалгагдана, 
   g("init", "-q"); writeFileSync(join(repo, "a.txt"), "a"); g("add", "a.txt");
   g("-c", "user.name=t", "-c", "user.email=t@t", "commit", "-q", "-m", "a");
   const sha = g("rev-parse", "--short=8", "HEAD");
-  const page = (c) => good.replace("verified_commit: c68c602
-", `verified_commit: ${c}
-verified_repo: kidspace
-`);
+  const page = (c) => good.replace("verified_commit: c68c602\n", `verified_commit: ${c}\nverified_repo: kidspace\n`);
   const docs = fixture({ "ok.md": page(sha), "bad.md": page("deadbeef") });
   const lint = () => { try { return JSON.parse(execFileSync("node", ["scripts/help-lint.mjs", "--json", "--docs", docs, "--repo", repo, "--ref", "HEAD", "--kidspace-repo", repo], { encoding: "utf8" })); } catch (e) { return JSON.parse(e.stdout); } };
   const out = lint();
