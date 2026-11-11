@@ -96,6 +96,7 @@ const sidebars = {
   kidspace: [
     { type: "doc", id: "kidspace/index", label: "🏫 KidSpace нүүр" },
     group("1. 👧 Элсэлт, анги", ["kidspace/angi-shiljuuleh-devshuuleh"], false),
+    group("2. 💳 Тооцоо", ["kidspace/tolbor-nehemjleh", "kidspace/honglolt"], false),
   ],
 };
 
