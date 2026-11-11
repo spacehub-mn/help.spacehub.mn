@@ -4,7 +4,7 @@ sidebar_label: Тоолуур татах
 type: lavlah
 roles: [owner, nyagtlan]
 updated: 2026-11-11
-verified_commit: 97dea53
+verified_commit: 7dcd852
 keywords:
   - "Тоолуур татах"
   - "Google Sheet тоолуур"

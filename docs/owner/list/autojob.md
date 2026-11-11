@@ -4,7 +4,7 @@ sidebar_label: Авто ажил
 type: lavlah
 roles: [owner, nyagtlan]
 updated: 2026-11-11
-verified_commit: bf04d5c
+verified_commit: 7dcd852
 keywords:
   - "Авто ажил"
   - "автомат нэхэмжлэх"
