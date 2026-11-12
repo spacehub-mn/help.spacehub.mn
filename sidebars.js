@@ -92,12 +92,7 @@ const sidebars = {
     group("3. 📣 Бизнес зар", ["post/post"]),
     group("4. 🆘 Асуудал гарвал", ["app-ajillahgui"]),
   ],
-  // KidSpace (CEO 11-11: түр help.spacehub.mn/kidspace доор, эзэн өөрчилж болно). Навбарт ороогүй — /kidspace хаягаар нээгдэнэ.
-  kidspace: [
-    { type: "doc", id: "kidspace/index", label: "🏫 KidSpace нүүр" },
-    group("1. 👧 Элсэлт, анги", ["kidspace/angi-shiljuuleh-devshuuleh"], false),
-    group("2. 💳 Тооцоо", ["kidspace/tolbor-nehemjleh", "kidspace/honglolt"], false),
-  ],
+  // KidSpace — help.kidspace.mn (kidspace-site/sidebars.js).
 };
 
 // Дэд дугаар (10-27 «дэд дугаарууд бас ашиглах»): 1. → 1.1 → 4.1.1. Дугаарыг CSS counters() тавина

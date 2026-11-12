@@ -42,6 +42,9 @@ const config = {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           routeBasePath: "/",
+          // KidSpace хуудас help.kidspace.mn-д тусдаа (kidspace-site/). Эх нь docs/kidspace хэвээр (lint шалгана),
+          // энд build-д орохгүй — хуучин /kidspace/* хаяг static/_redirects-ээр шинэ сайт руу. Docusaurus-ын анхдагч exclude + kidspace.
+          exclude: ["**/_*.{js,jsx,ts,tsx,md,mdx}", "**/_*/**", "**/*.test.{js,jsx,ts,tsx}", "**/__tests__/**", "kidspace/**"],
           // owner хэсэгт ү/ө ↔ у/о хайлтын түлхүүр үг (plugins/search-variants.js)
           remarkPlugins: [require("./plugins/search-variants")],
           // Алхмын дугаар 1., 1.1 — TOC-д ч дугаартай харагдахын тулд default plugin-оос өмнө

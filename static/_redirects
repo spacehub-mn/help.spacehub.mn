@@ -1,0 +1,5 @@
+# KidSpace-ийн гарын авлага help.kidspace.mn руу шилжсэн. Эхний 7 хоног 302 (түр), дараа нь 301 = тусдаа шийдвэр.
+# «!» = хуучин файл үлдсэн ч шилжүүлнэ. Анкор (#...) хөтөч дээр хадгалагдана.
+/kidspace            https://help.kidspace.mn/        302!
+/kidspace/           https://help.kidspace.mn/        302!
+/kidspace/*          https://help.kidspace.mn/:splat  302!
