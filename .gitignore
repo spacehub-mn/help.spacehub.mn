@@ -3,6 +3,11 @@
 
 # Production
 /build
+/build-kidspace
+
+# KidSpace сайт: ../docs/kidspace-аас prep-docs.mjs-ээр үүсгэнэ
+/kidspace-site/docs
+/kidspace-site/.docusaurus
 
 # Generated files
 .docusaurus

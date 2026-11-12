@@ -6,6 +6,7 @@
     "docusaurus": "docusaurus",
     "dev": "docusaurus start",
     "start": "docusaurus start",
+    "build:kidspace": "node kidspace-site/scripts/prep-docs.mjs && docusaurus build kidspace-site --out-dir ../build-kidspace",
     "build": "node scripts/help-lint.mjs --no-git && docusaurus build && node scripts/copy-docs.mjs && node scripts/help-index.mjs",
     "test:search": "node scripts/search-test.mjs",
     "lint": "node scripts/help-lint.mjs",
