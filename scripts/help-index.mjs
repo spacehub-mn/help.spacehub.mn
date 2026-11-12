@@ -9,7 +9,8 @@ const DOCS = 'docs';
 function walk(dir, out = []) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
     const p = path.join(dir, e.name);
-    if (e.isDirectory()) walk(p, out);
+    // KidSpace хуудас = help.kidspace.mn (тусдаа сайт), Spacehub-ийн индекст орохгүй
+    if (e.isDirectory()) { if (path.relative(DOCS, p) !== 'kidspace') walk(p, out); }
     else if (/\.mdx?$/.test(e.name) && !e.name.startsWith('_')) out.push(p);
   }
   return out;
