@@ -42,7 +42,7 @@ keywords:
 - Sheet-ээ Spacehub-тай **хуваалц**. Алхам нь хуучин хуудастай ижил. → [Sheet-ийг Spacehub-тай хуваалцах](/owner/list/UtilitySheet_ListView#sheet-huvaaltsah)
 
 ## Заалт татах, оруулах
-1. **Менежмент → Объект**-оос объектоо нээ.
+1. Объектынхоо **картыг** нээ. → [Объект](/owner/list/Property_ListView)
 2. Картын дээд талын **«Google Sheet»** товч дар. **«Барилгын өгөгдөл оруулах»** цонх нээгдэнэ.
 3. **Өгөгдөл төрөл**-өөс тоолуурын төрлийг сонго. Жишээ нь «Цахилгаан тоолуур».
 4. **GoogleSheet ID**-д Sheet-ийн ID-г бич. **SheetRange** өөрөө бөглөгдөнө, жишээ нь `Цахилгаан тоолуур!A2:D`.
@@ -82,7 +82,7 @@ Sheet-ийн ID нь Sheet-ийн хаягийн `/d/` ба `/edit` хоорон
 
 ## Түгээмэл асуулт
 - **«Талбаруудыг заавал бөглөнө үү» гэж гарлаа.** GoogleSheet ID эсвэл SheetRange хоосон байна.
-- **«Forbidden» гэж гарлаа.** Sheet-ээ Spacehub-тай хуваалцаагүй байна. → [Хуваалцах алхам](/owner/list/UtilitySheet_ListView#sheet-huvaaltsah)
+- **«Forbidden» эсвэл «The caller does not have permission» гэж гарлаа.** Sheet-ээ Spacehub-тай хуваалцаагүй байна. → [Хуваалцах алхам](/owner/list/UtilitySheet_ListView#sheet-huvaaltsah)
 - **Хуучин «Тоолуур татах»-аар уу, энэ хуудсаар уу?** Гэрээндээ тоолуурын кодоор холбосон бол энэ хуудсаар.
 
 ## 🔗 Холбоотой
