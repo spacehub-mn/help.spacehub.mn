@@ -71,42 +71,46 @@
 }
 
 /* ── Хэсэг бүр өөр өнгө (src/theme/Root.js → html[data-role]) ──
-   Эзэмшигч = ногоон (brand), Түрээслэгч = улбар шар (логоны өнгө). Аль хэсэгт байгаагаа шууд мэдрэх. */
+   Эзэмшигч = ногоон (brand), Түрээслэгч = шөнийн хөх (эзэн 11-14 «А»; лого жинхэнэ өнгөөрөө). Аль хэсэгт байгаагаа шууд мэдрэх. */
 html[data-role="resident"] {
-  --ifm-color-primary: #d9590f;
-  --ifm-color-primary-dark: #c35009;
-  --ifm-color-primary-darker: #b84c09;
-  --ifm-color-primary-darkest: #983e07;
-  --ifm-color-primary-light: #ef6a1f;
-  --ifm-color-primary-lighter: #f07a35;
-  --ifm-color-primary-lightest: #f39a63;
-  --role-bg: #fff4ec;
-  --role-strip: #f26a21;
+  --ifm-color-primary: #1d4ed8;
+  --ifm-color-primary-dark: #1a46c2;
+  --ifm-color-primary-darker: #1942b8;
+  --ifm-color-primary-darkest: #153797;
+  --ifm-color-primary-light: #2f5fe6;
+  --ifm-color-primary-lighter: #3b6ae8;
+  --ifm-color-primary-lightest: #5d84ec;
+  --role-bg: #eef2fb;
+  --role-strip: #1d4ed8;
 }
 html[data-role="owner"] {
   --role-bg: #e8f5f4;
   --role-strip: #07847f;
 }
 html[data-theme="dark"][data-role="resident"] {
-  --ifm-color-primary: #ff8c4a;
-  --ifm-color-primary-dark: #ff7a30;
-  --ifm-color-primary-darker: #ff7124;
-  --ifm-color-primary-darkest: #f05a00;
-  --ifm-color-primary-light: #ff9e64;
-  --ifm-color-primary-lighter: #ffa770;
-  --ifm-color-primary-lightest: #ffc196;
-  --role-bg: #2a1a10;
+  --ifm-color-primary: #93c5fd;
+  --ifm-color-primary-dark: #6fb2fc;
+  --ifm-color-primary-darker: #5ea9fc;
+  --ifm-color-primary-darkest: #2a8dfb;
+  --ifm-color-primary-light: #b7d8fe;
+  --ifm-color-primary-lighter: #c8e1fe;
+  --ifm-color-primary-lightest: #f0f7ff;
+  --role-bg: #141b2b;
 }
 html[data-theme="dark"][data-role="owner"] {
   --role-bg: #0f2624;
 }
 /* Дээд мөр бүтэн өнгөтэй — хоёр тусдаа сайт шиг (10-27 «бүр тусдаа салгая») */
 html[data-role="owner"] { --role-nav: #055c59; }
-html[data-role="resident"] { --role-nav: #c4500c; }
+html[data-role="resident"] { --role-nav: #172033; }
 html[data-role] .navbar {
   background: var(--role-nav);
   border-bottom: 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+/* Түрээслэгч: доор нь логоны улбар шар нарийн зураас */
+html[data-role="resident"] .navbar {
+  box-shadow: inset 0 -3px 0 #fd6b36, 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 html[data-role] .navbar .navbar__link,
 html[data-role] .navbar .navbar__toggle,
@@ -192,8 +196,8 @@ html[data-role] .theme-doc-sidebar-container {
   opacity: 0.85;
 }
 .role-pick__card--resident {
-  background: #fff4ec;
-  color: #983e07;
+  background: #eef2fb;
+  color: #172033;
 }
 .role-pick__card--owner {
   background: #e8f5f4;
@@ -308,8 +312,8 @@ html[data-role] .theme-doc-sidebar-container {
   font-size: 0.75em;
   box-shadow: none;
 }
-/* Өнгөт дээд мөрөнд лого цагаан */
-html[data-role] .navbar__logo img {
+/* Ногоон дээд мөрөнд лого цагаан; түрээслэгчийн хар хөх дээр лого жинхэнэ өнгөөрөө (тодрол ≥3) */
+html[data-role="owner"] .navbar__logo img {
   filter: brightness(0) invert(1);
 }
 
