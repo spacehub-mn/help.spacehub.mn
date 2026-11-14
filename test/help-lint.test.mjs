@@ -77,6 +77,16 @@ test("зургийн файл алга → E-img (exit 1); alt хоосон, з�
   assert.deepEqual(rules(run(fixture({ "g.md": noImg })).out, "g.md"), ["W-img"]);
 });
 
+test("docs/kidspace-ийн зургийг kidspace-site/static-аас хайна (help.kidspace.mn тусдаа static)", () => {
+  const body = good.replace("![Жагсаалт](/img/x.webp)", "![Жагсаалт](/img/kidspace/k.webp)");
+  const d = fixture({ "kidspace/k.md": body, "o.md": body });
+  mkdirSync(join(d, "..", "kidspace-site", "static", "img", "kidspace"), { recursive: true });
+  writeFileSync(join(d, "..", "kidspace-site", "static", "img", "kidspace", "k.webp"), "");
+  const { out } = run(d);
+  assert.ok(!rules(out, "kidspace/k.md").includes("E-img"));
+  assert.ok(rules(out, "o.md").includes("E-img")); // үндсэн сайтын хуудас static/-аас л
+});
+
 test("H1-ийн өмнө <!-- --> → E-h1first (гарчиг файлын нэрээр гарна)", () => {
   const bad = `${fm()}<!-- нотолгоо -->\n\n# Гарчиг\n\n> 🏢 Байгууллага · Вэб\n\n## 🔗 Холбоотой\n- [x](/x)\n`;
   const { code, out } = run(fixture({ "c.md": bad, "a.md": good }));

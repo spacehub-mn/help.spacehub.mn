@@ -66,6 +66,8 @@ const TYPES = ["nuur", "ehleh", "surgalt", "zaavar", "asuudal", "oilgolt", "lavl
 const TYPES_NEED_REL = ["surgalt", "zaavar", "asuudal", "oilgolt", "lavlah"];
 const TYPES_NEED_IMG = ["surgalt", "zaavar", "asuudal"];
 const STATIC = join(DOCS, "..", "static");
+// help.kidspace.mn (kidspace-site/) өөрийн static-тэй — docs/kidspace-ийн зураг тэндээс
+const KS_STATIC = join(DOCS, "..", "kidspace-site", "static");
 const AUDIENCE = /[🏢🏠👔🧮]/u;
 const MAX_Q = 5;
 // E-spell: ө/ү-г о/у болгож бичсэн түгээмэл үг (хайлтын хувилбар хэрэглэгчид харагдсан — 10-27)
@@ -326,7 +328,8 @@ for (const file of walk(DOCS)) {
 
   const imgs = [...prose.matchAll(/!\[([^\]]*)\]\((\/img\/[^)\s]+)\)/g)];
   for (const [, alt, url] of imgs) {
-    if (!existsSync(join(STATIC, url))) add("E", "E-img", `${url} static/-д алга`);
+    const ks = rel.startsWith("docs/kidspace/");
+    if (!existsSync(join(ks ? KS_STATIC : STATIC, url))) add("E", "E-img", `${url} ${ks ? "kidspace-site/static" : "static"}/-д алга`);
     if (!alt.trim()) add("W", "W-img", `${url} alt текст хоосон`);
   }
   if (!legacy && TYPES_NEED_IMG.includes(fm.type) && !imgs.length) add("W", "W-img", "дэлгэцийн зураг алга (scripts/shots/shots.json-д нэм)");

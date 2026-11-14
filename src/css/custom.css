@@ -112,12 +112,13 @@ html[data-role] .navbar {
 html[data-role="resident"] .navbar {
   box-shadow: inset 0 -3px 0 #fd6b36, 0 2px 8px rgba(0, 0, 0, 0.25);
 }
-html[data-role] .navbar .navbar__link,
-html[data-role] .navbar .navbar__toggle,
-html[data-role] .navbar .clean-btn {
+/* Зөвхөн өнгөт дээд мөрөнд (.navbar__inner) — утасны цайвар цэс (.navbar-sidebar)-д хамаарахгүй */
+html[data-role] .navbar__inner .navbar__link,
+html[data-role] .navbar__inner .navbar__toggle,
+html[data-role] .navbar__inner .clean-btn {
   color: #fff;
 }
-html[data-role] .navbar .navbar__link:hover { color: #fff; opacity: 0.85; }
+html[data-role] .navbar__inner .navbar__link:hover { color: #fff; opacity: 0.85; }
 /* Зөвхөн өөрийн хэсгийн гарчиг; нөгөөх рүү жижиг шилжих холбоос */
 html[data-role="owner"] .role-only--resident,
 html[data-role="resident"] .role-only--owner,
@@ -128,6 +129,8 @@ html[data-role="resident"] .role-switch--owner {
 html[data-role] .navbar .role-only {
   font-size: 1.15rem;
   font-weight: 800;
+}
+html[data-role] .navbar__inner .role-only {
   color: #fff;
 }
 html[data-role] .navbar .role-switch {
@@ -313,7 +316,7 @@ html[data-role] .theme-doc-sidebar-container {
   box-shadow: none;
 }
 /* Ногоон дээд мөрөнд лого цагаан; түрээслэгчийн хар хөх дээр лого жинхэнэ өнгөөрөө (тодрол ≥3) */
-html[data-role="owner"] .navbar__logo img {
+html[data-role="owner"] .navbar__inner .navbar__logo img {
   filter: brightness(0) invert(1);
 }
 
