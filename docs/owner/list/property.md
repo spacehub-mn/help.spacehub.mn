@@ -3,7 +3,7 @@ slug: /owner/list/Property_ListView
 sidebar_label: Объект
 type: lavlah
 roles: [owner, menejer]
-updated: 2026-11-11
+updated: 2026-11-15
 verified_commit: 7dcd852
 keywords:
   - "объект"
@@ -19,7 +19,7 @@ keywords:
 ---
 # Объект (жагсаалт)
 
-> 📋 Лавлах · 🏢 Эзэмшигч, менежер · Вэб (app.spacehub.mn) · Цэс: **Менежмент → Объект**
+> 📋 Лавлах · 🏢 Эзэмшигч, менежер · Вэб (app.spacehub.mn)
 
 ## Энэ юу вэ
 Таны **барилга, объектуудын** жагсаалт. Объект бүрийн талбайн тоо, нийт талбай, **ашиглалтын хувь**, түрээсийн дүн харагдана.
