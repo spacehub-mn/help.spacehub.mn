@@ -4,7 +4,9 @@ const group = (label, items) => ({ type: "category", label, collapsed: false, it
 module.exports = {
   kidspace: [
     { type: "doc", id: "index", label: "🏫 Нүүр" },
-    group("1. 👧 Элсэлт, анги", ["ehleh-ognoo-zasah", "angi-shiljuuleh-devshuuleh"]),
-    group("2. 💳 Тооцоо", ["tolbor-nehemjleh", "honglolt"]),
+    "tsetserlegiin-toim",
+    group("1. 👧 Элсэлт, анги", ["elselt-burtgel", "elseltiin-huselt", "elseltiin-haalt", "ehleh-ognoo-zasah", "angi-shiljuuleh-devshuuleh"]),
+    group("2. 📅 Ирц, хөгжил", ["irts-zhurnal", "hogjliin-zhurnal"]),
+    group("3. 💳 Тооцоо", ["tolbor-nehemjleh", "honglolt"]),
   ],
 };
