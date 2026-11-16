@@ -1,12 +1,174 @@
 [
-  { "id": "kidspace/elselt-burtgel-1", "page": "docs/kidspace/elselt-burtgel.md", "url": "/enrollment", "wait": "Нийт:",
-    "alt": "Элсэлт бүртгэлийн жагсаалт: цэс, шүүлт, хайлт",
-    "marks": [ { "n": "1.1", "text": "Бүртгэл" }, { "n": "1.2", "text": "Нарлаг 1-р салбар", "nth": 1 },
-               { "n": "1.3", "text": "Идэвхтэй" }, { "n": "1.4", "text": "Хайх…" } ] },
-  { "id": "kidspace/elselt-burtgel-2", "page": "docs/kidspace/elselt-burtgel.md", "url": "/enrollment", "wait": "Нийт:",
-    "steps": [ { "click": "+ Шинэ" } ],
-    "alt": "«Шинэ элсэлт» цонх",
-    "marks": [ { "n": "2.1", "text": "Шинэ элсэлт", "within": "dialog", "self": true }, { "n": "2.2", "text": "Шинэ хүүхэд", "within": "dialog" },
-               { "n": "2.3", "text": "Бүлэг сонгох", "within": "dialog" }, { "n": "2.4", "text": "Хүүхдийн нэр", "within": "dialog", "self": true, "up": 1 },
-               { "n": "2.5", "text": "Элсэх огноо", "within": "dialog", "self": true, "up": 1 }, { "n": "2.6", "text": "Элсүүлэх", "within": "dialog", "side": "top" } ] }
+ {
+  "id": "kidspace/elselt-burtgel-1",
+  "page": "docs/kidspace/elselt-burtgel.md",
+  "url": "/enrollment",
+  "wait": "Нийт:",
+  "alt": "Элсэлт бүртгэлийн жагсаалт: цэс, шүүлт, хайлт",
+  "marks": [
+   {
+    "n": "1.1",
+    "text": "Бүртгэл"
+   },
+   {
+    "n": "1.2",
+    "text": "Нарлаг 1-р салбар",
+    "nth": 1
+   },
+   {
+    "n": "1.3",
+    "text": "Идэвхтэй"
+   },
+   {
+    "n": "1.4",
+    "text": "Хайх…"
+   }
+  ]
+ },
+ {
+  "id": "kidspace/elselt-burtgel-2",
+  "page": "docs/kidspace/elselt-burtgel.md",
+  "url": "/enrollment",
+  "wait": "Нийт:",
+  "steps": [
+   {
+    "click": "+ Шинэ"
+   }
+  ],
+  "alt": "«Шинэ элсэлт» цонх",
+  "marks": [
+   {
+    "n": "2.1",
+    "text": "Шинэ элсэлт",
+    "within": "dialog",
+    "self": true
+   },
+   {
+    "n": "2.2",
+    "text": "Шинэ хүүхэд",
+    "within": "dialog"
+   },
+   {
+    "n": "2.3",
+    "text": "Бүлэг сонгох",
+    "within": "dialog"
+   },
+   {
+    "n": "2.4",
+    "text": "Хүүхдийн нэр",
+    "within": "dialog",
+    "self": true,
+    "up": 1
+   },
+   {
+    "n": "2.5",
+    "text": "Элсэх огноо",
+    "within": "dialog",
+    "self": true,
+    "up": 1
+   },
+   {
+    "n": "2.6",
+    "text": "Элсүүлэх",
+    "within": "dialog",
+    "side": "top"
+   }
+  ]
+ },
+ {
+  "id": "kidspace/irts-zhurnal-1",
+  "page": "docs/kidspace/irts-zhurnal.md",
+  "url": "/attendance/journal",
+  "wait": "Дүн нуух",
+  "alt": "Ирц журнал: цэс, сар, анги, өнөөдрийн огноо",
+  "marks": [
+   {
+    "n": "2.1",
+    "text": "Ирц журнал"
+   },
+   {
+    "n": "2.2",
+    "text": "2026.11",
+    "up": 2
+   },
+   {
+    "n": "2.3",
+    "text": "16"
+   }
+  ]
+ },
+ {
+  "id": "kidspace/irts-zhurnal-2",
+  "page": "docs/kidspace/irts-zhurnal.md",
+  "url": "/attendance/journal",
+  "wait": "Дүн нуух",
+  "steps": [
+   {
+    "click": "16"
+   }
+  ],
+  "alt": "Огнооны толгой дээр дарахад гарах цонх: «Ирсэн»",
+  "marks": [
+   {
+    "n": "2.4",
+    "text": "Ирсэн",
+    "within": "dialog"
+   }
+  ]
+ },
+ {
+  "id": "kidspace/tolult-1",
+  "page": "docs/kidspace/tolult.md",
+  "url": "/billing/payments",
+  "wait": "Төлөлт бүртгэх",
+  "alt": "Төлөлт жагсаалт",
+  "marks": [
+   {
+    "n": "1.1",
+    "text": "Төлөлт",
+    "nth": 1
+   },
+   {
+    "n": "1.2",
+    "text": "Төлөлт бүртгэх"
+   }
+  ]
+ },
+ {
+  "id": "kidspace/tolult-2",
+  "page": "docs/kidspace/tolult.md",
+  "url": "/billing/payments",
+  "wait": "Төлөлт бүртгэх",
+  "steps": [
+   {
+    "click": "Төлөлт бүртгэх"
+   }
+  ],
+  "alt": "«Төлөлт бүртгэх» цонх",
+  "marks": [
+   {
+    "n": "1.3",
+    "text": "Сонгоогүй",
+    "within": "dialog"
+   },
+   {
+    "n": "1.4",
+    "text": "Дүн",
+    "within": "dialog",
+    "self": true,
+    "up": 1
+   },
+   {
+    "n": "1.5",
+    "text": "Сонгох",
+    "within": "dialog"
+   },
+   {
+    "n": "1.6",
+    "text": "Бүртгэх",
+    "within": "dialog",
+    "side": "top"
+   }
+  ]
+ }
 ]
