@@ -170,5 +170,123 @@
     "side": "top"
    }
   ]
+ },
+ {
+  "id": "kidspace/tolbor-jagsaalt-1",
+  "page": "docs/kidspace/tolbor-jagsaalt.md",
+  "url": "/billing/invoices",
+  "wait": "Нэхэмжлэх үүсгэх",
+  "alt": "Төлбөр жагсаалт: «Нэхэмжлэх үүсгэх» товч",
+  "marks": [
+   {
+    "n": "1.1",
+    "text": "Төлбөр"
+   },
+   {
+    "n": "1.3",
+    "text": "Нэхэмжлэх үүсгэх"
+   }
+  ]
+ },
+ {
+  "id": "kidspace/tolboriin-huvaar-1",
+  "page": "docs/kidspace/tolboriin-huvaar.md",
+  "url": "/billing/payment-schedules",
+  "wait": "Төлбөр үүсгэх",
+  "alt": "Хуваарь жагсаалт: шүүлт ба «Төлбөр үүсгэх»",
+  "marks": [
+   {
+    "n": "2.1",
+    "text": "Хуваарь"
+   },
+   {
+    "n": "2.2",
+    "text": "Бүх багц"
+   },
+   {
+    "n": "2.4",
+    "text": "Төлбөр үүсгэх"
+   }
+  ]
+ },
+ {
+  "id": "kidspace/tolboriin-ajillagaa-1",
+  "page": "docs/kidspace/tolboriin-ajillagaa.md",
+  "url": "/automation/operations",
+  "wait": "Ажиллагаа алга",
+  "hideText": [
+   "Энэ орчинд крон сервер тохируулаагүй"
+  ],
+  "alt": "Төлбөрийн ажиллагаа жагсаалт",
+  "marks": [
+   {
+    "n": "1.1",
+    "text": "Төлбөрийн ажиллагаа"
+   },
+   {
+    "n": "1.2",
+    "text": "Шинэ"
+   }
+  ]
+ },
+ {
+  "id": "kidspace/tolboriin-ajillagaa-2",
+  "page": "docs/kidspace/tolboriin-ajillagaa.md",
+  "url": "/automation/operations",
+  "wait": "Ажиллагаа алга",
+  "hideText": [
+   "Энэ орчинд крон сервер тохируулаагүй",
+   "Үйлчилгээний тохиргоотой багц алга."
+  ],
+  "steps": [
+   {
+    "click": "Шинэ"
+   }
+  ],
+  "alt": "«Шинэ ажиллагаа» цонх",
+  "marks": [
+   {
+    "n": "1.3",
+    "text": "Цэцэрлэг сонгоно уу",
+    "within": "dialog"
+   },
+   {
+    "n": "1.4",
+    "text": "Нэхэмжлэх илгээх",
+    "within": "dialog"
+   },
+   {
+    "n": "1.5",
+    "text": "ГҮЙЦЭТГЭХ ХУГАЦАА",
+    "contains": true,
+    "within": "dialog",
+    "self": true,
+    "up": 1
+   },
+   {
+    "n": "1.6",
+    "text": "Хадгалах",
+    "within": "dialog",
+    "side": "top"
+   }
+  ]
+ },
+ {
+  "id": "kidspace/nehemjleh-ilgeeh-1",
+  "page": "docs/kidspace/nehemjleh-ilgeeh.md",
+  "url": "/billing/documents",
+  "wait": "SMS илгээх",
+  "alt": "Нэхэмжлэх жагсаалт: «SMS илгээх», «И-мэйл илгээх»",
+  "marks": [
+   {
+    "n": "1.1",
+    "text": "Нэхэмжлэх"
+   },
+   {
+    "n": "1.3",
+    "text": "SMS илгээх",
+    "side": "top"
+   }
+  ]
  }
 ]

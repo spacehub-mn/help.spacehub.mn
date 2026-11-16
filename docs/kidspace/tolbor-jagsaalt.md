@@ -4,8 +4,9 @@ sidebar_label: Төлбөр
 type: zaavar
 roles: [menejer]
 updated: 2026-11-16
-verified_commit: d4cdff47
+verified_commit: a0fe21dd
 verified_repo: kidspace
+imgmap_skip: "1.2 жагсаалтын мөр · 1.4 урьдчилан харах цонх"
 keywords:
   - "төлбөр"
   - "төлбөр цуцлах"
@@ -27,6 +28,11 @@ keywords:
 - Нэг төлбөрт хөнгөлөлт хийх.
 
 ## Нэхэмжлэх үүсгэх {#nehemjleh-uusgeh}
+
+![Төлбөр жагсаалт: «Нэхэмжлэх үүсгэх» товч](/img/kidspace/tolbor-jagsaalt-1.webp)
+
+*Зураг 1. Төлбөр жагсаалт: «Нэхэмжлэх үүсгэх» товч.*
+
 1. **Тооцоо → Төлбөр** цэсийг нээ.
 2. Нэг төлбөрийг чагтал.
 3. **«Нэхэмжлэх үүсгэх»** дар. Нэхэмжлэх урьдчилан харагдана.

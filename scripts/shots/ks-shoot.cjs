@@ -155,6 +155,7 @@ async function toWebp(page, png, file) {
       if (s.wait) await page.getByText(s.wait).first().waitFor({ timeout: 20000 });
       await runSteps(page, s.steps);
       await blurTexts(page, s.blurText);
+      for (const t of s.hideText || []) for (const e of await page.getByText(t).all()) await e.evaluate((el) => { el.style.display = "none"; }).catch(() => {});
       const boxes = [];
       for (const m of s.marks || []) {
         const bb = await findBox(page, m);
