@@ -142,7 +142,9 @@ const groupedActions = (() => {
 const shotsFile = opt("--shots", join(ROOT, "scripts", "shots", "shots.json"));
 // app-shots.json: гар утасны аппын зураг (annotate.cjs) — ижил дүрмээр шалгана
 const appShotsFile = join(dirname(shotsFile), "app-shots.json");
-const SHOTS = new Map([shotsFile, appShotsFile].filter(existsSync).flatMap((f) => JSON.parse(readFileSync(f, "utf8"))).map((s) => [s.id, s]));
+// ks-shots.json: KidSpace вэбийн зураг (ks-shoot.cjs, локал туршилтын орчин) — ижил дүрмээр шалгана
+const ksShotsFile = join(dirname(shotsFile), "ks-shots.json");
+const SHOTS = new Map([shotsFile, appShotsFile, ksShotsFile].filter(existsSync).flatMap((f) => JSON.parse(readFileSync(f, "utf8"))).map((s) => [s.id, s]));
 const { META } = createRequire(import.meta.url)("../plugins/step-numbers.js");
 
 /**
