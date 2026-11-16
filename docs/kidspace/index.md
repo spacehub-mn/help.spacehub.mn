@@ -32,12 +32,23 @@ KidSpace-ийн гарын авлага **шинээр бичигдэж** бай
 - [Эцэг эхэд мэдээ нийтлэх](/kidspace/niitlel)
 - [Мэдээлэл хянах](/kidspace/medeelel-hyanah)
 - [Нуусан агуулга](/kidspace/nuusan-aguulga)
-- [Бүлгийн сарын тооцоо (тайлан)](/kidspace/saryn-tootsoo-tailan)
-- [Төлбөрийн хуваарь](/kidspace/tolboriin-huvaar)
-- [Төлбөрийн жагсаалт — цуцлах, нэхэмжлэх үүсгэх](/kidspace/tolbor-jagsaalt)
-- [Нэхэмжлэх илгээх, хэвлэх](/kidspace/nehemjleh-ilgeeh)
-- [Төлөлт бүртгэх](/kidspace/tolult)
-- [Мөнгө буцаасныг бүртгэх](/kidspace/butsaalt)
+- [Бүлгийн сарын тооцоо (тайлан)](/kidspace/saryn-tootsoo-tailan)
+
+- [Төлбөрийн хуваарь](/kidspace/tolboriin-huvaar)
+
+- [Төлбөрийн жагсаалт — цуцлах, нэхэмжлэх үүсгэх](/kidspace/tolbor-jagsaalt)
+
+- [Нэхэмжлэх илгээх, хэвлэх](/kidspace/nehemjleh-ilgeeh)
+
+- [Төлөлт бүртгэх](/kidspace/tolult)
+
+- [Мөнгө буцаасныг бүртгэх](/kidspace/butsaalt)
+- [Сарын төлбөр, нэхэмжлэхийг бүгдэд нэг дор](/kidspace/tolboriin-ajillagaa)
+- [Дансны хуулгаас төлөлт холбох](/kidspace/dansnii-huulga)
+- [Автомат ажлууд ажилласан эсэх](/kidspace/huvaariin-ajil)
+- [Байгууллагын мэдээлэл, тохиргоо](/kidspace/baiguullaga)
+- [Шинэ хичээлийн жил бэлтгэх](/kidspace/hicheeliin-jil)
+- [Багш, ажилтан нэмэх](/kidspace/bagsh-ajilchid)
 - [Элсэлтийн эхлэх огноо засах](/kidspace/ehleh-ognoo-zasah)
 - [«Анги шилжүүлэх» ба «Анги дэвшүүлэх» — аль нь хэзээ](/kidspace/angi-shiljuuleh-devshuuleh)
 - [«Төлбөр» ба «Нэхэмжлэх» — ялгаа, төлбөр цөөхөн үүссэн бол](/kidspace/tolbor-nehemjleh)
