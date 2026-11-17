@@ -94,16 +94,53 @@ async function runSteps(page, steps = []) {
   }
 }
 
-// Улаан хүрээ + дугаар (#e11d48, цагаан хүрээ, 32px) — DOM дээр давхарга
+// Улаан хүрээ + дугаар (#e11d48, цагаан хүрээ, 32px) — DOM дээр давхарга.
+// side өгөөгүй бол дугаарыг зүүн → дээр → баруун → доор дарааллаар, бичиг/товч/талбар болон өмнөх дугаарыг дарахгүй байрлалд тавина.
 async function drawMarks(page, boxes) {
   await page.evaluate((boxes) => {
+    const vw = innerWidth, vh = innerHeight;
+    const obst = [];
+    for (const el of document.querySelectorAll("body *")) {
+      const cs = getComputedStyle(el);
+      if (cs.visibility === "hidden" || cs.display === "none" || +cs.opacity === 0) continue;
+      const own = [...el.childNodes].some((x) => x.nodeType === 3 && x.textContent.trim());
+      if (!own && !el.matches('button,a,input,textarea,select,img,svg,[role="tab"],[role="combobox"],[role="checkbox"]')) continue;
+      const r = el.getBoundingClientRect();
+      if (r.width > 0 && r.height > 0 && r.width < vw * 0.9) obst.push({ x: r.x, y: r.y, w: r.width, h: r.height });
+    }
+    const hit = (a, c) => a.x < c.x + c.w && c.x < a.x + a.w && a.y < c.y + c.h && c.y < a.y + a.h;
+    const inside = (c, b) => c.x >= b.x - 1 && c.y >= b.y - 1 && c.x + c.w <= b.x + b.w + 1 && c.y + c.h <= b.y + b.h + 1;
+    const placed = [];
     for (const b of boxes) {
       const r = document.createElement("div");
       Object.assign(r.style, { position: "fixed", left: b.x - 4 + "px", top: b.y - 4 + "px", width: b.w + 8 + "px", height: b.h + 8 + "px",
         border: "3px solid #e11d48", borderRadius: "8px", zIndex: 2147483646, pointerEvents: "none", boxSizing: "border-box" });
       const n = document.createElement("div");
-      const bw = Math.max(32, 12 + 9 * String(b.n).length); const bx = Math.max(2, b.x - 4 - bw - 4), by = Math.max(2, b.y + b.h / 2 - 16);
-      Object.assign(n.style, { position: "fixed", left: (b.side === "top" ? b.x + b.w - bw : b.side === "right" || b.x - 4 - bw - 4 < 2 ? b.x + b.w + 8 : bx) + "px", top: (b.side === "top" ? Math.max(2, b.y - 40) : by) + "px", minWidth: "32px", height: "32px", padding: "0 6px",
+      const bw = Math.max(32, 12 + 9 * String(b.n).length);
+      const cand = {
+        left: { x: b.x - 4 - bw - 4, y: b.y + b.h / 2 - 16 },
+        top: { x: b.x + b.w - bw, y: b.y - 40 },
+        right: { x: b.x + b.w + 8, y: b.y + b.h / 2 - 16 },
+        bottom: { x: b.x + b.w - bw, y: b.y + b.h + 8 },
+        // хүрээний буланд «тэмдэг» маягаар (хүрээтэй хэсэгчлэн давхцана)
+        tl: { x: b.x - bw + 8, y: b.y - 26 },
+        tr: { x: b.x + b.w - 8, y: b.y - 26 },
+        br: { x: b.x + b.w - 8, y: b.y + b.h - 6 },
+      };
+      const order = b.side ? [b.side] : ["left", "top", "right", "bottom", "tl", "tr", "br"];
+      const area = (a, c) => Math.max(0, Math.min(a.x + a.w, c.x + c.w) - Math.max(a.x, c.x)) * Math.max(0, Math.min(a.y + a.h, c.y + c.h) - Math.max(a.y, c.y));
+      const score = (p) => {
+        const a = { x: p.x, y: p.y, w: bw, h: 32 };
+        if (a.x < 2 || a.y < 2 || a.x + a.w > vw - 2 || a.y + a.h > vh - 2) return 1e12;
+        // тэмдэглэж буй элементийн өөрийн хэсгүүдийг саад гэж тооцохгүй; бусад дугаартай давхцах = хамгийн муу
+        return obst.filter((c) => !inside(c, b)).reduce((s, c) => s + area(a, c), 0) + 1e6 * placed.filter((c) => hit(a, c)).length;
+      };
+      let best = order[0], bestS = Infinity;
+      for (const s of order) { const v = score(cand[s]); if (v < bestS) { bestS = v; best = s; } if (v === 0) break; }
+      const p = cand[best];
+      p.x = Math.min(Math.max(2, p.x), vw - bw - 2); p.y = Math.min(Math.max(2, p.y), vh - 34);
+      placed.push({ x: p.x, y: p.y, w: bw, h: 32 });
+      Object.assign(n.style, { position: "fixed", left: p.x + "px", top: p.y + "px", minWidth: "32px", height: "32px", padding: "0 6px",
         borderRadius: "16px", background: "#e11d48", color: "#fff", border: "2px solid #fff", font: "700 16px/28px sans-serif",
         textAlign: "center", zIndex: 2147483647, pointerEvents: "none", boxSizing: "border-box", boxShadow: "0 1px 4px rgba(0,0,0,.4)" });
       n.textContent = b.n;
@@ -117,6 +154,25 @@ async function blurTexts(page, texts = []) {
     const els = await page.getByText(t).all();
     for (const e of els) await e.evaluate((el) => { el.style.filter = "blur(6px)"; }).catch(() => {});
   }
+}
+
+// Хүний нэр зэргийг репод бичихгүйн тулд байрлалаар бүдгэрүүлнэ:
+//   blurCol: ["Ажилтан"]   — хүснэгтийн тэр баганын бүх нүд
+//   blurField: ["Үүсгэсэн"] — шошгоны дараах утгын элемент
+async function blurByPlace(page, cols = [], fields = []) {
+  if (!cols.length && !fields.length) return;
+  await page.evaluate(({ cols, fields }) => {
+    const norm = (s) => (s || "").replace(/\s+/g, " ").trim().toLowerCase();
+    const blur = (el) => { el.style.filter = "blur(6px)"; };
+    for (const c of cols.map(norm)) for (const t of document.querySelectorAll("table")) {
+      const i = [...t.querySelectorAll("thead th")].findIndex((th) => norm(th.innerText) === c);
+      if (i >= 0) for (const tr of t.querySelectorAll("tbody tr")) if (tr.children[i]) blur(tr.children[i]);
+    }
+    for (const f of fields.map(norm)) for (const el of document.querySelectorAll("body *")) {
+      if (el.children.length || norm(el.innerText) !== f) continue;
+      if (el.nextElementSibling) blur(el.nextElementSibling);
+    }
+  }, { cols, fields });
 }
 
 async function toWebp(page, png, file) {
@@ -151,10 +207,12 @@ async function toWebp(page, png, file) {
   let fail = 0;
   for (const s of SHOTS.filter((x) => !only.length || only.includes(x.id))) {
     try {
+      await page.setViewportSize({ width: s.vw || W, height: H }); // vw: хэрэгсэл баруун захаас гарах хуудсанд
       await page.goto(BASE + s.url); await idle(page);
       if (s.wait) await page.getByText(s.wait).first().waitFor({ timeout: 20000 });
       await runSteps(page, s.steps);
       await blurTexts(page, s.blurText);
+      await blurByPlace(page, s.blurCol, s.blurField);
       for (const t of s.hideText || []) for (const e of await page.getByText(t).all()) await e.evaluate((el) => { el.style.display = "none"; }).catch(() => {});
       const boxes = [];
       for (const m of s.marks || []) {

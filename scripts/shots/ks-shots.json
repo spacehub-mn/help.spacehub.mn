@@ -4,6 +4,9 @@
   "page": "docs/kidspace/elselt-burtgel.md",
   "url": "/enrollment",
   "wait": "Нийт:",
+  "blurText": [
+   "8800010"
+  ],
   "alt": "Элсэлт бүртгэлийн жагсаалт: цэс, шүүлт, хайлт",
   "marks": [
    {
@@ -125,8 +128,7 @@
   "marks": [
    {
     "n": "1.1",
-    "text": "Төлөлт",
-    "nth": 1
+    "text": "Төлөлт"
    },
    {
     "n": "1.2",
@@ -286,6 +288,668 @@
     "n": "1.3",
     "text": "SMS илгээх",
     "side": "top"
+   }
+  ]
+ },
+ {
+  "id": "kidspace/3d-angi-1",
+  "page": "docs/kidspace/3d-angi.md",
+  "url": "/occupancy",
+  "alt": "3D анги: цэс ба «Ирц» горим",
+  "marks": [
+   {
+    "n": "2.1",
+    "text": "3D анги"
+   },
+   {
+    "n": "2.2",
+    "text": "Ирц"
+   }
+  ]
+ },
+ {
+  "id": "kidspace/bagsh-ajilchid-1",
+  "page": "docs/kidspace/bagsh-ajilchid.md",
+  "url": "/business-owners",
+  "blurCol": [
+   "Ажилтан"
+  ],
+  "steps": [
+   {
+    "click": "Багш, ажилчид"
+   }
+  ],
+  "alt": "Байгууллага: «Багш, ажилчид» таб",
+  "marks": [
+   {
+    "n": "2.1",
+    "text": "Багш, ажилчид"
+   },
+   {
+    "n": "2.2",
+    "text": "Шинэ"
+   }
+  ]
+ },
+ {
+  "id": "kidspace/bagsh-ajilchid-2",
+  "page": "docs/kidspace/bagsh-ajilchid.md",
+  "url": "/business-owners",
+  "steps": [
+   {
+    "click": "Багш, ажилчид"
+   },
+   {
+    "click": "Шинэ"
+   }
+  ],
+  "alt": "Шинэ ажилтан нэмэх хуудас",
+  "marks": [
+   {
+    "n": "2.3",
+    "text": "НЭВТРЭХ УТАС",
+    "contains": true,
+    "self": true,
+    "up": 1
+   },
+   {
+    "n": "2.4",
+    "text": "ТҮР НУУЦ ҮГ",
+    "contains": true,
+    "self": true,
+    "up": 1
+   },
+   {
+    "n": "2.5",
+    "text": "ҮҮРЭГ",
+    "contains": true,
+    "self": true,
+    "up": 1
+   },
+   {
+    "n": "2.6",
+    "text": "ЦЭЦЭРЛЭГ",
+    "contains": true,
+    "self": true,
+    "up": 1
+   },
+   {
+    "n": "2.7",
+    "text": "Хадгалах",
+    "side": "top"
+   }
+  ]
+ },
+ {
+  "id": "kidspace/elseltiin-haalt-1",
+  "page": "docs/kidspace/elseltiin-haalt.md",
+  "url": "/enrollment",
+  "wait": "Нийт:",
+  "blurText": [
+   "8800010"
+  ],
+  "blurField": [
+   "Үүсгэсэн"
+  ],
+  "steps": [
+   {
+    "click": "00200001"
+   }
+  ],
+  "alt": "Элсэлтийн хуудас: «Үйлдэл» цэс",
+  "marks": [
+   {
+    "n": "1.1",
+    "text": "Бүртгэл"
+   },
+   {
+    "n": "1.2",
+    "text": "Үйлдэл"
+   }
+  ]
+ },
+ {
+  "id": "kidspace/elseltiin-haalt-2",
+  "page": "docs/kidspace/elseltiin-haalt.md",
+  "url": "/enrollment",
+  "wait": "Нийт:",
+  "steps": [
+   {
+    "click": "00200001"
+   },
+   {
+    "click": "Үйлдэл"
+   },
+   {
+    "click": "Гэрээ хаах"
+   }
+  ],
+  "alt": "«Гэрээ хаах» цонх",
+  "marks": [
+   {
+    "text": "Хаах огноо",
+    "within": "dialog",
+    "n": "1.3",
+    "self": true,
+    "up": 1
+   },
+   {
+    "text": "Шалтгаан",
+    "within": "dialog",
+    "n": "1.4",
+    "self": true,
+    "up": 1
+   },
+   {
+    "text": "Тайлбар",
+    "within": "dialog",
+    "n": "1.5",
+    "self": true,
+    "up": 1
+   },
+   {
+    "text": "Гэрээ хаах",
+    "within": "dialog",
+    "n": "1.6",
+    "nth": 1,
+    "side": "top"
+   }
+  ]
+ },
+ {
+  "id": "kidspace/ehleh-ognoo-zasah-1",
+  "page": "docs/kidspace/ehleh-ognoo-zasah.md",
+  "url": "/enrollment",
+  "wait": "Нийт:",
+  "blurText": [
+   "8800010"
+  ],
+  "blurField": [
+   "Үүсгэсэн"
+  ],
+  "steps": [
+   {
+    "click": "00200001"
+   }
+  ],
+  "alt": "Элсэлтийн хуудас: «Эхлэх огноо засах» товч",
+  "marks": [
+   {
+    "n": "1.1",
+    "text": "Бүртгэл"
+   },
+   {
+    "n": "1.3",
+    "text": "Эхлэх огноо засах"
+   }
+  ]
+ },
+ {
+  "id": "kidspace/ehleh-ognoo-zasah-2",
+  "page": "docs/kidspace/ehleh-ognoo-zasah.md",
+  "url": "/enrollment",
+  "wait": "Нийт:",
+  "steps": [
+   {
+    "click": "00200001"
+   },
+   {
+    "click": "Эхлэх огноо засах"
+   }
+  ],
+  "alt": "«Эхлэх огноо засах» цонх",
+  "marks": [
+   {
+    "text": "Шинэ эхлэх огноо",
+    "within": "dialog",
+    "n": "1.4",
+    "self": true,
+    "up": 1
+   },
+   {
+    "text": "Хадгалах",
+    "within": "dialog",
+    "n": "1.4"
+   }
+  ]
+ },
+ {
+  "id": "kidspace/bulguud-1",
+  "page": "docs/kidspace/bulguud.md",
+  "url": "/edu-classes",
+  "alt": "Бүлгүүд: хичээлийн жил, цэс, «Шинэ»",
+  "marks": [
+   {
+    "n": "2.1",
+    "text": "2026–2027"
+   },
+   {
+    "n": "2.2",
+    "text": "Бүлгүүд"
+   },
+   {
+    "n": "2.3",
+    "text": "Шинэ"
+   }
+  ]
+ },
+ {
+  "id": "kidspace/bulguud-2",
+  "page": "docs/kidspace/bulguud.md",
+  "url": "/edu-classes",
+  "steps": [
+   {
+    "click": "Шинэ"
+   }
+  ],
+  "alt": "Шинэ бүлэг нэмэх хуудас",
+  "marks": [
+   {
+    "n": "2.4",
+    "text": "НЭР",
+    "contains": true,
+    "self": true,
+    "up": 1
+   },
+   {
+    "n": "2.5",
+    "text": "ЭЛСЭЛТ НЭЭЛТТЭЙ",
+    "contains": true,
+    "self": true,
+    "up": 1
+   },
+   {
+    "n": "2.6",
+    "text": "Хадгалах",
+    "side": "top"
+   }
+  ]
+ },
+ {
+  "id": "kidspace/elseltiin-huselt-1",
+  "page": "docs/kidspace/elseltiin-huselt.md",
+  "url": "/requests",
+  "alt": "Элсэлтийн хүсэлт: «Эцэг эх урих»",
+  "marks": [
+   {
+    "n": "2.1",
+    "text": "Хүсэлт"
+   },
+   {
+    "n": "2.2",
+    "text": "Эцэг эх урих"
+   }
+  ]
+ },
+ {
+  "id": "kidspace/elseltiin-huselt-2",
+  "page": "docs/kidspace/elseltiin-huselt.md",
+  "url": "/requests",
+  "steps": [
+   {
+    "click": "Эцэг эх урих"
+   }
+  ],
+  "alt": "«Эцэг эхэд урилга илгээх» цонх",
+  "marks": [
+   {
+    "text": "Цэцэрлэг",
+    "within": "dialog",
+    "n": "2.3",
+    "self": true,
+    "up": 1
+   },
+   {
+    "text": "Эцэг эхийн нэр",
+    "within": "dialog",
+    "n": "2.4",
+    "self": true,
+    "up": 1
+   },
+   {
+    "text": "Урилга үүсгэх",
+    "within": "dialog",
+    "n": "2.5",
+    "side": "top"
+   }
+  ]
+ },
+ {
+  "id": "kidspace/butsaalt-1",
+  "page": "docs/kidspace/butsaalt.md",
+  "url": "/billing/refunds",
+  "alt": "Буцаалт жагсаалт",
+  "marks": [
+   {
+    "n": "2.1",
+    "text": "Буцаалт"
+   },
+   {
+    "n": "2.2",
+    "text": "+ Шинэ"
+   }
+  ]
+ },
+ {
+  "id": "kidspace/butsaalt-2",
+  "page": "docs/kidspace/butsaalt.md",
+  "url": "/billing/refunds",
+  "steps": [
+   {
+    "click": "+ Шинэ"
+   }
+  ],
+  "alt": "«Буцаалт хийх» цонх",
+  "marks": [
+   {
+    "n": "2.3",
+    "text": "Элсэлт *",
+    "within": "dialog",
+    "self": true,
+    "up": 1
+   },
+   {
+    "n": "2.4",
+    "text": "Буцаах дүн",
+    "within": "dialog",
+    "self": true,
+    "up": 1
+   },
+   {
+    "n": "2.5",
+    "text": "Буцаалт бүртгэх",
+    "within": "dialog",
+    "side": "top"
+   }
+  ],
+  "hideText": [
+   "Идэвхтэй багц алга."
+  ]
+ },
+ {
+  "id": "kidspace/baiguullaga-1",
+  "page": "docs/kidspace/baiguullaga.md",
+  "url": "/business-owners",
+  "steps": [
+   {
+    "click": "Тохиргоо",
+    "nth": 1
+   },
+   {
+    "click": "Ирцийн журнал",
+    "contains": true
+   }
+  ],
+  "alt": "Байгууллага → Тохиргоо: Ирцийн журнал асаах, унтраах",
+  "marks": [
+   {
+    "n": "2.1",
+    "text": "Тохиргоо",
+    "nth": 1
+   },
+   {
+    "n": "2.2",
+    "text": "Ирцийн журнал",
+    "contains": true
+   },
+   {
+    "n": "2.3",
+    "text": "Асаалттай",
+    "self": true,
+    "up": 1
+   }
+  ]
+ },
+ {
+  "id": "kidspace/hicheeliin-jil-1",
+  "page": "docs/kidspace/hicheeliin-jil.md",
+  "url": "/business-owners",
+  "steps": [
+   {
+    "click": "Тохиргоо",
+    "nth": 1
+   },
+   {
+    "click": "Үйлдэл"
+   }
+  ],
+  "alt": "Байгууллага → Тохиргоо → Хичээлийн жил: «Үйлдэл» цэс",
+  "marks": [
+   {
+    "n": "2.1",
+    "text": "Тохиргоо",
+    "nth": 1
+   },
+   {
+    "n": "2.2",
+    "text": "Шинэ жил бэлтгэх"
+   }
+  ]
+ },
+ {
+  "id": "kidspace/hicheeliin-jil-2",
+  "page": "docs/kidspace/hicheeliin-jil.md",
+  "url": "/business-owners",
+  "steps": [
+   {
+    "click": "Тохиргоо",
+    "nth": 1
+   },
+   {
+    "click": "Үйлдэл"
+   },
+   {
+    "click": "Шинэ жил бэлтгэх"
+   }
+  ],
+  "alt": "«Шинэ хичээлийн жил бэлтгэх» цонх",
+  "marks": [
+   {
+    "text": "Өмнөх хичээлийн жил *",
+    "within": "dialog",
+    "n": "2.3",
+    "self": true,
+    "up": 1
+   },
+   {
+    "text": "Эхлэх огноо",
+    "within": "dialog",
+    "n": "2.4",
+    "self": true,
+    "up": 1
+   },
+   {
+    "text": "Бэлтгэх",
+    "within": "dialog",
+    "n": "2.5",
+    "side": "top"
+   }
+  ]
+ },
+ {
+  "id": "kidspace/niitlel-1",
+  "page": "docs/kidspace/niitlel.md",
+  "url": "/posts",
+  "alt": "Нийтлэл жагсаалт",
+  "marks": [
+   {
+    "n": "2.1",
+    "text": "Нийтлэл"
+   },
+   {
+    "n": "2.2",
+    "text": "Шинэ",
+    "contains": true,
+    "nth": 0
+   }
+  ]
+ },
+ {
+  "id": "kidspace/niitlel-2",
+  "page": "docs/kidspace/niitlel.md",
+  "url": "/posts",
+  "steps": [
+   {
+    "click": "Шинэ",
+    "contains": true,
+    "nth": 0
+   }
+  ],
+  "alt": "«Шинэ нийтлэл» цонх",
+  "marks": [
+   {
+    "text": "Хамрах хүрээ",
+    "within": "dialog",
+    "n": "2.3",
+    "self": true,
+    "up": 1
+   },
+   {
+    "text": "Цэцэрлэг *",
+    "within": "dialog",
+    "n": "2.4",
+    "self": true,
+    "up": 1
+   },
+   {
+    "text": "Гарчиг",
+    "within": "dialog",
+    "n": "2.5",
+    "self": true,
+    "up": 1
+   },
+   {
+    "text": "Нийтлэх",
+    "within": "dialog",
+    "n": "2.6",
+    "side": "top"
+   }
+  ]
+ },
+ {
+  "id": "kidspace/saryn-tootsoo-tailan-1",
+  "page": "docs/kidspace/saryn-tootsoo-tailan.md",
+  "url": "/reports/class-month",
+  "wait": "Нийт төлбөр",
+  "alt": "Сарын тооцоо тайлан",
+  "marks": [
+   {
+    "n": "1.1",
+    "text": "Сарын тооцоо",
+    "nth": 0
+   },
+   {
+    "n": "1.2",
+    "text": "Сар",
+    "self": true,
+    "up": 1
+   },
+   {
+    "n": "1.3",
+    "text": "Хаагдсан гэрээ"
+   },
+   {
+    "n": "1.4",
+    "text": "Нийт төлбөр",
+    "self": true,
+    "up": 2
+   },
+   {
+    "n": "1.5",
+    "text": "Өртэй",
+    "contains": true
+   },
+   {
+    "n": "1.6",
+    "text": "Хэвлэх (PDF)",
+    "side": "top"
+   }
+  ]
+ },
+ {
+  "id": "kidspace/suragchid-1",
+  "page": "docs/kidspace/suragchid.md",
+  "url": "/students",
+  "wait": "Нийт:",
+  "alt": "Сурагчид жагсаалт",
+  "marks": [
+   {
+    "n": "1.1",
+    "text": "Сурагчид",
+    "nth": 0
+   },
+   {
+    "n": "1.2",
+    "text": "Хайх…"
+   }
+  ]
+ },
+ {
+  "id": "kidspace/nuusan-aguulga-1",
+  "page": "docs/kidspace/nuusan-aguulga.md",
+  "url": "/posts/hidden",
+  "alt": "Нуусан агуулга жагсаалт",
+  "marks": [
+   {
+    "n": "2.1",
+    "text": "Нуусан агуулга",
+    "nth": 0
+   },
+   {
+    "n": "2.2",
+    "text": "Зөвхөн надад харагдахгүй"
+   }
+  ]
+ },
+ {
+  "id": "kidspace/medeelel-hyanah-1",
+  "page": "docs/kidspace/medeelel-hyanah.md",
+  "url": "/moderation/reports",
+  "alt": "Мэдээлэл хянах жагсаалт",
+  "marks": [
+   {
+    "n": "2.1",
+    "text": "Мэдээлэл хянах",
+    "nth": 0
+   }
+  ]
+ },
+ {
+  "id": "kidspace/sanal-huselt-1",
+  "page": "docs/kidspace/sanal-huselt.md",
+  "url": "/feedbacks",
+  "vw": 1800,
+  "alt": "Санал хүсэлт жагсаалт",
+  "marks": [
+   {
+    "n": "2.1",
+    "text": "Санал хүсэлт",
+    "nth": 0
+   },
+   {
+    "n": "2.2",
+    "text": "Төлөв",
+    "self": true,
+    "up": 1
+   }
+  ]
+ },
+ {
+  "id": "kidspace/hogjliin-zhurnal-1",
+  "page": "docs/kidspace/hogjliin-zhurnal.md",
+  "url": "/development/journal",
+  "alt": "Хөгжлийн журнал: сар, анги",
+  "marks": [
+   {
+    "n": "1.1",
+    "text": "Хөгжлийн журнал",
+    "nth": 0
+   },
+   {
+    "n": "1.2",
+    "text": "Сар",
+    "self": true,
+    "up": 1
    }
   ]
  }
