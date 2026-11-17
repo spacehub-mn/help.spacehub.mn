@@ -73,3 +73,8 @@
 [data-theme="dark"] .footer--light {
   background: #2e2450;
 }
+
+/* Цэс: дэд мөр (бүлэг доторх хуудас) гарчгаас арай жижиг — эзэн 11-17 */
+.theme-doc-sidebar-menu .menu__list .menu__link {
+  font-size: 0.9em;
+}
