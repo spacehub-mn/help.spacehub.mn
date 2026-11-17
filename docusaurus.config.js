@@ -81,8 +81,8 @@ const config = {
         apiKey: "154dfc27f26a114116e6c31d66b4218c",
         contextualSearch: false,
       },
-      // Replace with your project's social card
-      image: "img/docusaurus-social-card.jpg",
+      // Холбоос хуваалцахад гарах зураг (og:image) — static/img/social-card.jpg (лого, 1200×630)
+      image: "img/social-card.jpg",
       navbar: {
         // title: 'My Site',
         logo: {

@@ -37,6 +37,8 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       colorMode: { defaultMode: "light", respectPrefersColorScheme: true },
+      // Холбоос хуваалцахад гарах зураг (og:image) — kidspace-site/static/img/social-card.jpg
+      image: "img/social-card.jpg",
       navbar: {
         title: "KidSpace туслах",
         logo: { alt: "KidSpace", src: "img/kidspace-mark.png", width: 30, height: 30 },

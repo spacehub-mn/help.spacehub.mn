@@ -319,6 +319,16 @@ html[data-role] .theme-doc-sidebar-container {
 html[data-role="owner"] .navbar__inner .navbar__logo img {
   filter: brightness(0) invert(1);
 }
+/* Хар хөх толгой (түрээслэгч) ба харанхуй горимын утасны цэс: ногоон «Space» бараан дэвсгэр дээр
+   бүдэг (тодрол 3.6) байсан → «Space» цагаан хувилбар (logo-ondark.svg), зүү ба «hub» жинхэнэ өнгөөрөө */
+html[data-role="resident"] .navbar__inner .navbar__logo,
+html[data-theme="dark"] .navbar-sidebar__brand .navbar__logo {
+  background: url("/img/logo-ondark.svg") left center / contain no-repeat;
+}
+html[data-role="resident"] .navbar__inner .navbar__logo img,
+html[data-theme="dark"] .navbar-sidebar__brand .navbar__logo img {
+  visibility: hidden;
+}
 
 /* Дугаартай зураг жинхэнэ хэмжээгээрээ, өргөн бол хажуу тийш гүйлгэнэ (Root.js fit) */
 .markdown .img-scroll {
