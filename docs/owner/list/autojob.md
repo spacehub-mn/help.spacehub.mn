@@ -3,12 +3,12 @@ slug: /owner/list/AutoJob_ListView
 sidebar_label: Авто ажил
 type: lavlah
 roles: [owner, nyagtlan]
-updated: 2026-11-11
-verified_commit: 7dcd852
+updated: 2026-11-17
+verified_commit: bf2073d3
 keywords:
   - "Авто ажил"
   - "автомат нэхэмжлэх"
-  - "Job start stop"
+  - "Автомат ажлыг асаах, зогсоох"
   - "дараа сарын авто ажил"
 ---
 # Авто ажил (жагсаалт)
