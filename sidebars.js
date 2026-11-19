@@ -20,6 +20,7 @@ const sidebars = {
       "owner/sar-tootsoo",
       "owner/nehemjleh-ilgeeh",
       "owner/huulga-tolbor",
+      "owner/guilgeenii-utga",
       "owner/e-barimt",
     ]),
     group("5. 📋 Цэс бүрийн тайлбар", [
@@ -56,7 +57,7 @@ const sidebars = {
       ]),
       group("Тайлан", ["owner/list/reports"]),
     ]),
-    group("6. ⚙️ Тохиргоо, өөрчлөлт", ["owner/shine-geree", "owner/geree-shalgah", "owner/tohirgoo", "owner/aldangi-tohirgoo", "owner/une-oorchloh", "owner/geree-buunuur-sungah", "owner/geree-talbai", "owner/hereglegch-idevhgui", "owner/tooluur", "owner/tooluur-sheet", "owner/tureesiin-negj-m2"]),
+    group("6. ⚙️ Тохиргоо, өөрчлөлт", ["owner/shine-geree", "owner/geree-shalgah", "owner/tohirgoo", "owner/aldangi-tohirgoo", "owner/une-oorchloh", "owner/geree-buunuur-sungah", "owner/geree-ognoo-sungalt", "owner/geree-talbai", "owner/hereglegch-idevhgui", "owner/tooluur", "owner/tooluur-sheet", "owner/tureesiin-negj-m2"]),
     group("7. 🆘 Асуудал гарвал", [
       "owner/tugeemel-asuult",
       group("❓ Сэдвээр", [
