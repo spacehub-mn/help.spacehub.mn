@@ -3,8 +3,8 @@ slug: /kidspace
 sidebar_label: KidSpace нүүр
 type: nuur
 roles: [menejer]
-updated: 2026-11-16
-verified_commit: bdbf3c0b
+updated: 2026-11-21
+verified_commit: 4814faa0
 verified_repo: kidspace
 keywords:
   - "kidspace"
@@ -16,43 +16,60 @@ keywords:
 
 > 🏢 Цэцэрлэгийн менежер, нягтлан · Вэб
 
-KidSpace-ийн гарын авлага **шинээр бичигдэж** байна. Эхлээд цэцэрлэгүүдээс хамгийн их ирдэг асуултуудыг хариулна.
+KidSpace-ийн гарын авлага. Шинээр эхэлж байгаа бол **[Эхний 7 хоног](/kidspace/nevtruulelt)**-оос эхэл.
 
-## Одоо байгаа хуудсууд
-- [Цэцэрлэгийн тойм](/kidspace/tsetserlegiin-toim)
-- [Хүүхэд элсүүлэх — «Элсэлт → Бүртгэл»](/kidspace/elselt-burtgel)
-- [Эцэг эхийн элсэлтийн хүсэлт](/kidspace/elseltiin-huselt)
-- [Гэрээ хаах, сэргээх](/kidspace/elseltiin-haalt)
-- [Ирц бүртгэх — «Ирц журнал»](/kidspace/irts-zhurnal)
-- [Хүүхдэд од өгөх — «Хөгжлийн журнал»](/kidspace/hogjliin-zhurnal)
-- [Бүлэг үүсгэх, багш томилох](/kidspace/bulguud)
-- [3D анги](/kidspace/3d-angi)
-- [Хүүхдийн мэдээлэл засах — «Сурагчид»](/kidspace/suragchid)
-- [Эцэг эхийн санал хүсэлтэд хариулах](/kidspace/sanal-huselt)
-- [Эцэг эхэд мэдээ нийтлэх](/kidspace/niitlel)
-- [Мэдээлэл хянах](/kidspace/medeelel-hyanah)
-- [Нуусан агуулга](/kidspace/nuusan-aguulga)
-- [Бүлгийн сарын тооцоо (тайлан)](/kidspace/saryn-tootsoo-tailan)
+## Эхлэх
+- [Эхний 7 хоног — анх тохируулах](/kidspace/nevtruulelt)
+- [Сар бүрийн ажил](/kidspace/tutorial/sar-buriin-ajil)
+- Дүрээр: [Эрхлэгч, менежер](/kidspace/role/menejer) · [Багш](/kidspace/role/bagsh)
 
-- [Төлбөрийн хуваарь](/kidspace/tolboriin-huvaar)
+## Түгээмэл асуулт
+- [Элсэлт, анги](/kidspace/asuult/elselt)
+- [Төлбөр, нэхэмжлэх](/kidspace/asuult/tolbor)
 
-- [Төлбөрийн жагсаалт — цуцлах, нэхэмжлэх үүсгэх](/kidspace/tolbor-jagsaalt)
+## Ойлголт
+- [Нэр томьёо](/kidspace/glossary)
+- [Хичээлийн жил, бүлэг, элсэлт](/kidspace/concepts/elselt-buleg-jil)
+- [Хуваарь → Төлбөр → Нэхэмжлэх → Төлөлт](/kidspace/concepts/tolbor-urgal)
 
-- [Нэхэмжлэх илгээх, хэвлэх](/kidspace/nehemjleh-ilgeeh)
-
-- [Төлөлт бүртгэх](/kidspace/tolult)
-
-- [Мөнгө буцаасныг бүртгэх](/kidspace/butsaalt)
-- [Сарын төлбөр, нэхэмжлэхийг бүгдэд нэг дор](/kidspace/tolboriin-ajillagaa)
-- [Дансны хуулгаас төлөлт холбох](/kidspace/dansnii-huulga)
-- [Автомат ажлууд ажилласан эсэх](/kidspace/huvaariin-ajil)
-- [Байгууллагын мэдээлэл, тохиргоо](/kidspace/baiguullaga)- [Тайлант үе хаах (баримт түгжээ)](/kidspace/tailant-uye-haah)
-- [Шинэ хичээлийн жил бэлтгэх](/kidspace/hicheeliin-jil)
-- [Багш, ажилтан нэмэх](/kidspace/bagsh-ajilchid)
-- [Элсэлтийн эхлэх огноо засах](/kidspace/ehleh-ognoo-zasah)
-- [«Анги шилжүүлэх» ба «Анги дэвшүүлэх» — аль нь хэзээ](/kidspace/angi-shiljuuleh-devshuuleh)
-- [Давхар хүүхэд нэгтгэх](/kidspace/davhar-huuhed-negtgeh)
-- [«Төлбөр» ба «Нэхэмжлэх» — ялгаа, төлбөр цөөхөн үүссэн бол](/kidspace/tolbor-nehemjleh)
-- [Хөнгөлөлт тохируулах — багш, ах дүүгийн хүүхэд, нэг удаагийн](/kidspace/honglolt)
+## Цэсээр
+Бүх дэлгэцийн хуудас: **[Цэс бүрийн хуудас](/kidspace/list)**.
+- **Элсэлт, анги**
+  - [Хүүхэд элсүүлэх](/kidspace/elselt-burtgel)
+  - [Элсэлтийн хүсэлт](/kidspace/elseltiin-huselt)
+  - [Гэрээ хаах, сэргээх](/kidspace/elseltiin-haalt)
+  - [Эхлэх огноо засах](/kidspace/ehleh-ognoo-zasah)
+  - [Анги шилжүүлэх, дэвшүүлэх](/kidspace/angi-shiljuuleh-devshuuleh)
+  - [Давхар хүүхэд нэгтгэх](/kidspace/davhar-huuhed-negtgeh)
+  - [Бүлгүүд](/kidspace/bulguud)
+  - [3D анги](/kidspace/3d-angi)
+  - [Сурагчид](/kidspace/suragchid)
+- **Ирц, хөгжил**
+  - [Ирц журнал](/kidspace/irts-zhurnal)
+  - [Хөгжлийн журнал](/kidspace/hogjliin-zhurnal)
+- **Харилцаа**
+  - [Санал хүсэлт](/kidspace/sanal-huselt)
+  - [Нийтлэл](/kidspace/niitlel)
+  - [Мэдээлэл хянах](/kidspace/medeelel-hyanah)
+  - [Нуусан агуулга](/kidspace/nuusan-aguulga)
+- **Тооцоо**
+  - [«Төлбөр» ба «Нэхэмжлэх»](/kidspace/tolbor-nehemjleh)
+  - [Хуваарь](/kidspace/tolboriin-huvaar)
+  - [Төлбөр](/kidspace/tolbor-jagsaalt)
+  - [Хөнгөлөлт](/kidspace/honglolt)
+  - [Нэхэмжлэх](/kidspace/nehemjleh-ilgeeh)
+  - [Төлөлт](/kidspace/tolult)
+  - [Буцаалт](/kidspace/butsaalt)
+  - [Сарын тооцоо](/kidspace/saryn-tootsoo-tailan)
+- **Авто туслагч**
+  - [Төлбөрийн ажиллагаа](/kidspace/tolboriin-ajillagaa)
+  - [Дансны хуулга](/kidspace/dansnii-huulga)
+  - [Хуваарьт ажил](/kidspace/huvaariin-ajil)
+- **Байгууллага**
+  - [Байгууллага](/kidspace/baiguullaga)
+  - [Багш, ажилчид](/kidspace/bagsh-ajilchid)
+  - [Хичээлийн жил](/kidspace/hicheeliin-jil)
+  - [Тайлант үе хаах](/kidspace/tailant-uye-haah)
+  - [Цэцэрлэгийн тойм](/kidspace/tsetserlegiin-toim)
 
 Хариултаа олоогүй бол Spacehub багт хандаарай.

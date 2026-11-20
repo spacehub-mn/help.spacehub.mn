@@ -20,3 +20,11 @@ test('kidspace-prep: Spacehub-ийн хуудас руу заасан холбо
 test('kidspace-prep: «Spacehub багт» → «KidSpace-ийн багт»', () => {
   assert.equal(transform('Spacehub багт хандаарай.'), 'KidSpace-ийн багт хандаарай.');
 });
+
+test('kidspace-prep: дэд хавтасны хуудасны дотоод хаяг slug-аас', async () => {
+  const { localSlugOf } = await import('../kidspace-site/scripts/prep-docs.mjs');
+  assert.equal(localSlugOf('---\nslug: /kidspace/concepts/elselt\n---', 'concepts/elselt.md'), 'concepts/elselt');
+  assert.equal(localSlugOf('---\nslug: /kidspace\n---', 'index.md'), '');
+  assert.equal(localSlugOf('---\ntitle: x\n---', 'asuult/tolbor.md'), 'asuult/tolbor');
+  assert.equal(transform('[g](/kidspace/concepts/elselt#a)', new Set(['concepts/elselt'])), '[g](/concepts/elselt#a)');
+});
