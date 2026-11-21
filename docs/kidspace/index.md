@@ -26,11 +26,18 @@ KidSpace-ийн гарын авлага. Шинээр эхэлж байгаа б
 ## Түгээмэл асуулт
 - [Элсэлт, анги](/kidspace/asuult/elselt)
 - [Төлбөр, нэхэмжлэх](/kidspace/asuult/tolbor)
+- [Ирц, хөгжил](/kidspace/asuult/irts)
+
+## Гацвал
+- [Төлбөр, нэхэмжлэх үүсээгүй](/kidspace/nehemjleh-uusgeegui)
+- [SMS, нэхэмжлэх очоогүй](/kidspace/sms-ochoogui)
+- [«Эрхгүй», цэс харагдахгүй](/kidspace/erhgui)
 
 ## Ойлголт
 - [Нэр томьёо](/kidspace/glossary)
 - [Хичээлийн жил, бүлэг, элсэлт](/kidspace/concepts/elselt-buleg-jil)
 - [Хуваарь → Төлбөр → Нэхэмжлэх → Төлөлт](/kidspace/concepts/tolbor-urgal)
+- [Хөнгөлөлт, кредит-нот, буцаалт](/kidspace/concepts/honglolt-butsaalt)
 
 ## Цэсээр
 Бүх дэлгэцийн хуудас: **[Цэс бүрийн хуудас](/kidspace/list)**.

@@ -5,8 +5,8 @@ module.exports = {
   kidspace: [
     { type: "doc", id: "index", label: "🏫 Нүүр" },
     group("🚀 Эхлэх", ["nevtruulelt/index", "tutorial/sar-buriin-ajil", "role/menejer", "role/bagsh"]),
-    group("❓ Түгээмэл асуулт", ["asuult/elselt", "asuult/tolbor"]),
-    group("💡 Ойлголт", ["glossary", "concepts/elselt-buleg-jil", "concepts/tolbor-urgal"]),
+    group("❓ Түгээмэл асуулт", ["asuult/elselt", "asuult/tolbor", "asuult/irts", "nehemjleh-uusgeegui", "sms-ochoogui", "erhgui"]),
+    group("💡 Ойлголт", ["glossary", "concepts/elselt-buleg-jil", "concepts/tolbor-urgal", "concepts/honglolt-butsaalt"]),
     "tsetserlegiin-toim",
     group("1. 👧 Элсэлт, анги", ["elselt-burtgel", "elseltiin-huselt", "elseltiin-haalt", "ehleh-ognoo-zasah", "angi-shiljuuleh-devshuuleh", "davhar-huuhed-negtgeh", "bulguud", "3d-angi", "suragchid"]),
     group("2. 📅 Ирц, хөгжил", ["irts-zhurnal", "hogjliin-zhurnal"]),
