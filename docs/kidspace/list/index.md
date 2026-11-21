@@ -59,6 +59,13 @@ KidSpace-ийн зүүн цэсний дэлгэц бүр ямар хуудас�
 | Дансны хуулга | [Дансны хуулга](/kidspace/dansnii-huulga) |
 | Хуваарьт ажил | [Хуваарьт ажил](/kidspace/huvaariin-ajil) |
 
+## Тохиргоо, хязгаарлалт {#tohirgoo}
+| Цэс | Хуудас |
+|---|---|
+| Вэб цэсийн хязгаарлалт | [Вэб цэсийн хязгаарлалт](/kidspace/veb-tses-hyazgaarlalt) |
+| Толгойн мөр → ⚙ Тохиргоо | [Хувийн бүртгэл](/kidspace/huviin-burtgel) · [Нууц үг](/kidspace/nuuts-ug) · [Ажлын талбар, урилга](/kidspace/ajlyn-talbar) |
+| Толгойн мөр (жил, горим, тусламж, урилга) | [Толгойн мөр](/kidspace/tolgoi-mor) |
+
 ## 🔗 Холбоотой
 - [Нэр томьёо](/kidspace/glossary)
 - [Эхний 7 хоног](/kidspace/nevtruulelt)
