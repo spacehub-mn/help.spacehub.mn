@@ -315,9 +315,12 @@ html[data-role] .theme-doc-sidebar-container {
   font-size: 0.75em;
   box-shadow: none;
 }
-/* Ногоон дээд мөрөнд лого цагаан; түрээслэгчийн хар хөх дээр лого жинхэнэ өнгөөрөө (тодрол ≥3) */
-html[data-role="owner"] .navbar__inner .navbar__logo img {
-  filter: brightness(0) invert(1);
+/* Ногоон дээд мөрөнд лого жинхэнэ өнгөөрөө цагаан дэвсгэр дээр (эзэн 11-21: цагаан шүүлтүүртэй лого, «Proptech company»
+   бүдэг харагдаж байсан). Түрээслэгчийн хар хөх дээр logo-ondark.svg (доор). */
+html[data-role="owner"] .navbar__inner .navbar__logo {
+  background: #fff;
+  border-radius: 8px;
+  padding: 3px 8px;
 }
 /* Хар хөх толгой (түрээслэгч) ба харанхуй горимын утасны цэс: ногоон «Space» бараан дэвсгэр дээр
    бүдэг (тодрол 3.6) байсан → «Space» цагаан хувилбар (logo-ondark.svg), зүү ба «hub» жинхэнэ өнгөөрөө */
