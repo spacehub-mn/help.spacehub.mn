@@ -70,9 +70,10 @@ const config = {
           {
             title: "Холбоо барих",
             items: [
-              { label: "+976 7777 4242", href: "tel:+97677774242" },
-              { label: "+976 8888 5516", href: "tel:+97688885516" },
-              { label: "order@spacehub.mn", href: "mailto:order@spacehub.mn?subject=%5BKidspace%5D" },
+              // tel:/mailto: — href-ээр өгвөл Docusaurus гадаад холбоосын дүрс залгадаг тул html-ээр
+              { html: '<a class="footer__link-item" href="tel:+97677774242">+976 7777 4242</a>' },
+              { html: '<a class="footer__link-item" href="tel:+97688885516">+976 8888 5516</a>' },
+              { html: '<a class="footer__link-item" href="mailto:order@spacehub.mn?subject=%5BKidspace%5D">order@spacehub.mn</a>' },
             ],
           },
         ],
