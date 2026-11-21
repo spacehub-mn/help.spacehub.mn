@@ -13,7 +13,7 @@ module.exports = {
     group("3. 💬 Харилцаа", ["sanal-huselt", "niitlel", "medeelel-hyanah", "nuusan-aguulga"]),
     group("4. 💳 Тооцоо", ["tolbor-nehemjleh", "tolboriin-huvaar", "tolbor-jagsaalt", "honglolt", "nehemjleh-ilgeeh", "tolult", "butsaalt", "saryn-tootsoo-tailan"]),
     group("5. ⚙️ Авто туслагч", ["tolboriin-ajillagaa", "dansnii-huulga", "huvaariin-ajil"]),
-    group("6. 🏢 Байгууллага", ["baiguullaga", "tailant-uye-haah", "hicheeliin-jil", "bagsh-ajilchid", "baraa-uilchilgee"]),
+    group("6. 🏢 Байгууллага", ["baiguullaga", "tailant-uye-haah", "hicheeliin-jil", "bagsh-ajilchid", "baraa-uilchilgee", "bagts", "nehemjleh-tohirgoo"]),
     { type: "doc", id: "list/index", label: "📋 Цэс бүрийн хуудас" },
   ],
 };

@@ -85,6 +85,8 @@ KidSpace-ийн гарын авлага. Шинээр эхэлж байгаа б
   - [Хичээлийн жил](/kidspace/hicheeliin-jil)
   - [Тайлант үе хаах](/kidspace/tailant-uye-haah)
   - [Бараа үйлчилгээ](/kidspace/baraa-uilchilgee)
+  - [Багц](/kidspace/bagts)
+  - [Нэхэмжлэх тохиргоо (имэйл, SMS, QPay)](/kidspace/nehemjleh-tohirgoo)
   - [Цэцэрлэгийн тойм](/kidspace/tsetserlegiin-toim)
 
 Хариултаа олоогүй бол Spacehub багт хандаарай.
