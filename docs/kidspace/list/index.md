@@ -37,7 +37,7 @@ KidSpace-ийн зүүн цэсний дэлгэц бүр ямар хуудас�
 | Тайлан → Сарын тооцоо | [Сарын тооцоо](/kidspace/saryn-tootsoo-tailan) |
 | Анги / Бүлэг → Бүлгүүд | [Бүлгүүд](/kidspace/bulguud) |
 | Анги / Бүлэг → 3D анги | [3D анги](/kidspace/3d-angi) |
-| Байгууллага (табууд: Цэцэрлэг, Багш, ажилчид, Бараа үйлчилгээ…) | [Байгууллага](/kidspace/baiguullaga) · [Багш, ажилчид](/kidspace/bagsh-ajilchid) · [Хичээлийн жил](/kidspace/hicheeliin-jil) · [Тайлант үе хаах](/kidspace/tailant-uye-haah) |
+| Байгууллага (табууд: Цэцэрлэг, Багш, ажилчид, Бараа үйлчилгээ…) | [Байгууллага](/kidspace/baiguullaga) · [Багш, ажилчид](/kidspace/bagsh-ajilchid) · [Бараа үйлчилгээ](/kidspace/baraa-uilchilgee) · [Хичээлийн жил](/kidspace/hicheeliin-jil) · [Тайлант үе хаах](/kidspace/tailant-uye-haah) |
 
 ## Тооцоо {#tootsoo}
 | Цэс | Хуудас |

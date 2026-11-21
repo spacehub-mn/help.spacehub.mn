@@ -21,12 +21,17 @@ KidSpace-ийн гарын авлага. Шинээр эхэлж байгаа б
 ## Эхлэх
 - [Эхний 7 хоног — анх тохируулах](/kidspace/nevtruulelt)
 - [Сар бүрийн ажил](/kidspace/tutorial/sar-buriin-ajil)
+- [Шинэ хичээлийн жилд шилжих](/kidspace/tutorial/shine-jil)
+- [Хүүхэд гарахад](/kidspace/tutorial/huuhed-garah)
 - Дүрээр: [Эрхлэгч, менежер](/kidspace/role/menejer) · [Багш](/kidspace/role/bagsh)
 
 ## Түгээмэл асуулт
 - [Элсэлт, анги](/kidspace/asuult/elselt)
 - [Төлбөр, нэхэмжлэх](/kidspace/asuult/tolbor)
 - [Ирц, хөгжил](/kidspace/asuult/irts)
+- [Төлөлт, дансны хуулга](/kidspace/asuult/tolult)
+- [Эцэг эхтэй харилцаа](/kidspace/asuult/harilsaa)
+- [Байгууллага, бүлэг, ажилтан](/kidspace/asuult/baiguullaga)
 
 ## Гацвал
 - [Төлбөр, нэхэмжлэх үүсээгүй](/kidspace/nehemjleh-uusgeegui)
@@ -38,6 +43,8 @@ KidSpace-ийн гарын авлага. Шинээр эхэлж байгаа б
 - [Хичээлийн жил, бүлэг, элсэлт](/kidspace/concepts/elselt-buleg-jil)
 - [Хуваарь → Төлбөр → Нэхэмжлэх → Төлөлт](/kidspace/concepts/tolbor-urgal)
 - [Хөнгөлөлт, кредит-нот, буцаалт](/kidspace/concepts/honglolt-butsaalt)
+- [Ирцээр бодох төлбөр](/kidspace/concepts/irts-tolbor)
+- [Төлөвүүд нэг дор](/kidspace/concepts/tolov)
 
 ## Цэсээр
 Бүх дэлгэцийн хуудас: **[Цэс бүрийн хуудас](/kidspace/list)**.
@@ -77,6 +84,7 @@ KidSpace-ийн гарын авлага. Шинээр эхэлж байгаа б
   - [Багш, ажилчид](/kidspace/bagsh-ajilchid)
   - [Хичээлийн жил](/kidspace/hicheeliin-jil)
   - [Тайлант үе хаах](/kidspace/tailant-uye-haah)
+  - [Бараа үйлчилгээ](/kidspace/baraa-uilchilgee)
   - [Цэцэрлэгийн тойм](/kidspace/tsetserlegiin-toim)
 
 Хариултаа олоогүй бол Spacehub багт хандаарай.
