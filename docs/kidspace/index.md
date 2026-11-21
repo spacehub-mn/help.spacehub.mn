@@ -58,6 +58,7 @@ KidSpace-ийн гарын авлага. Шинээр эхэлж байгаа б
   - [Бүлгүүд](/kidspace/bulguud)
   - [3D анги](/kidspace/3d-angi)
   - [Сурагчид](/kidspace/suragchid)
+  - [Гэр бүл](/kidspace/ger-bul)
 - **Ирц, хөгжил**
   - [Ирц журнал](/kidspace/irts-zhurnal)
   - [Хөгжлийн журнал](/kidspace/hogjliin-zhurnal)
@@ -87,6 +88,7 @@ KidSpace-ийн гарын авлага. Шинээр эхэлж байгаа б
   - [Бараа үйлчилгээ](/kidspace/baraa-uilchilgee)
   - [Багц](/kidspace/bagts)
   - [Нэхэмжлэх тохиргоо (имэйл, SMS, QPay)](/kidspace/nehemjleh-tohirgoo)
+  - [Банкны данс](/kidspace/bank-dans)
   - [Цэцэрлэгийн тойм](/kidspace/tsetserlegiin-toim)
 
 Хариултаа олоогүй бол Spacehub багт хандаарай.

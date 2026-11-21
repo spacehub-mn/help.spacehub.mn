@@ -29,6 +29,7 @@ KidSpace-ийн зүүн цэсний дэлгэц бүр ямар хуудас�
 | Элсэлт → Бүртгэл | [Хүүхэд элсүүлэх](/kidspace/elselt-burtgel) |
 | Элсэлт → Хүсэлт | [Элсэлтийн хүсэлт](/kidspace/elseltiin-huselt) |
 | Элсэлт → Хаалт | [Гэрээ хаах, сэргээх](/kidspace/elseltiin-haalt) |
+| Гэр бүл | [Гэр бүл](/kidspace/ger-bul) |
 | Гэр бүл → Сурагчид | [Сурагчид](/kidspace/suragchid) |
 | Ирц журнал | [Ирц журнал](/kidspace/irts-zhurnal) |
 | Хөгжлийн журнал | [Хөгжлийн журнал](/kidspace/hogjliin-zhurnal) |
@@ -39,7 +40,7 @@ KidSpace-ийн зүүн цэсний дэлгэц бүр ямар хуудас�
 | Тайлан → Сарын тооцоо | [Сарын тооцоо](/kidspace/saryn-tootsoo-tailan) |
 | Анги / Бүлэг → Бүлгүүд | [Бүлгүүд](/kidspace/bulguud) |
 | Анги / Бүлэг → 3D анги | [3D анги](/kidspace/3d-angi) |
-| Байгууллага (табууд: Цэцэрлэг, Багш, ажилчид, Бараа үйлчилгээ…) | [Байгууллага](/kidspace/baiguullaga) · [Багш, ажилчид](/kidspace/bagsh-ajilchid) · [Бараа үйлчилгээ](/kidspace/baraa-uilchilgee) · [Багц](/kidspace/bagts) · [Нэхэмжлэх тохиргоо](/kidspace/nehemjleh-tohirgoo) · [Хичээлийн жил](/kidspace/hicheeliin-jil) · [Тайлант үе хаах](/kidspace/tailant-uye-haah) |
+| Байгууллага (табууд: Цэцэрлэг, Багш, ажилчид, Бараа үйлчилгээ…) | [Байгууллага](/kidspace/baiguullaga) · [Багш, ажилчид](/kidspace/bagsh-ajilchid) · [Бараа үйлчилгээ](/kidspace/baraa-uilchilgee) · [Багц](/kidspace/bagts) · [Нэхэмжлэх тохиргоо](/kidspace/nehemjleh-tohirgoo) · [Банкны данс](/kidspace/bank-dans) · [Хичээлийн жил](/kidspace/hicheeliin-jil) · [Тайлант үе хаах](/kidspace/tailant-uye-haah) |
 
 ## Тооцоо {#tootsoo}
 | Цэс | Хуудас |
