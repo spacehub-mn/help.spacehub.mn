@@ -78,3 +78,33 @@
 .theme-doc-sidebar-menu .menu__list .menu__link {
   font-size: 0.9em;
 }
+
+/* ── Цэсний дугаар 1. → 1.1 (sidebars.js «sb-num»; help.spacehub.mn-тэй ижил) ── */
+.theme-doc-sidebar-menu,
+.theme-doc-sidebar-menu .menu__list {
+  counter-reset: sb;
+}
+.theme-doc-sidebar-menu li.sb-num {
+  counter-increment: sb;
+}
+.theme-doc-sidebar-menu li.sb-num > .menu__link::before,
+.theme-doc-sidebar-menu li.sb-num > .menu__list-item-collapsible > .menu__link::before {
+  content: counters(sb, ".") " ";
+  font-weight: 700;
+  color: var(--ifm-color-primary);
+  margin-right: 0.35em;
+  white-space: nowrap;
+}
+.theme-doc-sidebar-menu > li.sb-num > .menu__list-item-collapsible > .menu__link::before,
+.theme-doc-sidebar-menu > li.sb-num > .menu__link::before {
+  content: counter(sb) ".";
+}
+/* «Багш уу? →» — help.spacehub.mn-ийн «Түрээслэгч үү? →» шиг жижиг хүрээтэй холбоос */
+.navbar .role-switch {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border: 1px solid var(--ifm-color-primary);
+  border-radius: 999px;
+  margin-right: 0.5rem;
+}

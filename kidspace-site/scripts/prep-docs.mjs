@@ -41,6 +41,18 @@ export function localSlugOf(text, rel) {
   return (m ? m[1] : rel.replace(/\.md$/, "")).trim();
 }
 
+// Хайлтын индекс (src/theme/SearchBar): хуудас бүрийн хаяг, гарчиг, цэсний нэр, keywords, ## гарчиг + анкор.
+export function searchEntry(text, rel) {
+  const fm = (text.match(/^---\n([\s\S]*?)\n---/) || [, ""])[1];
+  const label = (fm.match(/^sidebar_label:\s*(.+)$/m) || [, ""])[1].trim();
+  const keywords = [...fm.matchAll(/^\s+-\s+"?([^"\n]+)"?\s*$/gm)].map((m) => m[1].trim());
+  const body = text.slice(text.indexOf("---", 3) + 3);
+  const title = (body.match(/^# (.+)$/m) || [, label])[1].trim();
+  const headings = [...body.matchAll(/^##+ (.+?)(?:\s*\{#([\w-]+)\})?\s*$/gm)].map((m) => ({ text: m[1].trim(), id: m[2] || "" }));
+  const slug = localSlugOf(text, rel);
+  return { url: "/" + slug, title, label, keywords, headings };
+}
+
 if (process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1])) {
   const files = walk(src);
   const texts = new Map(files.map((f) => [f, fs.readFileSync(path.join(src, f), "utf8")]));
@@ -53,5 +65,7 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.a
     fs.mkdirSync(path.dirname(dst), { recursive: true });
     fs.writeFileSync(dst, f.endsWith(".md") ? transform(texts.get(f), localSlugs) : texts.get(f));
   }
+  const index = files.filter((f) => f.endsWith(".md")).map((f) => searchEntry(texts.get(f).replace(/\r\n/g, "\n"), f));
+  fs.writeFileSync(path.resolve(here, "../static/search-index.json"), JSON.stringify(index));
   console.log(`kidspace-site/docs: ${files.filter((f) => f.endsWith(".md")).length} хуудас`);
 }

@@ -42,14 +42,38 @@ const config = {
       navbar: {
         title: "KidSpace туслах",
         logo: { alt: "KidSpace", src: "img/kidspace-mark.png", width: 30, height: 30 },
-        items: [{ type: "docSidebar", sidebarId: "kidspace", position: "left", label: "🏫 Эрхлэгч, менежерийн тусламж" }],
+        items: [
+          { type: "docSidebar", sidebarId: "kidspace", position: "left", label: "🏫 Эрхлэгч, менежерийн тусламж" },
+          // help.spacehub.mn-ийн «Түрээслэгч үү? →»-тэй ижил: нөгөө хэрэглэгч (багш) өөрийн хуудас руу шууд
+          { to: "/role/bagsh", position: "right", label: "Багш уу? →", className: "role-switch" },
+        ],
       },
+      // help.spacehub.mn-тэй ижил бараан footer. Холбоо барих = kidspace.mn-ийн албан footer (landing-pages Footer.svelte).
       footer: {
-        style: "light",
+        style: "dark",
         links: [
           {
             title: "KidSpace",
-            items: [{ label: "Эрхлэгчийн самбар", href: "https://app.kidspace.mn" }],
+            items: [
+              { label: "Цахим хуудас", href: "https://kidspace.mn" },
+              { label: "Эрхлэгчийн самбар", href: "https://app.kidspace.mn" },
+            ],
+          },
+          {
+            title: "Эхлэх",
+            items: [
+              { label: "Эхний 7 хоног", to: "/nevtruulelt" },
+              { label: "Түгээмэл асуулт", to: "/asuult/tolbor" },
+              { label: "Нэр томьёо", to: "/glossary" },
+            ],
+          },
+          {
+            title: "Холбоо барих",
+            items: [
+              { label: "+976 7777 4242", href: "tel:+97677774242" },
+              { label: "+976 8888 5516", href: "tel:+97688885516" },
+              { label: "order@spacehub.mn", href: "mailto:order@spacehub.mn?subject=%5BKidspace%5D" },
+            ],
           },
         ],
         copyright: `© ${new Date().getFullYear()} KidSpace — цэцэрлэгийн удирдлагын систем.`,

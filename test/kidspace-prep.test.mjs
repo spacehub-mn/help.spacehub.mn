@@ -28,3 +28,14 @@ test('kidspace-prep: дэд хавтасны хуудасны дотоод ха�
   assert.equal(localSlugOf('---\ntitle: x\n---', 'asuult/tolbor.md'), 'asuult/tolbor');
   assert.equal(transform('[g](/kidspace/concepts/elselt#a)', new Set(['concepts/elselt'])), '[g](/concepts/elselt#a)');
 });
+
+test('kidspace-prep: хайлтын индексийн мөр — гарчиг, цэсний нэр, keywords, анкортой гарчиг', async () => {
+  const { searchEntry } = await import('../kidspace-site/scripts/prep-docs.mjs');
+  const md = '---\nslug: /kidspace/asuult/tolbor\nsidebar_label: Төлбөр\nkeywords:\n  - "төлбөр дахин бодох"\n---\n# Асуулт: төлбөр\n\n## Сар 0 ₮ {#algassan}\nx\n';
+  const e = searchEntry(md, 'asuult/tolbor.md');
+  assert.equal(e.url, '/asuult/tolbor');
+  assert.equal(e.title, 'Асуулт: төлбөр');
+  assert.equal(e.label, 'Төлбөр');
+  assert.deepEqual(e.keywords, ['төлбөр дахин бодох']);
+  assert.deepEqual(e.headings, [{ text: 'Сар 0 ₮', id: 'algassan' }]);
+});

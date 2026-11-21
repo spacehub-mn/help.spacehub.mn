@@ -30,3 +30,6 @@ __pycache__/
 
 # Аппын түүхий дэлгэцийн зураг (хувийн мэдээлэлтэй) — зөвхөн локал, annotate.cjs-ийн эх
 scripts/shots/app-src/
+
+# KidSpace хайлтын индекс: prep-docs.mjs үүсгэнэ
+/kidspace-site/static/search-index.json
