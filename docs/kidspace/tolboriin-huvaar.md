@@ -101,6 +101,7 @@ keywords:
 Хуваарийг зөвхөн эрхлэгч, менежер харна.
 
 ## 🔗 Холбоотой {#holbootoi}
+- [Ирцийн сар шилжүүлэх: өмнөх/тухайн сарын ирцээр дахин бодох](/kidspace/irtsiin-sar-shiljuuleh)
 - [«Төлбөр» ба «Нэхэмжлэх»](/kidspace/tolbor-nehemjleh)
 - [Төлбөрийн жагсаалт](/kidspace/tolbor-jagsaalt)
 - [Хөнгөлөлт](/kidspace/honglolt)

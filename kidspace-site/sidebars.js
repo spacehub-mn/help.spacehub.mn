@@ -14,7 +14,7 @@ module.exports = {
     group("👧 Элсэлт, анги", ["elselt-burtgel", "elseltiin-huselt", "elseltiin-haalt", "ehleh-ognoo-zasah", "angi-shiljuuleh-devshuuleh", "davhar-huuhed-negtgeh", "bulguud", "3d-angi", "suragchid", "ger-bul"]),
     group("📅 Ирц, хөгжил", ["irts-zhurnal", "hogjliin-zhurnal"]),
     group("💬 Харилцаа", ["sanal-huselt", "niitlel", "medeelel-hyanah", "nuusan-aguulga"]),
-    group("💳 Тооцоо", ["tolbor-nehemjleh", "tolboriin-huvaar", "tolbor-jagsaalt", "tolbor-tsutslahaas-omno", "honglolt", "nehemjleh-ilgeeh", "tolult", "butsaalt", "saryn-tootsoo-tailan"]),
+    group("💳 Тооцоо", ["tolbor-nehemjleh", "tolboriin-huvaar", "tolbor-jagsaalt", "tolbor-tsutslahaas-omno", "irtsiin-sar-shiljuuleh", "honglolt", "nehemjleh-ilgeeh", "tolult", "butsaalt", "saryn-tootsoo-tailan"]),
     group("⚙️ Авто туслагч", ["tolboriin-ajillagaa", "dansnii-huulga", "huvaariin-ajil"]),
     group("🏢 Байгууллага", ["baiguullaga", "tailant-uye-haah", "hicheeliin-jil", "bagsh-ajilchid", "baraa-uilchilgee", "bagts", "nehemjleh-tohirgoo", "bank-dans", "veb-tses-hyazgaarlalt"]),
     group("👤 Хувийн тохиргоо", ["huviin-burtgel", "nuuts-ug", "ajlyn-talbar", "tolgoi-mor"]),
